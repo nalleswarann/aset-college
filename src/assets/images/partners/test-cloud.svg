@@ -1,0 +1,18 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 140' width='340' height='140'>
+  <defs>
+    <filter id='cloudShadow' x='-10%' y='-10%' width='120%' height='130%'>
+      <feDropShadow dx='0' dy='8' stdDeviation='10' flood-color='#0284c7' flood-opacity='0.12' />
+      <feDropShadow dx='0' dy='3' stdDeviation='4' flood-color='#000000' flood-opacity='0.05' />
+    </filter>
+    <linearGradient id='cloudGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='#ffffff' />
+      <stop offset='70%' stop-color='#ffffff' />
+      <stop offset='100%' stop-color='#f0f9ff' />
+    </linearGradient>
+  </defs>
+  <path d='M 65 115 C 35 115, 15 95, 20 70 C 10 40, 40 25, 65 35 C 80 15, 115 10, 140 25 C 160 5, 200 5, 220 22 C 245 10, 280 20, 290 45 C 320 50, 335 80, 315 105 C 300 125, 260 120, 240 115 C 210 125, 170 122, 145 115 C 120 124, 85 120, 65 115 Z' 
+        fill='url(#cloudGrad)' 
+        stroke='#e0f2fe' 
+        stroke-width='1.5' 
+        filter='url(#cloudShadow)' />
+</svg>

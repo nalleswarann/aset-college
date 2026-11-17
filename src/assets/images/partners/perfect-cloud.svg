@@ -1,0 +1,25 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 140' width='320' height='140'>
+  <defs>
+    <!-- Neutral soft cloud shadow - NO BLUE! -->
+    <filter id='cloudNeutralShadow' x='-10%' y='-10%' width='120%' height='130%'>
+      <feDropShadow dx='0' dy='8' stdDeviation='10' flood-color='#000000' flood-opacity='0.06' />
+      <feDropShadow dx='0' dy='2' stdDeviation='4' flood-color='#000000' flood-opacity='0.04' />
+    </filter>
+  </defs>
+  <!-- Symmetrical, perfectly centered organic cloud path -->
+  <path d='M 56 114
+           C 30 114, 14 96, 16 70
+           C 14 44, 34 28, 58 32
+           C 72 16, 98 10, 124 16
+           C 138 8, 160 8, 178 12
+           C 196 8, 222 16, 236 28
+           C 258 20, 286 36, 286 64
+           C 306 74, 306 98, 288 114
+           C 268 126, 236 122, 214 118
+           C 192 126, 160 126, 138 120
+           C 116 126, 82 124, 56 114 Z'
+        fill='#ffffff'
+        stroke='#f1f5f9'
+        stroke-width='1.5'
+        filter='url(#cloudNeutralShadow)' />
+</svg>

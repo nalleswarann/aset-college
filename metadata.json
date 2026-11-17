@@ -1,0 +1,8 @@
+{
+  "name": "Aetheria University - Academic Portal",
+  "description": "Modern university website featuring an interactive animated hero banner, academic department explorer, campus life, and admissions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,23 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 130' width='320' height='130'>
+  <defs>
+    <linearGradient id='cloudGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='#ffffff' />
+      <stop offset='75%' stop-color='#ffffff' />
+      <stop offset='100%' stop-color='#f0f9ff' />
+    </linearGradient>
+    <filter id='cloudSoftShadow' x='-10%' y='-10%' width='125%' height='135%'>
+      <feDropShadow dx='0' dy='8' stdDeviation='10' flood-color='#38bdf8' flood-opacity='0.16' />
+      <feDropShadow dx='0' dy='3' stdDeviation='6' flood-color='#0f172a' flood-opacity='0.06' />
+    </filter>
+  </defs>
+  <g filter='url(#cloudSoftShadow)'>
+    <!-- Base pill -->
+    <rect x='45' y='55' width='230' height='55' rx='27.5' fill='url(#cloudGrad)' />
+    <!-- Overlapping cloud puffs -->
+    <circle cx='68' cy='70' r='36' fill='url(#cloudGrad)' />
+    <circle cx='115' cy='52' r='40' fill='url(#cloudGrad)' />
+    <circle cx='165' cy='44' r='44' fill='url(#cloudGrad)' />
+    <circle cx='215' cy='52' r='38' fill='url(#cloudGrad)' />
+    <circle cx='255' cy='70' r='34' fill='url(#cloudGrad)' />
+  </g>
+</svg>
