@@ -167,11 +167,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               <button
                 onClick={() => setViewMode('carousel')}
                 aria-label="Carousel Scroll View"
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
-                  viewMode === 'carousel'
-                    ? 'bg-stone-900 text-white shadow-xs'
-                    : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${viewMode === 'carousel'
+                  ? 'bg-stone-900 text-white shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 <SlidersHorizontal className="w-3.5 h-3.5" />
                 <span>Scroll Showcase</span>
@@ -179,11 +178,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               <button
                 onClick={() => setViewMode('grid')}
                 aria-label="Grid Overview"
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
-                  viewMode === 'grid'
-                    ? 'bg-stone-900 text-white shadow-xs'
-                    : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${viewMode === 'grid'
+                  ? 'bg-stone-900 text-white shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
                 <span>Grid View</span>
@@ -200,11 +198,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   onClick={() => scrollByAmount('left')}
                   disabled={!canScrollLeft}
                   aria-label="Previous Department"
-                  className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
-                    canScrollLeft
-                      ? 'bg-white hover:bg-stone-900 hover:text-white border-stone-300 text-stone-800 shadow-xs'
-                      : 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
-                  }`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${canScrollLeft
+                    ? 'bg-white hover:bg-stone-900 hover:text-white border-stone-300 text-stone-800 shadow-xs'
+                    : 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
+                    }`}
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
@@ -212,11 +209,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   onClick={() => scrollByAmount('right')}
                   disabled={!canScrollRight}
                   aria-label="Next Department"
-                  className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
-                    canScrollRight
-                      ? 'bg-white hover:bg-stone-900 hover:text-white border-stone-300 text-stone-800 shadow-xs'
-                      : 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
-                  }`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${canScrollRight
+                    ? 'bg-white hover:bg-stone-900 hover:text-white border-stone-300 text-stone-800 shadow-xs'
+                    : 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
+                    }`}
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -238,9 +234,8 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
-              className={`flex gap-6 sm:gap-8 overflow-x-auto pb-8 pt-2 px-1 snap-x snap-mandatory no-scrollbar cursor-grab ${
-                isDragging ? 'cursor-grabbing select-none' : ''
-              }`}
+              className={`flex gap-6 sm:gap-8 overflow-x-auto pb-8 pt-2 px-1 snap-x snap-mandatory no-scrollbar cursor-grab ${isDragging ? 'cursor-grabbing select-none' : ''
+                }`}
               style={{ scrollBehavior: 'smooth' }}
             >
               {DEPARTMENTS.map((dept, idx) => {
@@ -384,11 +379,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                     key={dept.id}
                     onClick={() => scrollToDepartment(idx)}
                     aria-label={`Jump to department ${idx + 1}`}
-                    className={`h-8 px-3 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-                      activeIdx === idx
-                        ? 'bg-orange-600 text-white shadow-xs scale-105'
-                        : 'bg-white hover:bg-stone-100 text-stone-600 border border-stone-200'
-                    }`}
+                    className={`h-8 px-3 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${activeIdx === idx
+                      ? 'bg-orange-600 text-white shadow-xs scale-105'
+                      : 'bg-white hover:bg-stone-100 text-stone-600 border border-stone-200'
+                      }`}
                   >
                     <span>0{idx + 1}</span>
                     {activeIdx === idx && (

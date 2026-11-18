@@ -63,7 +63,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
     <section
       ref={sectionRef}
       id="admissions-process"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-16 sm:py-20 lg:py-28 select-none border-b border-stone-200/90"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-12 sm:py-16 lg:py-20 select-none border-b border-stone-200/90"
     >
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Rose Glow   */}
@@ -107,7 +107,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* TOP REFERENCE HEADER BAR (Matching Reference Image)        */}
         {/* Left: ADMISSIONS PROCESS | Right: 2026–2027 Session       */}
         {/* ========================================================= */}
-        <div className="flex items-center justify-between pb-4 border-b border-stone-200/90 mb-10 sm:mb-14">
+        <div className="flex items-center justify-between pb-3.5 border-b border-stone-200/90 mb-8 sm:mb-10">
           <span className="text-xs sm:text-sm font-inter uppercase tracking-widest text-stone-500 font-bold">
             Admissions Process
           </span>
@@ -119,7 +119,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* ========================================================= */}
         {/* SECTION HEADER: Title & Curatorial Guidance               */}
         {/* ========================================================= */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 lg:mb-24 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20 space-y-3.5">
           <ScrollEyebrow delay={0.04} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-xs font-inter font-semibold text-red-900 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
             <span className="uppercase tracking-wider">Step-by-Step Admissions Pathway</span>
@@ -132,11 +132,11 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
             </span>
           </ScrollHeading>
 
-          <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-600 leading-relaxed font-sans max-w-2xl mx-auto">
+          <ScrollParagraph delay={0.2} className="text-xs sm:text-sm md:text-base text-stone-600 leading-relaxed font-sans max-w-2xl mx-auto">
             From eligibility verification to official enrollment confirmation, our streamlined admission journey ensures personal academic mentorship and career-aligned guidance every step of the way.
           </ScrollParagraph>
 
-          <ScrollAction delay={0.28} className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-inter text-stone-600">
+          <ScrollAction delay={0.28} className="pt-1.5 flex flex-wrap items-center justify-center gap-4 text-xs font-inter text-stone-600">
             <div className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span className="font-medium">Academically Supported by Alagappa University</span>
@@ -156,7 +156,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
           {/* Central Vertical Timeline Spine Track */}
           <div
             aria-hidden="true"
-            className="absolute left-10 sm:left-14 md:left-1/2 -translate-x-1/2 top-4 bottom-12 w-[3px] pointer-events-none z-10"
+            className="absolute left-5 sm:left-7 md:left-1/2 -translate-x-1/2 top-4 bottom-8 w-[3px] pointer-events-none z-10"
           >
             {/* Guide track line (neutral path in front of plane) */}
             <div className="w-[2px] h-full mx-auto bg-stone-300/80 rounded-full" />
@@ -178,7 +178,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
           {/* ========================================================= */}
           <div
             aria-hidden="true"
-            className="absolute left-10 sm:left-14 md:left-1/2 -translate-x-1/2 top-4 bottom-12 w-0 pointer-events-none z-30 overflow-visible flex justify-center"
+            className="absolute left-5 sm:left-7 md:left-1/2 -translate-x-1/2 top-4 bottom-8 w-0 pointer-events-none z-30 overflow-visible flex justify-center"
           >
             <motion.div
               style={{
@@ -187,24 +187,24 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
               }}
               className="absolute left-0 -translate-x-1/2 -translate-y-2 pointer-events-none select-none flex flex-col items-center overflow-visible"
             >
-              <div className="relative select-none pointer-events-none overflow-visible flex items-center justify-center w-10 sm:w-12 h-auto">
+              <div className="relative select-none pointer-events-none overflow-visible flex items-center justify-center w-8 sm:w-10 md:w-11 h-auto">
                 {/* Laser line junction beacon at plane tail */}
-                <div className="absolute top-[8%] left-1/2 -translate-x-1/2 w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full bg-red-600 shadow-[0_0_10px_#ef4444] z-10 flex items-center justify-center pointer-events-none">
+                <div className="absolute top-[8%] left-1/2 -translate-x-1/2 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-red-600 shadow-[0_0_8px_#ef4444] z-10 flex items-center justify-center pointer-events-none">
                   <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_4px_#ffffff]" />
                 </div>
 
-                {/* Sleek Crimson Aeroplane (Matching reference design exactly) */}
+                {/* Sleek Crimson Aeroplane */}
                 <img
                   src={redAeroplane}
                   alt="Admissions Flight"
-                  className="w-10 sm:w-12 h-auto object-contain select-none pointer-events-none filter drop-shadow-[0_6px_14px_rgba(220,38,38,0.3)]"
+                  className="w-8 sm:w-10 md:w-11 h-auto object-contain select-none pointer-events-none filter drop-shadow-[0_4px_10px_rgba(220,38,38,0.25)]"
                 />
               </div>
             </motion.div>
           </div>
 
           {/* 4 Admissions Process Steps */}
-          <div className="space-y-12 sm:space-y-16 lg:space-y-24">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-10">
             {ADMISSIONS_STEPS.map((step, idx) => {
               const Icon = stepIcons[idx] || FileCheck2;
               const isEven = idx % 2 === 0;
@@ -217,84 +217,80 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
                   className="relative flex items-center md:justify-between group"
                 >
                   {/* Central Node on the Spine (Highlights when flight reaches this step) */}
-                  <div className="absolute left-10 sm:left-14 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+                  <div className="absolute left-5 sm:left-7 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
                     <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        isCurrent
-                          ? 'bg-white border-2 border-red-600 text-red-600 shadow-md shadow-red-600/25 scale-110'
-                          : isPassed
+                      className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isCurrent
+                        ? 'bg-white border-2 border-red-600 text-red-600 shadow-md shadow-red-600/25 scale-110'
+                        : isPassed
                           ? 'bg-red-50 border-2 border-red-600 text-red-700 shadow-xs'
                           : 'bg-white border-2 border-stone-300/90 text-stone-400 shadow-xs'
-                      }`}
+                        }`}
                     >
-                      <Icon className="w-5 h-5 transition-transform" />
+                      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 transition-transform" />
                     </div>
                   </div>
 
                   {/* Step Card */}
                   <div
-                    className={`w-full md:w-[46%] pl-24 sm:pl-32 md:pl-0 ${
-                      isEven ? 'md:mr-auto md:pr-10' : 'md:ml-auto md:pl-10'
-                    }`}
+                    className={`w-full md:w-[46%] pl-11 sm:pl-14 md:pl-0 ${isEven ? 'md:mr-auto md:pr-6 lg:pr-8' : 'md:ml-auto md:pl-6 lg:pl-8'
+                      }`}
                   >
                     <div
-                      className={`relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border transition-all duration-300 overflow-hidden group ${
-                        isCurrent
-                          ? 'border-red-500/60 shadow-[0_16px_36px_rgba(220,38,38,0.1)] -translate-y-1 ring-1 ring-red-500/20'
-                          : 'border-stone-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-red-500/40 hover:shadow-[0_12px_28px_rgba(185,28,28,0.06)] hover:-translate-y-0.5'
-                      }`}
+                      className={`relative p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white border transition-all duration-300 overflow-hidden group ${isCurrent
+                        ? 'border-red-500/60 shadow-[0_12px_28px_rgba(220,38,38,0.08)] -translate-y-0.5 ring-1 ring-red-500/20'
+                        : 'border-stone-200/90 shadow-[0_3px_14px_rgba(0,0,0,0.03)] hover:border-red-500/40 hover:shadow-[0_8px_20px_rgba(185,28,28,0.05)] hover:-translate-y-0.5'
+                        }`}
                     >
                       {/* Subtle ambient light gradient in top right */}
                       <div
                         aria-hidden="true"
-                        className="absolute -top-12 -right-12 w-28 h-28 rounded-full bg-red-500/5 blur-xl pointer-events-none"
+                        className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-red-500/5 blur-xl pointer-events-none"
                       />
 
                       {/* Header Row: Step Number & Reference Badges */}
-                      <div className="flex items-center justify-between pb-3.5 border-b border-stone-100 mb-4">
-                        <div className="flex items-center gap-2.5">
+                      <div className="flex items-center justify-between pb-2.5 border-b border-stone-100 mb-2.5 gap-2 flex-wrap">
+                        <div className="flex items-center gap-2">
                           <span
-                            className={`font-manrope text-2xl sm:text-3xl font-black tracking-tight ${
-                              isCurrent ? 'text-red-700' : 'text-stone-900'
-                            }`}
+                            className={`font-manrope text-lg sm:text-xl md:text-2xl font-black tracking-tight whitespace-nowrap ${isCurrent ? 'text-red-700' : 'text-stone-900'
+                              }`}
                           >
                             {step.step}
                           </span>
-                          <span className="text-[10px] font-inter uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold border border-stone-200/80">
+                          <span className="text-[9px] sm:text-[10px] font-inter uppercase tracking-wider px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold border border-stone-200/80 whitespace-nowrap">
                             Milestone 0{idx + 1}
                           </span>
                         </div>
 
                         {isCurrent ? (
-                          <span className="text-xs sm:text-sm font-inter font-bold text-red-700 flex items-center gap-1.5">
-                            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+                          <span className="text-[11px] sm:text-xs font-inter font-bold text-red-700 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-50 border border-red-200/70 whitespace-nowrap">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
                             <span>Active Step</span>
                           </span>
                         ) : isPassed ? (
-                          <span className="text-xs sm:text-sm font-inter font-semibold text-emerald-700 flex items-center gap-1">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          <span className="text-[11px] sm:text-xs font-inter font-semibold text-emerald-700 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/70 whitespace-nowrap">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                             <span>Completed</span>
                           </span>
                         ) : (
-                          <span className="text-xs sm:text-sm font-inter font-semibold text-stone-400">
+                          <span className="text-[11px] sm:text-xs font-inter font-medium text-stone-400 px-2 py-0.5 rounded-full bg-stone-50 border border-stone-200/60 whitespace-nowrap">
                             Upcoming
                           </span>
                         )}
                       </div>
 
                       {/* Title & Summary */}
-                      <div className="space-y-2 mb-4">
-                        <h3 className="text-xl sm:text-2xl font-manrope font-bold text-stone-900 tracking-tight leading-snug">
+                      <div className="space-y-1 mb-2.5">
+                        <h3 className="text-base sm:text-lg md:text-xl font-manrope font-bold text-stone-900 tracking-tight leading-snug">
                           {step.title}
                         </h3>
-                        <p className="text-sm sm:text-[15px] text-stone-600 leading-relaxed font-sans">
+                        <p className="text-xs sm:text-[13px] md:text-sm text-stone-600 leading-relaxed font-sans">
                           {step.summary}
                         </p>
                       </div>
 
                       {/* Highlighted Note Alert Banner */}
-                      <div className="p-3.5 sm:p-4 rounded-xl bg-amber-50/90 border-l-4 border-amber-600 text-xs sm:text-[13px] text-amber-950 font-inter leading-relaxed">
-                        <strong className="text-amber-800 font-bold uppercase tracking-wider block text-[10px] mb-0.5">
+                      <div className="px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-amber-50/80 border-l-[3px] border-amber-600 text-[11px] sm:text-xs text-stone-700 font-inter flex items-baseline gap-1.5 leading-relaxed">
+                        <strong className="text-amber-800 font-bold uppercase tracking-wider text-[10px] shrink-0">
                           Note:
                         </strong>
                         <span>{step.detail}</span>
@@ -302,16 +298,16 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
 
                       {/* Additional Step 04 Action CTA */}
                       {idx === 3 && (
-                        <div className="pt-6 mt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-3">
+                        <div className="pt-3 mt-3 border-t border-stone-100 flex flex-wrap items-center justify-between gap-2.5">
                           <button
                             onClick={onOpenAdmissions}
-                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#a8161e] via-[#dc2626] to-[#a8161e] hover:from-[#dc2626] hover:to-[#ef4444] text-white text-xs sm:text-sm font-inter font-bold shadow-md shadow-red-900/20 hover:scale-102 active:scale-98 transition-all cursor-pointer"
+                            className="group inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#a8161e] via-[#dc2626] to-[#a8161e] hover:from-[#dc2626] hover:to-[#ef4444] text-white text-xs font-inter font-bold shadow-md shadow-red-900/15 hover:scale-102 active:scale-98 transition-all cursor-pointer"
                           >
-                            <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+                            <Sparkles className="w-3 h-3 text-amber-300 animate-pulse" />
                             <span>Apply for 2026–2027 Batch</span>
                             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                           </button>
-                          <span className="text-xs font-inter text-stone-500">
+                          <span className="text-[11px] sm:text-xs font-inter text-stone-500">
                             Supported by Alagappa University
                           </span>
                         </div>
@@ -327,24 +323,24 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* ========================================================= */}
         {/* BOTTOM CALL-TO-ACTION LOCKUP                              */}
         {/* ========================================================= */}
-        <div className="mt-20 sm:mt-24 text-center p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-red-50/70 via-white to-amber-50/70 border border-stone-200 max-w-4xl mx-auto shadow-md">
-          <div className="space-y-3">
-            <h4 className="text-2xl sm:text-3xl font-manrope font-extrabold text-stone-900">
+        <div className="mt-14 sm:mt-18 text-center p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-red-50/70 via-white to-amber-50/70 border border-stone-200 max-w-3xl mx-auto shadow-sm">
+          <div className="space-y-2.5">
+            <h4 className="text-xl sm:text-2xl md:text-3xl font-manrope font-extrabold text-stone-900">
               Ready to Begin Your Admissions Journey?
             </h4>
-            <p className="text-sm sm:text-base text-stone-600 max-w-xl mx-auto font-sans leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 max-w-xl mx-auto font-sans leading-relaxed">
               Our dedicated counselors across Chennai and Coimbatore campuses are ready to guide you through program selection, scholarships, and career pathways.
             </p>
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={onOpenAdmissions}
-                className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#a8161e] to-[#7f1d1d] hover:from-[#dc2626] hover:to-[#991b1b] text-white text-xs sm:text-sm font-inter font-bold shadow-lg shadow-red-900/25 hover:scale-103 active:scale-98 transition-all cursor-pointer"
+                className="group inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#a8161e] to-[#7f1d1d] hover:from-[#dc2626] hover:to-[#991b1b] text-white text-xs sm:text-sm font-inter font-bold shadow-md shadow-red-900/20 hover:scale-102 active:scale-98 transition-all cursor-pointer"
               >
                 <span>Start Application for 2026–2027</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-            <div className="pt-2 text-xs font-inter text-stone-500">
+            <div className="pt-1 text-[11px] sm:text-xs font-inter text-stone-500">
               Academically supported by Alagappa University · Campuses in Chennai &amp; Coimbatore
             </div>
           </div>

@@ -630,9 +630,12 @@ pre {
 
 /* 1. Subtle Continuous Nozzle Flutter / Dynamic Micro-Sweep */
 @keyframes waterNozzleMicroSweep {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: rotate(-3.5deg);
   }
+
   50% {
     transform: rotate(3.5deg);
   }
@@ -643,6 +646,7 @@ pre {
   0% {
     stroke-dashoffset: 0;
   }
+
   100% {
     stroke-dashoffset: -32;
   }
@@ -650,10 +654,13 @@ pre {
 
 /* 3. Water Mist & High-Pressure Spray Pulse */
 @keyframes waterSprayWave {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.65;
     transform: scale(0.96);
   }
+
   50% {
     opacity: 0.95;
     transform: scale(1.04);
@@ -662,35 +669,53 @@ pre {
 
 /* 4. Cab Roof Emergency Strobes (Alternating Red & Blue) */
 @keyframes emergencyStrobeRed {
-  0%, 20%, 40% {
+
+  0%,
+  20%,
+  40% {
     opacity: 1;
     filter: drop-shadow(0 0 10px #ef4444);
   }
-  10%, 30%, 50%, 100% {
+
+  10%,
+  30%,
+  50%,
+  100% {
     opacity: 0.25;
     filter: drop-shadow(0 0 2px #ef4444);
   }
 }
 
 @keyframes emergencyStrobeBlue {
-  0%, 50%, 100% {
+
+  0%,
+  50%,
+  100% {
     opacity: 0.25;
     filter: drop-shadow(0 0 2px #3b82f6);
   }
-  55%, 75%, 95% {
+
+  55%,
+  75%,
+  95% {
     opacity: 1;
     filter: drop-shadow(0 0 10px #3b82f6);
   }
-  65%, 85% {
+
+  65%,
+  85% {
     opacity: 0.3;
   }
 }
 
 /* 5. Diesel Engine Idle Vibration */
 @keyframes fireTruckRumble {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-0.75px);
   }
@@ -739,6 +764,7 @@ pre {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -748,6 +774,7 @@ pre {
   0% {
     transform: translate3d(-50%, 0, 0);
   }
+
   100% {
     transform: translate3d(0, 0, 0);
   }
@@ -778,10 +805,12 @@ pre {
     transform: translate3d(-10%, 0, 0) scaleY(1);
     opacity: 0.35;
   }
+
   50% {
     transform: translate3d(6%, -10px, 0) scaleY(1.1);
     opacity: 0.65;
   }
+
   100% {
     transform: translate3d(20%, 0, 0) scaleY(1);
     opacity: 0.35;
@@ -793,10 +822,12 @@ pre {
     transform: translate3d(15%, 0, 0) scale(1);
     opacity: 0.28;
   }
+
   50% {
     transform: translate3d(-8%, 8px, 0) scale(1.06);
     opacity: 0.58;
   }
+
   100% {
     transform: translate3d(-25%, 0, 0) scale(1);
     opacity: 0.28;
@@ -807,27 +838,35 @@ pre {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   50% {
     transform: translate3d(-60px, -6px, 0);
   }
+
   100% {
     transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes cloudGentleBob1 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-7px) rotate(0.4deg);
   }
 }
 
 @keyframes cloudGentleBob2 {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(7px) rotate(-0.4deg);
   }
@@ -858,56 +897,62 @@ pre {
   will-change: transform;
 }
 
-/* 8. Concentric Rolling Orbital Ring Animations */
+/* 8. Concentric Rolling Orbital Ring Animations with Perfect Collision-Free Geometry */
 :root {
-  --orbit-r1: 65px;
-  --orbit-r2: 105px;
-  --orbit-r3: 145px;
-  --orbit-r4: 185px;
+  --orbit-scale: min(1, calc((100vw - 20px) / 540));
+  --orbit-r1: 82px;
+  --orbit-r2: 138px;
+  --orbit-r3: 194px;
+  --orbit-r4: 248px;
 }
 
 @media (min-width: 480px) {
   :root {
-    --orbit-r1: 75px;
-    --orbit-r2: 125px;
-    --orbit-r3: 175px;
-    --orbit-r4: 225px;
+    --orbit-scale: min(1, calc((100vw - 24px) / 560));
+    --orbit-r1: 90px;
+    --orbit-r2: 152px;
+    --orbit-r3: 212px;
+    --orbit-r4: 270px;
   }
 }
 
 @media (min-width: 640px) {
   :root {
+    --orbit-scale: 1;
     --orbit-r1: 105px;
-    --orbit-r2: 170px;
-    --orbit-r3: 240px;
-    --orbit-r4: 310px;
+    --orbit-r2: 178px;
+    --orbit-r3: 250px;
+    --orbit-r4: 322px;
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --orbit-r1: 125px;
-    --orbit-r2: 205px;
-    --orbit-r3: 290px;
-    --orbit-r4: 375px;
+    --orbit-scale: 1;
+    --orbit-r1: 128px;
+    --orbit-r2: 218px;
+    --orbit-r3: 308px;
+    --orbit-r4: 398px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
+    --orbit-scale: 1;
     --orbit-r1: 155px;
-    --orbit-r2: 255px;
-    --orbit-r3: 360px;
-    --orbit-r4: 470px;
+    --orbit-r2: 265px;
+    --orbit-r3: 375px;
+    --orbit-r4: 485px;
   }
 }
 
 @media (min-width: 1280px) {
   :root {
+    --orbit-scale: 1;
     --orbit-r1: 175px;
-    --orbit-r2: 290px;
-    --orbit-r3: 410px;
-    --orbit-r4: 535px;
+    --orbit-r2: 300px;
+    --orbit-r3: 425px;
+    --orbit-r4: 550px;
   }
 }
 
@@ -915,6 +960,7 @@ pre {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -924,6 +970,7 @@ pre {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(-360deg);
   }
@@ -933,6 +980,7 @@ pre {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(-360deg);
   }
@@ -942,6 +990,7 @@ pre {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -995,51 +1044,68 @@ pre {
 
 /* 9. Luminous Aurora Mesh & Fluid Gradient Animations for Footer */
 @keyframes footerAuroraBlobBlue {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
+
   33% {
     transform: translate3d(60px, -45px, 0) scale(1.18) rotate(35deg);
   }
+
   66% {
     transform: translate3d(-40px, 35px, 0) scale(0.92) rotate(-25deg);
   }
 }
 
 @keyframes footerAuroraBlobGreen {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
+
   33% {
     transform: translate3d(-70px, 40px, 0) scale(1.15) rotate(-35deg);
   }
+
   66% {
     transform: translate3d(45px, -50px, 0) scale(0.88) rotate(20deg);
   }
 }
 
 @keyframes footerAuroraBlobCyan {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
+
   50% {
     transform: translate3d(50px, 35px, 0) scale(1.22) rotate(45deg);
   }
 }
 
 @keyframes footerAuroraBlobCrimson {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
+
   50% {
     transform: translate3d(-45px, -30px, 0) scale(1.16) rotate(-40deg);
   }
 }
 
 @keyframes footerAuroraBlobPurple {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
+
   50% {
     transform: translate3d(40px, -40px, 0) scale(1.14) rotate(30deg);
   }
@@ -1072,46 +1138,56 @@ pre {
 
 /* 10. Footer Aeroplane Continuous Runway Landing (Zero-Lag, Seamless Scroll) */
 @keyframes footerPlaneLanding {
+
   /* Desktop (>=1024px): Proportional continuous glide descent & rollout */
   0% {
     transform: translate3d(-14vw, -95px, 0) rotate(4deg);
     opacity: 0;
   }
+
   3% {
     opacity: 1;
   }
+
   20% {
     transform: translate3d(12vw, -58px, 0) rotate(3deg);
     opacity: 1;
   }
+
   35% {
     transform: translate3d(32vw, -26px, 0) rotate(1.8deg);
     opacity: 1;
   }
+
   44% {
     /* Gentle flare right before touchdown */
     transform: translate3d(44vw, -3px, 0) rotate(-0.5deg);
     opacity: 1;
   }
+
   48% {
     /* Clean touchdown onto the solid runway surface */
     transform: translate3d(50vw, 0px, 0) rotate(0deg);
     opacity: 1;
   }
+
   70% {
     /* Rolling smoothly along solid runway centerline */
     transform: translate3d(78vw, 0px, 0) rotate(0deg);
     opacity: 1;
   }
+
   94% {
     /* Continuous taxi rollout */
     transform: translate3d(108vw, 0px, 0) rotate(0deg);
     opacity: 1;
   }
+
   98% {
     transform: translate3d(113vw, 0px, 0) rotate(0deg);
     opacity: 0.4;
   }
+
   100% {
     /* Seamless exit and loop reset */
     transform: translate3d(116vw, 0px, 0) rotate(0deg);
@@ -1121,42 +1197,52 @@ pre {
 
 @media (min-width: 640px) and (max-width: 1023px) {
   @keyframes footerPlaneLanding {
+
     /* Tablet & Medium Screens: Balanced descent path */
     0% {
       transform: translate3d(-16vw, -76px, 0) rotate(4deg);
       opacity: 0;
     }
+
     3% {
       opacity: 1;
     }
+
     20% {
       transform: translate3d(12vw, -48px, 0) rotate(3deg);
       opacity: 1;
     }
+
     35% {
       transform: translate3d(32vw, -22px, 0) rotate(1.8deg);
       opacity: 1;
     }
+
     44% {
       transform: translate3d(44vw, -3px, 0) rotate(-0.5deg);
       opacity: 1;
     }
+
     48% {
       transform: translate3d(50vw, 0px, 0) rotate(0deg);
       opacity: 1;
     }
+
     70% {
       transform: translate3d(78vw, 0px, 0) rotate(0deg);
       opacity: 1;
     }
+
     94% {
       transform: translate3d(108vw, 0px, 0) rotate(0deg);
       opacity: 1;
     }
+
     98% {
       transform: translate3d(113vw, 0px, 0) rotate(0deg);
       opacity: 0.4;
     }
+
     100% {
       transform: translate3d(117vw, 0px, 0) rotate(0deg);
       opacity: 0;
@@ -1166,42 +1252,52 @@ pre {
 
 @media (max-width: 639px) {
   @keyframes footerPlaneLanding {
+
     /* Mobile Screens: Compact descent path avoiding clipping */
     0% {
       transform: translate3d(-18vw, -58px, 0) rotate(4deg);
       opacity: 0;
     }
+
     4% {
       opacity: 1;
     }
+
     20% {
       transform: translate3d(12vw, -36px, 0) rotate(3deg);
       opacity: 1;
     }
+
     35% {
       transform: translate3d(32vw, -16px, 0) rotate(1.8deg);
       opacity: 1;
     }
+
     44% {
       transform: translate3d(44vw, -2px, 0) rotate(-0.5deg);
       opacity: 1;
     }
+
     48% {
       transform: translate3d(50vw, 0px, 0) rotate(0deg);
       opacity: 1;
     }
+
     70% {
       transform: translate3d(78vw, 0px, 0) rotate(0deg);
       opacity: 1;
     }
+
     94% {
       transform: translate3d(108vw, 0px, 0) rotate(0deg);
       opacity: 1;
     }
+
     98% {
       transform: translate3d(114vw, 0px, 0) rotate(0deg);
       opacity: 0.4;
     }
+
     100% {
       transform: translate3d(118vw, 0px, 0) rotate(0deg);
       opacity: 0;

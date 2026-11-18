@@ -11,6 +11,7 @@ import {
 // CENTRAL HUB ASSET
 // =========================================================================
 import asetLogo from '../assets/images/aset-logo.png';
+import asetCrestRound from '../assets/images/aset-crest-round.png';
 
 // =========================================================================
 // OFFICIAL PARTNER LOGO IMPORTS (17 PARTNERS)
@@ -265,264 +266,278 @@ export const SponsorsSection: React.FC = () => {
       {/* Wider layout with generous height, complete 360° circles  */}
       {/* Continuous rotation without pausing on hover              */}
       {/* ========================================================= */}
-      <div className="group-orbit relative w-full max-w-[1550px] h-[520px] sm:h-[680px] md:h-[840px] lg:h-[1020px] xl:h-[1180px] mx-auto overflow-visible flex items-center justify-center">
-        {/* Soft Warm Orange-to-Rose Radial Glow Backdrop across full circles */}
+      <div className="group-orbit relative w-full max-w-[1550px] h-[460px] xs:h-[500px] sm:h-[660px] md:h-[820px] lg:h-[1000px] xl:h-[1160px] mx-auto overflow-visible flex items-center justify-center">
+        {/* Responsive Auto-Scaling Stage Wrapper: ensures 100% viewport fit on all mobile screens without clipping or overlapping */}
         <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(2*var(--orbit-r4))] h-[calc(2*var(--orbit-r4))] rounded-full bg-radial from-orange-100/50 via-rose-50/25 to-transparent blur-2xl"
-        />
-
-        {/* Crosshair Astronomical Guidelines */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(2*var(--orbit-r4)+60px)] h-[1px] bg-gradient-to-r from-transparent via-purple-300/35 to-transparent"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[calc(2*var(--orbit-r4)+60px)] w-[1px] bg-gradient-to-b from-transparent via-purple-300/35 to-transparent"
-        />
-
-        {/* --------------------------------------------------------- */}
-        {/* TRACK 4: OUTER ORBITAL RING (Full 360° Circle, CCW 88s)   */}
-        {/* --------------------------------------------------------- */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute rounded-full border border-purple-200/60 shadow-[0_0_20px_rgba(168,85,247,0.06)]"
+          className="relative w-full h-full flex items-center justify-center pointer-events-none"
           style={{
-            width: 'calc(2 * var(--orbit-r4))',
-            height: 'calc(2 * var(--orbit-r4))',
-            left: 'calc(50% - var(--orbit-r4))',
-            top: 'calc(50% - var(--orbit-r4))',
-          }}
-        />
-
-        {/* Track 4 Rotating Container (Counter-Clockwise 88s, No Pause on Hover) */}
-        <div
-          className="absolute rounded-full animate-orbit-ring-4 pointer-events-none"
-          style={{
-            width: 'calc(2 * var(--orbit-r4))',
-            height: 'calc(2 * var(--orbit-r4))',
-            left: 'calc(50% - var(--orbit-r4))',
-            top: 'calc(50% - var(--orbit-r4))',
+            transform: 'scale(var(--orbit-scale, 1))',
             transformOrigin: 'center center',
           }}
         >
-          {ring4Partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r4))) rotate(${-partner.angle}deg)`,
-              }}
-              onClick={() => setActivePartner(partner)}
-              title={`${partner.name} - ${partner.category}`}
-            >
-              <div className="animate-counter-ring-4">
-                <div className="group/badge relative w-15 h-15 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-200/90 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-2 sm:p-2.5 md:p-3 hover:scale-115">
-                  <img
-                    src={partner.logo}
-                    alt={partner.alt}
-                    className="w-auto max-h-8 sm:max-h-11 md:max-h-13 lg:max-h-15 max-w-[85%] object-contain select-none"
-                    loading="lazy"
-                  />
-                  {/* Hover Floating Tooltip */}
-                  <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
-                    {partner.name}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* --------------------------------------------------------- */}
-        {/* TRACK 3: MID-OUTER ORBITAL RING (Full 360° Circle, CW 72s)*/}
-        {/* --------------------------------------------------------- */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute rounded-full border border-purple-300/50 shadow-[0_0_20px_rgba(168,85,247,0.08)]"
-          style={{
-            width: 'calc(2 * var(--orbit-r3))',
-            height: 'calc(2 * var(--orbit-r3))',
-            left: 'calc(50% - var(--orbit-r3))',
-            top: 'calc(50% - var(--orbit-r3))',
-          }}
-        />
-
-        {/* Track 3 Rotating Container (Clockwise 72s, No Pause on Hover) */}
-        <div
-          className="absolute rounded-full animate-orbit-ring-3 pointer-events-none"
-          style={{
-            width: 'calc(2 * var(--orbit-r3))',
-            height: 'calc(2 * var(--orbit-r3))',
-            left: 'calc(50% - var(--orbit-r3))',
-            top: 'calc(50% - var(--orbit-r3))',
-            transformOrigin: 'center center',
-          }}
-        >
-          {ring3Partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r3))) rotate(${-partner.angle}deg)`,
-              }}
-              onClick={() => setActivePartner(partner)}
-              title={`${partner.name} - ${partner.category}`}
-            >
-              <div className="animate-counter-ring-3">
-                <div className="group/badge relative w-15 h-15 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-200/90 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-2 sm:p-2.5 md:p-3 hover:scale-115">
-                  <img
-                    src={partner.logo}
-                    alt={partner.alt}
-                    className="w-auto max-h-8 sm:max-h-11 md:max-h-13 lg:max-h-15 max-w-[85%] object-contain select-none"
-                    loading="lazy"
-                  />
-                  {/* Hover Floating Tooltip */}
-                  <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
-                    {partner.name}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* --------------------------------------------------------- */}
-        {/* TRACK 2: MID-INNER ORBITAL RING (Full 360° Circle, CCW 58s)*/}
-        {/* --------------------------------------------------------- */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute rounded-full border border-purple-400/55 shadow-[0_0_20px_rgba(168,85,247,0.10)]"
-          style={{
-            width: 'calc(2 * var(--orbit-r2))',
-            height: 'calc(2 * var(--orbit-r2))',
-            left: 'calc(50% - var(--orbit-r2))',
-            top: 'calc(50% - var(--orbit-r2))',
-          }}
-        />
-
-        {/* Track 2 Rotating Container (Counter-Clockwise 58s, No Pause on Hover) */}
-        <div
-          className="absolute rounded-full animate-orbit-ring-2 pointer-events-none"
-          style={{
-            width: 'calc(2 * var(--orbit-r2))',
-            height: 'calc(2 * var(--orbit-r2))',
-            left: 'calc(50% - var(--orbit-r2))',
-            top: 'calc(50% - var(--orbit-r2))',
-            transformOrigin: 'center center',
-          }}
-        >
-          {ring2Partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r2))) rotate(${-partner.angle}deg)`,
-              }}
-              onClick={() => setActivePartner(partner)}
-              title={`${partner.name} - ${partner.category}`}
-            >
-              <div className="animate-counter-ring-2">
-                <div className="group/badge relative w-16 h-16 sm:w-22 sm:h-22 md:w-26 md:h-26 lg:w-30 lg:h-30 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-300 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-2 sm:p-2.5 md:p-3 hover:scale-115">
-                  <img
-                    src={partner.logo}
-                    alt={partner.alt}
-                    className="w-auto max-h-9 sm:max-h-12 md:max-h-14 lg:max-h-16 max-w-[85%] object-contain select-none"
-                    loading="lazy"
-                  />
-                  {/* Hover Floating Tooltip */}
-                  <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
-                    {partner.name}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* --------------------------------------------------------- */}
-        {/* TRACK 1: INNER ORBITAL RING (Full 360° Circle, CW 48s)    */}
-        {/* --------------------------------------------------------- */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute rounded-full border border-purple-500/65 shadow-[0_0_22px_rgba(168,85,247,0.15)]"
-          style={{
-            width: 'calc(2 * var(--orbit-r1))',
-            height: 'calc(2 * var(--orbit-r1))',
-            left: 'calc(50% - var(--orbit-r1))',
-            top: 'calc(50% - var(--orbit-r1))',
-          }}
-        />
-
-        {/* Track 1 Rotating Container (Clockwise 48s, No Pause on Hover) */}
-        <div
-          className="absolute rounded-full animate-orbit-ring-1 pointer-events-none"
-          style={{
-            width: 'calc(2 * var(--orbit-r1))',
-            height: 'calc(2 * var(--orbit-r1))',
-            left: 'calc(50% - var(--orbit-r1))',
-            top: 'calc(50% - var(--orbit-r1))',
-            transformOrigin: 'center center',
-          }}
-        >
-          {ring1Partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r1))) rotate(${-partner.angle}deg)`,
-              }}
-              onClick={() => setActivePartner(partner)}
-              title={`${partner.name} - ${partner.category}`}
-            >
-              <div className="animate-counter-ring-1">
-                <div className="group/badge relative w-18 h-18 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-400 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-2 sm:p-2.5 md:p-3 lg:p-3.5 hover:scale-115">
-                  <img
-                    src={partner.logo}
-                    alt={partner.alt}
-                    className="w-auto max-h-10 sm:max-h-13 md:max-h-15 lg:max-h-18 max-w-[85%] object-contain select-none"
-                    loading="lazy"
-                  />
-                  {/* Hover Floating Tooltip */}
-                  <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
-                    {partner.name}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* --------------------------------------------------------- */}
-        {/* CENTRAL HUB: ASET COLLEGE EMBLEM (Dead-Center)            */}
-        {/* Deep Royal Midnight Blue Background for maximum clarity   */}
-        {/* of the white ASET typography and golden laurel crest       */}
-        {/* --------------------------------------------------------- */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center pointer-events-auto">
-          {/* Subtle Radar Wave Radiating Outward in Deep Blue Glow */}
+          {/* Soft Warm Orange-to-Rose Radial Glow Backdrop across full circles */}
           <div
             aria-hidden="true"
-            className="absolute -inset-4 sm:-inset-6 rounded-full bg-blue-600/25 blur-md animate-ping pointer-events-none select-none"
-            style={{ animationDuration: '3.5s' }}
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(2*var(--orbit-r4))] h-[calc(2*var(--orbit-r4))] rounded-full bg-radial from-orange-100/50 via-rose-50/25 to-transparent blur-2xl"
           />
 
-          {/* Elevated Circular Disc for Central Hub: Deep Royal Navy with Logo & Global Network Partners inside the round */}
-          <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-38 md:h-38 lg:w-42 lg:h-42 rounded-full bg-gradient-to-br from-[#172554] via-[#0b1329] to-[#030712] shadow-[0_20px_50px_rgba(15,23,42,0.55),0_0_25px_rgba(30,58,138,0.35)] border-2 border-blue-400/60 hover:border-sky-300 transition-colors duration-300 flex flex-col items-center justify-center p-2 sm:p-3 md:p-3.5 z-20 group cursor-default">
-            {/* Subtle Inner Glass Sheen */}
+          {/* Crosshair Astronomical Guidelines */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(2*var(--orbit-r4)+60px)] h-[1px] bg-gradient-to-r from-transparent via-purple-300/35 to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[calc(2*var(--orbit-r4)+60px)] w-[1px] bg-gradient-to-b from-transparent via-purple-300/35 to-transparent"
+          />
+
+          {/* --------------------------------------------------------- */}
+          {/* TRACK 4: OUTER ORBITAL RING (Full 360° Circle, CCW 88s)   */}
+          {/* --------------------------------------------------------- */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute rounded-full border border-purple-200/60 shadow-[0_0_20px_rgba(168,85,247,0.06)]"
+            style={{
+              width: 'calc(2 * var(--orbit-r4))',
+              height: 'calc(2 * var(--orbit-r4))',
+              left: 'calc(50% - var(--orbit-r4))',
+              top: 'calc(50% - var(--orbit-r4))',
+            }}
+          />
+
+          {/* Track 4 Rotating Container (Counter-Clockwise 88s, No Pause on Hover) */}
+          <div
+            className="absolute rounded-full animate-orbit-ring-4 pointer-events-none"
+            style={{
+              width: 'calc(2 * var(--orbit-r4))',
+              height: 'calc(2 * var(--orbit-r4))',
+              left: 'calc(50% - var(--orbit-r4))',
+              top: 'calc(50% - var(--orbit-r4))',
+              transformOrigin: 'center center',
+            }}
+          >
+            {ring4Partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r4))) rotate(${-partner.angle}deg)`,
+                }}
+                onClick={() => setActivePartner(partner)}
+                title={`${partner.name} - ${partner.category}`}
+              >
+                <div className="animate-counter-ring-4">
+                  <div className="group/badge relative w-11 h-11 sm:w-15 sm:h-15 md:w-19 md:h-19 lg:w-22 lg:h-22 xl:w-24 xl:h-24 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-200/90 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-1.5 sm:p-2 md:p-2.5 hover:scale-115">
+                    <img
+                      src={partner.logo}
+                      alt={partner.alt}
+                      className="w-auto max-h-6 sm:max-h-8 md:max-h-11 lg:max-h-13 max-w-[85%] object-contain select-none"
+                      loading="lazy"
+                    />
+                    {/* Hover Floating Tooltip */}
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                      {partner.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* --------------------------------------------------------- */}
+          {/* TRACK 3: MID-OUTER ORBITAL RING (Full 360° Circle, CW 72s)*/}
+          {/* --------------------------------------------------------- */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute rounded-full border border-purple-300/50 shadow-[0_0_20px_rgba(168,85,247,0.08)]"
+            style={{
+              width: 'calc(2 * var(--orbit-r3))',
+              height: 'calc(2 * var(--orbit-r3))',
+              left: 'calc(50% - var(--orbit-r3))',
+              top: 'calc(50% - var(--orbit-r3))',
+            }}
+          />
+
+          {/* Track 3 Rotating Container (Clockwise 72s, No Pause on Hover) */}
+          <div
+            className="absolute rounded-full animate-orbit-ring-3 pointer-events-none"
+            style={{
+              width: 'calc(2 * var(--orbit-r3))',
+              height: 'calc(2 * var(--orbit-r3))',
+              left: 'calc(50% - var(--orbit-r3))',
+              top: 'calc(50% - var(--orbit-r3))',
+              transformOrigin: 'center center',
+            }}
+          >
+            {ring3Partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r3))) rotate(${-partner.angle}deg)`,
+                }}
+                onClick={() => setActivePartner(partner)}
+                title={`${partner.name} - ${partner.category}`}
+              >
+                <div className="animate-counter-ring-3">
+                  <div className="group/badge relative w-11 h-11 sm:w-15 sm:h-15 md:w-19 md:h-19 lg:w-22 lg:h-22 xl:w-24 xl:h-24 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-200/90 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-1.5 sm:p-2 md:p-2.5 hover:scale-115">
+                    <img
+                      src={partner.logo}
+                      alt={partner.alt}
+                      className="w-auto max-h-6 sm:max-h-8 md:max-h-11 lg:max-h-13 max-w-[85%] object-contain select-none"
+                      loading="lazy"
+                    />
+                    {/* Hover Floating Tooltip */}
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                      {partner.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* --------------------------------------------------------- */}
+          {/* TRACK 2: MID-INNER ORBITAL RING (Full 360° Circle, CCW 58s)*/}
+          {/* --------------------------------------------------------- */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute rounded-full border border-purple-400/55 shadow-[0_0_20px_rgba(168,85,247,0.10)]"
+            style={{
+              width: 'calc(2 * var(--orbit-r2))',
+              height: 'calc(2 * var(--orbit-r2))',
+              left: 'calc(50% - var(--orbit-r2))',
+              top: 'calc(50% - var(--orbit-r2))',
+            }}
+          />
+
+          {/* Track 2 Rotating Container (Counter-Clockwise 58s, No Pause on Hover) */}
+          <div
+            className="absolute rounded-full animate-orbit-ring-2 pointer-events-none"
+            style={{
+              width: 'calc(2 * var(--orbit-r2))',
+              height: 'calc(2 * var(--orbit-r2))',
+              left: 'calc(50% - var(--orbit-r2))',
+              top: 'calc(50% - var(--orbit-r2))',
+              transformOrigin: 'center center',
+            }}
+          >
+            {ring2Partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r2))) rotate(${-partner.angle}deg)`,
+                }}
+                onClick={() => setActivePartner(partner)}
+                title={`${partner.name} - ${partner.category}`}
+              >
+                <div className="animate-counter-ring-2">
+                  <div className="group/badge relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-26 xl:h-26 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-300 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-1.5 sm:p-2 md:p-2.5 hover:scale-115">
+                    <img
+                      src={partner.logo}
+                      alt={partner.alt}
+                      className="w-auto max-h-7 sm:max-h-9 md:max-h-12 lg:max-h-14 max-w-[85%] object-contain select-none"
+                      loading="lazy"
+                    />
+                    {/* Hover Floating Tooltip */}
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                      {partner.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* --------------------------------------------------------- */}
+          {/* TRACK 1: INNER ORBITAL RING (Full 360° Circle, CW 48s)    */}
+          {/* --------------------------------------------------------- */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute rounded-full border border-purple-500/65 shadow-[0_0_22px_rgba(168,85,247,0.15)]"
+            style={{
+              width: 'calc(2 * var(--orbit-r1))',
+              height: 'calc(2 * var(--orbit-r1))',
+              left: 'calc(50% - var(--orbit-r1))',
+              top: 'calc(50% - var(--orbit-r1))',
+            }}
+          />
+
+          {/* Track 1 Rotating Container (Clockwise 48s, No Pause on Hover) */}
+          <div
+            className="absolute rounded-full animate-orbit-ring-1 pointer-events-none"
+            style={{
+              width: 'calc(2 * var(--orbit-r1))',
+              height: 'calc(2 * var(--orbit-r1))',
+              left: 'calc(50% - var(--orbit-r1))',
+              top: 'calc(50% - var(--orbit-r1))',
+              transformOrigin: 'center center',
+            }}
+          >
+            {ring1Partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="absolute top-1/2 left-1/2 pointer-events-auto cursor-pointer"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${partner.angle}deg) translateY(calc(-1 * var(--orbit-r1))) rotate(${-partner.angle}deg)`,
+                }}
+                onClick={() => setActivePartner(partner)}
+                title={`${partner.name} - ${partner.category}`}
+              >
+                <div className="animate-counter-ring-1">
+                  <div className="group/badge relative w-13 h-13 sm:w-18 sm:h-18 md:w-22 md:h-22 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-white shadow-md hover:shadow-2xl border border-purple-400 hover:border-purple-600 transition-all duration-300 flex items-center justify-center p-1.5 sm:p-2 md:p-2.5 lg:p-3 hover:scale-115">
+                    <img
+                      src={partner.logo}
+                      alt={partner.alt}
+                      className="w-auto max-h-8 sm:max-h-11 md:max-h-13 lg:max-h-15 max-w-[85%] object-contain select-none"
+                      loading="lazy"
+                    />
+                    {/* Hover Floating Tooltip */}
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                      {partner.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* --------------------------------------------------------- */}
+          {/* CENTRAL HUB: ASET COLLEGE EMBLEM (Dead-Center)            */}
+          {/* Deep Royal Midnight Blue Background for maximum clarity   */}
+          {/* of the golden laurel crest, ASET title & Global Partners  */}
+          {/* --------------------------------------------------------- */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center pointer-events-auto">
+            {/* Subtle Radar Wave Radiating Outward in Deep Blue Glow */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-white/[0.05] to-white/[0.18] pointer-events-none"
+              className="absolute -inset-3 sm:-inset-6 rounded-full bg-blue-600/25 blur-md animate-ping pointer-events-none select-none"
+              style={{ animationDuration: '3.5s' }}
             />
-            <img
-              src={asetLogo}
-              alt="ASET College Central Partner Hub"
-              className="w-auto max-h-11 sm:max-h-14 md:max-h-18 lg:max-h-20 max-w-[85%] object-contain select-none transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_14px_rgba(255,255,255,0.25)]"
-            />
-            {/* "Global Network Partners" placed directly under the logo inside the circular disc */}
-            <span className="mt-1 sm:mt-1.5 text-[8px] sm:text-[9.5px] md:text-[10.5px] lg:text-[11px] font-inter font-bold uppercase tracking-wider text-sky-200/90 text-center leading-tight select-none">
-              Global Network Partners
-            </span>
+
+            {/* Elevated Circular Disc for Central Hub: Deep Royal Navy with Logo & Global Network Partners inside the round */}
+            <div className="relative w-24 h-24 sm:w-30 sm:h-30 md:w-36 md:h-36 lg:w-42 lg:h-42 rounded-full bg-gradient-to-br from-[#172554] via-[#0b1329] to-[#030712] shadow-[0_20px_50px_rgba(15,23,42,0.55),0_0_25px_rgba(30,58,138,0.35)] border-2 border-blue-400/60 hover:border-sky-300 transition-colors duration-300 flex flex-col items-center justify-center p-2 sm:p-2.5 md:p-3 z-20 group cursor-default">
+              {/* Subtle Inner Glass Sheen */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-white/[0.05] to-white/[0.18] pointer-events-none"
+              />
+              {/* Official Circular Crest Emblem */}
+              <img
+                src={asetCrestRound}
+                alt="ASET Official Crest Emblem"
+                className="w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-15 lg:h-15 object-contain select-none transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(255,255,255,0.35)] shrink-0"
+              />
+              {/* Brand Title: ASET */}
+              <span className="font-serif-display font-extrabold text-[10.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] tracking-widest text-white drop-shadow-xs mt-0.5 leading-none select-none">
+                ASET
+              </span>
+              {/* "Global Network Partners" placed directly under the logo inside the circular disc */}
+              <span className="mt-1 text-[6.5px] sm:text-[7.5px] md:text-[8.5px] lg:text-[9.5px] font-inter font-bold uppercase tracking-wider text-sky-200/90 text-center leading-tight select-none px-1">
+                Global Network Partners
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -69,9 +69,8 @@ export const KeyMetricsBar: React.FC = () => {
                   delay: idx * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`flex flex-col justify-between ${
-                  idx > 0 ? 'sm:pl-8 lg:pl-10 pt-6 sm:pt-0' : ''
-                }`}
+                className={`flex flex-col justify-between ${idx > 0 ? 'sm:pl-8 lg:pl-10 pt-6 sm:pt-0' : ''
+                  }`}
               >
                 <div className="flex items-center gap-2.5 mb-2.5">
                   <div className="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-700">

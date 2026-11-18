@@ -447,28 +447,28 @@ export const ADMISSIONS_STEPS: AdmissionsStep[] = [
     step: 'Step 01',
     title: 'Eligibility Verification',
     summary:
-      'Submit 10th marksheets (for Diploma), 12th marksheets (for Undergraduate programs), or Undergraduate degree certificates (for M.Sc., MBA, and PG Diploma programs).',
-    detail: 'Applies to 2026–2027 UG, PG, Diploma & Certification intakes.',
+      'Submit 10th, 12th, or undergraduate degree marksheets according to program requirements.',
+    detail: 'Applies to 2026–2027 academic intakes.',
   },
   {
     step: 'Step 02',
     title: 'Program Guidance',
     summary:
-      'Consult with admissions counselors regarding program selection, curriculum structure, and fee payment modes.',
-    detail: 'Available online or in-person at Chennai & Coimbatore campuses.',
+      'Consult admissions counselors on curriculum options, specializations, and fee structures.',
+    detail: 'Available online or at Chennai & Coimbatore campuses.',
   },
   {
     step: 'Step 03',
     title: 'Personal Counseling',
     summary:
-      'Attend a one-on-one counseling session with the respective Department Head.',
-    detail: 'Align career goals with specialized tracks & internships.',
+      'One-on-one academic session with department faculty to map career goals and internships.',
+    detail: 'Merit scholarship eligibility assessment included.',
   },
   {
     step: 'Step 04',
     title: 'Enrollment Confirmation',
     summary:
-      'Complete application registration and secure admission for the 2026–2027 batch.',
+      'Complete registration and receive official admission allotment for the 2026–2027 batch.',
     detail: 'Academically supported by Alagappa University.',
   },
 ];
