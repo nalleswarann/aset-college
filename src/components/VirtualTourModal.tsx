@@ -144,7 +144,7 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
               <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold block">
                 {current.category}
               </span>
-              <h3 className="text-lg font-serif font-bold text-white">
+              <h3 className="text-lg font-manrope font-bold text-white tracking-tight">
                 {current.title}
               </h3>
             </div>

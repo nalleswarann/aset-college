@@ -244,19 +244,21 @@ export const SponsorsSection: React.FC = () => {
       {/* SECTION HEADER                                            */}
       {/* ========================================================= */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8 sm:mb-12 lg:mb-16 space-y-3">
-        {/* Eyebrow: Styled identically to CampusLifeSection */}
-        <ScrollEyebrow delay={0.04} className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest font-mono text-amber-900 mb-1">
-          <Briefcase className="w-3.5 h-3.5 text-amber-900 shrink-0" />
-          <span>GLOBAL TIE-UPS, STATUTORY BODIES &amp; ACCREDITATIONS</span>
+        {/* Eyebrow */}
+        <ScrollEyebrow delay={0.04} className="flex items-center justify-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+          <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
+            GLOBAL TIE-UPS &amp; ACCREDITATIONS
+          </span>
         </ScrollEyebrow>
 
-        {/* Heading: MOUs WITH ASET with font-manrope font-bold & .text-gradient-accent */}
+        {/* Heading */}
         <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
           MOUs with{' '}
-          <span className="text-gradient-accent">ASET</span>
+          <span className="text-gradient-title">ASET</span>
         </ScrollHeading>
 
-        <ScrollParagraph delay={0.2} className="text-stone-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-sans leading-relaxed pt-1">
+        <ScrollParagraph delay={0.2} className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto font-sans leading-relaxed pt-1">
           Empowering students with premier global academic affiliations, statutory aviation &amp; logistics skill councils, and industry recruitment networks.
         </ScrollParagraph>
       </div>
@@ -523,18 +525,24 @@ export const SponsorsSection: React.FC = () => {
                 aria-hidden="true"
                 className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-white/[0.05] to-white/[0.18] pointer-events-none"
               />
-              {/* Official Circular Crest Emblem */}
+              {/* Official Circular Crest Emblem Logo */}
               <img
                 src={asetCrestRound}
-                alt="ASET Official Crest Emblem"
-                className="w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-15 lg:h-15 object-contain select-none transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(255,255,255,0.35)] shrink-0"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.dataset.triedFallback) {
+                    target.dataset.triedFallback = '1';
+                    target.src = '/aset-crest-round.png';
+                  } else if (target.dataset.triedFallback === '1') {
+                    target.dataset.triedFallback = '2';
+                    target.src = asetLogo;
+                  }
+                }}
+                alt="ASET College Logo"
+                className="w-11 h-11 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain select-none transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(255,255,255,0.4)] shrink-0"
               />
-              {/* Brand Title: ASET */}
-              <span className="font-serif-display font-extrabold text-[10.5px] sm:text-[13px] md:text-[15px] lg:text-[17px] tracking-widest text-white drop-shadow-xs mt-0.5 leading-none select-none">
-                ASET
-              </span>
               {/* "Global Network Partners" placed directly under the logo inside the circular disc */}
-              <span className="mt-1 text-[6.5px] sm:text-[7.5px] md:text-[8.5px] lg:text-[9.5px] font-inter font-bold uppercase tracking-wider text-sky-200/90 text-center leading-tight select-none px-1">
+              <span className="mt-1 sm:mt-1.5 text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] font-inter font-bold uppercase tracking-wider text-sky-200/90 text-center leading-tight select-none px-1">
                 Global Network Partners
               </span>
             </div>

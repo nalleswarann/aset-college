@@ -1,27 +1,54 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { DEPARTMENTS } from '../data/universityData';
-import { Mail, Phone, MapPin, Send, CheckCircle2, ClipboardCheck } from 'lucide-react';
 import {
-  ScrollHeading,
-  ScrollParagraph,
-  ScrollEyebrow,
-} from './ScrollTypography';
+  Sparkles,
+  ChevronDown,
+  CheckCircle2,
+  ArrowRight,
+  MapPin,
+  Mail,
+  Phone,
+  Check,
+  Building2,
+  GraduationCap,
+} from 'lucide-react';
+import roboticsTechImg from '../assets/images/dept_biotech_robotics_1794469703091.jpg';
 
 interface ContactSectionProps {
   initialDepartment?: string;
+  onOpenAdmissions?: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartment = '' }) => {
+const CAMPUSES = [
+  {
+    id: 'chennai',
+    name: 'Chennai Campus (Kuthambakkam)',
+    address: 'No: 28, Irulapalayam, Kuthambakkam, Chennai – 600124',
+    phone: '+91 91594 99973 / 99974',
+    badge: 'HQ Flagship',
+  },
+  {
+    id: 'coimbatore',
+    name: 'Coimbatore Campus (Saravanampatti)',
+    address: 'Varathaiyangar Palayam, Saravanampatti – 641110',
+    phone: '+91 91594 99975 / 99977',
+    badge: 'Regional Hub',
+  },
+];
+
+export const ContactSection: React.FC<ContactSectionProps> = ({
+  initialDepartment = '',
+  onOpenAdmissions,
+}) => {
   const defaultDept = DEPARTMENTS[0].name;
 
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
-    degreeLevel: 'Undergraduate (B.Sc. / BBA / B.Com)',
     department: initialDepartment || defaultDept,
-    campus: 'Chennai Campus (Kuthambakkam)',
+    campus: CAMPUSES[0].name,
     message: '',
   });
 
@@ -29,11 +56,58 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartmen
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedRef, setSubmittedRef] = useState<string | null>(null);
 
-  React.useEffect(() => {
+  // Dropdown open states
+  const [isDeptOpen, setIsDeptOpen] = useState(false);
+  const [isCampusOpen, setIsCampusOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Refs for click outside handling
+  const deptRef = useRef<HTMLDivElement>(null);
+  const campusRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Live real-time clock
+  const [currentTime, setCurrentTime] = useState('');
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(
+        now.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        })
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Update initial department if prop changes
+  useEffect(() => {
     if (initialDepartment) {
       setFormData((prev) => ({ ...prev, department: initialDepartment }));
     }
   }, [initialDepartment]);
+
+  // Click outside listener for all custom dropdowns
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (deptRef.current && !deptRef.current.contains(e.target as Node)) {
+        setIsDeptOpen(false);
+      }
+      if (campusRef.current && !campusRef.current.contains(e.target as Node)) {
+        setIsCampusOpen(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -41,12 +115,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartmen
       errs.fullName = 'Full name is required';
     }
     if (!formData.email.trim()) {
-      errs.email = 'Valid email address is required';
+      errs.email = 'Email address is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errs.email = 'Please provide a valid email format';
+      errs.email = 'Please provide a valid email';
     }
     if (!formData.message.trim()) {
-      errs.message = 'Please share your academic background or program question';
+      errs.message = 'Please share your academic background or query';
     }
     return errs;
   };
@@ -69,119 +143,250 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartmen
     }, 600);
   };
 
+  const scrollTo = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
-    <section id="contact" className="relative py-24 bg-[#faf8f5]/86 backdrop-blur-xl text-stone-900 border-b border-white/60 overflow-hidden">
-      {/* Ambient atmospheric glow with signature orange-to-crimson combo */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-1/4 -left-20 w-[45vw] max-w-[500px] h-[45vw] max-h-[500px] rounded-full bg-gradient-to-tr from-orange-400/10 via-rose-400/8 to-transparent blur-[110px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-1/4 -right-20 w-[40vw] max-w-[450px] h-[40vw] max-h-[450px] rounded-full bg-gradient-to-bl from-rose-400/8 via-amber-400/6 to-transparent blur-[100px]"
-      />
+    <section
+      id="contact"
+      className="relative py-12 sm:py-16 lg:py-20 bg-[#faf8f5] text-stone-900 font-manrope"
+    >
+      <div className="max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* ========================================================= */}
+        {/* CONTACT SECTION CARD                                      */}
+        {/* Clean, balanced split layout with proper alignment        */}
+        {/* ========================================================= */}
+        <div className="bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+          
+          {/* ------------------------------------------------------- */}
+          {/* LEFT PANE: Precision Visual, Floating Badge & Clock     */}
+          {/* ------------------------------------------------------- */}
+          <div className="lg:col-span-4 xl:col-span-5 relative min-h-[320px] sm:min-h-[400px] lg:min-h-full bg-stone-950 overflow-hidden group">
+            {/* High-Contrast Campus Robotics & Engineering Visual */}
+            <img
+              src={roboticsTechImg}
+              alt="ASET Robotics & Drone Innovation Hub"
+              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            {/* Subtle dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/55" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-stone-200">
-          <div className="space-y-3 max-w-2xl">
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2 text-xs uppercase tracking-widest font-mono text-amber-900">
-              <Mail className="w-3.5 h-3.5" />
-              <span>6. Admissions Process (2026–2027) &amp; Campus Directory</span>
-            </ScrollEyebrow>
-            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
-              Apply Online or Visit{' '}
-              <span className="text-gradient-accent">Chennai &amp; Coimbatore Campuses</span>
-            </ScrollHeading>
+            {/* Top Floating Badge & Animated Dropdown Pill */}
+            <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 flex items-center justify-between z-20">
+              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-white/60 shadow-xs">
+                <div className="w-4 h-4 flex items-center justify-center text-stone-900">
+                  <svg viewBox="0 0 100 100" className="w-3.5 h-3.5 fill-current">
+                    <path d="M50 0 C48 35, 35 48, 0 50 C35 52, 48 65, 50 100 C52 65, 65 52, 100 50 C65 48, 52 35, 50 0 Z" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-stone-500 leading-none">
+                    /CONTACT
+                  </span>
+                  <span className="text-xs font-bold text-stone-900 tracking-tight leading-tight pt-0.5">
+                    ASET College
+                  </span>
+                </div>
+              </div>
+
+              {/* Animated Menu Dropdown */}
+              <div className="relative" ref={menuRef}>
+                <motion.button
+                  type="button"
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-white/60 shadow-xs text-xs font-semibold text-stone-900 hover:bg-white transition-all cursor-pointer"
+                >
+                  <span>Menu</span>
+                  <motion.span
+                    animate={{ rotate: isMenuOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown className="w-3.5 h-3.5 text-stone-600" />
+                  </motion.span>
+                </motion.button>
+
+                <AnimatePresence>
+                  {isMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                      transition={{ duration: 0.18, ease: 'easeOut' }}
+                      className="absolute right-0 mt-2 w-52 py-2 bg-white/98 backdrop-blur-xl rounded-xl shadow-2xl border border-stone-200 z-30 font-sans text-xs"
+                    >
+                      <button
+                        onClick={() => scrollTo('#about')}
+                        className="w-full text-left px-4 py-2 hover:bg-orange-50 hover:text-orange-600 transition-colors text-stone-700"
+                      >
+                        About ASET
+                      </button>
+                      <button
+                        onClick={() => scrollTo('#departments')}
+                        className="w-full text-left px-4 py-2 hover:bg-orange-50 hover:text-orange-600 transition-colors text-stone-700"
+                      >
+                        Academic Departments
+                      </button>
+                      <button
+                        onClick={() => scrollTo('#placements')}
+                        className="w-full text-left px-4 py-2 hover:bg-orange-50 hover:text-orange-600 transition-colors text-stone-700"
+                      >
+                        Placements &amp; Partners
+                      </button>
+                      <button
+                        onClick={() => scrollTo('#life-at-aset')}
+                        className="w-full text-left px-4 py-2 hover:bg-orange-50 hover:text-orange-600 transition-colors text-stone-700"
+                      >
+                        Life at Aset
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          if (onOpenAdmissions) onOpenAdmissions();
+                        }}
+                        className="w-full text-left px-4 py-2 text-rose-600 font-bold border-t border-stone-100 hover:bg-rose-50 transition-colors"
+                      >
+                        Apply for 2026–2027 ↗
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Bottom-Left Live Monospace Clock */}
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20">
+              <span className="px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md text-[11px] font-mono text-white/90 border border-white/10 tracking-wider">
+                {currentTime || '9:19:01 PM'}
+              </span>
+            </div>
           </div>
-          <ScrollParagraph delay={0.2} className="text-sm text-stone-600 max-w-md leading-relaxed font-manrope self-start md:self-end">
-            Admissions for the 2026–2027 academic session are open across undergraduate, postgraduate, and diploma programs. Candidates can apply online or visit either campus for personal counseling.
-          </ScrollParagraph>
-        </div>
 
-        {/* Content Split: Inquiry Form & Campus Directory */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 items-start font-manrope">
-          {/* Left Column: Form or Success Confirmation with Glass Effect */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.12 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 glass-panel p-6 sm:p-10 rounded-3xl shadow-xl relative overflow-hidden"
-          >
+          {/* ------------------------------------------------------- */}
+          {/* RIGHT PANE: Modern Creative Form with Animated Controls */}
+          {/* (Giant "Contact Form" removed for balanced alignment)   */}
+          {/* ------------------------------------------------------- */}
+          <div className="lg:col-span-8 xl:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-white space-y-8">
+            
+            {/* Top Header: Eyebrow + General & Admissions Helpline */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-stone-200/90">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+                  <span className="text-xs font-mono font-bold tracking-[0.2em] text-orange-600 uppercase">
+                    ADMISSIONS &amp; COUNSELING 2026–2027
+                  </span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-manrope font-bold text-stone-900 tracking-tight">
+                  Get in Touch with{' '}
+                  <span className="text-gradient-title font-extrabold">
+                    ASET
+                  </span>
+                </h3>
+              </div>
+
+              {/* Quick Contacts Row */}
+              <div className="flex items-center gap-6 sm:gap-8 pt-1 sm:pt-0">
+                <div>
+                  <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-stone-400 mb-0.5">
+                    GENERAL
+                  </span>
+                  <a
+                    href="mailto:contact@asetcollege.ac.in"
+                    className="text-xs sm:text-[13px] font-semibold text-stone-900 hover:text-orange-600 transition-colors block"
+                  >
+                    contact@asetcollege.ac.in
+                  </a>
+                  <a
+                    href="mailto:contact@asetsafety.ac.in"
+                    className="text-[11px] text-stone-500 hover:text-orange-600 transition-colors block"
+                  >
+                    contact@asetsafety.ac.in
+                  </a>
+                </div>
+                <div>
+                  <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-stone-400 mb-0.5">
+                    HELPLINE
+                  </span>
+                  <a
+                    href="tel:+919159499973"
+                    className="text-xs sm:text-[13px] font-semibold text-stone-900 hover:text-orange-600 transition-colors block font-mono"
+                  >
+                    +91 91594 99973
+                  </a>
+                  <span className="text-[11px] text-stone-500 font-mono block">
+                    +91 91594 99974 / 75
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Form or Submission Confirmation */}
             {submittedRef ? (
-              <div className="space-y-6 py-6 animate-in fade-in duration-300">
-                <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center border border-emerald-200">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="py-10 space-y-5"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/25">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <div className="space-y-2">
-                  <span className="text-xs font-mono uppercase tracking-widest text-emerald-800 font-bold">
-                    Admissions Inquiry Registered
+                <div className="space-y-1.5">
+                  <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold">
+                    Inquiry Registered · Reference #{submittedRef}
                   </span>
-                  <h3 className="text-2xl font-serif font-bold text-stone-900">
-                    Reference #{submittedRef}
-                  </h3>
-                  <p className="text-sm text-stone-600 leading-relaxed">
-                    Thank you, <strong className="text-stone-900">{formData.fullName}</strong>. Your inquiry for{' '}
-                    <strong className="text-stone-900">{formData.department}</strong> ({formData.degreeLevel}) at{' '}
-                    <strong className="text-stone-900">{formData.campus}</strong> has been recorded for the 2026–2027 session.
+                  <h4 className="text-2xl font-bold text-stone-900">
+                    Thank you, {formData.fullName}
+                  </h4>
+                  <p className="text-sm text-stone-600 max-w-lg leading-relaxed pt-1">
+                    Your application inquiry for <strong className="text-stone-900">{formData.department}</strong> at{' '}
+                    <strong className="text-stone-900">{formData.campus}</strong> has been received. Our senior admissions counselor will contact you within 24 hours.
                   </p>
                 </div>
-
-                <div className="p-4 bg-stone-50 border border-stone-200 rounded-xs text-xs font-mono text-stone-700 space-y-2">
-                  <div>
-                    <strong>Applicant Email:</strong> {formData.email}
-                  </div>
-                  <div>
-                    <strong>Preferred Campus:</strong> {formData.campus}
-                  </div>
-                  <div>
-                    <strong>Next Step:</strong> Eligibility Verification &amp; Program Guidance with Admissions Counselors
-                  </div>
+                <div className="pt-2">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setSubmittedRef(null);
+                      setFormData({
+                        fullName: '',
+                        email: '',
+                        phone: '',
+                        department: defaultDept,
+                        campus: CAMPUSES[0].name,
+                        message: '',
+                      });
+                    }}
+                    className="px-6 py-2.5 rounded-xl bg-stone-900 text-white text-xs font-semibold tracking-wide hover:bg-stone-800 transition-colors cursor-pointer"
+                  >
+                    Submit Another Inquiry
+                  </motion.button>
                 </div>
-
-                <button
-                  onClick={() => {
-                    setSubmittedRef(null);
-                    setFormData({
-                      fullName: '',
-                      email: '',
-                      phone: '',
-                      degreeLevel: 'Undergraduate (B.Sc. / BBA / B.Com)',
-                      department: defaultDept,
-                      campus: 'Chennai Campus (Kuthambakkam)',
-                      message: '',
-                    });
-                  }}
-                  className="px-5 py-2.5 bg-stone-900 text-stone-50 text-xs uppercase tracking-wider font-semibold rounded-xs hover:bg-stone-800 transition-colors cursor-pointer"
-                >
-                  Submit Another Inquiry
-                </button>
-              </div>
+              </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="flex items-center justify-between pb-3 border-b border-stone-100">
-                  <h3 className="text-xl font-serif font-bold text-stone-900">
-                    2026–2027 Admissions Inquiry
-                  </h3>
-                  <span className="text-xs font-mono text-stone-500">
-                    Chennai &amp; Coimbatore
-                  </span>
-                </div>
-
-                {/* Name & Email */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
-                      Full Name *
+              <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* Row 1: Name & Email Inputs */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-medium text-stone-700">
+                      Name *
                     </label>
                     <input
                       type="text"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      placeholder="e.g. Karthik Subramanian"
-                      className={`w-full px-3.5 py-2.5 bg-stone-50 border text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white transition-colors ${
-                        errors.fullName ? 'border-rose-400' : 'border-stone-300'
+                      placeholder="Your Name"
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all ${
+                        errors.fullName ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
                       }`}
                     />
                     {errors.fullName && (
@@ -189,17 +394,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartmen
                     )}
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
-                      Email Address *
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-medium text-stone-700">
+                      Email *
                     </label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="student@example.com"
-                      className={`w-full px-3.5 py-2.5 bg-stone-50 border text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white transition-colors ${
-                        errors.email ? 'border-rose-400' : 'border-stone-300'
+                      placeholder="Your Email"
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all ${
+                        errors.email ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
                       }`}
                     />
                     {errors.email && (
@@ -208,89 +413,160 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartmen
                   </div>
                 </div>
 
-                {/* Program Level & Department */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
-                      Program Level
+                {/* Row 2: MODERN ANIMATED CUSTOM DROPDOWNS (No clipping, sleek animations) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                  
+                  {/* Department Custom Animated Dropdown */}
+                  <div className="space-y-1.5 relative" ref={deptRef}>
+                    <label className="block text-xs font-medium text-stone-700">
+                      Department
                     </label>
-                    <select
-                      value={formData.degreeLevel}
-                      onChange={(e) => setFormData({ ...formData, degreeLevel: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white"
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsDeptOpen(!isDeptOpen);
+                        setIsCampusOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${
+                        isDeptOpen
+                          ? 'border-orange-500 bg-white ring-2 ring-orange-500/20 shadow-sm'
+                          : 'border-stone-200 hover:border-stone-300'
+                      }`}
                     >
-                      <option value="Diploma (1 Year / 3 Years)">Diploma (1 Yr / 3 Yrs)</option>
-                      <option value="Undergraduate (B.Sc. / BBA / B.Com)">Undergraduate (B.Sc. / BBA / B.Com)</option>
-                      <option value="Postgraduate (M.Sc. / MBA)">Postgraduate (M.Sc. / MBA)</option>
-                      <option value="PG Diploma / International Certification">PG Diploma / Intl. Certification</option>
-                      <option value="Pilot Training">Pilot Training</option>
-                    </select>
+                      <span className="truncate font-medium text-stone-800">
+                        {formData.department}
+                      </span>
+                      <motion.span
+                        animate={{ rotate: isDeptOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="shrink-0 text-stone-500"
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.span>
+                    </button>
+
+                    <AnimatePresence>
+                      {isDeptOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                          transition={{ duration: 0.16, ease: 'easeOut' }}
+                          className="absolute left-0 right-0 top-full mt-1.5 z-40 max-h-60 overflow-y-auto rounded-xl bg-white/98 backdrop-blur-xl border border-stone-200/90 shadow-2xl py-1.5 text-xs sm:text-[13px]"
+                        >
+                          {DEPARTMENTS.map((dept) => {
+                            const isSelected = formData.department === dept.name;
+                            return (
+                              <button
+                                key={dept.id}
+                                type="button"
+                                onClick={() => {
+                                  setFormData({ ...formData, department: dept.name });
+                                  setIsDeptOpen(false);
+                                }}
+                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between gap-2 transition-colors cursor-pointer ${
+                                  isSelected
+                                    ? 'bg-orange-50 text-orange-900 font-semibold border-l-2 border-orange-600'
+                                    : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950'
+                                }`}
+                              >
+                                <span className="truncate">{dept.name}</span>
+                                {isSelected && (
+                                  <Check className="w-4 h-4 text-orange-600 shrink-0" />
+                                )}
+                              </button>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
-                  <div className="space-y-1 sm:col-span-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
-                      Department of Interest
-                    </label>
-                    <select
-                      value={formData.department}
-                      onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white"
-                    >
-                      {DEPARTMENTS.map((dept) => (
-                        <option key={dept.id} value={dept.name}>
-                          {dept.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Preferred Campus & Phone */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
+                  {/* Preferred Campus Custom Animated Dropdown */}
+                  <div className="space-y-1.5 relative" ref={campusRef}>
+                    <label className="block text-xs font-medium text-stone-700">
                       Preferred Campus
                     </label>
-                    <select
-                      value={formData.campus}
-                      onChange={(e) => setFormData({ ...formData, campus: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white"
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsCampusOpen(!isCampusOpen);
+                        setIsDeptOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${
+                        isCampusOpen
+                          ? 'border-orange-500 bg-white ring-2 ring-orange-500/20 shadow-sm'
+                          : 'border-stone-200 hover:border-stone-300'
+                      }`}
                     >
-                      <option value="Chennai Campus (Kuthambakkam)">
-                        Chennai Campus (Kuthambakkam)
-                      </option>
-                      <option value="Coimbatore Campus (Saravanampatti)">
-                        Coimbatore Campus (Saravanampatti)
-                      </option>
-                    </select>
+                      <span className="truncate font-medium text-stone-800">
+                        {formData.campus}
+                      </span>
+                      <motion.span
+                        animate={{ rotate: isCampusOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="shrink-0 text-stone-500"
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.span>
+                    </button>
+
+                    <AnimatePresence>
+                      {isCampusOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                          transition={{ duration: 0.16, ease: 'easeOut' }}
+                          className="absolute left-0 right-0 top-full mt-1.5 z-40 rounded-xl bg-white/98 backdrop-blur-xl border border-stone-200/90 shadow-2xl py-1.5 text-xs sm:text-[13px]"
+                        >
+                          {CAMPUSES.map((campus) => {
+                            const isSelected = formData.campus === campus.name;
+                            return (
+                              <button
+                                key={campus.id}
+                                type="button"
+                                onClick={() => {
+                                  setFormData({ ...formData, campus: campus.name });
+                                  setIsCampusOpen(false);
+                                }}
+                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between gap-2 transition-colors cursor-pointer ${
+                                  isSelected
+                                    ? 'bg-orange-50 text-orange-900 font-semibold border-l-2 border-orange-600'
+                                    : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950'
+                                }`}
+                              >
+                                <div className="flex items-center gap-2 truncate">
+                                  <MapPin className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                                  <span className="truncate">{campus.name}</span>
+                                </div>
+                                {isSelected && (
+                                  <Check className="w-4 h-4 text-orange-600 shrink-0" />
+                                )}
+                              </button>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
-                      Phone Number (Optional)
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 91594 99973"
-                      className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-300 text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white"
-                    />
-                  </div>
                 </div>
 
-                {/* Statement / Message */}
-                <div className="space-y-1">
-                  <label className="block text-xs font-mono uppercase tracking-wider text-stone-700 font-medium">
-                    Academic Background / Counseling Request *
+                {/* Row 3: Message Textarea */}
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-medium text-stone-700">
+                    Message / Academic Background *
                   </label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Mention your 10th / 12th / UG qualification, preferred program (e.g., B.Sc. Aviation, B.Sc. Fire & Industrial Safety, MBA Business Analytics, B.Com + ACCA), or request a counseling session..."
-                    className={`w-full px-3.5 py-2.5 bg-stone-50 border text-sm text-stone-900 rounded-xs focus:outline-hidden focus:ring-1 focus:ring-stone-900 focus:bg-white transition-colors ${
-                      errors.message ? 'border-rose-400' : 'border-stone-300'
+                    placeholder="Mention your 10th / 12th / UG score, preferred program, or request an admissions counseling session..."
+                    className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 resize-none transition-all ${
+                      errors.message ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
                     }`}
                   />
                   {errors.message && (
@@ -298,116 +574,62 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialDepartmen
                   )}
                 </div>
 
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 px-6 bg-stone-900 hover:bg-stone-800 disabled:bg-stone-400 text-stone-50 text-xs uppercase tracking-wider font-semibold rounded-xs transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-                >
-                  {isSubmitting ? (
-                    <span className="font-mono text-xs">Submitting Inquiry...</span>
-                  ) : (
-                    <>
-                      <Send className="w-3.5 h-3.5" />
-                      <span>Request Admissions Counseling (2026–2027)</span>
-                    </>
-                  )}
-                </button>
+                {/* Row 4: MODERN ANIMATED BUTTON with Website Signature Gradient */}
+                <div className="pt-2 flex items-center justify-between gap-4 flex-wrap">
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-rose-700 hover:from-orange-500 hover:to-rose-600 text-white text-xs sm:text-sm font-semibold tracking-wide shadow-lg shadow-orange-600/25 hover:shadow-orange-600/40 transition-all cursor-pointer disabled:opacity-50 group"
+                  >
+                    <span>
+                      {isSubmitting ? 'Registering Inquiry...' : 'Request Counseling (2026–2027)'}
+                    </span>
+                    <ArrowRight className="w-4 h-4 stroke-[2.4] group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+
+                  <span className="text-[11px] font-mono text-stone-500 hidden sm:inline-block">
+                    Free counseling &amp; scholarship assessment
+                  </span>
+                </div>
+
               </form>
             )}
-          </motion.div>
 
-          {/* Right Column: Official Campus Directory (Chennai & Coimbatore) */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.12 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 space-y-6"
-          >
-            <div className="p-6 bg-white border border-stone-200 rounded-sm space-y-5">
-              <h3 className="text-xl font-serif font-bold text-stone-900 pb-2 border-b border-stone-100">
-                Campus Directory
-              </h3>
-
-              {/* Chennai Campus */}
-              <div className="space-y-3 pb-4 border-b border-stone-100 text-sm text-stone-700">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-stone-900 text-xs font-mono uppercase">
-                      Chennai Campus
-                    </strong>
-                    <span>No: 28, Irulapalayam, Kuthambakkam, Chennai – 600124, Tamil Nadu</span>
-                  </div>
+            {/* Bottom Row: Two-Column Campus Directory Cards */}
+            <div className="pt-6 border-t border-stone-200/90 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-stone-600">
+              <div className="p-3.5 rounded-xl bg-stone-50/80 border border-stone-200/80 space-y-1">
+                <div className="flex items-center gap-1.5 text-stone-900 font-bold text-xs">
+                  <Building2 className="w-3.5 h-3.5 text-orange-600" />
+                  <span>HQ · Chennai Campus</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
-                  <div className="font-mono text-xs text-stone-900">
-                    +91 91594 99973 / +91 91594 99974
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
-                  <div className="font-mono text-xs space-y-0.5">
-                    <span className="block text-stone-900">contact@asetcollege.ac.in</span>
-                    <span className="block text-stone-600">contact@asetsafety.ac.in</span>
-                  </div>
-                </div>
+                <p className="text-[11px] text-stone-600 leading-relaxed">
+                  No: 28, Irulapalayam, Kuthambakkam, Chennai – 600124
+                </p>
+                <p className="text-[10px] font-mono text-stone-500 pt-0.5">
+                  Ph: +91 91594 99973 / 74
+                </p>
               </div>
 
-              {/* Coimbatore Campus */}
-              <div className="space-y-3 text-sm text-stone-700">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-stone-900 text-xs font-mono uppercase">
-                      Coimbatore Campus
-                    </strong>
-                    <span>
-                      ASET College, Varathaiyangar Palayam, Saravanampatti – 641110, Coimbatore, Tamil Nadu
-                    </span>
-                  </div>
+              <div className="p-3.5 rounded-xl bg-stone-50/80 border border-stone-200/80 space-y-1">
+                <div className="flex items-center gap-1.5 text-stone-900 font-bold text-xs">
+                  <GraduationCap className="w-3.5 h-3.5 text-rose-600" />
+                  <span>Coimbatore Campus</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
-                  <div className="font-mono text-xs text-stone-900">
-                    +91 91594 99975 / +91 91594 99977
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-amber-900 shrink-0 mt-0.5" />
-                  <div className="font-mono text-xs text-stone-900">
-                    contact@asetsafety.ac.in
-                  </div>
-                </div>
+                <p className="text-[11px] text-stone-600 leading-relaxed">
+                  Varathaiyangar Palayam, Saravanampatti – 641110
+                </p>
+                <p className="text-[10px] font-mono text-stone-500 pt-0.5">
+                  Ph: +91 91594 99975 / 77
+                </p>
               </div>
             </div>
 
-            {/* Required Documents Box (from Section 6) */}
-            <div className="p-6 bg-stone-900 text-stone-100 rounded-sm space-y-4">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
-                <ClipboardCheck className="w-4 h-4" />
-                <span>Documents for Eligibility Verification</span>
-              </div>
+          </div>
 
-              <div className="space-y-3 text-xs divide-y divide-stone-800">
-                <div className="pt-2 flex justify-between items-baseline gap-3">
-                  <span className="text-stone-300">Diploma Programs:</span>
-                  <span className="font-mono text-amber-300 font-bold text-right">10th Marksheets</span>
-                </div>
-                <div className="pt-2 flex justify-between items-baseline gap-3">
-                  <span className="text-stone-300">Undergraduate Programs:</span>
-                  <span className="font-mono text-amber-300 font-bold text-right">12th Marksheets</span>
-                </div>
-                <div className="pt-2 flex justify-between items-baseline gap-3">
-                  <span className="text-stone-300">M.Sc. / MBA / PG Diploma:</span>
-                  <span className="font-mono text-amber-300 font-bold text-right">UG Degree Certificates</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
+
       </div>
     </section>
   );

@@ -1339,6 +1339,132 @@ pre {
   scrollbar-width: none;
 }
 
+/* -------------------------------------------------------------
+ * Cinematic Banner Sky Moving Clouds Animation (Seamless 100% Loop)
+ * ----------------------------------------------------------- */
+@keyframes skyCloudDriftSlow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes skyCloudDriftMedium {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes skyCloudDriftFast {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes skyCloudGentleBob1 {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes skyCloudGentleBob2 {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 8px, 0);
+  }
+}
+
+.animate-sky-drift-slow {
+  animation: skyCloudDriftSlow 75s linear infinite;
+  will-change: transform;
+}
+
+.animate-sky-drift-medium {
+  animation: skyCloudDriftMedium 48s linear infinite;
+  will-change: transform;
+}
+
+.animate-sky-drift-fast {
+  animation: skyCloudDriftFast 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-sky-bob-1 {
+  animation: skyCloudGentleBob1 10s ease-in-out infinite;
+}
+
+.animate-sky-bob-2 {
+  animation: skyCloudGentleBob2 12s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------------
+ * Vertical Infinite Marquee for Life at ASET (120fps Hardware Accelerated)
+ * ----------------------------------------------------------- */
+@keyframes marqueeVerticalUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marqueeVerticalDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.animate-marquee-vertical-up {
+  animation: marqueeVerticalUp 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-vertical-up-slow {
+  animation: marqueeVerticalUp 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-vertical-down {
+  animation: marqueeVerticalDown 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-vertical-down-slow {
+  animation: marqueeVerticalDown 46s linear infinite;
+  will-change: transform;
+}
+
+.pause-on-hover:hover,
+.pause-on-hover:hover * {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1387,7 +1513,12 @@ pre {
   .animate-footer-touchdown-smoke,
   .animate-footer-cloud-1,
   .animate-footer-cloud-2,
-  .animate-footer-cloud-3 {
+  .animate-footer-cloud-3,
+  .animate-sky-drift-slow,
+  .animate-sky-drift-medium,
+  .animate-sky-drift-fast,
+  .animate-sky-bob-1,
+  .animate-sky-bob-2 {
     animation: none !important;
   }
 }

@@ -46,7 +46,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
               <GraduationCap className="w-3.5 h-3.5" />
               <span>ASET Academic Prospectus · 2026–2027</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-900">
+            <h3 className="text-xl sm:text-2xl font-manrope font-bold text-stone-900 tracking-tight">
               {department.name}
             </h3>
           </div>

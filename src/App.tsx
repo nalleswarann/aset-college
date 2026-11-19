@@ -4,11 +4,16 @@ import { AsetHeroBanner } from './components/AsetHeroBanner';
 import { SmoothSection } from './components/SmoothSection';
 import { KeyMetricsBar } from './components/KeyMetricsBar';
 import { StudentSpotlightSection } from './components/StudentSpotlightSection';
+import { WhatWeStandForSection } from './components/WhatWeStandForSection';
+import { InstitutionalGradeSection } from './components/InstitutionalGradeSection';
+import { OurDifferenceSection } from './components/OurDifferenceSection';
 import { AboutSection } from './components/AboutSection';
 import { AdmissionsProcessSection } from './components/AdmissionsProcessSection';
 import { DepartmentSection } from './components/DepartmentSection';
 import { CampusLifeSection } from './components/CampusLifeSection';
+import { LifeAtAsetSection } from './components/LifeAtAsetSection';
 import { SponsorsSection } from './components/SponsorsSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CurriculumModal } from './components/CurriculumModal';
@@ -24,7 +29,7 @@ export default function App() {
   // Scroll spy to highlight active section in navbar
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'departments', 'placements', 'sponsors', 'contact'];
+      const sections = ['home', 'about', 'departments', 'placements', 'sponsors', 'testimonials', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -91,6 +96,15 @@ export default function App() {
           onExploreDepartments={handleExploreDepartments}
         />
 
+        {/* What We Stand For Section (Core Institutional Values) */}
+        <WhatWeStandForSection />
+
+        {/* Institutional Grade In All We Do (Horizontal Kinetic Pillar Showcase) */}
+        <InstitutionalGradeSection onOpenAdmissions={handleOpenAdmissions} />
+
+        {/* Our Difference / Operational Excellence Kinetic Showcase */}
+        <OurDifferenceSection />
+
         {/* About Section */}
         <SmoothSection>
           <AboutSection />
@@ -100,12 +114,10 @@ export default function App() {
         <AdmissionsProcessSection onOpenAdmissions={handleOpenAdmissions} />
 
         {/* Department Section */}
-        <SmoothSection>
-          <DepartmentSection
-            onSelectDepartment={(dept) => setSelectedDepartment(dept)}
-            onApplyForDepartment={handleApplyForDepartment}
-          />
-        </SmoothSection>
+        <DepartmentSection
+          onSelectDepartment={(dept) => setSelectedDepartment(dept)}
+          onApplyForDepartment={handleApplyForDepartment}
+        />
 
         {/* Placements & Alumni Section */}
         <SmoothSection>
@@ -114,9 +126,19 @@ export default function App() {
           />
         </SmoothSection>
 
+        {/* Life at ASET (Students Feedback with Auto-Moving Cards) */}
+        <SmoothSection>
+          <LifeAtAsetSection />
+        </SmoothSection>
+
         {/* Global Partners & Sponsors Section (Directly after Placements & Alumni Network) */}
         <SmoothSection>
           <SponsorsSection />
+        </SmoothSection>
+
+        {/* Testimonials Section (Directly after MOUs with ASET Section) */}
+        <SmoothSection>
+          <TestimonialsSection />
         </SmoothSection>
 
         {/* Contact & Admissions Form */}

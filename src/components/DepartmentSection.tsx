@@ -1,22 +1,32 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from 'motion/react';
 import { DEPARTMENTS, PROGRAM_MATRIX } from '../data/universityData';
 import { Department } from '../types/university';
+
+// High-resolution authentic imagery
+import heroCampusImg from '../assets/images/hero_university_campus_1794469701413.jpg';
+import aviationImg from '../assets/images/aset-aviation-students.png';
+import logisticsImg from '../assets/images/dept_global_business_1794469703130.jpg';
+import safetyImg from '../assets/images/dept_biotech_robotics_1794469703091.jpg';
+import analyticsImg from '../assets/images/dept_design_architecture_1794469703164.jpg';
+import commerceImg from '../assets/images/aset-graduates-wearing-caps.jpg';
+import hospitalityImg from '../assets/images/aset-college-pathway-sunset.jpg';
+
 import {
-  BookOpen,
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
-  Sparkles,
   Table,
   CheckCircle2,
-  GraduationCap,
-  LayoutGrid,
-  SlidersHorizontal,
+  ArrowRight,
 } from 'lucide-react';
 import {
   ScrollHeading,
-  ScrollParagraph,
   ScrollEyebrow,
   ScrollAction,
 } from './ScrollTypography';
@@ -26,518 +36,486 @@ interface DepartmentSectionProps {
   onApplyForDepartment: (deptName: string) => void;
 }
 
+// Clean, punchy department definitions with signature website gradient title combos
+const REFINED_DEPARTMENTS = [
+  {
+    id: 'aviation-pilot',
+    prefix: 'Aviation &',
+    highlight: 'Pilot Training',
+    fullName: 'Pilot Training, Aviation & Airport Management',
+    deptRef: 'Pilot Training, Aviation & Airport Management',
+    description:
+      'Designed for students aspiring to careers in commercial aviation, airline operations, and airport management. The curriculum combines classroom management principles with in-flight exposure, DGCA flight simulation, and guided airport operations.',
+    image: aviationImg,
+  },
+  {
+    id: 'logistics-shipping',
+    prefix: 'Logistics &',
+    highlight: 'Shipping',
+    fullName: 'Logistics & Shipping',
+    deptRef: 'Logistics & Shipping',
+    description:
+      'Specialized education in multimodal freight transport, maritime shipping, supply chain analytics, and container port logistics, developed in close partnership with international cargo hubs and shipping authorities.',
+    image: logisticsImg,
+  },
+  {
+    id: 'fire-safety',
+    prefix: 'Fire &',
+    highlight: 'Industrial Safety',
+    fullName: 'Fire & Industrial Safety',
+    deptRef: 'Fire & Industrial Safety',
+    description:
+      'Comprehensive training for safety officers, HSE professionals, and disaster response engineers, integrating live firefighting simulation rigs, hazardous chemical safety protocols, and NEBOSH / IOSH international standards.',
+    image: safetyImg,
+  },
+  {
+    id: 'business-analytics',
+    prefix: 'Business',
+    highlight: 'Analytics & Studies',
+    fullName: 'Business Analytics & Management Studies',
+    deptRef: 'Business Analytics & Management Studies',
+    description:
+      'Preparing forward-thinking business leaders through advanced predictive analytics, corporate financial modeling, modern management strategy, and digital enterprise systems aligned with high-growth industries.',
+    image: analyticsImg,
+  },
+  {
+    id: 'commerce',
+    prefix: 'School of',
+    highlight: 'Commerce & Finance',
+    fullName: 'School of Commerce (CA / CMA / CS / ACCA + B.Com)',
+    deptRef: 'School of Commerce (CA / CMA / CS / ACCA + B.Com)',
+    description:
+      'Integrates undergraduate commerce education with globally recognized professional accounting, taxation, and corporate governance qualifications, offering accelerated dual pathways in CA, CMA, CS, and ACCA.',
+    image: commerceImg,
+  },
+  {
+    id: 'hospitality',
+    prefix: 'Hotel &',
+    highlight: 'Hospitality Management',
+    fullName: 'Hotel Management',
+    deptRef: 'Hotel Management',
+    description:
+      'World-class hospitality education covering luxury hotel administration, culinary operations, international tourism, and guest relations, delivering hands-on industry exposure across premier global hotel brands.',
+    image: hospitalityImg,
+  },
+];
+
 export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
   onSelectDepartment,
   onApplyForDepartment,
 }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel');
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeftState, setScrollLeftState] = useState(0);
+  const [isVisionPhase, setIsVisionPhase] = useState(false);
 
-  // Update scroll metrics on scroll
-  const handleScroll = useCallback(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
+  const activeItem = REFINED_DEPARTMENTS[activeIdx] || REFINED_DEPARTMENTS[0];
+  const matchedFullDept =
+    DEPARTMENTS.find((d) => d.name === activeItem.deptRef) || DEPARTMENTS[activeIdx];
 
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    const maxScroll = scrollWidth - clientWidth;
-    const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
-    setScrollProgress(Math.min(100, Math.max(0, progress)));
+  // Continuous scroll tracking across the pinned section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
 
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft < maxScroll - 10);
+  // Desktop transforms: image reduces smoothly from 100% full-screen to the right 50%
+  const imageWidth = useTransform(scrollYProgress, [0.08, 0.20], ['100%', '50%']);
+  const imageLeft = useTransform(scrollYProgress, [0.08, 0.20], ['0%', '50%']);
 
-    // Approximate active card index
-    const cardWidth = el.firstElementChild
-      ? (el.firstElementChild as HTMLElement).offsetWidth + 32
-      : clientWidth;
-    const currentCard = Math.round(scrollLeft / cardWidth);
-    setActiveIdx(Math.min(DEPARTMENTS.length - 1, Math.max(0, currentCard)));
-  }, []);
+  // Mobile transforms: image reduces from 100% full-screen to top 40% height
+  const imageHeightMobile = useTransform(scrollYProgress, [0.08, 0.20], ['100%', '40%']);
 
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    el.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => el.removeEventListener('scroll', handleScroll);
-  }, [handleScroll, viewMode]);
+  // Phase 1 (02 OUR VALUES) text fades out during the initial morph
+  const valuesTextOpacity = useTransform(scrollYProgress, [0.04, 0.12], [1, 0]);
 
-  // Smooth scroll by distance
-  const scrollByAmount = (direction: 'left' | 'right') => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const cardWidth = el.firstElementChild
-      ? (el.firstElementChild as HTMLElement).offsetWidth + 32
-      : el.clientWidth * 0.8;
-    const delta = direction === 'left' ? -cardWidth : cardWidth;
-    el.scrollBy({ left: delta, behavior: 'smooth' });
-  };
+  // Track phase threshold to cleanly separate Phase 1 (Values) and Phase 2 (Vision)
+  // This guarantees Phase 1 and Phase 2 text NEVER overlap under any circumstances
+  useMotionValueEvent(scrollYProgress, 'change', (progress) => {
+    const isVision = progress >= 0.16;
+    setIsVisionPhase(isVision);
 
-  // Scroll directly to a specific department index
+    if (progress < 0.20) {
+      setActiveIdx(0);
+    } else {
+      const visionProgress = Math.max(0, (progress - 0.20) / 0.80);
+      const idx = Math.min(
+        REFINED_DEPARTMENTS.length - 1,
+        Math.floor(visionProgress * REFINED_DEPARTMENTS.length)
+      );
+      setActiveIdx(idx);
+    }
+  });
+
+  // Scroll to a specific department on dot click or arrow click
   const scrollToDepartment = (idx: number) => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const cards = el.children;
-    if (cards[idx]) {
-      (cards[idx] as HTMLElement).scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      });
+    setActiveIdx(idx);
+    if (!isVisionPhase) {
+      setIsVisionPhase(true);
+    }
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const currentScrollY = window.scrollY;
+      const containerTop = currentScrollY + rect.top;
+      const totalScrollHeight = containerRef.current.scrollHeight - window.innerHeight;
+      const targetProgress = 0.20 + (idx / REFINED_DEPARTMENTS.length) * 0.78 + 0.02;
+      const targetY = containerTop + targetProgress * totalScrollHeight;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
     }
   };
 
-  // Mouse Drag to Scroll handlers (Peachweb fluid drag experience)
-  const handleMouseDown = (e: React.MouseEvent) => {
-    const el = scrollContainerRef.current;
-    if (!el || viewMode === 'grid') return;
-    setIsDragging(true);
-    setStartX(e.pageX - el.offsetLeft);
-    setScrollLeftState(el.scrollLeft);
+  const handlePrev = () => {
+    const nextIdx = activeIdx === 0 ? REFINED_DEPARTMENTS.length - 1 : activeIdx - 1;
+    scrollToDepartment(nextIdx);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const x = e.pageX - el.offsetLeft;
-    const walk = (x - startX) * 1.5; // Drag speed multiplier
-    el.scrollLeft = scrollLeftState - walk;
+  const handleNext = () => {
+    const nextIdx = activeIdx === REFINED_DEPARTMENTS.length - 1 ? 0 : activeIdx + 1;
+    scrollToDepartment(nextIdx);
   };
 
-  const handleMouseUpOrLeave = () => {
-    setIsDragging(false);
+  const handleOpenCurriculum = () => {
+    if (matchedFullDept) {
+      onSelectDepartment(matchedFullDept);
+    }
   };
+
+  const handleOpenApply = () => {
+    onApplyForDepartment(activeItem.fullName);
+  };
+
+  // Keyboard navigation support
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrev();
+      } else if (e.key === 'ArrowRight') {
+        handleNext();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeIdx, isVisionPhase]);
 
   return (
-    <section
-      id="departments"
-      className="relative py-24 sm:py-32 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/80"
-    >
-      {/* Peachweb Warm Subtle Ambient Gradient Glows */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 right-0 w-[55vw] max-w-[700px] h-[55vw] max-h-[700px] rounded-full bg-gradient-to-br from-orange-400/10 via-amber-300/8 to-transparent blur-[120px] pointer-events-none -translate-y-1/3 translate-x-1/4"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-1/4 -left-20 w-[45vw] max-w-[600px] h-[45vw] max-h-[600px] rounded-full bg-gradient-to-tr from-rose-400/8 via-orange-300/6 to-transparent blur-[110px] pointer-events-none"
-      />
+    <section id="departments" className="relative bg-[#faf8f5] text-stone-900 font-manrope">
+      {/* ========================================================================= */}
+      {/* TELHA CLARKE SCROLL CANVAS                                                */}
+      {/* 1. Starts with big architectural image ("02 OUR VALUES")                  */}
+      {/* 2. Image smoothly reduces to right side (50% desktop, 40% mobile)         */}
+      {/* 3. Left side reveals solid website cream (#faf8f5) with solid black text  */}
+      {/* 4. Sliding elevator film-strip for the department images                  */}
+      {/* ========================================================================= */}
+      <div ref={containerRef} className="relative h-[380vh] sm:h-[420vh]">
+        {/* Pinned 100vh Viewport */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col lg:flex-row bg-[#faf8f5]">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* ========================================================= */}
-        {/* PEACHWEB-STYLE SECTION HEADER                             */}
-        {/* Monospace eyebrow tag, bold display title & description   */}
-        {/* ========================================================= */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 border-b border-stone-200/80">
-          <div className="space-y-4 max-w-3xl">
-            {/* Peachweb Eyebrow Pill */}
-            <ScrollEyebrow delay={0.04} className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-700 text-xs font-mono uppercase tracking-[0.22em] font-semibold">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              <span>ACADEMIC DISCIPLINES &bull; SIX CORE PATHWAYS</span>
-            </ScrollEyebrow>
+          {/* ========================================================================= */}
+          {/* THE REDUCING IMAGE VIEWPORT (Desktop: right 50%, Mobile: top 40%)         */}
+          {/* Sits at z-20 so it remains 100% VISIBLE and never covered by left panel   */}
+          {/* ========================================================================= */}
 
-            {/* Display Headline */}
-            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
-              Six Core Departments Aligned With{' '}
-              <span className="text-gradient-accent">
-                High-Growth Industries
-              </span>
-            </ScrollHeading>
-
-            {/* Subtitle */}
-            <ScrollParagraph delay={0.2} className="text-base sm:text-lg text-stone-600 max-w-2xl font-light leading-relaxed">
-              ASET College organizes its academic offerings across six core departments
-              spanning UG, PG, Diploma, PG Diploma, and international certification pathways.
-            </ScrollParagraph>
-          </div>
-
-          {/* Interactive Navigation & View Controls (Peachweb Modern Agency Toolbar) */}
-          <ScrollAction delay={0.26} className="flex flex-col sm:flex-row sm:items-center gap-4 self-start lg:self-end shrink-0">
-            {/* View Mode Toggle: Carousel vs Grid */}
-            <div className="inline-flex p-1 bg-white border border-stone-200/90 rounded-2xl shadow-xs">
-              <button
-                onClick={() => setViewMode('carousel')}
-                aria-label="Carousel Scroll View"
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${viewMode === 'carousel'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900'
-                  }`}
-              >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Scroll Showcase</span>
-              </button>
-              <button
-                onClick={() => setViewMode('grid')}
-                aria-label="Grid Overview"
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${viewMode === 'grid'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900'
-                  }`}
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span>Grid View</span>
-              </button>
+          {/* --- DESKTOP VIEWPORT IMAGE --- */}
+          <motion.div
+            style={{
+              width: imageWidth,
+              left: imageLeft,
+            }}
+            className="hidden lg:block absolute top-0 bottom-0 z-20 overflow-hidden bg-stone-950 will-change-transform shadow-2xl"
+          >
+            {/* Phase 1 Hero Image (Shown during Values phase and initial reduction) */}
+            <div
+              className={`absolute inset-0 z-10 transition-opacity duration-500 ease-out pointer-events-none ${
+                isVisionPhase ? 'opacity-0 pointer-events-none' : 'opacity-100'
+              }`}
+            >
+              <img
+                src={heroCampusImg}
+                alt="ASET College Architecture"
+                className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/60 pointer-events-none" />
             </div>
 
-            {/* Carousel Arrow Controls (Visible in Carousel View) */}
-            {viewMode === 'carousel' && (
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-bold text-stone-500 mr-1 select-none">
-                  0{activeIdx + 1} / 0{DEPARTMENTS.length}
-                </span>
+            {/* Phase 2 Department Filmstrip (Hardware-accelerated vertical elevator) */}
+            <div
+              className={`absolute inset-0 z-20 transition-opacity duration-500 ease-out ${
+                isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
+            >
+              <div
+                className="w-full h-full flex flex-col"
+                style={{
+                  transform: `translate3d(0, -${activeIdx * 100}%, 0)`,
+                  transition: 'transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                {REFINED_DEPARTMENTS.map((dept, fIdx) => (
+                  <div key={fIdx} className="w-full h-full min-h-full shrink-0 relative overflow-hidden bg-stone-900">
+                    <img
+                      src={dept.image}
+                      alt={dept.fullName}
+                      className="w-full h-full object-cover select-none"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/45 via-transparent to-stone-950/20 pointer-events-none" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Minimalist Carousel Arrow Controls */}
+              <div className="absolute bottom-10 right-10 z-30 flex items-center gap-2">
                 <button
-                  onClick={() => scrollByAmount('left')}
-                  disabled={!canScrollLeft}
+                  onClick={handlePrev}
                   aria-label="Previous Department"
-                  className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${canScrollLeft
-                    ? 'bg-white hover:bg-stone-900 hover:text-white border-stone-300 text-stone-800 shadow-xs'
-                    : 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
-                    }`}
+                  className="w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-xl active:scale-95"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => scrollByAmount('right')}
-                  disabled={!canScrollRight}
+                  onClick={handleNext}
                   aria-label="Next Department"
-                  className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${canScrollRight
-                    ? 'bg-white hover:bg-stone-900 hover:text-white border-stone-300 text-stone-800 shadow-xs'
-                    : 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
-                    }`}
+                  className="w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-xl active:scale-95"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
-            )}
-          </ScrollAction>
-        </div>
+            </div>
+          </motion.div>
 
-        {/* ========================================================= */}
-        {/* CAROUSEL VIEW: SEAMLESS HORIZONTAL SMOOTH SCROLLING TRACK */}
-        {/* Peachweb Card Stack Showcase with snap, drag & indicators */}
-        {/* ========================================================= */}
-        {viewMode === 'carousel' ? (
-          <div className="mt-10 sm:mt-12">
-            {/* Horizontal Scroll Track */}
+          {/* --- MOBILE VIEWPORT IMAGE (Top 40%) --- */}
+          <motion.div
+            style={{
+              height: imageHeightMobile,
+            }}
+            className="lg:hidden w-full relative z-20 overflow-hidden bg-stone-950 shrink-0 will-change-transform shadow-lg order-first"
+          >
+            {/* Phase 1 Mobile */}
             <div
-              ref={scrollContainerRef}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUpOrLeave}
-              onMouseLeave={handleMouseUpOrLeave}
-              className={`flex gap-6 sm:gap-8 overflow-x-auto pb-8 pt-2 px-1 snap-x snap-mandatory no-scrollbar cursor-grab ${isDragging ? 'cursor-grabbing select-none' : ''
-                }`}
-              style={{ scrollBehavior: 'smooth' }}
+              className={`absolute inset-0 z-10 transition-opacity duration-500 ease-out pointer-events-none ${
+                isVisionPhase ? 'opacity-0 pointer-events-none' : 'opacity-100'
+              }`}
             >
-              {DEPARTMENTS.map((dept, idx) => {
-                const formattedNum = String(idx + 1).padStart(2, '0');
-                return (
-                  <motion.div
-                    key={dept.id}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: idx * 0.08,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="w-[88vw] sm:w-[460px] md:w-[500px] lg:w-[540px] shrink-0 snap-center flex flex-col justify-between bg-white rounded-3xl border border-stone-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_48px_rgba(255,118,0,0.12)] hover:border-orange-500/50 transition-all duration-500 overflow-hidden group"
-                  >
-                    {/* Top Media Showcase Container */}
-                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
-                      <img
-                        src={dept.image}
-                        alt={dept.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106 select-none"
-                      />
-                      {/* Subtle Ambient Shadow Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/25 to-transparent pointer-events-none" />
-
-                      {/* Top Corner Floating Badges */}
-                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-3 pointer-events-none z-10">
-                        {/* Peachweb 01 / 02 Large Index Badge */}
-                        <span className="font-mono font-bold text-xs sm:text-sm text-stone-900 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-stone-200 shadow-sm">
-                          {formattedNum}
-                        </span>
-
-                        {/* Section Code Badge */}
-                        <span className="font-mono font-semibold text-xs text-orange-200 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-orange-400/30">
-                          Section {dept.code}
-                        </span>
-                      </div>
-
-                      {/* Bottom Image Info Strip */}
-                      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-white text-xs font-mono pointer-events-none z-10">
-                        <span className="inline-flex items-center gap-1.5 text-stone-300">
-                          <GraduationCap className="w-3.5 h-3.5 text-orange-400" />
-                          <span>{dept.degrees.length} Programs</span>
-                        </span>
-                        <span className="text-amber-300 font-semibold bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-md border border-white/10 text-right line-clamp-1">
-                          {dept.durationSummary}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Department Content Body */}
-                    <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-6">
-                      <div className="space-y-4">
-                        {/* Eligibility Summary Eyebrow */}
-                        <div className="text-xs text-stone-500 font-mono tracking-wide">
-                          <span className="text-orange-600 font-semibold mr-1.5">&bull;</span>
-                          <span>Eligibility: {dept.eligibilitySummary}</span>
-                        </div>
-
-                        {/* Department Name */}
-                        <h3 className="text-2xl sm:text-3xl font-manrope font-bold text-stone-900 group-hover:text-orange-600 transition-colors duration-300 leading-snug">
-                          {dept.name}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-sm text-stone-600 font-light leading-relaxed line-clamp-3">
-                          {dept.description}
-                        </p>
-
-                        {/* Programs Offered Box */}
-                        <div className="bg-[#fcfbf9] p-4 border border-stone-200/80 rounded-2xl text-xs space-y-2">
-                          <div className="flex items-center justify-between">
-                            <span className="font-mono uppercase tracking-wider text-orange-700 font-bold text-[11px] flex items-center gap-1.5">
-                              <Sparkles className="w-3.5 h-3.5 text-orange-500" />
-                              Programs Offered
-                            </span>
-                            <span className="text-[10px] font-mono text-stone-400 uppercase">
-                              Official Pathways
-                            </span>
-                          </div>
-                          <ul className="text-stone-700 space-y-1.5 pt-1">
-                            {dept.degrees.map((deg, degIdx) => (
-                              <li key={degIdx} className="flex items-start gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0 mt-1.5" />
-                                <span className="font-medium text-stone-800">{deg}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Core Focus Areas */}
-                        <div className="pt-2 space-y-2 text-xs">
-                          <span className="font-mono uppercase text-[11px] font-bold text-stone-900 block tracking-wider">
-                            {dept.focusLabel}:
-                          </span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {dept.focusItems.map((item, itemIdx) => (
-                              <span
-                                key={itemIdx}
-                                className="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 text-stone-700 text-[11px] font-medium border border-stone-200/70 transition-colors"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="pt-4 border-t border-stone-100 flex items-center gap-3">
-                        <button
-                          onClick={() => onSelectDepartment(dept)}
-                          className="flex-1 py-3.5 px-4 bg-stone-950 hover:bg-orange-600 text-white text-xs uppercase tracking-wider font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md group/btn"
-                        >
-                          <BookOpen className="w-3.5 h-3.5 transition-transform group-hover/btn:scale-110" />
-                          <span>View Program Details</span>
-                        </button>
-                        <button
-                          onClick={() => onApplyForDepartment(dept.name)}
-                          className="py-3.5 px-4 border border-stone-300 hover:border-orange-500 hover:text-orange-600 text-stone-800 text-xs uppercase tracking-wider font-semibold rounded-xl transition-all duration-300 hover:bg-orange-50/50 flex items-center gap-1.5 cursor-pointer shadow-xs"
-                        >
-                          <span>Inquire</span>
-                          <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              <img
+                src={heroCampusImg}
+                alt="ASET College Architecture"
+                className="w-full h-full object-cover object-center filter brightness-[0.78]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 pointer-events-none" />
             </div>
 
-            {/* Seamless Interactive Progress Bar & Quick Indicator Track */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-stone-200/80">
-              {/* Numeric indicator pills to click and jump to any department */}
-              <div className="flex items-center gap-2">
-                {DEPARTMENTS.map((dept, idx) => (
-                  <button
-                    key={dept.id}
-                    onClick={() => scrollToDepartment(idx)}
-                    aria-label={`Jump to department ${idx + 1}`}
-                    className={`h-8 px-3 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${activeIdx === idx
-                      ? 'bg-orange-600 text-white shadow-xs scale-105'
-                      : 'bg-white hover:bg-stone-100 text-stone-600 border border-stone-200'
-                      }`}
-                  >
-                    <span>0{idx + 1}</span>
-                    {activeIdx === idx && (
-                      <span className="hidden md:inline font-sans font-medium text-[11px] truncate max-w-[120px]">
-                        {dept.name.split(',')[0]}
-                      </span>
-                    )}
-                  </button>
+            {/* Phase 2 Mobile Filmstrip */}
+            <div
+              className={`absolute inset-0 z-20 transition-opacity duration-500 ease-out ${
+                isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
+            >
+              <div
+                className="w-full h-full flex flex-col"
+                style={{
+                  transform: `translate3d(0, -${activeIdx * 100}%, 0)`,
+                  transition: 'transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                {REFINED_DEPARTMENTS.map((dept, fIdx) => (
+                  <div key={fIdx} className="w-full h-full min-h-full shrink-0 relative overflow-hidden bg-stone-900">
+                    <img
+                      src={dept.image}
+                      alt={dept.fullName}
+                      className="w-full h-full object-cover select-none"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/50 via-transparent to-stone-950/20 pointer-events-none" />
+                  </div>
                 ))}
               </div>
 
-              {/* Smooth Dynamic Progress Bar */}
-              <div className="flex items-center gap-3 w-full sm:w-64">
-                <span className="text-[11px] font-mono font-semibold text-stone-500 shrink-0">
-                  SCROLL
-                </span>
-                <div className="flex-1 h-1.5 bg-stone-200 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-200"
-                    style={{ width: `${Math.max(16, scrollProgress)}%` }}
-                  />
+              {/* Mobile Arrows */}
+              <div className="absolute bottom-3 right-3 z-30 flex items-center gap-1.5">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous"
+                  className="w-8 h-8 rounded-full bg-black/70 text-white backdrop-blur-md flex items-center justify-center border border-white/20 cursor-pointer active:scale-95"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next"
+                  className="w-8 h-8 rounded-full bg-black/70 text-white backdrop-blur-md flex items-center justify-center border border-white/20 cursor-pointer active:scale-95"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ========================================================================= */}
+          {/* PHASE 1: "02 OUR VALUES" (Full Screen Architectural Hero)                 */}
+          {/* Rendered ONLY before Vision Phase, eliminating any possibility of overlap */}
+          {/* ========================================================================= */}
+          {!isVisionPhase && (
+            <motion.div
+              style={{ opacity: valuesTextOpacity }}
+              className="absolute inset-0 z-30 flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-20 pointer-events-none will-change-transform"
+            >
+              {/* Top-Left: 02 OUR VALUES (Padded safely below floating glass navbar) */}
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-white">
+                <span className="font-bold text-orange-400">02</span>
+                <span className="w-8 h-px bg-white/40" />
+                <h2 className="font-semibold text-white tracking-[0.22em] drop-shadow-sm">OUR VALUES</h2>
+              </div>
+
+              {/* Bottom Row: Telha Clarke layout (Left: Pill CTA, Right: 2-Sentence Manifesto) */}
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 pointer-events-auto">
+                {/* Left Side: Floating Black Pill CTA */}
+                <div className="shrink-0">
+                  <button
+                    onClick={() => onApplyForDepartment('General Admissions')}
+                    className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-black text-white text-xs font-mono font-medium tracking-wide shadow-2xl hover:bg-stone-800 transition-all duration-300 cursor-pointer border border-white/15 active:scale-95"
+                  >
+                    <span className="text-white text-sm leading-none">❖</span>
+                    <span>Let&apos;s work together</span>
+                  </button>
                 </div>
-                <span className="text-[11px] font-mono font-semibold text-orange-600 shrink-0">
-                  {Math.round(scrollProgress)}%
+
+                {/* Right Side: Editorial Manifesto */}
+                <div className="max-w-xl lg:text-right space-y-3">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-light text-white leading-relaxed drop-shadow-sm">
+                    We provide institutional-grade academic excellence and a hands-on approach.
+                  </p>
+                  <p className="text-xs sm:text-sm lg:text-base text-white/90 font-light leading-relaxed">
+                    Underpinning all of our disciplines is an understanding of industry demand,
+                    student potential, and experiential training, so that academic pathways and
+                    degrees remain meaningful and relevant over time.
+                  </p>
+                  <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300/90 pt-1">
+                    Affiliated to Alagappa University &bull; Admissions 2026&ndash;2027
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ========================================================================= */}
+          {/* PHASE 2: "03 OUR VISION" (Left 50% on desktop, bottom 60% on mobile)      */}
+          {/* Strictly w-full lg:w-1/2 lg:max-w-[50%] so it NEVER covers the right image*/}
+          {/* Signature website color combos: #111111 + text-gradient-title (#ea580c)   */}
+          {/* ========================================================================= */}
+          <div
+            className={`w-full lg:w-1/2 lg:max-w-[50%] h-[60%] lg:h-full flex flex-col justify-between pt-5 sm:pt-8 lg:pt-36 pb-6 sm:pb-8 lg:pb-16 px-6 sm:px-10 lg:px-12 xl:px-16 bg-[#faf8f5] z-10 shrink-0 transition-opacity duration-300 ${
+              isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+          >
+            {/* 1. Top-Left: 03 OUR VISION Eyebrow with Alagappa Badge */}
+            <div className="flex items-center justify-between gap-3 shrink-0">
+              <div className="flex items-center gap-3 text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-stone-500">
+                <span className="font-bold text-orange-600">03</span>
+                <span className="w-8 h-px bg-stone-300" />
+                <h2 className="font-semibold text-stone-900 tracking-[0.22em]">OUR VISION</h2>
+              </div>
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-orange-100/70 text-orange-800 border border-orange-200/60">
+                Alagappa University
+              </span>
+            </div>
+
+            {/* 2 & 3. Middle Body: Monumental Title with Signature Gradient Combo & Description */}
+            <div className="my-auto py-2 sm:py-4 lg:py-6 space-y-3 sm:space-y-5 max-w-xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIdx}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-3 sm:space-y-5"
+                >
+                  {/* Giant Headline: Solid Deep Black (#111111) + Signature Orange-to-Rose Gradient Highlight */}
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-manrope font-extrabold tracking-tight text-[#111111] leading-[1.08]">
+                    {activeItem.prefix}{' '}
+                    <span className="text-gradient-title">{activeItem.highlight}</span>
+                  </h3>
+
+                  {/* Editorial Description: Dark Charcoal (#333333) with high contrast */}
+                  <p className="text-xs sm:text-sm lg:text-base xl:text-lg text-[#333333] font-normal leading-relaxed">
+                    {activeItem.description}
+                  </p>
+
+                  {/* Clean curriculum detail link */}
+                  <div className="pt-1">
+                    <button
+                      onClick={handleOpenCurriculum}
+                      className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-semibold text-stone-900 hover:text-orange-600 transition-colors cursor-pointer group"
+                    >
+                      <span>Explore Syllabus &amp; Degrees</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-orange-600" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* 4. Bottom Row: Telha Clarke Floating Black Pill + Slide Dots */}
+            <div className="flex items-center justify-between gap-4 shrink-0 pt-3 sm:pt-4 border-t border-stone-200/80">
+              <button
+                onClick={handleOpenApply}
+                className="inline-flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-lg bg-black hover:bg-stone-800 text-white text-xs font-mono font-medium tracking-wide shadow-xl transition-all duration-300 cursor-pointer border border-white/10 shrink-0 active:scale-95"
+              >
+                <span className="text-white text-sm leading-none">❖</span>
+                <span>Let&apos;s work together</span>
+              </button>
+
+              {/* Minimalist Slide Progress Dots with Gradient Active Dot */}
+              <div className="flex items-center gap-1.5">
+                {REFINED_DEPARTMENTS.map((dept, idx) => (
+                  <button
+                    key={dept.id}
+                    onClick={() => scrollToDepartment(idx)}
+                    aria-label={`Jump to ${dept.fullName}`}
+                    className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                      activeIdx === idx
+                        ? 'w-6 sm:w-7 bg-gradient-to-r from-orange-600 to-rose-600 shadow-xs'
+                        : 'w-1.5 sm:w-2 bg-stone-300 hover:bg-stone-400'
+                    }`}
+                  />
+                ))}
+                <span className="text-xs font-mono text-stone-500 ml-2">
+                  0{activeIdx + 1} / 0{REFINED_DEPARTMENTS.length}
                 </span>
               </div>
             </div>
           </div>
-        ) : (
-          /* ========================================================= */
-          /* GRID VIEW: COMPREHENSIVE 2/3 COLUMN DEPARTMENT SHOWCASE   */
-          /* ========================================================= */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {DEPARTMENTS.map((dept, idx) => {
-              const formattedNum = String(idx + 1).padStart(2, '0');
-              return (
-                <motion.div
-                  key={dept.id}
-                  initial={{ opacity: 0, y: 26 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{
-                    duration: 0.55,
-                    delay: idx * 0.08,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="flex flex-col justify-between bg-white rounded-3xl border border-stone-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_48px_rgba(255,118,0,0.12)] hover:border-orange-500/50 transition-all duration-500 overflow-hidden group"
-                >
-                  {/* Top Image Showcase */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
-                    <img
-                      src={dept.image}
-                      alt={dept.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/25 to-transparent pointer-events-none" />
 
-                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-3 pointer-events-none z-10">
-                      <span className="font-mono font-bold text-xs text-stone-900 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-stone-200 shadow-sm">
-                        {formattedNum}
-                      </span>
-                      <span className="font-mono font-semibold text-xs text-orange-200 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-orange-400/30">
-                        Section {dept.code}
-                      </span>
-                    </div>
+        </div>
+      </div>
 
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-white text-xs font-mono pointer-events-none z-10">
-                      <span className="text-amber-300 font-semibold bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-md border border-white/10 line-clamp-1">
-                        {dept.durationSummary}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 space-y-5">
-                    <div className="space-y-3.5">
-                      <div className="text-xs text-stone-500 font-mono tracking-wide">
-                        <span className="text-orange-600 font-semibold mr-1.5">&bull;</span>
-                        <span>Eligibility: {dept.eligibilitySummary}</span>
-                      </div>
-
-                      <h3 className="text-xl sm:text-2xl font-manrope font-bold text-stone-900 group-hover:text-orange-600 transition-colors duration-300 leading-snug">
-                        {dept.name}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed line-clamp-3">
-                        {dept.description}
-                      </p>
-
-                      <div className="bg-[#fcfbf9] p-3.5 border border-stone-200/80 rounded-2xl text-xs space-y-1.5">
-                        <span className="font-mono uppercase tracking-wider text-orange-700 font-bold text-[11px] block">
-                          Programs Offered
-                        </span>
-                        <ul className="text-stone-700 space-y-1">
-                          {dept.degrees.map((deg, degIdx) => (
-                            <li key={degIdx} className="flex items-start gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0 mt-1.5" />
-                              <span className="font-medium text-stone-800 text-[11px] leading-tight">
-                                {deg}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="pt-3 border-t border-stone-100 flex items-center gap-2.5">
-                      <button
-                        onClick={() => onSelectDepartment(dept)}
-                        className="flex-1 py-3 px-3 bg-stone-950 hover:bg-orange-600 text-white text-xs uppercase tracking-wider font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
-                      >
-                        <BookOpen className="w-3.5 h-3.5" />
-                        <span>Details</span>
-                      </button>
-                      <button
-                        onClick={() => onApplyForDepartment(dept.name)}
-                        className="py-3 px-3.5 border border-stone-300 hover:border-orange-500 hover:text-orange-600 text-stone-800 text-xs uppercase tracking-wider font-semibold rounded-xl transition-all duration-300 hover:bg-orange-50/50 flex items-center gap-1 cursor-pointer"
-                      >
-                        <span>Inquire</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* QUICK-REFERENCE PROGRAM MATRIX (SECTION 3)                */}
-        {/* Preserved with all Prospectus data & Peachweb styling     */}
-        {/* ========================================================= */}
-        <div className="mt-24 pt-16 border-t border-stone-200/80">
+      {/* ========================================================================= */}
+      {/* SECTION 4: ACADEMIC SPECIFICATION GUIDE TABLE                             */}
+      {/* Warm Cream (#faf8f5) Backdrop, Minimalist Table & Full Prospectus Specs   */}
+      {/* ========================================================================= */}
+      <div className="bg-[#faf8f5] text-stone-900 px-6 sm:px-10 lg:px-20 py-20 border-t border-stone-200/80">
+        <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div className="space-y-3">
-              <ScrollEyebrow delay={0.04} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-800 text-xs font-mono uppercase tracking-widest font-semibold">
-                <Table className="w-3.5 h-3.5 text-amber-600" />
-                <span>3. ACADEMIC SPECIFICATION GUIDE</span>
+              <ScrollEyebrow delay={0.04} className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-stone-500">
+                <span className="text-amber-600 font-bold text-sm">04</span>
+                <span className="w-8 h-px bg-stone-300" />
+                <span className="text-stone-800 font-semibold flex items-center gap-1.5">
+                  <Table className="w-3.5 h-3.5 text-amber-600" />
+                  ACADEMIC SPECIFICATION GUIDE
+                </span>
               </ScrollEyebrow>
               <ScrollHeading as="h3" delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
                 Program Duration &amp;{' '}
-                <span className="text-gradient-accent">Entry Eligibility Guide</span>
+                <span className="text-gradient-title">
+                  Entry Eligibility Guide
+                </span>
               </ScrollHeading>
             </div>
             <ScrollAction delay={0.2} className="self-start md:self-end">
-              <p className="text-xs font-mono text-stone-500 bg-white border border-stone-200/90 px-3 py-1.5 rounded-full shadow-2xs">
-                2026–2027 Academic Prospectus &bull; Pages 3–4
+              <p className="text-xs font-mono text-stone-500 bg-white border border-stone-200/90 px-3.5 py-1.5 rounded-full shadow-2xs">
+                2026&ndash;2027 Academic Prospectus &bull; Pages 3&ndash;4
               </p>
             </ScrollAction>
           </div>
 
-          {/* Matrix Table */}
           <div className="overflow-x-auto border border-stone-200/90 rounded-2xl bg-white shadow-xs">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>

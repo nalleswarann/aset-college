@@ -119,20 +119,22 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* ========================================================= */}
         {/* SECTION HEADER: Title & Curatorial Guidance               */}
         {/* ========================================================= */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20 space-y-3.5">
-          <ScrollEyebrow delay={0.04} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200/80 text-xs font-inter font-semibold text-red-900 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-            <span className="uppercase tracking-wider">Step-by-Step Admissions Pathway</span>
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-16 space-y-3">
+          <ScrollEyebrow delay={0.04} className="flex items-center justify-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+            <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
+              STEP-BY-STEP ADMISSIONS PATHWAY
+            </span>
           </ScrollEyebrow>
 
           <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
             Your Step-by-Step Pathway to{' '}
-            <span className="text-gradient-accent">
+            <span className="text-gradient-title">
               ASET Excellence
             </span>
           </ScrollHeading>
 
-          <ScrollParagraph delay={0.2} className="text-xs sm:text-sm md:text-base text-stone-600 leading-relaxed font-sans max-w-2xl mx-auto">
+          <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-600 leading-relaxed font-sans max-w-2xl mx-auto">
             From eligibility verification to official enrollment confirmation, our streamlined admission journey ensures personal academic mentorship and career-aligned guidance every step of the way.
           </ScrollParagraph>
 

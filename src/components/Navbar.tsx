@@ -57,20 +57,66 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeSection,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileExpandedAccordion, setMobileExpandedAccordion] = useState<string | null>(null);
 
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastScrollYRef = useRef(0);
 
-  // Track window scroll for subtle navbar elevation
+  // Track window scroll direction: Hide on scroll down, show on scroll up
+  // Fully responsive with requestAnimationFrame and micro-jitter threshold
   useEffect(() => {
+    let ticking = false;
+    const threshold = 8; // Minimum scroll delta before toggling visibility
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = Math.max(0, window.scrollY);
+
+          // Subtle elevation styling when scrolled
+          setIsScrolled(currentScrollY > 20);
+
+          // If mobile menu is open, keep navbar visible
+          if (mobileMenuOpen) {
+            setIsVisible(true);
+            lastScrollYRef.current = currentScrollY;
+            ticking = false;
+            return;
+          }
+
+          // Always show navbar at the very top of the page
+          if (currentScrollY <= 60) {
+            setIsVisible(true);
+            lastScrollYRef.current = currentScrollY;
+            ticking = false;
+            return;
+          }
+
+          const diff = currentScrollY - lastScrollYRef.current;
+
+          // Scrolling DOWN -> hide navbar and close active mega-menus
+          if (diff > threshold) {
+            setIsVisible(false);
+            setActiveMenu(null);
+          }
+          // Scrolling UP -> reveal navbar smoothly
+          else if (diff < -threshold) {
+            setIsVisible(true);
+          }
+
+          lastScrollYRef.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileMenuOpen]);
 
   // Close menus on Escape key
   useEffect(() => {
@@ -331,49 +377,56 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* ========================================================= */}
       {/* TOP NAVIGATION BAR CONTAINER (Fixed Header with entrance)   */}
+      {/* Morphs into a floating glassmorphism pill with border       */}
+      {/* radius when scrolled, responsive across all devices         */}
       {/* ========================================================= */}
       <motion.header
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 font-manrope ${activeMenu !== null
-          ? 'bg-transparent py-4 sm:py-5'
-          : isScrolled
-            ? 'bg-[#001733]/90 backdrop-blur-2xl border-b border-white/10 py-3 shadow-[0_16px_40px_rgba(0,10,28,0.5)]'
-            : 'bg-transparent py-4 sm:py-5'
-          }`}
+        initial={{ y: -40, opacity: 0 }}
+        animate={{
+          y: isVisible ? 0 : -130,
+          opacity: isVisible ? 1 : 0,
+        }}
+        transition={{
+          y: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+          opacity: { duration: 0.22, ease: 'easeInOut' },
+        }}
+        className={`fixed top-0 left-0 right-0 z-50 font-manrope pointer-events-none transition-[padding] duration-300 ${
+          isScrolled
+            ? 'pt-2.5 sm:pt-4 px-3 sm:px-6 lg:px-8'
+            : 'pt-3.5 sm:pt-5 px-4 sm:px-6 lg:px-8'
+        }`}
       >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`relative max-w-7xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            isVisible ? 'pointer-events-auto' : 'pointer-events-none'
+          } ${
+            isScrolled
+              ? 'bg-stone-950/60 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full border border-white/20 shadow-[0_16px_40px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] py-2 sm:py-2.5 px-3.5 sm:px-6 ring-1 ring-white/10'
+              : 'bg-transparent py-1 sm:py-2 px-0'
+          }`}
+        >
           <div className="flex items-center justify-between gap-4 lg:gap-6">
             {/* ===================================================== */}
-            {/* Left Brand: ASET College Logo & Name                  */}
+            {/* Left Brand: ASET College Logo Pill (Clean without redundant text) */}
             {/* ===================================================== */}
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="group flex items-center gap-3 text-white tracking-tight whitespace-nowrap shrink-0 cursor-pointer select-none"
-              aria-label="ASET College of Science & Technology"
+              className="group flex items-center text-white tracking-tight whitespace-nowrap shrink-0 cursor-pointer select-none"
+              aria-label="ASET College"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className="bg-white/12 hover:bg-white/20 px-3 py-1.5 rounded-full border border-white/25 backdrop-blur-xl shadow-sm flex items-center justify-center"
+                className="bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-full border border-white/25 backdrop-blur-xl shadow-sm flex items-center justify-center"
               >
                 <img
                   src={asetLogo}
                   alt="ASET College"
-                  className="h-8 sm:h-9 w-auto object-contain brightness-105"
+                  className="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-105"
                 />
               </motion.div>
-              <div className="flex flex-col">
-                <span className="font-manrope text-base sm:text-lg font-bold tracking-tight text-white leading-tight">
-                  ASET College
-                </span>
-                <span className="text-[10px] font-sans tracking-widest text-white/70 uppercase">
-                  Science &amp; Technology
-                </span>
-              </div>
             </a>
 
             {/* ===================================================== */}
@@ -440,40 +493,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             </nav>
 
             {/* ===================================================== */}
-            {/* Right Action: Pure White Pill "Contact ↗" Button      */}
-            {/* Smooth spring micro-interaction                       */}
+            {/* Right Action: Contact Pill & Hamburger Menu Button    */}
             {/* ===================================================== */}
-            <div className="hidden sm:flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              {/* Contact Pill Button (Always visible on all screens) */}
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 onClick={handleContactClick}
-                className="group inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold text-stone-950 bg-white hover:bg-stone-50 transition-colors rounded-full shadow-lg shadow-black/20 whitespace-nowrap cursor-pointer border border-white"
+                className="group inline-flex items-center gap-1 sm:gap-1.5 px-3.5 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-stone-950 bg-white hover:bg-stone-50 transition-all rounded-full shadow-lg shadow-black/20 whitespace-nowrap cursor-pointer border border-white shrink-0"
               >
                 <span>Contact</span>
-                <ArrowUpRight className="w-4 h-4 text-stone-900 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </motion.button>
-            </div>
-
-            {/* ===================================================== */}
-            {/* Mobile Controls (Menu Toggle & Compact Pill CTA)      */}
-            {/* ===================================================== */}
-            <div className="flex lg:hidden items-center gap-2">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={handleContactClick}
-                className="sm:hidden inline-flex items-center gap-1 px-3.5 py-1.5 text-xs font-bold text-stone-950 bg-white rounded-full shadow-md"
-              >
-                <span>Contact</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-900 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </motion.button>
 
+              {/* Hamburger Menu Icon (Always visible on mobile & tablet, hidden on lg desktop) */}
               <motion.button
                 whileTap={{ scale: 0.92 }}
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-white hover:text-stone-200 rounded-full hover:bg-white/10 transition-colors focus:outline-hidden cursor-pointer"
+                className="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-white rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 border border-white/25 backdrop-blur-md shadow-sm transition-all focus:outline-hidden cursor-pointer shrink-0"
                 aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileMenuOpen}
               >
@@ -481,7 +521,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  {mobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
                 </motion.div>
               </motion.button>
             </div>
@@ -658,12 +698,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center justify-between p-4 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <img src={asetLogo} alt="ASET College" className="h-7 w-auto object-contain" />
-                <span className="font-manrope font-bold text-white text-base">ASET College</span>
               </div>
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-stone-300 hover:text-white rounded-full bg-white/10"
+                className="p-2 text-stone-300 hover:text-white rounded-full bg-white/10 cursor-pointer"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />

@@ -43,20 +43,22 @@ export const AboutSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Curatorial Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-stone-200">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2 text-xs uppercase tracking-widest font-mono text-amber-900">
-              <Landmark className="w-3.5 h-3.5" />
-              <span>1. Institutional Overview &amp; Recognition</span>
+            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+              <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
+                INSTITUTIONAL OVERVIEW &amp; RECOGNITION
+              </span>
             </ScrollEyebrow>
             <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
               Career-Focused Higher Education Across{' '}
-              <span className="text-gradient-accent">Chennai &amp; Coimbatore</span>
+              <span className="text-gradient-title">Chennai &amp; Coimbatore</span>
             </ScrollHeading>
           </div>
-          <ScrollParagraph delay={0.22} className="text-sm text-stone-600 max-w-md leading-relaxed self-start md:self-end">
+          <ScrollParagraph delay={0.22} className="text-sm sm:text-base text-stone-600 max-w-md leading-relaxed self-start md:self-end">
             Academically supported by Alagappa University · Official Website:{' '}
-            <span className="font-mono text-stone-900">www.asetcollege.ac.in</span>
+            <span className="font-mono text-stone-900 font-semibold">www.asetcollege.ac.in</span>
           </ScrollParagraph>
         </div>
 

@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 import asetAeroplane from '../assets/images/aset-aeroplane.png';
 import asetAviationStudents from '../assets/images/aset-aviation-students.png';
+import skyVideo from '../assets/videos/sky-video-banner.mp4';
 
 interface AsetHeroBannerProps {
   onOpenVirtualTour?: () => void;
@@ -11,6 +12,16 @@ interface AsetHeroBannerProps {
 
 export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
   const containerRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Guarantee seamless video playback across mobile & desktop browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Fallback for strict browser autoplay policies
+      });
+    }
+  }, []);
 
   // Track scroll progress through this hero section
   const { scrollYProgress } = useScroll({
@@ -68,36 +79,30 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     [0.85, 1, 1, 0]
   );
 
-  // Dark blue gradient overlay deepens smoothly as next section approaches
-  const overlayOpacity = useTransform(smoothProgress, [0, 0.8], [0.2, 0.85]);
-
   return (
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[175vh] bg-[#001428]"
+      className="relative w-full h-[175vh] bg-black"
     >
       {/* Sticky 100vh Hero Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
-        {/* Layer 0: Deep Cobalt to Royal Navy Blue Gradient Atmosphere */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-[#001733] via-[#003B67] to-[#002244]"
-        />
-
-        {/* Ambient Radial Glow & Studio Rim Lighting */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_38%,rgba(74,144,194,0.42),rgba(0,38,77,0.72)_55%,rgba(0,18,40,0.96)_100%)] pointer-events-none"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute -top-1/4 -right-1/4 w-[85vw] h-[85vh] rounded-full bg-gradient-to-br from-sky-400/25 via-blue-600/12 to-transparent blur-3xl pointer-events-none"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] rounded-full bg-amber-400/10 blur-3xl pointer-events-none"
-        />
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
+        {/* Layer 0: High-Definition Sky Video Background (Pure video background with zero dark blue tint) */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/videos/sky-banner-poster.jpg"
+            className="w-full h-full object-cover object-center pointer-events-none select-none"
+          >
+            <source src={skyVideo} type="video/mp4" />
+            <source src="/videos/sky-video-banner.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         {/* Layer 1: Screen-Wide Edge-to-Edge "ASET" Typography Placed at Bottom */}
         <div
@@ -121,13 +126,13 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
               <defs>
                 <linearGradient id="asetWideGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="38%" stopColor="#E6F2FC" />
-                  <stop offset="100%" stopColor="#7EBAE8" />
+                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                  <stop offset="100%" stopColor="#E2F0FD" stopOpacity="0.88" />
                 </linearGradient>
 
                 <filter id="asetWideShadow" x="-15%" y="-15%" width="130%" height="130%">
-                  <feDropShadow dx="0" dy="24" stdDeviation="32" floodColor="#000e26" floodOpacity="0.85" />
-                  <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#002244" floodOpacity="0.65" />
+                  <feDropShadow dx="0" dy="18" stdDeviation="24" floodColor="#000000" floodOpacity="0.45" />
+                  <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000000" floodOpacity="0.3" />
                 </filter>
               </defs>
 
@@ -141,7 +146,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
                 fontWeight="900"
                 fontSize="650"
                 fill="url(#asetWideGrad)"
-                stroke="rgba(255, 255, 255, 0.45)"
+                stroke="rgba(255, 255, 255, 0.55)"
                 strokeWidth="2.5"
                 filter="url(#asetWideShadow)"
                 style={{
@@ -170,24 +175,18 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             {/* Aerodynamic Jet Engine Contrails (Left & Right Engines) */}
             <div
               aria-hidden="true"
-              className="absolute right-[80%] top-[56%] w-28 sm:w-44 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/40 via-sky-300/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[80%] top-[56%] w-28 sm:w-44 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
             <div
               aria-hidden="true"
-              className="absolute right-[78%] top-[68%] w-24 sm:w-36 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/30 via-sky-300/18 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
-            />
-
-            {/* Subtle Turbine Glow */}
-            <div
-              aria-hidden="true"
-              className="absolute right-[77%] top-[58%] w-6 h-6 rounded-full bg-sky-300/30 blur-sm pointer-events-none"
+              className="absolute right-[78%] top-[68%] w-24 sm:w-36 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
 
             {/* Aeroplane Cutout Image */}
             <img
               src={asetAeroplane}
               alt="ASET Aviation Commercial Aeroplane"
-              className="w-[180px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_18px_32px_rgba(0,10,28,0.75)]"
+              className="w-[180px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
             />
           </div>
         </motion.div>
@@ -205,24 +204,10 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             <img
               src={asetAviationStudents}
               alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[64vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_34px_58px_rgba(0,10,28,0.85)]"
+              className="w-full h-auto max-h-[64vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
             />
-            {/* Subtle soft grounding shadow beneath waist */}
-            <div className="absolute inset-x-8 bottom-0 h-14 bg-gradient-to-t from-[#001428] to-transparent pointer-events-none" />
           </div>
         </motion.div>
-
-        {/* Layer 3: Scroll-Linked Contrast Scrim over Stage */}
-        <motion.div
-          style={{ opacity: overlayOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-[#001428]/25 via-transparent to-[#001428]/95 pointer-events-none z-20"
-        />
-
-        {/* Layer 4: Peripheral Film Vignette */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,18,40,0.7)_100%)] pointer-events-none z-20"
-        />
       </div>
     </section>
   );
