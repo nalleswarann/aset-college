@@ -154,67 +154,70 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
         </div>
 
         {/* ========================================================= */}
-        {/* 2. HIGH-VISIBILITY PARTNER LOGO MARQUEE RIBBON           */}
-        {/* Exactly matching reference screenshot with crisp clarity  */}
+        {/* 2. HIGH-VISIBILITY PARTNER LOGO MARQUEE (WIDE SCREEN, NO BOXES) */}
+        {/* Clean edge-to-edge ticker with pure logos on canvas background */}
         {/* ========================================================= */}
-        <div className="relative rounded-2xl sm:rounded-3xl bg-white/95 border border-stone-200/90 p-5 sm:p-7 shadow-[0_16px_50px_-20px_rgba(0,0,0,0.08)] overflow-hidden">
-          {/* Subtle Ambient Background Highlight */}
-          <div
-            aria-hidden="true"
-            className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-orange-500/5 blur-3xl pointer-events-none"
-          />
+        <div className="w-full space-y-4 sm:space-y-6">
+          {/* Header Label Row (Unboxed) */}
+          <div className="flex items-center justify-between px-1 sm:px-2">
+            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] uppercase text-stone-500 flex items-center gap-2">
+              <Briefcase className="w-3.5 h-3.5 text-orange-600" />
+              <span>Verified Recruitment Networks &amp; Corporate Consortia</span>
+            </span>
+            <span className="text-[11px] sm:text-xs font-mono text-orange-600 font-bold tracking-wider">
+              500+ Active Recruiters
+            </span>
+          </div>
 
-          <div className="relative z-10 space-y-4 sm:space-y-5">
-            {/* Ribbon Category Label */}
-            <div className="flex items-center justify-between px-2">
-              <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase text-stone-500 flex items-center gap-2">
-                <Briefcase className="w-3.5 h-3.5 text-orange-600" />
-                <span>Verified Recruitment Networks &amp; Corporate Consortia</span>
-              </span>
-              <span className="text-[11px] sm:text-xs font-mono text-orange-600 font-bold">
-                500+ Active Recruiters
-              </span>
-            </div>
-
-            {/* Track 1: Smooth Left Scrolling Ticker (Matching Screenshot) */}
-            <div className="overflow-hidden relative w-full py-1">
-              <div className="animate-marquee-left-seamless flex items-center gap-4 sm:gap-6">
-                {[...PLACEMENT_LOGOS_ROW_1, ...PLACEMENT_LOGOS_ROW_1, ...PLACEMENT_LOGOS_ROW_1].map(
-                  (item, idx) => (
-                    <div
-                      key={`p1-${item.name}-${idx}`}
-                      className="group flex items-center justify-center h-18 sm:h-22 px-6 sm:px-8 rounded-xl sm:rounded-2xl bg-stone-50/90 hover:bg-white border border-stone-200/80 hover:border-orange-500/40 hover:shadow-md transition-all duration-300 shrink-0 cursor-default"
-                      title={item.name}
-                    >
-                      <img
-                        src={item.logo}
-                        alt={item.name}
-                        className="max-h-8 sm:max-h-10 md:max-h-11 w-auto max-w-[130px] sm:max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  )
-                )}
+          {/* Full-bleed Wide Running Marquee (Zero Boxes, Pure Logos) */}
+          <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-3 sm:py-5 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+            {/* Track 1: Smooth Left Scrolling Ticker */}
+            <div className="overflow-hidden relative w-full py-2">
+              <div className="animate-marquee-left-seamless flex items-center">
+                {[
+                  ...PLACEMENT_LOGOS_ROW_1,
+                  ...PLACEMENT_LOGOS_ROW_1,
+                  ...PLACEMENT_LOGOS_ROW_1,
+                  ...PLACEMENT_LOGOS_ROW_1,
+                ].map((item, idx) => (
+                  <div
+                    key={`p1-${item.name}-${idx}`}
+                    className="flex items-center justify-center shrink-0 px-6 sm:px-10 md:px-14 select-none group cursor-default"
+                    title={item.name}
+                  >
+                    <img
+                      src={item.logo}
+                      alt={item.name}
+                      className="h-8 sm:h-10 md:h-12 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[200px] object-contain transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Track 2: Complementary Right Scrolling Ticker for Depth */}
-            <div className="overflow-hidden relative w-full py-1">
-              <div className="animate-marquee-right-seamless flex items-center gap-4 sm:gap-6">
-                {[...PLACEMENT_LOGOS_ROW_2, ...PLACEMENT_LOGOS_ROW_2, ...PLACEMENT_LOGOS_ROW_2].map(
-                  (item, idx) => (
-                    <div
-                      key={`p2-${item.name}-${idx}`}
-                      className="group flex items-center justify-center h-18 sm:h-22 px-6 sm:px-8 rounded-xl sm:rounded-2xl bg-stone-50/90 hover:bg-white border border-stone-200/80 hover:border-orange-500/40 hover:shadow-md transition-all duration-300 shrink-0 cursor-default"
-                      title={item.name}
-                    >
-                      <img
-                        src={item.logo}
-                        alt={item.name}
-                        className="max-h-8 sm:max-h-10 md:max-h-11 w-auto max-w-[130px] sm:max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  )
-                )}
+            {/* Track 2: Smooth Right Scrolling Ticker */}
+            <div className="overflow-hidden relative w-full py-2">
+              <div className="animate-marquee-right-seamless flex items-center">
+                {[
+                  ...PLACEMENT_LOGOS_ROW_2,
+                  ...PLACEMENT_LOGOS_ROW_2,
+                  ...PLACEMENT_LOGOS_ROW_2,
+                  ...PLACEMENT_LOGOS_ROW_2,
+                ].map((item, idx) => (
+                  <div
+                    key={`p2-${item.name}-${idx}`}
+                    className="flex items-center justify-center shrink-0 px-6 sm:px-10 md:px-14 select-none group cursor-default"
+                    title={item.name}
+                  >
+                    <img
+                      src={item.logo}
+                      alt={item.name}
+                      className="h-8 sm:h-10 md:h-12 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[200px] object-contain transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
