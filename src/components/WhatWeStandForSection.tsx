@@ -211,14 +211,14 @@ export const WhatWeStandForSection: React.FC = () => {
                   {/* Column 1: Index Number + Value Title (5 cols) */}
                   <div className="col-span-5 flex items-baseline gap-4 lg:gap-6">
                     <span
-                      className={`w-8 shrink-0 font-mono text-xs sm:text-sm font-bold tracking-widest transition-colors duration-300 ${
+                      className={`w-8 shrink-0 font-mono text-xs sm:text-sm font-medium tracking-widest transition-colors duration-300 ${
                         isHovered ? 'text-orange-600' : 'text-stone-400'
                       }`}
                     >
                       {val.number}
                     </span>
                     <h3
-                      className={`text-2xl lg:text-[34px] xl:text-[40px] font-black tracking-tight uppercase leading-none transition-all duration-300 ${
+                      className={`text-2xl lg:text-[32px] xl:text-[36px] font-medium tracking-tight uppercase leading-none transition-all duration-300 ${
                         isHovered
                           ? 'text-gradient-accent translate-x-1.5'
                           : 'text-stone-900'
@@ -251,14 +251,14 @@ export const WhatWeStandForSection: React.FC = () => {
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-baseline gap-3">
                       <span
-                        className={`font-mono text-xs font-bold tracking-widest transition-colors duration-300 ${
+                        className={`font-mono text-xs font-medium tracking-widest transition-colors duration-300 ${
                           isHovered ? 'text-orange-600' : 'text-stone-400'
                         }`}
                       >
                         {val.number}
                       </span>
                       <h3
-                        className={`text-xl sm:text-2xl font-black tracking-tight uppercase transition-all duration-300 ${
+                        className={`text-xl sm:text-2xl font-medium tracking-tight uppercase transition-all duration-300 ${
                           isHovered
                             ? 'text-gradient-accent translate-x-1'
                             : 'text-stone-900'

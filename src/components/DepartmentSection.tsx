@@ -438,10 +438,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
 
                 {/* Right Side: Editorial Department Manifesto */}
                 <div className="max-w-xl lg:text-right space-y-3">
-                  <p className="text-xl sm:text-2xl lg:text-3xl font-light text-white leading-relaxed drop-shadow-sm">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-white leading-relaxed drop-shadow-sm">
                     Specialized academic departments engineered for <span className="font-serif italic font-normal text-amber-200">practical mastery</span> and global careers.
                   </p>
-                  <p className="text-xs sm:text-sm lg:text-base text-white/90 font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm lg:text-base text-white/90 font-normal leading-relaxed">
                     From DGCA flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
                   </p>
                   <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300/90 pt-1">
@@ -486,7 +486,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   className="space-y-3 sm:space-y-5"
                 >
                   {/* Giant Headline: Solid Deep Black (#111111) + Signature Orange-to-Rose Gradient Highlight */}
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-manrope font-extrabold tracking-tight text-[#111111] leading-[1.12]">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-[#111111] leading-[1.12]">
                     {activeItem.prefix}{' '}
                     <span className="text-gradient-title">{activeItem.highlight}</span>
                   </h3>
