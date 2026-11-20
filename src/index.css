@@ -1,80 +1,176 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------
- * Roobert Superfamily Font Declarations (Universal Website Font)
+ * Apple San Francisco (SF Pro) Font Declarations
+ * Universal Apple Typography with native system font delegation
  * Weights: Light (300), Regular (400), Medium (500),
- * SemiBold (600), Bold (700), Heavy/Black (800/900)
+ * Semibold (600), Bold (700), Heavy/Black (800/900)
  * ----------------------------------------------------------- */
 
+/* Light (300) */
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert Light'),
-       local('Roobert-Light'),
-       url('/fonts/RoobertLight.woff') format('woff');
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Light'),
+       local('SF Pro Text Light'),
+       local('SFProDisplay-Light'),
+       url('/fonts/SF-Pro-Text-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert Regular'),
-       local('Roobert-Regular'),
-       local('Roobert'),
-       url('/fonts/RoobertRegular.woff') format('woff');
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Light'),
+       local('SFProDisplay-Light'),
+       url('/fonts/SF-Pro-Text-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Regular (400) */
+@font-face {
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Regular'),
+       local('SF Pro Text Regular'),
+       local('SFProDisplay-Regular'),
+       local('SF Pro'),
+       url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert Medium'),
-       local('Roobert-Medium'),
-       url('/fonts/RoobertMedium.woff') format('woff');
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Regular'),
+       local('SFProDisplay-Regular'),
+       local('SF Pro'),
+       url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Medium (500) */
+@font-face {
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Medium'),
+       local('SF Pro Text Medium'),
+       local('SFProDisplay-Medium'),
+       url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert SemiBold'),
-       local('Roobert-SemiBold'),
-       local('Roobert-Semibold'),
-       url('/fonts/RoobertSemiBold.woff') format('woff');
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Medium'),
+       local('SFProDisplay-Medium'),
+       url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Semibold (600) */
+@font-face {
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Semibold'),
+       local('SF Pro Text Semibold'),
+       local('SFProDisplay-Semibold'),
+       url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert Bold'),
-       local('Roobert-Bold'),
-       url('/fonts/RoobertBold.woff') format('woff');
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Semibold'),
+       local('SFProDisplay-Semibold'),
+       url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold (700) */
+@font-face {
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Bold'),
+       local('SF Pro Text Bold'),
+       local('SFProDisplay-Bold'),
+       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert Heavy'),
-       local('Roobert-Heavy'),
-       local('Roobert Black'),
-       url('/fonts/RoobertHeavy.woff') format('woff');
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Bold'),
+       local('SFProDisplay-Bold'),
+       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Heavy / Black (800 / 900) */
+@font-face {
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Heavy'),
+       local('SF Pro Display Black'),
+       local('SFProDisplay-Black'),
+       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roobert';
-  src: local('Roobert Heavy'),
-       local('Roobert-Heavy'),
-       local('Roobert Black'),
-       url('/fonts/RoobertHeavy.woff') format('woff');
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Heavy'),
+       local('SF Pro Display Black'),
+       local('SFProDisplay-Black'),
+       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  src: local('-apple-system'),
+       local('SF Pro Display Black'),
+       local('SFProDisplay-Black'),
+       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('-apple-system'),
+       local('SF Pro Display Black'),
+       local('SFProDisplay-Black'),
+       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -83,39 +179,41 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-inter: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-manrope: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-lausanne: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-roobert: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-manrope: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-lausanne: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-roobert: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @layer base {
   :root {
-    --font-mono: 'Roobert', sans-serif;
-    --font-inter: 'Roobert', sans-serif;
-    --font-manrope: 'Roobert', sans-serif;
-    --font-lausanne: 'Roobert', sans-serif;
-    --font-roobert: 'Roobert', sans-serif;
-    --font-serif: 'Roobert', sans-serif;
-    --font-monument: 'Roobert', sans-serif;
-    --font-editorial: 'Roobert', sans-serif;
-    --font-body: 'Roobert', sans-serif;
-    --font-sans: 'Roobert', sans-serif;
+    --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-manrope: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-lausanne: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-roobert: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-monument: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-editorial: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
   }
 
   html {
     scroll-padding-top: 84px;
-    font-family: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   body {
-    font-family: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #faf8f5;
     color: #1c1917;
     overflow-x: hidden;
@@ -128,12 +226,12 @@
   h5,
   h6,
   .font-serif-display {
-    font-family: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.02em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: -0.022em;
   }
 }
 
-/* Universal Roobert overrides for all legacy typography classes */
+/* Universal San Francisco overrides for all legacy typography classes */
 .font-monument,
 .font-editorial,
 .font-body,
@@ -148,7 +246,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: 'Roobert', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 
 /* -------------------------------------------------------------
