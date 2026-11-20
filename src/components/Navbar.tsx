@@ -195,16 +195,15 @@ export const Navbar: React.FC<NavbarProps> = ({
       categoryTitle: 'Institutional Heritage & Excellence',
       columns: {
         col1: [
-          { label: 'About ASET College of Science & Technology', href: '#about' },
-          { label: 'Academically Supported by Alagappa University', href: '#about' },
-          { label: 'Dual Campuses: Chennai & Coimbatore', href: '#about' },
-          { label: 'Leadership, Deans & Expert Faculty', href: '#about' },
+          { label: 'Overview', href: '#about' },
+          { label: 'Campuses', href: '#about' },
+          { label: 'Campus Life', href: '#about' },
+          { label: 'Gallery', href: '#about' },
+          { label: 'Student Login', href: '#about' },
+          { label: 'Journel', href: '#about' },
         ],
         col2: [
-          { label: 'Global Network & University Partners (60+)', href: '#sponsors' },
-          { label: 'World-Class Flight Simulators & Safety Labs', href: '#about' },
-          { label: 'Accreditations, UGC Approvals & ISO Status', href: '#about' },
-          { label: 'Campus Infrastructure & Research Centers', href: '#about' },
+
         ],
       },
       featured: {
@@ -390,20 +389,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           y: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
           opacity: { duration: 0.22, ease: 'easeInOut' },
         }}
-        className={`fixed top-0 left-0 right-0 z-50 font-manrope pointer-events-none transition-[padding] duration-300 ${
-          isScrolled
-            ? 'pt-2.5 sm:pt-4 px-3 sm:px-6 lg:px-8'
-            : 'pt-3.5 sm:pt-5 px-4 sm:px-6 lg:px-8'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 font-manrope pointer-events-none transition-[padding] duration-300 ${isScrolled
+          ? 'pt-2.5 sm:pt-4 px-3 sm:px-6 lg:px-8'
+          : 'pt-3.5 sm:pt-5 px-4 sm:px-6 lg:px-8'
+          }`}
       >
         <div
-          className={`relative max-w-7xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            isVisible ? 'pointer-events-auto' : 'pointer-events-none'
-          } ${
-            isScrolled
+          className={`relative max-w-7xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'
+            } ${isScrolled
               ? 'bg-stone-950/60 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full border border-white/20 shadow-[0_16px_40px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] py-2 sm:py-2.5 px-3.5 sm:px-6 ring-1 ring-white/10'
               : 'bg-transparent py-1 sm:py-2 px-0'
-          }`}
+            }`}
         >
           <div className="flex items-center justify-between gap-4 lg:gap-6">
             {/* ===================================================== */}

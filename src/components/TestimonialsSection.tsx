@@ -185,7 +185,7 @@ export const TestimonialsSection: React.FC = () => {
               </span>
             </ScrollEyebrow>
             <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
-              Alumni <span className="text-gradient-title font-serif italic font-normal">Success Stories</span>
+              Alumni <span className="text-gradient-title font-medium">Success Stories</span>
             </ScrollHeading>
           </div>
           <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-600 max-w-md lg:max-w-lg leading-relaxed font-sans self-start md:self-end">
@@ -256,7 +256,7 @@ export const TestimonialsSection: React.FC = () => {
                     exit={{ opacity: 0, x: direction * -16 }}
                     transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <p className="font-serif italic text-lg sm:text-xl lg:text-[22px] font-normal text-stone-100 leading-relaxed tracking-normal select-text">
+                    <p className="text-lg sm:text-xl lg:text-[22px] font-normal text-stone-100 leading-relaxed tracking-normal select-text">
                       &ldquo;{current.quote}&rdquo;
                     </p>
 

@@ -421,8 +421,26 @@
 }
 
 /* -------------------------------------------------------------
- * Weight Normalizers: Balanced 400-500 typography hierarchy
+ * Weight Normalizers & Italic Removal:
+ * Balanced 400-500 typography hierarchy and strictly non-italic
  * ----------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  font-style: normal;
+}
+
+i,
+em,
+cite,
+dfn,
+var,
+address,
+.italic,
+[class*="italic"] {
+  font-style: normal !important;
+}
+
 .font-light,
 .font-thin,
 [class*="font-light"],

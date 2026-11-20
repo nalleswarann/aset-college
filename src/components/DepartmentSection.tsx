@@ -439,7 +439,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 {/* Right Side: Editorial Department Manifesto */}
                 <div className="max-w-xl lg:text-right space-y-3">
                   <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-white leading-relaxed drop-shadow-sm">
-                    Specialized academic departments engineered for <span className="font-serif italic font-normal text-amber-200">practical mastery</span> and global careers.
+                    Specialized academic departments engineered for <span className="font-medium text-amber-200">practical mastery</span> and global careers.
                   </p>
                   <p className="text-xs sm:text-sm lg:text-base text-white/90 font-normal leading-relaxed">
                     From DGCA flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
@@ -570,7 +570,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
             className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-extrabold tracking-tight text-stone-900 text-center leading-tight"
           >
             Program Duration &amp;{' '}
-            <span className="text-gradient-title font-serif italic font-normal">
+            <span className="text-gradient-title font-medium">
               Entry Eligibility Guide
             </span>
           </ScrollHeading>
