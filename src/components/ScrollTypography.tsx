@@ -31,7 +31,7 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
       transition={{
-        duration: 0.45,
+        duration: 0.78,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -71,7 +71,7 @@ export const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
       transition={{
-        duration: 0.45,
+        duration: 0.72,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -108,7 +108,7 @@ export const ScrollEyebrow: React.FC<ScrollEyebrowProps> = ({
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
       transition={{
-        duration: 0.38,
+        duration: 0.6,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -144,7 +144,7 @@ export const ScrollAction: React.FC<ScrollActionProps> = ({
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
       transition={{
-        duration: 0.42,
+        duration: 0.65,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -182,7 +182,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12, margin: '0px 0px -30px 0px' }}
       transition={{
-        duration: 0.45,
+        duration: 0.75,
         delay,
         ease: LUXURY_EASE,
       }}

@@ -63,7 +63,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
     <section
       ref={sectionRef}
       id="admissions-process"
-      className="relative w-full overflow-hidden bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope py-20 sm:py-24 lg:py-32 select-none border-b border-stone-200/90"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-24 lg:py-32 select-none border-b border-stone-200/90"
     >
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Rose Glow   */}

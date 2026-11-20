@@ -154,7 +154,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section
       id="contact"
-      className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope"
+      className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-manrope"
     >
       <div className="max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
