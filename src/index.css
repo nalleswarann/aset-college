@@ -176,11 +176,97 @@
   font-display: swap;
 }
 
+/* -------------------------------------------------------------
+ * MT Baskerville Font Declarations
+ * Luxury Academic & Editorial Serif Accent Typography
+ * Weights: Regular (400), Italic (400), Bold (700)
+ * ----------------------------------------------------------- */
+
+/* Regular (400) */
+@font-face {
+  font-family: 'Baskerville';
+  src: local('Baskerville'),
+       local('Baskerville Regular'),
+       local('Libre Baskerville'),
+       local('Monotype Baskerville'),
+       local('Baskerville Old Face'),
+       url('/fonts/Baskerville-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic (400) */
+@font-face {
+  font-family: 'Baskerville';
+  src: local('Baskerville Italic'),
+       local('Libre Baskerville Italic'),
+       local('Monotype Baskerville Italic'),
+       local('Baskerville Old Face Italic'),
+       url('/fonts/Baskerville-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Bold (700) */
+@font-face {
+  font-family: 'Baskerville';
+  src: local('Baskerville Bold'),
+       local('Libre Baskerville Bold'),
+       local('Monotype Baskerville Bold'),
+       local('Baskerville Old Face Bold'),
+       url('/fonts/Baskerville-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Family aliases for 'MT Baskerville' */
+@font-face {
+  font-family: 'MT Baskerville';
+  src: local('Baskerville'),
+       local('Baskerville Regular'),
+       local('Libre Baskerville'),
+       local('Monotype Baskerville'),
+       local('Baskerville Old Face'),
+       url('/fonts/Baskerville-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MT Baskerville';
+  src: local('Baskerville Italic'),
+       local('Libre Baskerville Italic'),
+       local('Monotype Baskerville Italic'),
+       local('Baskerville Old Face Italic'),
+       url('/fonts/Baskerville-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MT Baskerville';
+  src: local('Baskerville Bold'),
+       local('Libre Baskerville Bold'),
+       local('Monotype Baskerville Bold'),
+       local('Baskerville Old Face Bold'),
+       url('/fonts/Baskerville-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+  --font-baskerville: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+  --font-editorial: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
   --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-manrope: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -197,9 +283,10 @@
     --font-lausanne: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
     --font-roobert: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
     --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-serif: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+    --font-baskerville: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+    --font-editorial: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
     --font-monument: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-editorial: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
     --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
     --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
   }
@@ -224,22 +311,19 @@
   h3,
   h4,
   h5,
-  h6,
-  .font-serif-display {
+  h6 {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: -0.022em;
   }
 }
 
-/* Universal San Francisco overrides for all legacy typography classes */
+/* Universal San Francisco primary UI typography classes */
 .font-monument,
-.font-editorial,
 .font-body,
 .font-manrope,
 .font-lausanne,
 .font-inter,
 .font-sans,
-.font-serif,
 .font-mono,
 [class*="font-mono"],
 code,
@@ -247,6 +331,14 @@ kbd,
 samp,
 pre {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* MT Baskerville Editorial Typography Utilities */
+.font-serif,
+.font-baskerville,
+.font-editorial,
+.font-serif-display {
+  font-family: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif !important;
 }
 
 /* -------------------------------------------------------------

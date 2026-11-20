@@ -524,7 +524,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
             className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-extrabold tracking-tight text-stone-900 text-center leading-tight"
           >
             Program Duration &amp;{' '}
-            <span className="text-gradient-title">
+            <span className="text-gradient-title font-serif italic font-normal">
               Entry Eligibility Guide
             </span>
           </ScrollHeading>

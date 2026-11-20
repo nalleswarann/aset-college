@@ -143,7 +143,7 @@ export const WhatWeStandForSection: React.FC = () => {
               delay={0.12}
               className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight"
             >
-              What We <span className="text-gradient-title">Stand For</span>
+              What We <span className="text-gradient-title font-serif italic font-normal">Stand For</span>
             </ScrollHeading>
           </div>
 

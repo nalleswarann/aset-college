@@ -67,9 +67,9 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-6 space-y-6">
             <ScrollHeading as="h3" delay={0.08} className="text-2xl font-manrope font-semibold text-stone-900">
               Industry-Aligned Pathways Backed by{' '}
-              <span className="text-gradient-accent">Strong Foundations</span>
+              <span className="text-gradient-accent font-serif italic font-normal">Strong Foundations</span>
             </ScrollHeading>
-            <ScrollParagraph delay={0.16} className="text-stone-700 text-base sm:text-lg leading-relaxed first-letter:text-6xl first-letter:font-serif first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:text-amber-950">
+            <ScrollParagraph delay={0.16} className="text-stone-700 text-base sm:text-lg leading-relaxed first-letter:text-6xl first-letter:font-serif first-letter:font-normal first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:text-amber-950">
               ASET College is a career-focused higher education institution offering industry-aligned undergraduate, postgraduate, diploma, and professional programs across Aviation, Fire &amp; Industrial Safety, Logistics &amp; Shipping, Business Analytics, Management, Commerce, Hospitality, and Artificial Intelligence. With established campuses in Chennai and Coimbatore, ASET integrates classroom instruction with hands-on practical training, industry interaction, internships, and structured career development.
             </ScrollParagraph>
             <ScrollParagraph delay={0.24} className="text-stone-700 text-base leading-relaxed">
@@ -82,8 +82,8 @@ export const AboutSection: React.FC = () => {
                 <Award className="w-4 h-4" />
                 <span>National &amp; International Recognition</span>
               </div>
-              <p className="text-sm text-stone-800 leading-relaxed font-sans">
-                Recognized as <strong>India&apos;s No. 1 Institution for Innovative Course</strong> at the International Innovative Summit &amp; Awards, organised by Elevate Global Forums in collaboration with IIMSAM–UN ECOSOC.
+              <p className="text-sm sm:text-[15px] text-stone-800 leading-relaxed font-serif italic">
+                &ldquo;Recognized as <strong className="font-sans font-bold not-italic">India&apos;s No. 1 Institution for Innovative Course</strong> at the International Innovative Summit &amp; Awards, organised by Elevate Global Forums in collaboration with IIMSAM–UN ECOSOC.&rdquo;
               </p>
             </ScrollAction>
           </div>

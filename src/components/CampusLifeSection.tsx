@@ -127,7 +127,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
               delay={0.12}
               className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight"
             >
-              Our Placement <span className="text-gradient-title">Partners</span>
+              Our Placement <span className="text-gradient-title font-serif italic font-normal">Partners</span>
             </ScrollHeading>
           </div>
 

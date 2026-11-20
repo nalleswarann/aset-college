@@ -129,7 +129,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
 
           <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
             Your Step-by-Step Pathway to{' '}
-            <span className="text-gradient-title">
+            <span className="text-gradient-title font-serif italic font-normal">
               ASET Excellence
             </span>
           </ScrollHeading>
