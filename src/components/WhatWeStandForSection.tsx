@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ScrollHeading, ScrollParagraph } from './ScrollTypography';
+import { ScrollHeading, ScrollParagraph, ScrollEyebrow, LUXURY_EASE } from './ScrollTypography';
 
 interface ValueItem {
   number: string;
@@ -36,8 +36,8 @@ const VALUES_DATA: ValueItem[] = [
 ];
 
 /* -------------------------------------------------------------
- * 5x5 Dot Matrix Grid (Matching reference screenshot exactly)
- * Dynamically illuminates in the website's orange-to-rose gradient
+ * 5x5 Dot Matrix Grid (Faithfully matching reference design)
+ * Dynamically illuminates with a rhythmic wave in warm gradient
  * ----------------------------------------------------------- */
 const DotMatrix: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
   return (
@@ -45,27 +45,33 @@ const DotMatrix: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
       aria-hidden="true"
       className="grid grid-cols-5 gap-1.5 p-1 select-none pointer-events-none"
     >
-      {Array.from({ length: 25 }).map((_, i) => (
-        <motion.div
-          key={i}
-          animate={{
-            opacity: isHovered ? (i % 2 === 0 ? 1 : 0.7) : 0.28,
-            scale: isHovered ? (i % 2 === 0 ? 1.3 : 1.05) : 1,
-            backgroundColor: isHovered
-              ? i % 3 === 0
-                ? '#ea580c'
-                : i % 3 === 1
-                ? '#f97316'
-                : '#e1144b'
-              : '#d6d3d1',
-          }}
-          transition={{
-            duration: 0.25,
-            delay: isHovered ? (i % 5) * 0.02 : 0,
-          }}
-          className="w-1.5 h-1.5 rounded-full"
-        />
-      ))}
+      {Array.from({ length: 25 }).map((_, i) => {
+        const row = Math.floor(i / 5);
+        const col = i % 5;
+        const waveDelay = (row + col) * 0.025;
+        return (
+          <motion.div
+            key={i}
+            animate={{
+              opacity: isHovered ? (i % 2 === 0 ? 1 : 0.78) : 0.28,
+              scale: isHovered ? (i % 2 === 0 ? 1.35 : 1.1) : 1,
+              backgroundColor: isHovered
+                ? i % 3 === 0
+                  ? '#ea580c'
+                  : i % 3 === 1
+                  ? '#f97316'
+                  : '#e1144b'
+                : '#d6d3d1',
+            }}
+            transition={{
+              duration: 0.28,
+              delay: isHovered ? waveDelay : 0,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="w-1.5 h-1.5 rounded-full"
+          />
+        );
+      })}
     </div>
   );
 };
@@ -76,23 +82,22 @@ export const WhatWeStandForSection: React.FC = () => {
   return (
     <section
       id="values"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-28 lg:py-36 border-t border-b border-stone-200/90 select-none"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-24 lg:py-28 border-t border-b border-stone-200/90 select-none"
     >
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Rose Glow   */}
-      {/* Matches website color theme established in other sections  */}
       {/* ========================================================= */}
       <div
         aria-hidden="true"
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-orange-500/10 via-rose-500/8 to-transparent blur-3xl pointer-events-none"
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-orange-500/10 via-rose-500/8 to-transparent blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="absolute -top-24 left-10 w-[450px] h-[450px] rounded-full bg-orange-500/8 blur-3xl pointer-events-none"
+        className="pointer-events-none absolute -top-24 left-10 w-[450px] h-[450px] rounded-full bg-orange-500/8 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-10 right-10 w-[480px] h-[480px] rounded-full bg-rose-500/8 blur-3xl pointer-events-none"
+        className="pointer-events-none absolute bottom-10 right-10 w-[480px] h-[480px] rounded-full bg-rose-500/8 blur-3xl"
       />
 
       {/* Subtle organic light curves */}
@@ -118,30 +123,33 @@ export const WhatWeStandForSection: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ========================================================= */}
-        {/* TOP HEADER BLOCK (Standardized Responsive Header)         */}
+        {/* CURATORIAL HEADER (Standardized Across All Website Sections) */}
         {/* ========================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-8 border-b border-stone-200">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            {/* Standard Eyebrow with Pulsing Accent Dot */}
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+            {/* Standard Eyebrow with Animated Concentric Target Radar */}
+            <ScrollEyebrow delay={0.04} className="flex items-center gap-2.5">
+              <div className="relative w-4 h-4 flex items-center justify-center">
+                <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+                <span className="absolute inset-0 rounded-full border border-orange-500/40 animate-ping [animation-duration:2.5s]" />
+              </div>
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
                 CORE VALUES &amp; PRINCIPLES
               </span>
-            </div>
+            </ScrollEyebrow>
 
-            {/* Standard Section Heading */}
+            {/* Standard Section Heading with Smooth Entrance */}
             <ScrollHeading
-              delay={0.08}
+              delay={0.12}
               className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight"
             >
               What We <span className="text-gradient-title">Stand For</span>
             </ScrollHeading>
           </div>
 
-          {/* Standard Subtitle Paragraph */}
+          {/* Standard Subtitle Paragraph with Smooth Fade-Glide */}
           <ScrollParagraph
-            delay={0.16}
+            delay={0.22}
             className="text-sm sm:text-base text-stone-600 max-w-md lg:max-w-lg leading-relaxed font-sans self-start md:self-end"
           >
             Our core values shape every curriculum we engineer, every industry partnership we forge, and every student career we launch across Chennai and Coimbatore.
@@ -150,27 +158,32 @@ export const WhatWeStandForSection: React.FC = () => {
 
         {/* ========================================================= */}
         {/* 4 CORE VALUE ROWS: EXPERTISE, CONFIDENCE, ATTITUDE, ...   */}
-        {/* Responsive, interactive hover illumination & dot matrix   */}
+        {/* Strict symmetrical column alignment for desktop/tablet    */}
+        {/* Clean, comfortable touch-friendly card format for mobile   */}
         {/* ========================================================= */}
-        <div className="border-b border-stone-200/90">
+        <div className="border-b border-stone-200/90 divide-y divide-stone-200/90">
           {VALUES_DATA.map((val, idx) => {
             const isHovered = hoveredIndex === idx;
 
             return (
               <motion.div
                 key={val.number}
-                initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
                   duration: 0.75,
-                  delay: 0.12 + idx * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.08 + idx * 0.08,
+                  ease: LUXURY_EASE,
+                }}
+                style={{
+                  willChange: 'transform, opacity',
+                  transform: 'translate3d(0, 0, 0)',
                 }}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setHoveredIndex(isHovered ? null : idx)}
-                className="group relative border-t border-stone-200/90 transition-all duration-300 cursor-pointer overflow-hidden"
+                className="group relative transition-all duration-300 cursor-pointer overflow-hidden px-2 sm:px-4"
               >
                 {/* Subtle Ambient Hover Glow in Warm Website Tint */}
                 <div
@@ -181,32 +194,73 @@ export const WhatWeStandForSection: React.FC = () => {
                 />
 
                 {/* Left Active Accent Pill Indicator in Signature Gradient */}
-                <div
+                <motion.div
                   aria-hidden="true"
-                  className={`absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-orange-500 via-rose-500 to-red-600 transition-opacity duration-300 ${
-                    isHovered ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  animate={{
+                    opacity: isHovered ? 1 : 0,
+                    scaleY: isHovered ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.25, ease: LUXURY_EASE }}
+                  className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-orange-500 via-rose-500 to-red-600 origin-center"
                 />
 
-                {/* Row Content Container */}
-                <div className="relative z-10 py-7 sm:py-9 md:py-11 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-8 px-2 sm:px-4">
-                  {/* Left Column: Number + Big Bold Title */}
-                  <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-6 md:w-[360px] lg:w-[440px] shrink-0">
-                    <div className="flex items-center gap-4 sm:gap-6">
-                      {/* Step Number (01, 02, 03, 04) */}
+                {/* ----------------------------------------------------- */}
+                {/* DESKTOP & TABLET LAYOUT: Strict 12-Column Symmetrical */}
+                {/* ----------------------------------------------------- */}
+                <div className="hidden md:grid md:grid-cols-12 items-center gap-6 lg:gap-8 py-8 lg:py-10 relative z-10">
+                  {/* Column 1: Index Number + Value Title (5 cols) */}
+                  <div className="col-span-5 flex items-baseline gap-4 lg:gap-6">
+                    <span
+                      className={`w-8 shrink-0 font-mono text-xs sm:text-sm font-bold tracking-widest transition-colors duration-300 ${
+                        isHovered ? 'text-orange-600' : 'text-stone-400'
+                      }`}
+                    >
+                      {val.number}
+                    </span>
+                    <h3
+                      className={`text-2xl lg:text-[34px] xl:text-[40px] font-black tracking-tight uppercase leading-none transition-all duration-300 ${
+                        isHovered
+                          ? 'text-gradient-accent translate-x-1.5'
+                          : 'text-stone-900'
+                      }`}
+                    >
+                      {val.title}
+                    </h3>
+                  </div>
+
+                  {/* Column 2: Exact Column-Aligned Narrative Description (6 cols) */}
+                  <p
+                    className={`col-span-6 text-xs sm:text-sm lg:text-[15px] leading-relaxed transition-colors duration-300 font-sans ${
+                      isHovered ? 'text-stone-900' : 'text-stone-600'
+                    }`}
+                  >
+                    {val.description}
+                  </p>
+
+                  {/* Column 3: 5x5 Dot Matrix Grid (1 col, flush right) */}
+                  <div className="col-span-1 flex items-center justify-end">
+                    <DotMatrix isHovered={isHovered} />
+                  </div>
+                </div>
+
+                {/* ----------------------------------------------------- */}
+                {/* MOBILE LAYOUT: Clean stacked card with indented text  */}
+                {/* ----------------------------------------------------- */}
+                <div className="block md:hidden py-6 relative z-10">
+                  {/* Top Line: Number + Title (left) & DotMatrix (right) */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-baseline gap-3">
                       <span
-                        className={`font-mono text-xs sm:text-sm font-bold tracking-widest transition-colors duration-300 ${
+                        className={`font-mono text-xs font-bold tracking-widest transition-colors duration-300 ${
                           isHovered ? 'text-orange-600' : 'text-stone-400'
                         }`}
                       >
                         {val.number}
                       </span>
-
-                      {/* Title: EXPERTISE, CONFIDENCE, ATTITUDE, INTEGRITY */}
                       <h3
-                        className={`text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black tracking-wider uppercase transition-all duration-300 ${
+                        className={`text-xl sm:text-2xl font-black tracking-tight uppercase transition-all duration-300 ${
                           isHovered
-                            ? 'text-gradient-accent translate-x-2'
+                            ? 'text-gradient-accent translate-x-1'
                             : 'text-stone-900'
                         }`}
                       >
@@ -214,25 +268,19 @@ export const WhatWeStandForSection: React.FC = () => {
                       </h3>
                     </div>
 
-                    {/* Mobile-only dot matrix preview */}
-                    <div className="flex sm:hidden items-center">
+                    <div className="shrink-0">
                       <DotMatrix isHovered={isHovered} />
                     </div>
                   </div>
 
-                  {/* Middle Column: Value Explanation Description */}
+                  {/* Description: Indented to align precisely under the Title */}
                   <p
-                    className={`text-xs sm:text-sm md:text-[15px] leading-relaxed max-w-xl transition-colors duration-300 flex-1 ${
+                    className={`mt-2.5 pl-7 text-xs sm:text-sm leading-relaxed font-sans transition-colors duration-300 ${
                       isHovered ? 'text-stone-900' : 'text-stone-600'
                     }`}
                   >
                     {val.description}
                   </p>
-
-                  {/* Right Column: 5x5 Dot Matrix Grid (Desktop / Tablet) */}
-                  <div className="hidden sm:flex items-center justify-end shrink-0 pl-4">
-                    <DotMatrix isHovered={isHovered} />
-                  </div>
                 </div>
               </motion.div>
             );

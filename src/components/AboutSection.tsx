@@ -30,7 +30,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="relative py-24 bg-[#faf8f5]/86 backdrop-blur-xl text-stone-900 border-b border-white/60 overflow-hidden">
+    <section id="about" className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5]/86 backdrop-blur-xl text-stone-900 border-b border-stone-200/90 overflow-hidden">
       {/* Warm Ambient Backdrop Glow */}
       <div
         aria-hidden="true"

@@ -225,7 +225,7 @@ export const SponsorsSection: React.FC = () => {
   return (
     <section
       id="sponsors"
-      className="relative py-16 sm:py-20 lg:py-28 bg-[#faf8f5] text-stone-900 border-b border-stone-200/90 overflow-hidden select-none"
+      className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 border-b border-stone-200/90 overflow-hidden select-none"
     >
       {/* ========================================================= */}
       {/* EXPANSIVE ATMOSPHERIC BACKGROUND                          */}

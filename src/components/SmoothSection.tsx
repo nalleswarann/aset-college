@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { LUXURY_EASE } from './ScrollTypography';
 
 interface SmoothSectionProps {
   children: React.ReactNode;
@@ -9,13 +10,17 @@ interface SmoothSectionProps {
 export const SmoothSection: React.FC<SmoothSectionProps> = ({ children, delay = 0 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.06 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{
-        duration: 0.78,
+        duration: 0.8,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: LUXURY_EASE,
+      }}
+      style={{
+        willChange: 'transform, opacity',
+        transform: 'translate3d(0, 0, 0)',
       }}
     >
       {children}

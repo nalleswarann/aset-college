@@ -189,9 +189,11 @@
   }
 
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 84px;
     font-family: var(--font-manrope);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -791,6 +793,20 @@ pre {
   display: flex;
   width: max-content;
   animation: partnerMarqueeRight 58s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left-seamless {
+  display: flex;
+  width: max-content;
+  animation: partnerMarqueeLeft 44s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right-seamless {
+  display: flex;
+  width: max-content;
+  animation: partnerMarqueeRight 44s linear infinite;
   will-change: transform;
 }
 

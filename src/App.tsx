@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SmoothScrollProvider } from './components/SmoothScrollProvider';
 import { Navbar } from './components/Navbar';
 import { AsetHeroBanner } from './components/AsetHeroBanner';
 import { SmoothSection } from './components/SmoothSection';
@@ -68,7 +69,8 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#faf8f5] text-stone-900 selection:bg-amber-800 selection:text-white flex flex-col font-body">
+    <SmoothScrollProvider>
+      <div className="relative min-h-screen bg-[#faf8f5] text-stone-900 selection:bg-amber-800 selection:text-white flex flex-col font-body">
       {/* Top Bar Navigation (Transparent over Hero, Frosted Navy on Scroll) */}
       <Navbar
         onOpenAdmissions={handleOpenAdmissions}
@@ -168,5 +170,6 @@ export default function App() {
         onClose={() => setIsVirtualTourOpen(false)}
       />
     </div>
+  </SmoothScrollProvider>
   );
 }

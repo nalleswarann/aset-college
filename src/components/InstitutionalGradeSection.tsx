@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { ScrollHeading, ScrollParagraph, ScrollEyebrow } from './ScrollTypography';
 import {
   Landmark,
   Award,
@@ -212,32 +213,26 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
       {/* Alignments and color combos matching website styles       */}
       {/* ========================================================= */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 sm:pt-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-2xl space-y-2 sm:space-y-3"
-        >
+        <div className="max-w-2xl space-y-2 sm:space-y-3">
           {/* Eyebrow Label with Animated Pulse Dot */}
-          <div className="flex items-center gap-2">
+          <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
             <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-400">
               TRUST &amp; TRANSPARENCY
             </span>
-          </div>
+          </ScrollEyebrow>
 
-          {/* Standardized Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-white leading-tight">
+          {/* Standardized Headline with smooth reveal */}
+          <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-white leading-tight">
             Institutional Grade <br />
             <span className="text-gradient-title">In All We Do</span>
-          </h2>
+          </ScrollHeading>
 
           {/* Standardized Subtitle Paragraph */}
-          <p className="text-sm sm:text-base text-stone-300 max-w-xl leading-relaxed font-sans pt-1">
+          <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-300 max-w-xl leading-relaxed font-sans pt-1">
             Every educational pathway at ASET is built on verified governance, university accreditations, and industry-certified benchmarks.
-          </p>
-        </motion.div>
+          </ScrollParagraph>
+        </div>
       </div>
 
       {/* ========================================================= */}

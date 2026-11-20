@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, Compass } from 'lucide-react';
+import { ScrollHeading, ScrollParagraph, ScrollEyebrow, ScrollAction } from './ScrollTypography';
 
 // Campus Life Photos
 import aviationStudentsImg from '../assets/images/aset-aviation-students.png';
@@ -120,7 +121,7 @@ export const LifeAtAsetSection: React.FC = () => {
   return (
     <section
       id="life-at-aset"
-      className="relative w-full py-16 sm:py-20 lg:py-24 bg-[#0a0b0e] text-white font-manrope overflow-hidden select-none"
+      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#0a0b0e] text-white font-manrope overflow-hidden select-none"
     >
       {/* Ambient background glows with signature orange & crimson hues */}
       <div
@@ -140,28 +141,28 @@ export const LifeAtAsetSection: React.FC = () => {
           {/* ======================================================= */}
           <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-center space-y-5 lg:space-y-6 z-10">
             {/* Eyebrow Label */}
-            <div className="flex items-center gap-2">
+            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-400">
                 CAMPUS EXPERIENCE
               </span>
-            </div>
+            </ScrollEyebrow>
 
             {/* Standardized Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-white leading-tight select-none">
+            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-white leading-tight select-none">
               Life at <br />
               <span className="text-gradient-title font-extrabold">
                 Aset
               </span>
-            </h2>
+            </ScrollHeading>
 
             {/* Subtitle Paragraph */}
-            <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-sans max-w-md pt-1">
+            <ScrollParagraph delay={0.2} className="text-stone-300 text-sm sm:text-base leading-relaxed font-sans max-w-md pt-1">
               Explore the vibrant daily spirit across ASET College campuses. Experience advanced aviation simulators, robotics labs, design studios, cultural festivals, and life across Chennai and Coimbatore.
-            </p>
+            </ScrollParagraph>
 
             {/* Quick Badges */}
-            <div className="flex flex-wrap gap-2.5 pt-2">
+            <ScrollAction delay={0.26} className="flex flex-wrap gap-2.5 pt-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs text-stone-200">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>12+ Active Student Clubs</span>
@@ -170,7 +171,7 @@ export const LifeAtAsetSection: React.FC = () => {
                 <Compass className="w-3.5 h-3.5 text-rose-400" />
                 <span>Dual Flagship Campuses</span>
               </span>
-            </div>
+            </ScrollAction>
           </div>
 
           {/* ======================================================= */}

@@ -42,7 +42,7 @@ export const StudentSpotlightSection: React.FC<StudentSpotlightSectionProps> = (
     <section
       ref={sectionRef}
       id="spotlight"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-white font-manrope py-10 sm:py-14 lg:py-18 select-none border-b border-stone-200/90"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-white font-manrope py-16 sm:py-20 lg:py-28 select-none border-b border-stone-200/90"
     >
       {/* Expansive Wide Container */}
       <div className="w-full max-w-[1540px] mx-auto px-4 sm:px-6 lg:px-8">

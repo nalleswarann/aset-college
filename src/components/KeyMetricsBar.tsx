@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import { Users, BookOpen, Compass, MapPin } from 'lucide-react';
 import { LogisticsContainerTruck } from './LogisticsContainerTruck';
+import { LUXURY_EASE } from './ScrollTypography';
 
 export const KeyMetricsBar: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -61,13 +62,17 @@ export const KeyMetricsBar: React.FC = () => {
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.72,
                   delay: idx * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: LUXURY_EASE,
+                }}
+                style={{
+                  willChange: 'transform, opacity',
+                  transform: 'translate3d(0, 0, 0)',
                 }}
                 className={`flex flex-col justify-between ${idx > 0 ? 'sm:pl-8 lg:pl-10 pt-6 sm:pt-0' : ''
                   }`}

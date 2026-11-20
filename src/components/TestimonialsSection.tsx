@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { ScrollHeading, ScrollParagraph, ScrollEyebrow } from './ScrollTypography';
 import {
   ArrowLeft,
   ArrowRight,
@@ -163,7 +164,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="relative w-full py-10 sm:py-14 lg:py-16 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
+      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={() => setIsPaused(true)}
@@ -175,21 +176,21 @@ export const TestimonialsSection: React.FC = () => {
         {/* ========================================================= */}
         {/* SECTION HEADER: Title & Paragraph in Website Brand Colors */}
         {/* ========================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10 pb-6 border-b border-stone-200">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12 pb-10 sm:pb-12 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            <div className="flex items-center gap-2">
+            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
                 VERIFIED PLACEMENTS &amp; CAREER JOURNEYS
               </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
+            </ScrollEyebrow>
+            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
               Alumni <span className="text-gradient-title">Success Stories</span>
-            </h2>
+            </ScrollHeading>
           </div>
-          <p className="text-sm sm:text-base text-stone-600 max-w-md lg:max-w-lg leading-relaxed font-sans self-start md:self-end">
+          <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-600 max-w-md lg:max-w-lg leading-relaxed font-sans self-start md:self-end">
             Real experiences from ASET graduates placed across leading domestic and international aviation, shipping, and corporate organizations.
-          </p>
+          </ScrollParagraph>
         </div>
 
         {/* ========================================================= */}

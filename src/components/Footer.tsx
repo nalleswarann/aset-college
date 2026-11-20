@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollParagraph, ScrollAction } from './ScrollTypography';
 import {
   Facebook,
   Instagram,
@@ -59,12 +60,12 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             {/* Official Institutional Description from Website */}
-            <p className="text-xs sm:text-sm text-stone-700 max-w-md leading-relaxed font-sans">
+            <ScrollParagraph delay={0.1} className="text-xs sm:text-sm text-stone-700 max-w-md leading-relaxed font-sans">
               ASET College offers career-focused programmes in Aviation, Logistics &amp; Shipping, Fire &amp; Industrial Safety, Management Studies, Commerce and Hotel Management, with practical training, industry exposure and placement support, at campuses in Chennai and Coimbatore.
-            </p>
+            </ScrollParagraph>
 
             {/* Red Pill Call-to-Action Button */}
-            <div className="pt-1">
+            <ScrollAction delay={0.18} className="pt-1">
               <button
                 type="button"
                 onClick={() => {
@@ -76,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>Let&apos;s talk</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.4]" />
               </button>
-            </div>
+            </ScrollAction>
           </div>
 
           {/* ----------------------------------------------------- */}
