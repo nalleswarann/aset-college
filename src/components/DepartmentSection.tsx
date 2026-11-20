@@ -503,15 +503,15 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
       {/* Warm Cream (#faf8f5) Backdrop, Curated 3-Card Layout & Full Specification Matrix */}
       {/* ========================================================================= */}
       <div className="bg-[#faf8f5] text-stone-900 px-4 sm:px-8 lg:px-16 py-20 sm:py-24 lg:py-32 border-t border-stone-200/80 relative overflow-hidden">
-        {/* Soft atmospheric gradient glow behind the cards */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-r from-blue-100/35 via-indigo-100/30 to-violet-100/25 rounded-full blur-3xl pointer-events-none -z-0" />
+        {/* Soft atmospheric gradient glow behind the cards using website warm palette */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-r from-orange-100/40 via-amber-100/30 to-stone-200/20 rounded-full blur-3xl pointer-events-none -z-0" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Centered Top Eyebrow Badge */}
           <div className="flex justify-center mb-3">
             <ScrollEyebrow delay={0.04}>
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50/90 border border-indigo-200/60 text-indigo-700 text-xs font-semibold shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50/90 border border-orange-200/70 text-orange-800 text-xs font-semibold shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-orange-600" />
                 <span>Academic Pathways &amp; Eligibility</span>
               </span>
             </ScrollEyebrow>
@@ -562,7 +562,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 }`}
               >
                 <span>Fast-Track &amp; Lateral Entry</span>
-                <span className="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-2xs">
+                <span className="bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-2xs">
                   Save 1 Yr
                 </span>
               </button>
@@ -571,7 +571,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
 
           {/* 3-Card Curated Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch max-w-6xl mx-auto">
-            {/* CARD 1: Diploma & Fast-Track (Starter equivalent) */}
+            {/* CARD 1: Diploma & Fast-Track */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -600,10 +600,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onApplyForDepartment('Diploma in Fire & Safety / Shipping & Logistics')}
-                  className="w-full mt-6 py-3 px-5 rounded-xl bg-indigo-50/80 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs sm:text-sm transition-all border border-indigo-200/50 flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full mt-6 py-3.5 px-5 rounded-2xl bg-stone-100 hover:bg-stone-200/90 text-stone-900 font-semibold text-xs sm:text-sm transition-all border border-stone-200/90 flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <span>Explore Diploma Programs</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-indigo-600 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-700 transition-transform group-hover:translate-x-0.5" />
                 </button>
 
                 <div className="mt-8 pt-6 border-t border-stone-100 space-y-3">
@@ -659,19 +659,16 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* CARD 2: Undergraduate Degrees (Professional / Most Recommended Elevated) */}
+            {/* CARD 2: Undergraduate Degrees (Highlighted with clean website gradient line, no banner text) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: 0.12 }}
-              className="relative bg-white rounded-3xl border-2 border-indigo-500/40 shadow-xl shadow-indigo-500/10 flex flex-col justify-between overflow-hidden lg:-translate-y-3 z-10"
+              className="relative bg-white rounded-3xl border-2 border-orange-500/40 shadow-xl shadow-orange-500/5 flex flex-col justify-between overflow-hidden lg:-translate-y-2 z-10"
             >
-              {/* Top Most Recommended Badge Banner */}
-              <div className="w-full bg-indigo-50/90 py-2.5 px-4 text-center border-b border-indigo-100 flex items-center justify-center gap-1.5 text-xs font-bold text-indigo-700 tracking-wide uppercase">
-                <Zap className="w-3.5 h-3.5 text-indigo-600 fill-indigo-600" />
-                <span>Most Recommended</span>
-              </div>
+              {/* Sleek signature website gradient top highlight line */}
+              <div className="h-1.5 w-full bg-gradient-to-r from-orange-600 via-amber-500 to-rose-600" />
 
               <div className="p-7 sm:p-8 flex flex-col justify-between flex-1">
                 <div>
@@ -695,64 +692,64 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   <button
                     type="button"
                     onClick={() => onApplyForDepartment('Pilot Training, Aviation & Airport Management')}
-                    className="w-full mt-6 py-3 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-indigo-600/25 flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full mt-6 py-3.5 px-5 rounded-2xl bg-stone-900 hover:bg-orange-600 text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-stone-900/15 flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     <span>Apply for UG Programs</span>
                     <ArrowRight className="w-3.5 h-3.5 text-white transition-transform group-hover:translate-x-0.5" />
                   </button>
 
-                  <div className="mt-8 pt-6 border-t border-indigo-100/70 space-y-3">
+                  <div className="mt-8 pt-6 border-t border-orange-100 space-y-3">
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>12th Std (HSC) Pass in Any Stream / Group</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span className="font-semibold text-stone-900">Conferred by Alagappa University</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>B.Sc. Aviation &amp; BBA Airline Management</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>B.Sc. Fire &amp; Industrial Safety (LE Available)</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>BBA Shipping &amp; Logistics Management</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>Integrated B.Com + CA / CMA / CS / ACCA (UK)</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>B.Sc. Artificial Intelligence &amp; Analytics</span>
                     </div>
 
                     <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
-                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>100% Placement Guarantee &amp; Internships</span>
@@ -762,7 +759,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* CARD 3: Postgraduate & MBA (Enterprise equivalent) */}
+            {/* CARD 3: Postgraduate & MBA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -791,10 +788,10 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onApplyForDepartment('Management & Business Analytics (MBA)')}
-                  className="w-full mt-6 py-3 px-5 rounded-xl bg-indigo-50/80 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs sm:text-sm transition-all border border-indigo-200/50 flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full mt-6 py-3.5 px-5 rounded-2xl bg-stone-100 hover:bg-stone-200/90 text-stone-900 font-semibold text-xs sm:text-sm transition-all border border-stone-200/90 flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <span>Apply for PG / MBA</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-indigo-600 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-700 transition-transform group-hover:translate-x-0.5" />
                 </button>
 
                 <div className="mt-8 pt-6 border-t border-stone-100 space-y-3">
@@ -862,7 +859,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
           <div className="mt-12 sm:mt-16 max-w-6xl mx-auto">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 border border-indigo-100">
+                <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-700 flex items-center justify-center shrink-0 border border-orange-200/70">
                   <Table className="w-5 h-5" />
                 </div>
                 <div>
@@ -940,19 +937,19 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                           }).map((row, idx) => (
                             <tr
                               key={idx}
-                              className="hover:bg-indigo-50/40 transition-colors group"
+                              className="hover:bg-orange-50/40 transition-colors group"
                             >
-                              <td className="py-4 px-5 font-bold text-stone-900 group-hover:text-indigo-700 transition-colors whitespace-nowrap">
+                              <td className="py-4 px-5 font-bold text-stone-900 group-hover:text-orange-700 transition-colors whitespace-nowrap">
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
                                   <span>{row.department}</span>
                                 </div>
                               </td>
                               <td className="py-4 px-5 text-stone-700 leading-relaxed font-medium">
                                 {row.programs}
                               </td>
-                              <td className="py-4 px-5 font-mono text-indigo-700 font-semibold whitespace-nowrap">
-                                <span className="bg-indigo-50 border border-indigo-200/60 px-2.5 py-1 rounded-md text-xs">
+                              <td className="py-4 px-5 font-mono text-orange-700 font-semibold whitespace-nowrap">
+                                <span className="bg-orange-50 border border-orange-200/70 px-2.5 py-1 rounded-md text-xs">
                                   {row.duration}
                                 </span>
                               </td>
@@ -963,7 +960,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                                 <button
                                   type="button"
                                   onClick={() => onApplyForDepartment(row.department)}
-                                  className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline hover:no-underline cursor-pointer"
+                                  className="text-xs font-semibold text-orange-600 hover:text-orange-800 underline hover:no-underline cursor-pointer"
                                 >
                                   Apply &rarr;
                                 </button>
