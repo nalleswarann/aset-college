@@ -142,7 +142,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
                 textAnchor="middle"
                 textLength="100%"
                 lengthAdjust="spacingAndGlyphs"
-                fontFamily="'Manrope', 'Lausanne', 'TWK Lausanne', 'Plus Jakarta Sans', system-ui, sans-serif"
+                fontFamily="'Season Mix', 'The Seasons', 'PP Neue Montreal', sans-serif"
                 fontWeight="900"
                 fontSize="650"
                 fill="url(#asetWideGrad)"

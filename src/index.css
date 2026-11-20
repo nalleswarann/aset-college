@@ -1,31 +1,32 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------
- * Apple San Francisco (SF Pro) Font Declarations
- * Universal Apple Typography with native system font delegation
- * Weights: Light (300), Regular (400), Medium (500),
- * Semibold (600), Bold (700), Heavy/Black (800/900)
+ * Season Mix (The Seasons) Font Declarations
+ * Luxury High-Contrast Academic Display Serif Typography
+ * Used exclusively for Titles, Headings, Numbers & Editorial Highlights
+ * Weights: Light (300), Regular (400), Italic (400), Bold (700)
  * ----------------------------------------------------------- */
 
 /* Light (300) */
 @font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Light'),
-    local('SF Pro Text Light'),
-    local('SFProDisplay-Light'),
-    url('/fonts/SF-Pro-Text-Light.woff') format('woff');
+  font-family: 'Season Mix';
+  src: local('Season Mix Light'),
+    local('The Seasons Light'),
+    local('SeasonMix-Light'),
+    local('TheSeasons-Light'),
+    url('/fonts/SeasonMix-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Light'),
-    local('SFProDisplay-Light'),
-    url('/fonts/SF-Pro-Text-Light.woff') format('woff');
+  font-family: 'The Seasons';
+  src: local('Season Mix Light'),
+    local('The Seasons Light'),
+    local('SeasonMix-Light'),
+    local('TheSeasons-Light'),
+    url('/fonts/SeasonMix-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -33,164 +34,26 @@
 
 /* Regular (400) */
 @font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Regular'),
-    local('SF Pro Text Regular'),
-    local('SFProDisplay-Regular'),
-    local('SF Pro'),
-    url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+  font-family: 'Season Mix';
+  src: local('Season Mix'),
+    local('The Seasons'),
+    local('The Seasons Regular'),
+    local('SeasonMix-Regular'),
+    local('TheSeasons-Regular'),
+    url('/fonts/SeasonMix-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Regular'),
-    local('SFProDisplay-Regular'),
-    local('SF Pro'),
-    url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Medium (500) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Medium'),
-    local('SF Pro Text Medium'),
-    local('SFProDisplay-Medium'),
-    url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Medium'),
-    local('SFProDisplay-Medium'),
-    url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Semibold (600) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Semibold'),
-    local('SF Pro Text Semibold'),
-    local('SFProDisplay-Semibold'),
-    url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Semibold'),
-    local('SFProDisplay-Semibold'),
-    url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Bold (700) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Bold'),
-    local('SF Pro Text Bold'),
-    local('SFProDisplay-Bold'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Bold'),
-    local('SFProDisplay-Bold'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Heavy / Black (800 / 900) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Heavy'),
-    local('SF Pro Display Black'),
-    local('SFProDisplay-Black'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Heavy'),
-    local('SF Pro Display Black'),
-    local('SFProDisplay-Black'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Black'),
-    local('SFProDisplay-Black'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Black'),
-    local('SFProDisplay-Black'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* -------------------------------------------------------------
- * MT Baskerville Font Declarations
- * Luxury Academic & Editorial Serif Accent Typography
- * Weights: Regular (400), Italic (400), Bold (700)
- * ----------------------------------------------------------- */
-
-/* Regular (400) */
-@font-face {
-  font-family: 'Baskerville';
-  src: local('Baskerville'),
-    local('Baskerville Regular'),
-    local('Libre Baskerville'),
-    local('Monotype Baskerville'),
-    local('Baskerville Old Face'),
-    url('/fonts/Baskerville-Regular.woff2') format('woff2');
+  font-family: 'The Seasons';
+  src: local('Season Mix'),
+    local('The Seasons'),
+    local('The Seasons Regular'),
+    local('SeasonMix-Regular'),
+    local('TheSeasons-Regular'),
+    url('/fonts/SeasonMix-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -198,63 +61,173 @@
 
 /* Italic (400) */
 @font-face {
-  font-family: 'Baskerville';
-  src: local('Baskerville Italic'),
-    local('Libre Baskerville Italic'),
-    local('Monotype Baskerville Italic'),
-    local('Baskerville Old Face Italic'),
-    url('/fonts/Baskerville-Italic.woff2') format('woff2');
+  font-family: 'Season Mix';
+  src: local('Season Mix Italic'),
+    local('The Seasons Italic'),
+    local('SeasonMix-Italic'),
+    local('TheSeasons-Italic'),
+    url('/fonts/SeasonMix-Italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Seasons';
+  src: local('Season Mix Italic'),
+    local('The Seasons Italic'),
+    local('SeasonMix-Italic'),
+    local('TheSeasons-Italic'),
+    url('/fonts/SeasonMix-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Semibold (600) mapped to Bold */
+@font-face {
+  font-family: 'Season Mix';
+  src: local('Season Mix Bold'),
+    local('The Seasons Bold'),
+    local('SeasonMix-Bold'),
+    local('TheSeasons-Bold'),
+    url('/fonts/SeasonMix-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Seasons';
+  src: local('Season Mix Bold'),
+    local('The Seasons Bold'),
+    local('SeasonMix-Bold'),
+    local('TheSeasons-Bold'),
+    url('/fonts/SeasonMix-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
   font-display: swap;
 }
 
 /* Bold (700) */
 @font-face {
-  font-family: 'Baskerville';
-  src: local('Baskerville Bold'),
-    local('Libre Baskerville Bold'),
-    local('Monotype Baskerville Bold'),
-    local('Baskerville Old Face Bold'),
-    url('/fonts/Baskerville-Bold.ttf') format('truetype');
+  font-family: 'Season Mix';
+  src: local('Season Mix Bold'),
+    local('The Seasons Bold'),
+    local('SeasonMix-Bold'),
+    local('TheSeasons-Bold'),
+    url('/fonts/SeasonMix-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Family aliases for 'MT Baskerville' */
 @font-face {
-  font-family: 'MT Baskerville';
-  src: local('Baskerville'),
-    local('Baskerville Regular'),
-    local('Libre Baskerville'),
-    local('Monotype Baskerville'),
-    local('Baskerville Old Face'),
-    url('/fonts/Baskerville-Regular.woff2') format('woff2');
+  font-family: 'The Seasons';
+  src: local('Season Mix Bold'),
+    local('The Seasons Bold'),
+    local('SeasonMix-Bold'),
+    local('TheSeasons-Bold'),
+    url('/fonts/SeasonMix-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -------------------------------------------------------------
+ * PP Neue Montreal Font Declarations
+ * Swiss Neo-Grotesk Masterpiece Typography by Pangram Pangram
+ * Used for all Paragraphs, Body Text, Buttons, Badges, Metrics & Navigation
+ * Weights: Regular (400), Medium (500), Bold (700)
+ * ----------------------------------------------------------- */
+
+/* Regular (400) */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: local('PP Neue Montreal'),
+    local('Neue Montreal'),
+    local('PPNeueMontreal-Regular'),
+    url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MT Baskerville';
-  src: local('Baskerville Italic'),
-    local('Libre Baskerville Italic'),
-    local('Monotype Baskerville Italic'),
-    local('Baskerville Old Face Italic'),
-    url('/fonts/Baskerville-Italic.woff2') format('woff2');
+  font-family: 'Neue Montreal';
+  src: local('PP Neue Montreal'),
+    local('Neue Montreal'),
+    local('PPNeueMontreal-Regular'),
+    url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Medium (500) */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: local('PP Neue Montreal Medium'),
+    local('Neue Montreal Medium'),
+    local('PPNeueMontreal-Medium'),
+    url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'MT Baskerville';
-  src: local('Baskerville Bold'),
-    local('Libre Baskerville Bold'),
-    local('Monotype Baskerville Bold'),
-    local('Baskerville Old Face Bold'),
-    url('/fonts/Baskerville-Bold.ttf') format('truetype');
+  font-family: 'Neue Montreal';
+  src: local('PP Neue Montreal Medium'),
+    local('Neue Montreal Medium'),
+    local('PPNeueMontreal-Medium'),
+    url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Semibold (600) mapped to Bold */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: local('PP Neue Montreal Bold'),
+    local('Neue Montreal Bold'),
+    local('PPNeueMontreal-Bold'),
+    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: local('PP Neue Montreal Bold'),
+    local('Neue Montreal Bold'),
+    local('PPNeueMontreal-Bold'),
+    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold (700) */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: local('PP Neue Montreal Bold'),
+    local('Neue Montreal Bold'),
+    local('PPNeueMontreal-Bold'),
+    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: local('PP Neue Montreal Bold'),
+    local('Neue Montreal Bold'),
+    local('PPNeueMontreal-Bold'),
+    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -263,82 +236,127 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
-  --font-baskerville: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
-  --font-editorial: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
-  --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-manrope: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-lausanne: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-roobert: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Title Font: Season Mix (The Seasons) */
+  --font-title: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+  --font-season: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+  --font-serif: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+  --font-display: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+  --font-heading: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+  --font-editorial: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+  --font-baskerville: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+
+  /* Body & Paragraph Font: PP Neue Montreal */
+  --font-sans: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-paragraph: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "PP Neue Montreal", "Neue Montreal", monospace;
+  --font-inter: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-manrope: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-lausanne: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-roobert: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sf: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 @layer base {
   :root {
-    --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-manrope: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-lausanne: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-roobert: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-serif: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
-    --font-baskerville: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
-    --font-editorial: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
-    --font-monument: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
-    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+    --font-title: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+    --font-season: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+    --font-serif: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+    --font-display: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+    --font-heading: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+    --font-editorial: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+    --font-baskerville: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif;
+
+    --font-sans: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-paragraph: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "PP Neue Montreal", "Neue Montreal", monospace;
+    --font-inter: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-manrope: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-lausanne: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-roobert: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-sf: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-monument: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   html {
     scroll-padding-top: 84px;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #faf8f5;
     color: #1c1917;
     overflow-x: hidden;
   }
 
+  /* All titles and headings strictly use Season Mix */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: -0.022em;
+    font-family: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif !important;
+    letter-spacing: -0.02em;
+    font-feature-settings: "liga" 1, "dlig" 1;
+  }
+
+  /* All paragraphs and general text strictly use PP Neue Montreal */
+  p,
+  span,
+  a,
+  li,
+  button,
+  input,
+  textarea,
+  select,
+  label {
+    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  p {
+    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    line-height: 1.625;
+    letter-spacing: -0.01em;
   }
 }
 
-/* Universal San Francisco primary UI typography classes */
-.font-monument,
+/* Season Mix Title & Display Typography Utilities */
+.font-title,
+.font-heading,
+.font-display,
+.font-season,
+.font-serif,
+.font-editorial,
+.font-baskerville,
+.font-serif-display {
+  font-family: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif !important;
+  font-feature-settings: "liga" 1, "dlig" 1;
+}
+
+/* PP Neue Montreal Body & UI Typography Utilities */
+.font-sans,
 .font-body,
+.font-paragraph,
+.font-neue,
 .font-manrope,
 .font-lausanne,
+.font-roobert,
+.font-sf,
 .font-inter,
-.font-sans,
+.font-monument,
 .font-mono,
 [class*="font-mono"],
 code,
 kbd,
 samp,
 pre {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-}
-
-/* MT Baskerville Editorial Typography Utilities */
-.font-serif,
-.font-baskerville,
-.font-editorial,
-.font-serif-display {
-  font-family: "Baskerville", "MT Baskerville", "Baskerville Old Face", "Libre Baskerville", "Monotype Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif !important;
+  font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 /* -------------------------------------------------------------
