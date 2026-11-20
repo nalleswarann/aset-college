@@ -243,9 +243,12 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               <img
                 src={asetCampusMainImg}
                 alt="ASET College Campus Building"
-                className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-[1.05]"
+                className="w-full h-full object-cover object-center filter brightness-[0.62] contrast-[1.12]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/60 pointer-events-none" />
+              {/* Multi-layered cinematic gradient overlays for crystal-clear readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/80 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-l from-black/85 via-black/35 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/80 to-transparent pointer-events-none" />
             </div>
 
             {/* Phase 2 Department Filmstrip (Hardware-accelerated vertical elevator) */}
@@ -309,9 +312,11 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               <img
                 src={asetCampusMainImg}
                 alt="ASET College Campus Building"
-                className="w-full h-full object-cover object-center filter brightness-[0.78]"
+                className="w-full h-full object-cover object-center filter brightness-[0.62] contrast-[1.12]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/80 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-l from-black/80 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80 to-transparent pointer-events-none" />
             </div>
 
             {/* Phase 2 Mobile Filmstrip */}
@@ -360,45 +365,52 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
           </motion.div>
 
           {/* ========================================================================= */}
-          {/* PHASE 1: "02 OUR VALUES" (Full Screen Architectural Hero)                 */}
+          {/* PHASE 1: "02 OUR DEPARTMENTS" (Full Screen Architectural Hero)            */}
           {/* Rendered ONLY before Vision Phase, eliminating any possibility of overlap */}
           {/* ========================================================================= */}
           {!isVisionPhase && (
             <motion.div
               style={{ opacity: valuesTextOpacity }}
-              className="absolute inset-0 z-30 flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-20 pointer-events-none will-change-transform"
+              className="absolute inset-0 z-30 flex flex-col justify-between pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-14 px-4 sm:px-8 lg:px-14 xl:px-20 pointer-events-none will-change-transform"
             >
-              {/* Top-Left: 02 OUR DEPARTMENTS (Padded safely below floating glass navbar) */}
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-white">
-                <span className="font-bold text-orange-400">02</span>
-                <span className="w-8 h-px bg-white/40" />
-                <h2 className="font-semibold text-white tracking-[0.22em] drop-shadow-sm">OUR DEPARTMENTS</h2>
+              {/* Top-Left: 02 OUR DEPARTMENTS (Frosted glass pill ensures 100% contrast against white arches) */}
+              <div className="self-start">
+                <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 py-1.5 sm:px-4.5 sm:py-2 rounded-full bg-black/80 backdrop-blur-xl border border-white/25 text-xs sm:text-sm font-mono uppercase tracking-[0.22em] text-white shadow-2xl">
+                  <span className="font-bold text-orange-400">02</span>
+                  <span className="w-5 sm:w-7 h-px bg-white/40" />
+                  <h2 className="font-bold text-white tracking-[0.2em] drop-shadow-md">OUR DEPARTMENTS</h2>
+                </div>
               </div>
 
-              {/* Bottom Row: Telha Clarke layout (Left: Pill CTA, Right: Department Manifesto) */}
-              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 pointer-events-auto">
+              {/* Bottom Row: Telha Clarke layout (Left: Pill CTA, Right: Frosted Department Card) */}
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 sm:gap-6 lg:gap-12 pointer-events-auto">
                 {/* Left Side: Floating Black Pill CTA */}
-                <div className="shrink-0">
+                <div className="shrink-0 self-start lg:self-end">
                   <button
                     onClick={() => scrollToDepartment(0)}
-                    className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-lg bg-black/85 hover:bg-black text-white text-xs font-mono font-medium tracking-wide shadow-2xl transition-all duration-300 cursor-pointer border border-white/20 active:scale-95"
+                    className="inline-flex items-center gap-2.5 px-4.5 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-black/90 hover:bg-black text-white text-xs sm:text-sm font-mono font-semibold tracking-wide shadow-2xl transition-all duration-300 cursor-pointer border border-white/25 active:scale-95 group"
                   >
-                    <span className="text-orange-400 text-sm leading-none">❖</span>
+                    <span className="text-orange-400 text-sm leading-none group-hover:scale-110 transition-transform">❖</span>
                     <span>Explore All Departments</span>
                   </button>
                 </div>
 
-                {/* Right Side: Editorial Department Manifesto */}
-                <div className="max-w-xl lg:text-right space-y-3">
-                  <p className="text-xl sm:text-2xl lg:text-3xl font-light text-white leading-relaxed drop-shadow-sm">
-                    Specialized academic departments engineered for <span className="font-serif italic font-normal text-amber-200">practical mastery</span> and global careers.
+                {/* Right Side: Frosted Glass Department Manifesto Card for 100% Contrast & Visibility */}
+                <div className="max-w-xl lg:text-right space-y-2.5 sm:space-y-3.5 bg-black/75 backdrop-blur-2xl p-5 sm:p-7 lg:p-8 rounded-2xl sm:rounded-3xl border border-white/20 shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
+                  <p className="text-base sm:text-xl md:text-2xl lg:text-[26px] xl:text-[28px] font-semibold text-white leading-snug drop-shadow-md">
+                    Specialized academic departments engineered for{' '}
+                    <span className="font-serif italic font-normal text-amber-300">practical mastery</span>{' '}
+                    and global careers.
                   </p>
-                  <p className="text-xs sm:text-sm lg:text-base text-white/90 font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm lg:text-sm xl:text-[15px] text-stone-100 font-normal leading-relaxed drop-shadow-xs">
                     From DGCA flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
                   </p>
-                  <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300/90 pt-1">
-                    Academically Supported by Alagappa University &bull; Chennai &amp; Coimbatore &bull; Admissions 2026&ndash;2027
-                  </p>
+                  <div className="pt-1 flex flex-wrap lg:justify-end">
+                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-amber-400/40 text-amber-300 text-[10px] sm:text-[11px] font-mono uppercase tracking-wider font-bold shadow-md">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                      <span>Affiliated to Alagappa University &bull; Admissions 2026&ndash;2027</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
