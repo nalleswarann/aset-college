@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="footer"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
+      className="relative w-full overflow-hidden bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
     >
       {/* ========================================================= */}
       {/* SCREEN-MERGED CANVAS (#faf8f5)                            */}

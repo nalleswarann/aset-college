@@ -93,7 +93,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
   return (
     <section
       id="placements"
-      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 border-b border-stone-200/90 overflow-hidden select-none font-manrope"
+      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 border-b border-stone-200/90 overflow-hidden select-none font-manrope"
     >
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Glow       */}

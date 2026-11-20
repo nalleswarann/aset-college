@@ -82,7 +82,7 @@ export const WhatWeStandForSection: React.FC = () => {
   return (
     <section
       id="values"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-24 lg:py-28 border-t border-b border-stone-200/90 select-none"
+      className="relative w-full overflow-hidden bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope py-20 sm:py-24 lg:py-28 border-t border-b border-stone-200/90 select-none"
     >
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Rose Glow   */}

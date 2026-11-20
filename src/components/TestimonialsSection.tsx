@@ -164,7 +164,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
+      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={() => setIsPaused(true)}

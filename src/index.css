@@ -815,6 +815,113 @@ pre {
   animation-play-state: paused;
 }
 
+/* =============================================================
+ * Global Seamless Moving Colors Gaussian Blur Glass Engine
+ * 120fps hardware accelerated (zero scroll lag, zero re-paints)
+ * ============================================================= */
+@keyframes movingGlassColorOrb1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(12vw, -8vh, 0) scale(1.14) rotate(40deg);
+  }
+  50% {
+    transform: translate3d(6vw, 12vh, 0) scale(0.92) rotate(80deg);
+  }
+  75% {
+    transform: translate3d(-10vw, 6vh, 0) scale(1.08) rotate(40deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes movingGlassColorOrb2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(-14vw, 10vh, 0) scale(0.9) rotate(-45deg);
+  }
+  50% {
+    transform: translate3d(-6vw, -12vh, 0) scale(1.18) rotate(-90deg);
+  }
+  75% {
+    transform: translate3d(8vw, -6vh, 0) scale(0.95) rotate(-45deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes movingGlassColorOrb3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(10vw, 12vh, 0) scale(1.15);
+  }
+  66% {
+    transform: translate3d(-12vw, -8vh, 0) scale(0.88);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes movingGlassColorOrb4 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-10vw, -10vh, 0) scale(0.92);
+  }
+  66% {
+    transform: translate3d(12vw, 8vh, 0) scale(1.16);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes movingGlassColorOrb5 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(8vw, -14vh, 0) scale(1.2);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+}
+
+.animate-glass-color-orb-1 {
+  animation: movingGlassColorOrb1 26s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-glass-color-orb-2 {
+  animation: movingGlassColorOrb2 32s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-glass-color-orb-3 {
+  animation: movingGlassColorOrb3 28s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-glass-color-orb-4 {
+  animation: movingGlassColorOrb4 36s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+.animate-glass-color-orb-5 {
+  animation: movingGlassColorOrb5 22s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
 /* 7. Realistic Mist & Floating Cloud Dynamics */
 @keyframes mistDriftSlow {
   0% {

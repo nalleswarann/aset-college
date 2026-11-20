@@ -209,7 +209,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
   }, [activeIdx, isVisionPhase]);
 
   return (
-    <section id="departments" className="relative bg-[#faf8f5] text-stone-900 font-manrope">
+    <section id="departments" className="relative bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope">
       {/* ========================================================================= */}
       {/* TELHA CLARKE SCROLL CANVAS                                                */}
       {/* 1. Starts with big architectural image ("02 OUR VALUES")                  */}
@@ -219,7 +219,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
       {/* ========================================================================= */}
       <div ref={containerRef} className="relative h-[380vh] sm:h-[420vh]">
         {/* Pinned 100vh Viewport */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col lg:flex-row bg-[#faf8f5]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col lg:flex-row bg-[#faf8f5]/80 backdrop-blur-md">
 
           {/* ========================================================================= */}
           {/* THE REDUCING IMAGE VIEWPORT (Desktop: right 50%, Mobile: top 40%)         */}
@@ -412,7 +412,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
           {/* Signature website color combos: #111111 + text-gradient-title (#ea580c)   */}
           {/* ========================================================================= */}
           <div
-            className={`w-full lg:w-1/2 lg:max-w-[50%] h-[60%] lg:h-full flex flex-col justify-between pt-5 sm:pt-8 lg:pt-36 pb-6 sm:pb-8 lg:pb-16 px-6 sm:px-10 lg:px-12 xl:px-16 bg-[#faf8f5] z-10 shrink-0 transition-opacity duration-300 ${
+            className={`w-full lg:w-1/2 lg:max-w-[50%] h-[60%] lg:h-full flex flex-col justify-between pt-5 sm:pt-8 lg:pt-36 pb-6 sm:pb-8 lg:pb-16 px-6 sm:px-10 lg:px-12 xl:px-16 bg-[#faf8f5]/85 backdrop-blur-xl z-10 shrink-0 transition-opacity duration-300 ${
               isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
           >
@@ -502,7 +502,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
       {/* SECTION 4: PROGRAM DURATION & ENTRY ELIGIBILITY GUIDE (3-CARD PRICING CLONE) */}
       {/* Warm Cream (#faf8f5) Backdrop, Curated 3-Card Layout & Full Specification Matrix */}
       {/* ========================================================================= */}
-      <div className="bg-[#faf8f5] text-stone-900 px-4 sm:px-8 lg:px-16 py-20 sm:py-24 lg:py-32 border-t border-stone-200/80 relative overflow-hidden">
+      <div className="bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 px-4 sm:px-8 lg:px-16 py-20 sm:py-24 lg:py-32 border-t border-stone-200/80 relative overflow-hidden">
         {/* Soft atmospheric gradient glow behind the cards using website warm palette */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-r from-orange-100/40 via-amber-100/30 to-stone-200/20 rounded-full blur-3xl pointer-events-none -z-0" />
 
