@@ -38,26 +38,39 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
       aria-modal="true"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-xs animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-3xl bg-white border border-stone-200 rounded-sm shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
-        {/* Modal Top Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-stone-200 bg-stone-50">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold">
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span>ASET Academic Prospectus · 2026–2027</span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-manrope font-bold text-stone-900 tracking-tight">
-              {department.name}
-            </h3>
-          </div>
+      <div className="relative w-full max-w-3xl bg-white border border-stone-200 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
+        {/* Modal Top Header with Department Authentic Facility Imagery */}
+        <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-stone-900 shrink-0">
+          {department.image ? (
+            <img
+              src={department.image}
+              alt={department.name}
+              className="w-full h-full object-cover select-none"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-stone-900 to-stone-950" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-black/35 pointer-events-none" />
 
+          {/* Close button */}
           <button
             onClick={onClose}
-            className="p-2 text-stone-500 hover:text-stone-900 rounded-sm hover:bg-stone-200/60 transition-colors cursor-pointer"
+            className="absolute top-4 right-4 p-2 text-white/80 hover:text-white rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md transition-colors cursor-pointer border border-white/20 z-10"
             aria-label="Close program modal"
           >
             <X className="w-5 h-5" />
           </button>
+
+          {/* Title & Tag in bottom of banner */}
+          <div className="absolute bottom-4 sm:bottom-5 left-5 sm:left-6 right-5 sm:right-6 pointer-events-none space-y-1.5">
+            <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-amber-300 font-bold bg-black/60 px-2.5 py-0.5 rounded-full border border-white/15 backdrop-blur-md">
+              <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
+              <span>ASET Academic Curriculum · 2026–2027</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-manrope font-bold text-white tracking-tight drop-shadow-md">
+              {department.name}
+            </h3>
+          </div>
         </div>
 
         {/* Scrollable Content */}

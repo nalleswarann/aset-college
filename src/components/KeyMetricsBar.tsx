@@ -1,79 +1,99 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'motion/react';
-import { Users, BookOpen, Compass, MapPin, Building, ShieldCheck, ArrowUpRight } from 'lucide-react';
-import { ScrollHeading, ScrollParagraph, ScrollEyebrow } from './ScrollTypography';
+import { Users, BookOpen, Compass, MapPin } from 'lucide-react';
+import { LogisticsContainerTruck } from './LogisticsContainerTruck';
+import { LUXURY_EASE } from './ScrollTypography';
 
 export const KeyMetricsBar: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
   const metrics = [
     {
+      icon: Users,
       value: '10,000+',
-      label: 'Students & Alumni Network',
-      description: 'Enrolled across career disciplines, with 6,000+ Aviation, Safety & Logistics graduates worldwide.',
-      tag: 'Global Footprint',
-      accent: 'from-orange-500 to-amber-600',
+      sub: 'Student Community',
+      label: 'Enrolled across career disciplines, with 6,000+ Fire & Safety alumni globally',
     },
     {
+      icon: BookOpen,
       value: '120+',
-      label: 'Specialized Academic Pathways',
-      description: 'Undergraduate, postgraduate, lateral-entry, and fast-track diplomas affiliated with Alagappa University.',
-      tag: 'Academic Breadth',
-      accent: 'from-rose-500 to-orange-600',
+      sub: 'Academic Breadth',
+      label: 'Programs across 60+ disciplines spanning UG, PG, Diploma & Certifications',
     },
     {
-      value: '500+',
-      label: 'Recruiting Consortia & Partners',
-      description: 'Airports Authority of India, DHL Supply Chain, SpiceJet, KPMG Advisory, and Maritime Seaports.',
-      tag: '100% Placement Record',
-      accent: 'from-amber-500 to-orange-600',
+      icon: Compass,
+      value: '12 Areas',
+      sub: 'Practical Pedagogy',
+      label: 'Practical simulations, monthly industrial visits & mandatory internships',
     },
     {
-      value: '2 Flagship',
-      label: 'Campuses in Tamil Nadu',
-      description: 'Full-fledged training centers in Chennai (Kuthambakkam) & Coimbatore (Saravanampatti).',
-      tag: 'Chennai & Coimbatore',
-      accent: 'from-orange-600 to-rose-600',
+      icon: MapPin,
+      value: '2 Campuses',
+      sub: 'Chennai & Coimbatore',
+      label: 'Full-fledged training campuses in Kuthambakkam & Saravanampatti',
     },
   ];
 
   return (
-    <section className="relative w-full py-12 sm:py-16 bg-[#faf8f5] text-stone-900 font-manrope select-none border-b border-stone-200/90">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 4-Card Apple-Style Bento Metric Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {metrics.map((m, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className="p-6 sm:p-7 rounded-3xl bg-white/90 hover:bg-white border border-stone-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-orange-700 font-bold px-2.5 py-1 rounded-full bg-orange-50 border border-orange-200/60">
-                    {m.tag}
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-stone-300 group-hover:bg-orange-500 transition-colors" />
-                </div>
+    <section
+      ref={sectionRef}
+      className="relative -mt-12 sm:-mt-16 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-manrope"
+    >
+      {/* Floating Frosted Glass Card with Ambient Under-Glow */}
+      <div className="relative rounded-[28px] sm:rounded-[32px] bg-white/78 backdrop-blur-2xl border border-white/80 shadow-[0_24px_50px_-12px_rgba(0,10,28,0.12)] p-7 sm:p-9 lg:p-11">
+        {/* Animated Logistics Container Truck rolling across the top layer/rim */}
+        <LogisticsContainerTruck targetRef={sectionRef} />
 
-                <div className="text-3xl sm:text-4xl lg:text-4xl font-manrope font-black tracking-tight text-stone-950 mb-1">
-                  <span className={`bg-gradient-to-r ${m.accent} bg-clip-text text-transparent`}>
-                    {m.value}
+        {/* Soft glowing ambient orbs under frosted glass clipped to card radius */}
+        <div className="absolute inset-0 rounded-[28px] sm:rounded-[32px] overflow-hidden pointer-events-none">
+          <div
+            aria-hidden="true"
+            className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-orange-500/20 via-rose-500/15 to-transparent blur-3xl pointer-events-none"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-gradient-to-tl from-rose-500/18 via-orange-400/14 to-transparent blur-3xl pointer-events-none"
+          />
+        </div>
+
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 divide-y sm:divide-y-0 sm:divide-x divide-stone-200/80">
+          {metrics.map((m, idx) => {
+            const Icon = m.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  duration: 0.72,
+                  delay: idx * 0.08,
+                  ease: LUXURY_EASE,
+                }}
+                style={{
+                  willChange: 'transform, opacity',
+                  transform: 'translate3d(0, 0, 0)',
+                }}
+                className={`flex flex-col justify-between ${idx > 0 ? 'sm:pl-8 lg:pl-10 pt-6 sm:pt-0' : ''
+                  }`}
+              >
+                <div className="flex items-center gap-2.5 mb-2.5">
+                  <div className="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-700">
+                    <Icon className="w-4 h-4 text-amber-600" />
+                  </div>
+                  <span className="text-[11px] uppercase tracking-wider font-mono font-bold text-stone-500">
+                    {m.sub}
                   </span>
                 </div>
-
-                <h3 className="text-sm font-bold text-stone-900 tracking-tight mb-2">
+                <div className="text-3xl sm:text-4xl font-manrope font-extrabold tracking-tight tabular-nums text-stone-900 mb-1">
+                  <span className="text-gradient-title">{m.value}</span>
+                </div>
+                <p className="text-xs text-stone-600 leading-relaxed font-manrope">
                   {m.label}
-                </h3>
-              </div>
-
-              <p className="text-xs text-stone-600 leading-relaxed font-sans pt-2 border-t border-stone-100">
-                {m.description}
-              </p>
-            </motion.div>
-          ))}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

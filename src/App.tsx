@@ -6,6 +6,8 @@ import { SmoothSection } from './components/SmoothSection';
 import { KeyMetricsBar } from './components/KeyMetricsBar';
 import { StudentSpotlightSection } from './components/StudentSpotlightSection';
 import { WhatWeStandForSection } from './components/WhatWeStandForSection';
+import { InstitutionalGradeSection } from './components/InstitutionalGradeSection';
+import { OurDifferenceSection } from './components/OurDifferenceSection';
 import { AboutSection } from './components/AboutSection';
 import { AdmissionsProcessSection } from './components/AdmissionsProcessSection';
 import { DepartmentSection } from './components/DepartmentSection';
@@ -28,8 +30,8 @@ export default function App() {
   // Scroll spy to highlight active section in navbar
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'departments', 'eligibility', 'spotlight', 'values', 'about', 'testimonials', 'placements', 'contact'];
-      const scrollPosition = window.scrollY + 180;
+      const sections = ['home', 'about', 'departments', 'testimonials', 'placements', 'sponsors', 'contact'];
+      const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -78,7 +80,7 @@ export default function App() {
 
         {/* Main Experience */}
         <main className="flex-1">
-          {/* Apple-Style Clean & Modern Hero with Bento Showcase */}
+          {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
           <AsetHeroBanner
             onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
             onExploreDepartments={handleExploreDepartments}
@@ -90,35 +92,41 @@ export default function App() {
             <KeyMetricsBar />
           </SmoothSection>
 
-          {/* Six Specialized Schools & Entry Eligibility Guide */}
-          <DepartmentSection
-            onSelectDepartment={(dept) => setSelectedDepartment(dept)}
-            onApplyForDepartment={handleApplyForDepartment}
-          />
-
-          {/* Flagship Campuses & Facility Bento Showcase */}
+          {/* Student Ambassadors & Gradient Scroll Spotlight */}
           <StudentSpotlightSection
             onOpenAdmissions={handleOpenAdmissions}
             onExploreDepartments={handleExploreDepartments}
           />
 
-          {/* What We Stand For Section (4 Core Value Bento Cards) */}
+          {/* What We Stand For Section (Core Institutional Values) */}
           <WhatWeStandForSection />
 
-          {/* About Section (Academic Accreditation & National Recognition) */}
+          {/* Institutional Grade In All We Do (Horizontal Kinetic Pillar Showcase) */}
+          <InstitutionalGradeSection onOpenAdmissions={handleOpenAdmissions} />
+
+          {/* Our Difference / Operational Excellence Kinetic Showcase */}
+          <OurDifferenceSection />
+
+          {/* About Section */}
           <SmoothSection>
             <AboutSection />
           </SmoothSection>
 
-          {/* Step-by-Step Admissions Process Section */}
+          {/* Step-by-Step Admissions Process Section with Animated Traveling Line */}
           <AdmissionsProcessSection onOpenAdmissions={handleOpenAdmissions} />
+
+          {/* Department Section */}
+          <DepartmentSection
+            onSelectDepartment={(dept) => setSelectedDepartment(dept)}
+            onApplyForDepartment={handleApplyForDepartment}
+          />
 
           {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
           <SmoothSection>
             <TestimonialsSection />
           </SmoothSection>
 
-          {/* Our Placement Partners Section (Unboxed Edge-to-Edge Logo Marquee) */}
+          {/* Our Placement Partners Section */}
           <SmoothSection>
             <CampusLifeSection
               onOpenVirtualTour={() => setIsVirtualTourOpen(true)}

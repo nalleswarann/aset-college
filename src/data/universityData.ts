@@ -11,6 +11,12 @@ import asetCampusImg from '../assets/images/aset-campus.webp';
 import roboticsImg from '../assets/images/dept_biotech_robotics_1794469703091.jpg';
 import architectureImg from '../assets/images/dept_design_architecture_1794469703164.jpg';
 import businessImg from '../assets/images/dept_global_business_1794469703130.jpg';
+import aviationDeptImg from '../assets/images/departments/dept-aviation.jpg';
+import logisticsDeptImg from '../assets/images/departments/dept-logistics.jpg';
+import safetyDeptImg from '../assets/images/departments/dept-safety.jpg';
+import analyticsDeptImg from '../assets/images/departments/dept-analytics.jpg';
+import commerceDeptImg from '../assets/images/departments/dept-commerce.jpg';
+import hospitalityDeptImg from '../assets/images/departments/dept-hospitality.jpg';
 
 export const PROSPECTUS_PDF_URL =
   '/assets/aistudio/ASET_College___Institutional_Overview___Academic_Prospectus_f153166e.pdf';
@@ -85,7 +91,7 @@ export const DEPARTMENTS: Department[] = [
     ],
     description:
       'Designed for students aspiring to careers in commercial aviation, airline operations, airport management, cargo security, and aviation business. The curriculum combines classroom management principles with in-flight exposure, airport visits, and customer service training.',
-    image: asetCampusImg,
+    image: aviationDeptImg,
     keyFacilities: [
       'Airport Ground Operations Briefings',
       'In-Flight & Cabin Service Modules',
@@ -139,7 +145,7 @@ export const DEPARTMENTS: Department[] = [
     ],
     description:
       'Prepares students to manage global supply chains connecting manufacturers, ports, warehouses, freight forwarders, and international markets. Students gain operational familiarity with export-import documentation, customs procedures, and maritime logistics.',
-    image: businessImg,
+    image: logisticsDeptImg,
     keyFacilities: [
       'Seaport & Container Terminal Visits',
       'Export–Import Documentation Labs',
@@ -195,7 +201,7 @@ export const DEPARTMENTS: Department[] = [
     ],
     description:
       'Dedicated to training safety officers, HSE professionals, and emergency response specialists. Students train in a dedicated Fire and Safety Lab equipped with firefighting tools, personal protective equipment (PPE), and rescue gear, supplemented by regular fire drills and CPR training.',
-    image: roboticsImg,
+    image: safetyDeptImg,
     keyFacilities: [
       'Dedicated Fire & Safety Lab',
       'Firefighting Tools, PPE & Rescue Gear',
@@ -249,7 +255,7 @@ export const DEPARTMENTS: Department[] = [
     ],
     description:
       'Combines core business administration with quantitative data analytics, business intelligence, and practical capstone projects to prepare graduates for data-driven corporate roles.',
-    image: architectureImg,
+    image: analyticsDeptImg,
     keyFacilities: [
       'Quantitative Analytics & BI Labs',
       '1 Major Project + 2 Mini-Projects (MBA)',
@@ -304,7 +310,7 @@ export const DEPARTMENTS: Department[] = [
     ],
     description:
       'Integrates undergraduate commerce education with globally recognized professional accounting, taxation, and corporate governance qualifications.',
-    image: businessImg,
+    image: commerceDeptImg,
     keyFacilities: [
       'Integrated CA / CMA / CS / ACCA Coaching',
       'Corporate Accounting & Tax Workshops',
@@ -357,7 +363,7 @@ export const DEPARTMENTS: Department[] = [
     ],
     description:
       'Equips students with operational, culinary, and guest relations expertise for careers in luxury hotels, resorts, airlines, cruise lines, and international tourism.',
-    image: architectureImg,
+    image: hospitalityDeptImg,
     keyFacilities: [
       'Hospitality Operations & Front Office Training',
       'Food & Beverage Service Practice',
