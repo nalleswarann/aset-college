@@ -113,13 +113,13 @@ export const OurDifferenceSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="our-difference"
-      className="relative w-full h-[180vh] sm:h-[190vh] lg:h-[200vh] bg-[#faf8f5] select-none"
+      className="relative w-full h-[140vh] sm:h-[150vh] lg:h-[160vh] bg-[#faf8f5]/80 backdrop-blur-md select-none"
     >
       {/* ========================================================= */}
       {/* STICKY SCREEN CONTAINER: Pinned fixed viewport during      */}
       {/* scroll while items transition with fluid kinetic animation */}
       {/* ========================================================= */}
-      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[#faf8f5] border-b border-stone-200/90 text-stone-900 font-manrope">
+      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[#faf8f5]/80 backdrop-blur-md border-b border-stone-200/90 text-stone-900 font-manrope">
 
         {/* ======================================================= */}
         {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Glow     */}

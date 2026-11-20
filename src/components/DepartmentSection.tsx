@@ -217,7 +217,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
       {/* 3. Left side reveals solid website cream (#faf8f5) with solid black text  */}
       {/* 4. Sliding elevator film-strip for the department images                  */}
       {/* ========================================================================= */}
-      <div ref={containerRef} className="relative h-[380vh] sm:h-[420vh]">
+      <div ref={containerRef} className="relative h-[220vh] sm:h-[240vh]">
         {/* Pinned 100vh Viewport */}
         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col lg:flex-row bg-[#faf8f5]/80 backdrop-blur-md">
 
