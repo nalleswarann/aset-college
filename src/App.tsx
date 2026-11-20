@@ -30,7 +30,7 @@ export default function App() {
   // Scroll spy to highlight active section in navbar
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'departments', 'placements', 'sponsors', 'testimonials', 'contact'];
+      const sections = ['home', 'about', 'departments', 'testimonials', 'placements', 'sponsors', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -121,7 +121,12 @@ export default function App() {
           onApplyForDepartment={handleApplyForDepartment}
         />
 
-        {/* Placements & Alumni Section */}
+        {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
+        <SmoothSection>
+          <TestimonialsSection />
+        </SmoothSection>
+
+        {/* Our Placement Partners Section */}
         <SmoothSection>
           <CampusLifeSection
             onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
@@ -133,14 +138,9 @@ export default function App() {
           <LifeAtAsetSection />
         </SmoothSection>
 
-        {/* Global Partners & Sponsors Section (Directly after Placements & Alumni Network) */}
+        {/* Global Partners & Sponsors Section */}
         <SmoothSection>
           <SponsorsSection />
-        </SmoothSection>
-
-        {/* Testimonials Section (Directly after MOUs with ASET Section) */}
-        <SmoothSection>
-          <TestimonialsSection />
         </SmoothSection>
 
         {/* Contact & Admissions Form */}
