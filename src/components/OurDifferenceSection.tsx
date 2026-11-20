@@ -8,21 +8,6 @@ import {
 } from 'motion/react';
 import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 
-// Partner and Accreditation Logos for the top infinite marquee
-import aaiClean from '../assets/images/partners/aai_clean.png';
-import aasscLogo from '../assets/images/partners/aassc.png';
-import arrivoClean from '../assets/images/partners/arrivo_clean.png';
-import campusworldLogo from '../assets/images/partners/campusworld.png';
-import hasanuddinLogo from '../assets/images/partners/hasanuddin.png';
-import hsuClean from '../assets/images/partners/hsu_clean.png';
-import intiClean from '../assets/images/partners/inti_clean.png';
-import kpmgLogo from '../assets/images/partners/kpmg.webp';
-import lscLogo from '../assets/images/partners/lsc.png';
-import msuLogo from '../assets/images/partners/msu.png';
-import sasLogo from '../assets/images/partners/sas.png';
-import shinawatraLogo from '../assets/images/partners/shinawatra.png';
-import tharaviationLogo from '../assets/images/partners/tharaviation.png';
-
 interface DifferenceItem {
   id: string;
   word: string;
@@ -69,22 +54,6 @@ const DIFFERENCE_DATA: DifferenceItem[] = [
     metric: 'A+',
     metricLabel: 'NAAC Accredited University Support',
   },
-];
-
-const MARQUEE_PARTNERS = [
-  { name: 'Airports Authority of India', logo: aaiClean },
-  { name: 'Aerospace & Aviation Sector Skill Council', logo: aasscLogo },
-  { name: 'Logistics Sector Skill Council', logo: lscLogo },
-  { name: 'KPMG India', logo: kpmgLogo },
-  { name: 'INTI International University', logo: intiClean },
-  { name: 'Management & Science University', logo: msuLogo },
-  { name: 'SAS Aviation', logo: sasLogo },
-  { name: 'Arrivo Logistics', logo: arrivoClean },
-  { name: 'Shinawatra University', logo: shinawatraLogo },
-  { name: 'Hasanuddin University', logo: hasanuddinLogo },
-  { name: 'HSU University', logo: hsuClean },
-  { name: 'Thar Aviation', logo: tharaviationLogo },
-  { name: 'Campus World', logo: campusworldLogo },
 ];
 
 export const OurDifferenceSection: React.FC = () => {
@@ -150,29 +119,7 @@ export const OurDifferenceSection: React.FC = () => {
       {/* STICKY SCREEN CONTAINER: Pinned fixed viewport during      */}
       {/* scroll while items transition with fluid kinetic animation */}
       {/* ========================================================= */}
-      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-[#faf8f5] border-b border-stone-200/90 text-stone-900 font-manrope">
-        {/* ======================================================= */}
-        {/* 1. TOP PARTNER / ACCREDITATION MARQUEE STRIP            */}
-        {/* ======================================================= */}
-        <div className="w-full border-b border-stone-200/80 bg-white/75 backdrop-blur-md py-2 sm:py-2.5 shrink-0 overflow-hidden z-20">
-          <div className="relative w-full flex items-center group-marquee">
-            <div className="flex items-center gap-8 sm:gap-14 lg:gap-18 animate-marquee-left">
-              {[...MARQUEE_PARTNERS, ...MARQUEE_PARTNERS].map((partner, idx) => (
-                <div
-                  key={`${partner.name}-${idx}`}
-                  className="flex items-center justify-center shrink-0 h-6 sm:h-7 px-2 grayscale opacity-55 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  title={partner.name}
-                >
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-5 sm:max-h-6 w-auto object-contain select-none pointer-events-none"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[#faf8f5] border-b border-stone-200/90 text-stone-900 font-manrope">
 
         {/* ======================================================= */}
         {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Glow     */}
