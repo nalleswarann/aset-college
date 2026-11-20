@@ -9,7 +9,7 @@ import {
   ArrowUpRight,
   Mail,
 } from 'lucide-react';
-import asetCrestRound from '../assets/images/aset-crest-round.png';
+import asetLogo from '../assets/images/aset-logo.png';
 
 interface FooterProps {
   onOpenAdmissions: () => void;
@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="footer"
-      className="relative w-full overflow-hidden bg-[#faf8f5]/80 backdrop-blur-md text-stone-900 font-manrope select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
     >
       {/* ========================================================= */}
       {/* SCREEN-MERGED CANVAS (#faf8f5)                            */}
@@ -47,17 +47,24 @@ export const Footer: React.FC<FooterProps> = ({
           {/* COLUMN 1: Official Logo, Description & Action Button   */}
           {/* ----------------------------------------------------- */}
           <div className="md:col-span-12 lg:col-span-4 space-y-5">
-            {/* Properly Aligned Official Logo (Crest + ASET Wordmark) */}
-            <div className="flex items-center gap-3">
-              <img
-                src={asetCrestRound}
-                alt="ASET College Official Crest"
-                className="h-10 sm:h-11 w-10 sm:w-11 object-contain shrink-0 drop-shadow-xs"
-              />
-              <span className="font-manrope text-2xl sm:text-[1.75rem] font-black tracking-tight text-stone-950 leading-none">
-                ASET
-              </span>
-            </div>
+            {/* Properly Aligned Official Navigation Bar Logo with Dark Contrast Container */}
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo('#home');
+              }}
+              className="inline-flex items-center group cursor-pointer select-none"
+              aria-label="ASET College Home"
+            >
+              <div className="bg-stone-950 hover:bg-stone-900 border border-stone-800/90 rounded-2xl px-4 py-2 sm:px-5 sm:py-2.5 shadow-md shadow-stone-950/10 transition-all duration-300 group-hover:scale-[1.02] flex items-center justify-center">
+                <img
+                  src={asetLogo}
+                  alt="ASET College"
+                  className="h-7.5 sm:h-8.5 md:h-9.5 w-auto max-w-[190px] sm:max-w-[220px] object-contain brightness-105"
+                />
+              </div>
+            </a>
 
             {/* Official Institutional Description from Website */}
             <ScrollParagraph delay={0.1} className="text-xs sm:text-sm text-stone-700 max-w-md leading-relaxed font-sans">
