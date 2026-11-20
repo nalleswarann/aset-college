@@ -23,7 +23,16 @@ import {
   ChevronRight,
   Table,
   CheckCircle2,
+  Check,
+  Zap,
+  Sparkles,
   ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  GraduationCap,
+  Clock,
+  ShieldCheck,
+  Search,
 } from 'lucide-react';
 import {
   ScrollHeading,
@@ -107,6 +116,9 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [isVisionPhase, setIsVisionPhase] = useState(false);
+  const [durationMode, setDurationMode] = useState<'standard' | 'lateral'>('standard');
+  const [isMatrixDrawerOpen, setIsMatrixDrawerOpen] = useState(false);
+  const [matrixFilter, setMatrixFilter] = useState('');
 
   const activeItem = REFINED_DEPARTMENTS[activeIdx] || REFINED_DEPARTMENTS[0];
   const matchedFullDept =
@@ -487,80 +499,484 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: ACADEMIC SPECIFICATION GUIDE TABLE                             */}
-      {/* Warm Cream (#faf8f5) Backdrop, Minimalist Table & Full Prospectus Specs   */}
+      {/* SECTION 4: PROGRAM DURATION & ENTRY ELIGIBILITY GUIDE (3-CARD PRICING CLONE) */}
+      {/* Warm Cream (#faf8f5) Backdrop, Curated 3-Card Layout & Full Specification Matrix */}
       {/* ========================================================================= */}
-      <div className="bg-[#faf8f5] text-stone-900 px-6 sm:px-10 lg:px-20 py-20 border-t border-stone-200/80">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-            <div className="space-y-3">
-              <ScrollEyebrow delay={0.04} className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-stone-500">
-                <span className="text-amber-600 font-bold text-sm">04</span>
-                <span className="w-8 h-px bg-stone-300" />
-                <span className="text-stone-800 font-semibold flex items-center gap-1.5">
-                  <Table className="w-3.5 h-3.5 text-amber-600" />
-                  ACADEMIC SPECIFICATION GUIDE
-                </span>
-              </ScrollEyebrow>
-              <ScrollHeading as="h3" delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
-                Program Duration &amp;{' '}
-                <span className="text-gradient-title">
-                  Entry Eligibility Guide
-                </span>
-              </ScrollHeading>
-            </div>
-            <ScrollAction delay={0.2} className="self-start md:self-end">
-              <p className="text-xs font-mono text-stone-500 bg-white border border-stone-200/90 px-3.5 py-1.5 rounded-full shadow-2xs">
-                2026&ndash;2027 Academic Prospectus &bull; Pages 3&ndash;4
-              </p>
-            </ScrollAction>
+      <div className="bg-[#faf8f5] text-stone-900 px-4 sm:px-8 lg:px-16 py-20 sm:py-24 lg:py-32 border-t border-stone-200/80 relative overflow-hidden">
+        {/* Soft atmospheric gradient glow behind the cards */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-r from-blue-100/35 via-indigo-100/30 to-violet-100/25 rounded-full blur-3xl pointer-events-none -z-0" />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Centered Top Eyebrow Badge */}
+          <div className="flex justify-center mb-3">
+            <ScrollEyebrow delay={0.04}>
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50/90 border border-indigo-200/60 text-indigo-700 text-xs font-semibold shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Academic Pathways &amp; Eligibility</span>
+              </span>
+            </ScrollEyebrow>
           </div>
 
-          <div className="overflow-x-auto border border-stone-200/90 rounded-2xl bg-white shadow-xs">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
-              <thead>
-                <tr className="bg-stone-950 text-stone-100 font-mono uppercase tracking-wider text-[11px] border-b border-stone-800">
-                  <th className="py-4 px-5">Department</th>
-                  <th className="py-4 px-5">Representative Programs</th>
-                  <th className="py-4 px-5 whitespace-nowrap">Typical Duration</th>
-                  <th className="py-4 px-5">Entry Eligibility</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-200/80 font-manrope">
-                {PROGRAM_MATRIX.map((row, idx) => (
-                  <motion.tr
-                    key={idx}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: idx * 0.04,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="hover:bg-orange-50/40 transition-colors group"
+          {/* Centered Main Title */}
+          <ScrollHeading
+            as="h3"
+            delay={0.08}
+            className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-extrabold tracking-tight text-stone-900 text-center leading-tight"
+          >
+            Program Duration &amp;{' '}
+            <span className="text-gradient-title">
+              Entry Eligibility Guide
+            </span>
+          </ScrollHeading>
+
+          {/* Centered Subtitle */}
+          <ScrollAction delay={0.14} className="mt-4 max-w-2xl mx-auto text-center px-4">
+            <p className="text-sm sm:text-base text-stone-600 font-manrope leading-relaxed">
+              Explore industry-certified undergraduate, postgraduate, and fast-track diploma specifications affiliated with{' '}
+              <strong className="text-stone-900 font-semibold">Alagappa University</strong>{' '}
+              designed for high-growth global careers.
+            </p>
+          </ScrollAction>
+
+          {/* Centered Segmented Toggle Pill (Cloned from Monthly | Yearly Save 16%) */}
+          <div className="flex justify-center mt-8 mb-12 sm:mb-14">
+            <div className="inline-flex items-center p-1 rounded-full bg-stone-200/70 border border-stone-300/60 shadow-inner">
+              <button
+                type="button"
+                onClick={() => setDurationMode('standard')}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                  durationMode === 'standard'
+                    ? 'bg-white text-stone-900 shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
+                }`}
+              >
+                Standard Degree Pathways
+              </button>
+              <button
+                type="button"
+                onClick={() => setDurationMode('lateral')}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+                  durationMode === 'lateral'
+                    ? 'bg-white text-stone-900 shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
+                }`}
+              >
+                <span>Fast-Track &amp; Lateral Entry</span>
+                <span className="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-2xs">
+                  Save 1 Yr
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* 3-Card Curated Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch max-w-6xl mx-auto">
+            {/* CARD 1: Diploma & Fast-Track (Starter equivalent) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+              className="bg-white rounded-3xl border border-stone-200/90 p-7 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <h4 className="text-xl font-bold font-manrope text-stone-900">
+                  Diploma &amp; Fast-Track
+                </h4>
+
+                <div className="mt-4 mb-3 flex items-baseline">
+                  <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-manrope">
+                    {durationMode === 'standard' ? '1–3' : '1'}
+                  </span>
+                  <span className="text-stone-500 font-medium text-xs sm:text-sm ml-2">
+                    {durationMode === 'standard' ? '/ Years' : '/ Year Fast-Track'}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-stone-500 font-manrope leading-relaxed min-h-[40px]">
+                  Ideal for 10th &amp; 12th pass students seeking immediate vocational readiness and DGCA/industrial credentials.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => onApplyForDepartment('Diploma in Fire & Safety / Shipping & Logistics')}
+                  className="w-full mt-6 py-3 px-5 rounded-xl bg-indigo-50/80 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs sm:text-sm transition-all border border-indigo-200/50 flex items-center justify-center gap-2 group cursor-pointer"
+                >
+                  <span>Explore Diploma Programs</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-indigo-600 transition-transform group-hover:translate-x-0.5" />
+                </button>
+
+                <div className="mt-8 pt-6 border-t border-stone-100 space-y-3">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>10th Std / SSLC or 12th Std (HSC) Pass</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Fire &amp; Industrial Safety Operations (1 &amp; 3 Yrs)</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Shipping, Logistics &amp; Cargo Operations (1 Yr)</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Aviation Ground Operations &amp; Pilot Ground School</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>DGCA Simulator Flight Training Lab Access</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Direct Airport &amp; Seaport Apprenticeship Pipeline</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Eligible for Lateral Entry into 2nd Year UG Degrees</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CARD 2: Undergraduate Degrees (Professional / Most Recommended Elevated) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.12 }}
+              className="relative bg-white rounded-3xl border-2 border-indigo-500/40 shadow-xl shadow-indigo-500/10 flex flex-col justify-between overflow-hidden lg:-translate-y-3 z-10"
+            >
+              {/* Top Most Recommended Badge Banner */}
+              <div className="w-full bg-indigo-50/90 py-2.5 px-4 text-center border-b border-indigo-100 flex items-center justify-center gap-1.5 text-xs font-bold text-indigo-700 tracking-wide uppercase">
+                <Zap className="w-3.5 h-3.5 text-indigo-600 fill-indigo-600" />
+                <span>Most Recommended</span>
+              </div>
+
+              <div className="p-7 sm:p-8 flex flex-col justify-between flex-1">
+                <div>
+                  <h4 className="text-xl font-bold font-manrope text-stone-900">
+                    Undergraduate Degrees (UG)
+                  </h4>
+
+                  <div className="mt-4 mb-3 flex items-baseline">
+                    <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-manrope">
+                      {durationMode === 'standard' ? '3' : '2'}
+                    </span>
+                    <span className="text-stone-500 font-medium text-xs sm:text-sm ml-2">
+                      {durationMode === 'standard' ? '/ Years (6 Sems)' : '/ Years (LE Track)'}
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-stone-500 font-manrope leading-relaxed min-h-[40px]">
+                    Flagship bachelor curricula affiliated with Alagappa University for high-demand corporate and technical careers.
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => onApplyForDepartment('Pilot Training, Aviation & Airport Management')}
+                    className="w-full mt-6 py-3 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-indigo-600/25 flex items-center justify-center gap-2 group cursor-pointer"
                   >
-                    <td className="py-4 px-5 font-bold text-stone-900 group-hover:text-orange-700 transition-colors">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-orange-500 shrink-0" />
-                        <span>{row.department}</span>
+                    <span>Apply for UG Programs</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white transition-transform group-hover:translate-x-0.5" />
+                  </button>
+
+                  <div className="mt-8 pt-6 border-t border-indigo-100/70 space-y-3">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
-                    </td>
-                    <td className="py-4 px-5 text-stone-700 leading-relaxed">
-                      {row.programs}
-                    </td>
-                    <td className="py-4 px-5 font-mono text-orange-700 font-semibold whitespace-nowrap">
-                      <span className="bg-orange-100/70 border border-orange-200/60 px-2.5 py-1 rounded-md text-xs">
-                        {row.duration}
-                      </span>
-                    </td>
-                    <td className="py-4 px-5 text-stone-600 leading-relaxed">
-                      {row.eligibility}
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
+                      <span>12th Std (HSC) Pass in Any Stream / Group</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span className="font-semibold text-stone-900">Conferred by Alagappa University</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span>B.Sc. Aviation &amp; BBA Airline Management</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span>B.Sc. Fire &amp; Industrial Safety (LE Available)</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span>BBA Shipping &amp; Logistics Management</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span>Integrated B.Com + CA / CMA / CS / ACCA (UK)</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span>B.Sc. Artificial Intelligence &amp; Analytics</span>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                      <div className="w-4 h-4 rounded-full border border-indigo-400 bg-indigo-50/60 text-indigo-600 shrink-0 mt-0.5 flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                      </div>
+                      <span>100% Placement Guarantee &amp; Internships</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CARD 3: Postgraduate & MBA (Enterprise equivalent) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.18 }}
+              className="bg-white rounded-3xl border border-stone-200/90 p-7 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <h4 className="text-xl font-bold font-manrope text-stone-900">
+                  Postgraduate &amp; MBA (PG)
+                </h4>
+
+                <div className="mt-4 mb-3 flex items-baseline">
+                  <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-manrope">
+                    {durationMode === 'standard' ? '2' : '1'}
+                  </span>
+                  <span className="text-stone-500 font-medium text-xs sm:text-sm ml-2">
+                    {durationMode === 'standard' ? '/ Years (4 Sems)' : '/ Year PG Diploma'}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-stone-500 font-manrope leading-relaxed min-h-[40px]">
+                  Master's degree curricula for graduates and professionals targeting corporate leadership and industrial oversight.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => onApplyForDepartment('Management & Business Analytics (MBA)')}
+                  className="w-full mt-6 py-3 px-5 rounded-xl bg-indigo-50/80 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs sm:text-sm transition-all border border-indigo-200/50 flex items-center justify-center gap-2 group cursor-pointer"
+                >
+                  <span>Apply for PG / MBA</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-indigo-600 transition-transform group-hover:translate-x-0.5" />
+                </button>
+
+                <div className="mt-8 pt-6 border-t border-stone-100 space-y-3">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Any Recognized Undergraduate Degree (UG)</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span className="font-semibold text-stone-900">Conferred by Alagappa University</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>MBA Business Analytics &amp; Quantitative BI</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>MBA Airline, Airport &amp; Aviation Operations</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>MBA Shipping &amp; Global Port Logistics</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>M.Sc. Industrial Safety &amp; Hygiene (B.E./B.Sc.)</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>1 Major Project + 2 Capstone Mini-Projects</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                    <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[2.5]" />
+                    </div>
+                    <span>Corporate Placement Access (Zoho, KPMG, TTF)</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Interactive Specification Matrix Drawer */}
+          <div className="mt-12 sm:mt-16 max-w-6xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0 border border-indigo-100">
+                  <Table className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-stone-900 font-manrope">
+                    Detailed Department-by-Department Matrix
+                  </h4>
+                  <p className="text-xs text-stone-500">
+                    Official 2026–2027 Academic Prospectus &bull; Conferred by Alagappa University
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsMatrixDrawerOpen(!isMatrixDrawerOpen)}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200/80 text-stone-800 text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+              >
+                <span>{isMatrixDrawerOpen ? 'Collapse Detailed Table' : 'View Full Program Specifications'}</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isMatrixDrawerOpen ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+
+            {/* Expandable Table Drawer */}
+            <AnimatePresence>
+              {isMatrixDrawerOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4">
+                    {/* Search filter input */}
+                    <div className="mb-4 flex items-center gap-2 bg-white border border-stone-200 rounded-xl px-4 py-2.5 shadow-2xs">
+                      <Search className="w-4 h-4 text-stone-400 shrink-0" />
+                      <input
+                        type="text"
+                        value={matrixFilter}
+                        onChange={(e) => setMatrixFilter(e.target.value)}
+                        placeholder="Search by department, degree name, or eligibility (e.g. Aviation, Fire, MBA, 12th Std)..."
+                        className="w-full text-xs sm:text-sm text-stone-800 placeholder-stone-400 bg-transparent focus:outline-hidden"
+                      />
+                      {matrixFilter && (
+                        <button
+                          type="button"
+                          onClick={() => setMatrixFilter('')}
+                          className="text-xs text-stone-400 hover:text-stone-600 font-mono"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="overflow-x-auto border border-stone-200/90 rounded-2xl bg-white shadow-xs">
+                      <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                          <tr className="bg-stone-950 text-stone-100 font-mono uppercase tracking-wider text-[11px] border-b border-stone-800">
+                            <th className="py-4 px-5">Department</th>
+                            <th className="py-4 px-5">Representative Programs</th>
+                            <th className="py-4 px-5 whitespace-nowrap">Typical Duration</th>
+                            <th className="py-4 px-5">Entry Eligibility</th>
+                            <th className="py-4 px-5 text-right">Apply</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-stone-200/80 font-manrope">
+                          {PROGRAM_MATRIX.filter((row) => {
+                            if (!matrixFilter.trim()) return true;
+                            const q = matrixFilter.toLowerCase();
+                            return (
+                              row.department.toLowerCase().includes(q) ||
+                              row.programs.toLowerCase().includes(q) ||
+                              row.eligibility.toLowerCase().includes(q) ||
+                              row.duration.toLowerCase().includes(q)
+                            );
+                          }).map((row, idx) => (
+                            <tr
+                              key={idx}
+                              className="hover:bg-indigo-50/40 transition-colors group"
+                            >
+                              <td className="py-4 px-5 font-bold text-stone-900 group-hover:text-indigo-700 transition-colors whitespace-nowrap">
+                                <div className="flex items-center gap-2">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                                  <span>{row.department}</span>
+                                </div>
+                              </td>
+                              <td className="py-4 px-5 text-stone-700 leading-relaxed font-medium">
+                                {row.programs}
+                              </td>
+                              <td className="py-4 px-5 font-mono text-indigo-700 font-semibold whitespace-nowrap">
+                                <span className="bg-indigo-50 border border-indigo-200/60 px-2.5 py-1 rounded-md text-xs">
+                                  {row.duration}
+                                </span>
+                              </td>
+                              <td className="py-4 px-5 text-stone-600 leading-relaxed text-xs">
+                                {row.eligibility}
+                              </td>
+                              <td className="py-4 px-5 text-right whitespace-nowrap">
+                                <button
+                                  type="button"
+                                  onClick={() => onApplyForDepartment(row.department)}
+                                  className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline hover:no-underline cursor-pointer"
+                                >
+                                  Apply &rarr;
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
