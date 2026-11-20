@@ -7,7 +7,7 @@ import aviationStudentsImg from '../assets/images/aset-aviation-students.png';
 import celebrationImg from '../assets/images/aset-graduates-celebration.jpg';
 import capsImg from '../assets/images/aset-graduates-wearing-caps.jpg';
 import pathwaySunsetImg from '../assets/images/aset-college-pathway-sunset.jpg';
-import quadCampusImg from '../assets/images/hero_university_campus_1794469701413.jpg';
+import campusMainImg from '../assets/images/aset-campus-main-building.webp';
 import designStudioImg from '../assets/images/dept_design_architecture_1794469703164.jpg';
 import roboticsLabImg from '../assets/images/dept_biotech_robotics_1794469703091.jpg';
 import businessHallImg from '../assets/images/dept_global_business_1794469703130.jpg';
@@ -16,7 +16,6 @@ import hospitalityImg from '../assets/images/values-hotel-restaurant.jpg';
 import studentDifferenceImg from '../assets/images/aset-difference-student.jpg';
 import officialGroupImg from '../assets/images/aset-students-group-official.jpg';
 import candidateHeroImg from '../assets/images/candidate-experience-hero.jpg';
-import campusMainImg from '../assets/images/aset-campus.jpg';
 
 interface ImageCard {
   id: string;
@@ -76,8 +75,8 @@ const COLUMN_2_CARDS: ImageCard[] = [
   },
   {
     id: 'c2-4',
-    image: quadCampusImg,
-    alt: 'ASET University Campus Greens & Quad',
+    image: campusMainImg,
+    alt: 'ASET University Campus Building & Grounds',
   },
   {
     id: 'c2-5',

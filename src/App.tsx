@@ -71,103 +71,105 @@ export default function App() {
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-[#faf8f5] text-stone-900 selection:bg-amber-800 selection:text-white flex flex-col font-body">
-      {/* Top Bar Navigation (Transparent over Hero, Frosted Navy on Scroll) */}
-      <Navbar
-        onOpenAdmissions={handleOpenAdmissions}
-        onExploreDepartments={handleExploreDepartments}
-        activeSection={activeSection}
-      />
-
-      {/* Main Experience */}
-      <main className="flex-1">
-        {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
-        <AsetHeroBanner
-          onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
-          onExploreDepartments={handleExploreDepartments}
-          onOpenAdmissions={handleOpenAdmissions}
-        />
-
-        {/* Quantitative Metric Strip */}
-        <KeyMetricsBar />
-
-        {/* Student Ambassadors & Gradient Scroll Spotlight */}
-        <StudentSpotlightSection
+        {/* Top Bar Navigation (Transparent over Hero, Frosted Navy on Scroll) */}
+        <Navbar
           onOpenAdmissions={handleOpenAdmissions}
           onExploreDepartments={handleExploreDepartments}
+          activeSection={activeSection}
         />
 
-        {/* What We Stand For Section (Core Institutional Values) */}
-        <WhatWeStandForSection />
-
-        {/* Institutional Grade In All We Do (Horizontal Kinetic Pillar Showcase) */}
-        <InstitutionalGradeSection onOpenAdmissions={handleOpenAdmissions} />
-
-        {/* Our Difference / Operational Excellence Kinetic Showcase */}
-        <OurDifferenceSection />
-
-        {/* About Section */}
-        <SmoothSection>
-          <AboutSection />
-        </SmoothSection>
-
-        {/* Step-by-Step Admissions Process Section with Animated Traveling Line */}
-        <AdmissionsProcessSection onOpenAdmissions={handleOpenAdmissions} />
-
-        {/* Department Section */}
-        <DepartmentSection
-          onSelectDepartment={(dept) => setSelectedDepartment(dept)}
-          onApplyForDepartment={handleApplyForDepartment}
-        />
-
-        {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
-        <SmoothSection>
-          <TestimonialsSection />
-        </SmoothSection>
-
-        {/* Our Placement Partners Section */}
-        <SmoothSection>
-          <CampusLifeSection
+        {/* Main Experience */}
+        <main className="flex-1">
+          {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
+          <AsetHeroBanner
             onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            onExploreDepartments={handleExploreDepartments}
+            onOpenAdmissions={handleOpenAdmissions}
           />
-        </SmoothSection>
 
-        {/* Life at ASET (Students Feedback with Auto-Moving Cards) */}
-        <SmoothSection>
-          <LifeAtAsetSection />
-        </SmoothSection>
+          {/* Quantitative Metric Strip */}
+          <SmoothSection>
+            <KeyMetricsBar />
+          </SmoothSection>
 
-        {/* Global Partners & Sponsors Section */}
-        <SmoothSection>
-          <SponsorsSection />
-        </SmoothSection>
-
-        {/* Contact & Admissions Form */}
-        <SmoothSection>
-          <ContactSection
-            initialDepartment={inquiryDepartment}
+          {/* Student Ambassadors & Gradient Scroll Spotlight */}
+          <StudentSpotlightSection
+            onOpenAdmissions={handleOpenAdmissions}
+            onExploreDepartments={handleExploreDepartments}
           />
-        </SmoothSection>
-      </main>
 
-      {/* Institutional Footer */}
-      <Footer
-        onOpenAdmissions={handleOpenAdmissions}
-        onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
-      />
+          {/* What We Stand For Section (Core Institutional Values) */}
+          <WhatWeStandForSection />
 
-      {/* Interactive Curriculum & Syllabus Modal */}
-      <CurriculumModal
-        department={selectedDepartment}
-        onClose={() => setSelectedDepartment(null)}
-        onApply={handleApplyForDepartment}
-      />
+          {/* Institutional Grade In All We Do (Horizontal Kinetic Pillar Showcase) */}
+          <InstitutionalGradeSection onOpenAdmissions={handleOpenAdmissions} />
 
-      {/* Interactive 360 Campus Tour Modal */}
-      <VirtualTourModal
-        isOpen={isVirtualTourOpen}
-        onClose={() => setIsVirtualTourOpen(false)}
-      />
-    </div>
-  </SmoothScrollProvider>
+          {/* Our Difference / Operational Excellence Kinetic Showcase */}
+          <OurDifferenceSection />
+
+          {/* About Section */}
+          <SmoothSection>
+            <AboutSection />
+          </SmoothSection>
+
+          {/* Step-by-Step Admissions Process Section with Animated Traveling Line */}
+          <AdmissionsProcessSection onOpenAdmissions={handleOpenAdmissions} />
+
+          {/* Department Section */}
+          <DepartmentSection
+            onSelectDepartment={(dept) => setSelectedDepartment(dept)}
+            onApplyForDepartment={handleApplyForDepartment}
+          />
+
+          {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
+          <SmoothSection>
+            <TestimonialsSection />
+          </SmoothSection>
+
+          {/* Our Placement Partners Section */}
+          <SmoothSection>
+            <CampusLifeSection
+              onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            />
+          </SmoothSection>
+
+          {/* Life at ASET (Students Feedback with Auto-Moving Cards) */}
+          <SmoothSection>
+            <LifeAtAsetSection />
+          </SmoothSection>
+
+          {/* Global Partners & Sponsors Section */}
+          <SmoothSection>
+            <SponsorsSection />
+          </SmoothSection>
+
+          {/* Contact & Admissions Form */}
+          <SmoothSection>
+            <ContactSection
+              initialDepartment={inquiryDepartment}
+            />
+          </SmoothSection>
+        </main>
+
+        {/* Institutional Footer */}
+        <Footer
+          onOpenAdmissions={handleOpenAdmissions}
+          onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+        />
+
+        {/* Interactive Curriculum & Syllabus Modal */}
+        <CurriculumModal
+          department={selectedDepartment}
+          onClose={() => setSelectedDepartment(null)}
+          onApply={handleApplyForDepartment}
+        />
+
+        {/* Interactive 360 Campus Tour Modal */}
+        <VirtualTourModal
+          isOpen={isVirtualTourOpen}
+          onClose={() => setIsVirtualTourOpen(false)}
+        />
+      </div>
+    </SmoothScrollProvider>
   );
 }

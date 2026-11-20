@@ -37,10 +37,10 @@ export const KeyMetricsBar: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 sm:pb-8 font-sans"
+      className="relative -mt-12 sm:-mt-16 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-manrope"
     >
-      {/* Floating High-Contrast Glass Card with Ambient Under-Glow */}
-      <div className="relative rounded-[28px] sm:rounded-[32px] bg-white/95 backdrop-blur-2xl border border-stone-200/90 shadow-[0_20px_50px_-12px_rgba(0,10,28,0.14)] p-6 sm:p-8 lg:p-10">
+      {/* Floating Frosted Glass Card with Ambient Under-Glow */}
+      <div className="relative rounded-[28px] sm:rounded-[32px] bg-white/78 backdrop-blur-2xl border border-white/80 shadow-[0_24px_50px_-12px_rgba(0,10,28,0.12)] p-7 sm:p-9 lg:p-11">
         {/* Animated Logistics Container Truck rolling across the top layer/rim */}
         <LogisticsContainerTruck targetRef={sectionRef} />
 
@@ -56,18 +56,18 @@ export const KeyMetricsBar: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 divide-y sm:divide-y-0 sm:divide-x divide-stone-200/90">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 divide-y sm:divide-y-0 sm:divide-x divide-stone-200/80">
           {metrics.map((m, idx) => {
             const Icon = m.icon;
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.05 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
-                  duration: 0.6,
-                  delay: idx * 0.06,
+                  duration: 0.72,
+                  delay: idx * 0.08,
                   ease: LUXURY_EASE,
                 }}
                 style={{
@@ -78,19 +78,17 @@ export const KeyMetricsBar: React.FC = () => {
                   }`}
               >
                 <div className="flex items-center gap-2.5 mb-2.5">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-800 shrink-0 shadow-2xs">
-                    <Icon className="w-4 h-4 text-amber-700" />
+                  <div className="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-700">
+                    <Icon className="w-4 h-4 text-amber-600" />
                   </div>
-                  <span className="text-[12px] sm:text-[13px] uppercase tracking-wider font-bold text-stone-900 font-sans select-text">
+                  <span className="text-[11px] uppercase tracking-wider font-mono font-bold text-stone-500">
                     {m.sub}
                   </span>
                 </div>
-                <div className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight tabular-nums text-stone-900 my-1">
-                  <span className="text-gradient-title text-orange-600 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-rose-600 to-amber-600 select-text">
-                    {m.value}
-                  </span>
+                <div className="text-3xl sm:text-4xl font-manrope font-extrabold tracking-tight tabular-nums text-stone-900 mb-1">
+                  <span className="text-gradient-title">{m.value}</span>
                 </div>
-                <p className="text-xs sm:text-[13px] text-stone-700 leading-relaxed font-sans font-medium select-text">
+                <p className="text-xs text-stone-600 leading-relaxed font-manrope">
                   {m.label}
                 </p>
               </motion.div>

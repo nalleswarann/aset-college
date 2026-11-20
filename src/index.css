@@ -11,10 +11,10 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Light'),
-       local('SF Pro Text Light'),
-       local('SFProDisplay-Light'),
-       url('/fonts/SF-Pro-Text-Light.woff') format('woff');
+    local('SF Pro Display Light'),
+    local('SF Pro Text Light'),
+    local('SFProDisplay-Light'),
+    url('/fonts/SF-Pro-Text-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -23,9 +23,9 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Light'),
-       local('SFProDisplay-Light'),
-       url('/fonts/SF-Pro-Text-Light.woff') format('woff');
+    local('SF Pro Display Light'),
+    local('SFProDisplay-Light'),
+    url('/fonts/SF-Pro-Text-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -35,11 +35,11 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Regular'),
-       local('SF Pro Text Regular'),
-       local('SFProDisplay-Regular'),
-       local('SF Pro'),
-       url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+    local('SF Pro Display Regular'),
+    local('SF Pro Text Regular'),
+    local('SFProDisplay-Regular'),
+    local('SF Pro'),
+    url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -48,10 +48,10 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Regular'),
-       local('SFProDisplay-Regular'),
-       local('SF Pro'),
-       url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+    local('SF Pro Display Regular'),
+    local('SFProDisplay-Regular'),
+    local('SF Pro'),
+    url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -61,10 +61,10 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Medium'),
-       local('SF Pro Text Medium'),
-       local('SFProDisplay-Medium'),
-       url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
+    local('SF Pro Display Medium'),
+    local('SF Pro Text Medium'),
+    local('SFProDisplay-Medium'),
+    url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -73,9 +73,9 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Medium'),
-       local('SFProDisplay-Medium'),
-       url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
+    local('SF Pro Display Medium'),
+    local('SFProDisplay-Medium'),
+    url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -85,10 +85,10 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Semibold'),
-       local('SF Pro Text Semibold'),
-       local('SFProDisplay-Semibold'),
-       url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
+    local('SF Pro Display Semibold'),
+    local('SF Pro Text Semibold'),
+    local('SFProDisplay-Semibold'),
+    url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -97,9 +97,9 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Semibold'),
-       local('SFProDisplay-Semibold'),
-       url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
+    local('SF Pro Display Semibold'),
+    local('SFProDisplay-Semibold'),
+    url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -109,10 +109,10 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Bold'),
-       local('SF Pro Text Bold'),
-       local('SFProDisplay-Bold'),
-       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+    local('SF Pro Display Bold'),
+    local('SF Pro Text Bold'),
+    local('SFProDisplay-Bold'),
+    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -121,9 +121,9 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Bold'),
-       local('SFProDisplay-Bold'),
-       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+    local('SF Pro Display Bold'),
+    local('SFProDisplay-Bold'),
+    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -133,10 +133,10 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Heavy'),
-       local('SF Pro Display Black'),
-       local('SFProDisplay-Black'),
-       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+    local('SF Pro Display Heavy'),
+    local('SF Pro Display Black'),
+    local('SFProDisplay-Black'),
+    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -145,10 +145,10 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Heavy'),
-       local('SF Pro Display Black'),
-       local('SFProDisplay-Black'),
-       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+    local('SF Pro Display Heavy'),
+    local('SF Pro Display Black'),
+    local('SFProDisplay-Black'),
+    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -157,9 +157,9 @@
 @font-face {
   font-family: 'San Francisco';
   src: local('-apple-system'),
-       local('SF Pro Display Black'),
-       local('SFProDisplay-Black'),
-       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+    local('SF Pro Display Black'),
+    local('SFProDisplay-Black'),
+    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -168,9 +168,9 @@
 @font-face {
   font-family: 'SF Pro Display';
   src: local('-apple-system'),
-       local('SF Pro Display Black'),
-       local('SFProDisplay-Black'),
-       url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+    local('SF Pro Display Black'),
+    local('SFProDisplay-Black'),
+    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -186,11 +186,11 @@
 @font-face {
   font-family: 'Baskerville';
   src: local('Baskerville'),
-       local('Baskerville Regular'),
-       local('Libre Baskerville'),
-       local('Monotype Baskerville'),
-       local('Baskerville Old Face'),
-       url('/fonts/Baskerville-Regular.woff2') format('woff2');
+    local('Baskerville Regular'),
+    local('Libre Baskerville'),
+    local('Monotype Baskerville'),
+    local('Baskerville Old Face'),
+    url('/fonts/Baskerville-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -200,10 +200,10 @@
 @font-face {
   font-family: 'Baskerville';
   src: local('Baskerville Italic'),
-       local('Libre Baskerville Italic'),
-       local('Monotype Baskerville Italic'),
-       local('Baskerville Old Face Italic'),
-       url('/fonts/Baskerville-Italic.woff2') format('woff2');
+    local('Libre Baskerville Italic'),
+    local('Monotype Baskerville Italic'),
+    local('Baskerville Old Face Italic'),
+    url('/fonts/Baskerville-Italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -213,10 +213,10 @@
 @font-face {
   font-family: 'Baskerville';
   src: local('Baskerville Bold'),
-       local('Libre Baskerville Bold'),
-       local('Monotype Baskerville Bold'),
-       local('Baskerville Old Face Bold'),
-       url('/fonts/Baskerville-Bold.ttf') format('truetype');
+    local('Libre Baskerville Bold'),
+    local('Monotype Baskerville Bold'),
+    local('Baskerville Old Face Bold'),
+    url('/fonts/Baskerville-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -226,11 +226,11 @@
 @font-face {
   font-family: 'MT Baskerville';
   src: local('Baskerville'),
-       local('Baskerville Regular'),
-       local('Libre Baskerville'),
-       local('Monotype Baskerville'),
-       local('Baskerville Old Face'),
-       url('/fonts/Baskerville-Regular.woff2') format('woff2');
+    local('Baskerville Regular'),
+    local('Libre Baskerville'),
+    local('Monotype Baskerville'),
+    local('Baskerville Old Face'),
+    url('/fonts/Baskerville-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -239,10 +239,10 @@
 @font-face {
   font-family: 'MT Baskerville';
   src: local('Baskerville Italic'),
-       local('Libre Baskerville Italic'),
-       local('Monotype Baskerville Italic'),
-       local('Baskerville Old Face Italic'),
-       url('/fonts/Baskerville-Italic.woff2') format('woff2');
+    local('Libre Baskerville Italic'),
+    local('Monotype Baskerville Italic'),
+    local('Baskerville Old Face Italic'),
+    url('/fonts/Baskerville-Italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -251,10 +251,10 @@
 @font-face {
   font-family: 'MT Baskerville';
   src: local('Baskerville Bold'),
-       local('Libre Baskerville Bold'),
-       local('Monotype Baskerville Bold'),
-       local('Baskerville Old Face Bold'),
-       url('/fonts/Baskerville-Bold.ttf') format('truetype');
+    local('Libre Baskerville Bold'),
+    local('Monotype Baskerville Bold'),
+    local('Baskerville Old Face Bold'),
+    url('/fonts/Baskerville-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -343,7 +343,6 @@ pre {
 
 /* -------------------------------------------------------------
  * Title Gradient Utilities (Signature Vibrant Orange to Crimson Rose)
- * With cross-browser fallbacks and solid contrast
  * ----------------------------------------------------------- */
 .text-gradient-title {
   background: linear-gradient(135deg, #ea580c 0%, #f97316 45%, #e1144b 100%);
@@ -1538,6 +1537,7 @@ pre {
   0% {
     transform: translateY(0%);
   }
+
   100% {
     transform: translateY(-50%);
   }
@@ -1547,6 +1547,7 @@ pre {
   0% {
     transform: translateY(-50%);
   }
+
   100% {
     transform: translateY(0%);
   }

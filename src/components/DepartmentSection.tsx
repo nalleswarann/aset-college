@@ -10,7 +10,7 @@ import { DEPARTMENTS, PROGRAM_MATRIX } from '../data/universityData';
 import { Department } from '../types/university';
 
 // High-resolution authentic imagery
-import heroCampusImg from '../assets/images/hero_university_campus_1794469701413.jpg';
+import asetCampusMainImg from '../assets/images/aset-campus-main-building.webp';
 import aviationImg from '../assets/images/aset-aviation-students.png';
 import logisticsImg from '../assets/images/dept_global_business_1794469703130.jpg';
 import safetyImg from '../assets/images/dept_biotech_robotics_1794469703091.jpg';
@@ -212,7 +212,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
     <section id="departments" className="relative bg-[#faf8f5] text-stone-900 font-manrope">
       {/* ========================================================================= */}
       {/* TELHA CLARKE SCROLL CANVAS                                                */}
-      {/* 1. Starts with big architectural image ("02 OUR VALUES")                  */}
+      {/* 1. Starts with authentic ASET campus building ("02 OUR DEPARTMENTS")        */}
       {/* 2. Image smoothly reduces to right side (50% desktop, 40% mobile)         */}
       {/* 3. Left side reveals solid website cream (#faf8f5) with solid black text  */}
       {/* 4. Sliding elevator film-strip for the department images                  */}
@@ -241,8 +241,8 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               }`}
             >
               <img
-                src={heroCampusImg}
-                alt="ASET College Architecture"
+                src={asetCampusMainImg}
+                alt="ASET College Campus Building"
                 className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-[1.05]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/60 pointer-events-none" />
@@ -307,8 +307,8 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               }`}
             >
               <img
-                src={heroCampusImg}
-                alt="ASET College Architecture"
+                src={asetCampusMainImg}
+                alt="ASET College Campus Building"
                 className="w-full h-full object-cover object-center filter brightness-[0.78]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 pointer-events-none" />
@@ -368,38 +368,36 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               style={{ opacity: valuesTextOpacity }}
               className="absolute inset-0 z-30 flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-20 pointer-events-none will-change-transform"
             >
-              {/* Top-Left: 02 OUR VALUES (Padded safely below floating glass navbar) */}
+              {/* Top-Left: 02 OUR DEPARTMENTS (Padded safely below floating glass navbar) */}
               <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-white">
                 <span className="font-bold text-orange-400">02</span>
                 <span className="w-8 h-px bg-white/40" />
-                <h2 className="font-semibold text-white tracking-[0.22em] drop-shadow-sm">OUR VALUES</h2>
+                <h2 className="font-semibold text-white tracking-[0.22em] drop-shadow-sm">OUR DEPARTMENTS</h2>
               </div>
 
-              {/* Bottom Row: Telha Clarke layout (Left: Pill CTA, Right: 2-Sentence Manifesto) */}
+              {/* Bottom Row: Telha Clarke layout (Left: Pill CTA, Right: Department Manifesto) */}
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 pointer-events-auto">
                 {/* Left Side: Floating Black Pill CTA */}
                 <div className="shrink-0">
                   <button
-                    onClick={() => onApplyForDepartment('General Admissions')}
-                    className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-black text-white text-xs font-mono font-medium tracking-wide shadow-2xl hover:bg-stone-800 transition-all duration-300 cursor-pointer border border-white/15 active:scale-95"
+                    onClick={() => scrollToDepartment(0)}
+                    className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-lg bg-black/85 hover:bg-black text-white text-xs font-mono font-medium tracking-wide shadow-2xl transition-all duration-300 cursor-pointer border border-white/20 active:scale-95"
                   >
-                    <span className="text-white text-sm leading-none">❖</span>
-                    <span>Let&apos;s work together</span>
+                    <span className="text-orange-400 text-sm leading-none">❖</span>
+                    <span>Explore All Departments</span>
                   </button>
                 </div>
 
-                {/* Right Side: Editorial Manifesto */}
+                {/* Right Side: Editorial Department Manifesto */}
                 <div className="max-w-xl lg:text-right space-y-3">
                   <p className="text-xl sm:text-2xl lg:text-3xl font-light text-white leading-relaxed drop-shadow-sm">
-                    We provide institutional-grade academic excellence and a hands-on approach.
+                    Specialized academic departments engineered for <span className="font-serif italic font-normal text-amber-200">practical mastery</span> and global careers.
                   </p>
                   <p className="text-xs sm:text-sm lg:text-base text-white/90 font-light leading-relaxed">
-                    Underpinning all of our disciplines is an understanding of industry demand,
-                    student potential, and experiential training, so that academic pathways and
-                    degrees remain meaningful and relevant over time.
+                    From DGCA flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
                   </p>
                   <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300/90 pt-1">
-                    Affiliated to Alagappa University &bull; Admissions 2026&ndash;2027
+                    Academically Supported by Alagappa University &bull; Chennai &amp; Coimbatore &bull; Admissions 2026&ndash;2027
                   </p>
                 </div>
               </div>
@@ -416,12 +414,12 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
           >
-            {/* 1. Top-Left: 03 OUR VISION Eyebrow with Alagappa Badge */}
+            {/* 1. Top-Left: 03 OUR DEPARTMENTS Eyebrow with Alagappa Badge */}
             <div className="flex items-center justify-between gap-3 shrink-0">
               <div className="flex items-center gap-3 text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-stone-500">
                 <span className="font-bold text-orange-600">03</span>
                 <span className="w-8 h-px bg-stone-300" />
-                <h2 className="font-semibold text-stone-900 tracking-[0.22em]">OUR VISION</h2>
+                <h2 className="font-semibold text-stone-900 tracking-[0.22em]">OUR DEPARTMENTS</h2>
               </div>
               <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-orange-100/70 text-orange-800 border border-orange-200/60">
                 Alagappa University
@@ -470,8 +468,8 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 onClick={handleOpenApply}
                 className="inline-flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-lg bg-black hover:bg-stone-800 text-white text-xs font-mono font-medium tracking-wide shadow-xl transition-all duration-300 cursor-pointer border border-white/10 shrink-0 active:scale-95"
               >
-                <span className="text-white text-sm leading-none">❖</span>
-                <span>Let&apos;s work together</span>
+                <span className="text-orange-400 text-sm leading-none">❖</span>
+                <span>Apply for Department</span>
               </button>
 
               {/* Minimalist Slide Progress Dots with Gradient Active Dot */}
