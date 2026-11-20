@@ -1,8 +1,22 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'motion/react';
-import asetAeroplane from '../assets/images/aset-aeroplane.png';
+import React from 'react';
+import { motion } from 'motion/react';
+import {
+  Sparkles,
+  ArrowRight,
+  GraduationCap,
+  Compass,
+  Building2,
+  CheckCircle2,
+  Plane,
+  ShieldCheck,
+  TrendingUp,
+  MapPin,
+  Award,
+} from 'lucide-react';
+import asetCampusMainImg from '../assets/images/aset-campus-main-building.webp';
 import asetAviationStudents from '../assets/images/aset-aviation-students.png';
-import skyVideo from '../assets/videos/sky-video-banner.mp4';
+import asetGraduates from '../assets/images/aset-graduates-celebration.jpg';
+import { ScrollHeading, ScrollParagraph, ScrollEyebrow, ScrollAction } from './ScrollTypography';
 
 interface AsetHeroBannerProps {
   onOpenVirtualTour?: () => void;
@@ -10,202 +24,241 @@ interface AsetHeroBannerProps {
   onOpenAdmissions?: () => void;
 }
 
-export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
-  const containerRef = useRef<HTMLElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  // Guarantee seamless video playback across mobile & desktop browsers
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Fallback for strict browser autoplay policies
-      });
+export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = ({
+  onOpenVirtualTour,
+  onExploreDepartments,
+  onOpenAdmissions,
+}) => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
     }
-  }, []);
-
-  // Track scroll progress through this hero section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
-
-  // Spring-smoothed scroll progress for immediate, buttery-smooth and fast response
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 95,
-    damping: 22,
-    mass: 0.5,
-  });
-
-  // Scroll Parallax for the screen-wide monumental ASET typography:
-  // Starts grounded at the bottom behind the students, spans edge-to-edge with increased height,
-  // and dynamically glides upwards beyond the top edge as the user scrolls
-  const asettitleY = useTransform(smoothProgress, [0, 0.65, 1], ['0%', '-140%', '-250%']);
-  const asettitleScale = useTransform(smoothProgress, [0, 0.6, 1], [1, 1.05, 1.12]);
-  const asettitleOpacity = useTransform(smoothProgress, [0, 0.7, 0.95], [1, 0.9, 0]);
-
-  // Subtle slower grounded parallax movement on the student subjects
-  const studentsY = useTransform(smoothProgress, [0, 1], ['0%', '8%']);
-  const studentsScale = useTransform(smoothProgress, [0, 1], [1, 1.05]);
-
-  // Fast Scroll Parallax for the Aeroplane (Flying from Back to Front):
-  // Starts in the deep distant background above 'A' (small scale),
-  // swoops rapidly forward towards the viewer (scaling up 4x),
-  // crosses through 'S' and 'E' behind the students, and reaches 'T' on the right
-  const planeX = useTransform(
-    smoothProgress,
-    [0, 0.16, 0.33, 0.48],
-    ['8vw', '34vw', '64vw', '88vw']
-  );
-  const planeY = useTransform(
-    smoothProgress,
-    [0, 0.16, 0.33, 0.48],
-    ['24vh', '29vh', '21vh', '12vh']
-  );
-  const planeRotate = useTransform(
-    smoothProgress,
-    [0, 0.16, 0.33, 0.48],
-    [4, 10, 2, -4]
-  );
-  // Back to front scale expansion: starts small in the background (0.35) and flies forward (1.45)
-  const planeScale = useTransform(
-    smoothProgress,
-    [0, 0.16, 0.33, 0.48],
-    [0.35, 0.74, 1.2, 1.45]
-  );
-  // Fast flight opacity: solid during flight, then seamlessly dissolves into the sky past 'T'
-  const planeOpacity = useTransform(
-    smoothProgress,
-    [0, 0.04, 0.44, 0.58],
-    [0.85, 1, 1, 0]
-  );
+  };
 
   return (
     <section
-      ref={containerRef}
       id="home"
-      className="relative w-full h-[175vh] bg-black"
+      className="relative w-full pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-[#faf8f5] text-stone-900 select-none font-manrope"
     >
-      {/* Sticky 100vh Hero Viewport Stage */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
-        {/* Layer 0: High-Definition Sky Video Background (Pure video background with zero dark blue tint) */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            poster="/videos/sky-banner-poster.jpg"
-            className="w-full h-full object-cover object-center pointer-events-none select-none"
-          >
-            <source src={skyVideo} type="video/mp4" />
-            <source src="/videos/sky-video-banner.mp4" type="video/mp4" />
-          </video>
-        </div>
+      {/* ========================================================= */}
+      {/* APPLE-STYLE AMBIENT BACKDROP: Soft Warm Atmospheric Glows */}
+      {/* ========================================================= */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[900px] h-[520px] rounded-full bg-gradient-to-b from-orange-200/35 via-rose-100/20 to-transparent blur-3xl -z-10"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/3 -left-32 w-[450px] h-[450px] rounded-full bg-amber-100/30 blur-3xl -z-10"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/3 -right-32 w-[450px] h-[450px] rounded-full bg-rose-100/25 blur-3xl -z-10"
+      />
 
-        {/* Layer 1: Screen-Wide Edge-to-Edge "ASET" Typography Placed at Bottom */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
-        >
-          <motion.div
-            style={{
-              y: asettitleY,
-              scale: asettitleScale,
-              opacity: asettitleOpacity,
-            }}
-            className="w-full max-w-none text-center will-change-transform flex justify-center items-end"
-          >
-            {/* Edge-to-edge responsive SVG wordmark for 100% screen-width stretch with increased vertical height */}
-            <svg
-              viewBox="0 0 2000 650"
-              className="w-full h-[45vh] sm:h-[58vh] md:h-[68vh] lg:h-[78vh] xl:h-[84vh] select-none overflow-visible"
-              preserveAspectRatio="none"
-            >
-              <defs>
-                <linearGradient id="asetWideGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.95" />
-                  <stop offset="100%" stopColor="#E2F0FD" stopOpacity="0.88" />
-                </linearGradient>
-
-                <filter id="asetWideShadow" x="-15%" y="-15%" width="130%" height="130%">
-                  <feDropShadow dx="0" dy="18" stdDeviation="24" floodColor="#000000" floodOpacity="0.45" />
-                  <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000000" floodOpacity="0.3" />
-                </filter>
-              </defs>
-
-              <text
-                x="50%"
-                y="88%"
-                textAnchor="middle"
-                textLength="100%"
-                lengthAdjust="spacingAndGlyphs"
-                fontFamily="'Manrope', 'Lausanne', 'TWK Lausanne', 'Plus Jakarta Sans', system-ui, sans-serif"
-                fontWeight="900"
-                fontSize="650"
-                fill="url(#asetWideGrad)"
-                stroke="rgba(255, 255, 255, 0.55)"
-                strokeWidth="2.5"
-                filter="url(#asetWideShadow)"
-                style={{
-                  letterSpacing: '0.04em',
-                }}
-              >
-                ASET
-              </text>
-            </svg>
-          </motion.div>
-        </div>
-
-        {/* Layer 1.5: Commercial Aeroplane Soaring from 'A' across to 'T' in Background */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        {/* 1. Curatorial Credential Pill */}
         <motion.div
-          style={{
-            left: planeX,
-            top: planeY,
-            rotate: planeRotate,
-            scale: planeScale,
-            opacity: planeOpacity,
-          }}
-          aria-hidden="true"
-          className="absolute z-[15] pointer-events-none select-none will-change-transform -translate-x-1/2 -translate-y-1/2"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-stone-200/90 shadow-xs mb-6 sm:mb-8"
         >
-          <div className="relative flex items-center">
-            {/* Aerodynamic Jet Engine Contrails (Left & Right Engines) */}
-            <div
-              aria-hidden="true"
-              className="absolute right-[80%] top-[56%] w-28 sm:w-44 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute right-[78%] top-[68%] w-24 sm:w-36 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
-            />
-
-            {/* Aeroplane Cutout Image */}
-            <img
-              src={asetAeroplane}
-              alt="ASET Aviation Commercial Aeroplane"
-              className="w-[180px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
-            />
-          </div>
+          <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-stone-800">
+            Admissions Open 2026–2027
+          </span>
+          <span className="text-stone-300 font-light">&bull;</span>
+          <span className="text-xs font-mono text-orange-700 font-semibold">
+            Alagappa University Supported
+          </span>
         </motion.div>
 
-        {/* Layer 2: Cropped Transparent Student Cutout (Positioned Heroically in Front of Aeroplane & ASET) */}
+        {/* 2. Apple Keynote Monumental Display Headline */}
         <motion.div
-          style={{
-            y: studentsY,
-            scale: studentsScale,
-          }}
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-4"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-4xl mx-auto space-y-2"
         >
-          <div className="relative w-full max-w-[540px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
-            <img
-              src={asetAviationStudents}
-              alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[64vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
-            />
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-manrope font-black tracking-tight text-stone-950 leading-[1.04]">
+            Engineering Leaders.{' '}
+            <span className="block mt-1 font-serif italic font-normal text-gradient-title">
+              Industry-Ready
+            </span>{' '}
+            from Day One.
+          </h1>
+        </motion.div>
+
+        {/* 3. Refined Apple-Style Narrative */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 max-w-2xl mx-auto text-base sm:text-lg lg:text-xl text-stone-600 font-normal leading-relaxed tracking-tight"
+        >
+          ASET College of Science &amp; Technology bridges academic excellence with hands-on flight simulators,
+          industrial safety drill-fields, and maritime logistics operations across Chennai &amp; Coimbatore.
+        </motion.p>
+
+        {/* 4. Action Group: Primary, Secondary & Virtual Tour */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+        >
+          <button
+            type="button"
+            onClick={onOpenAdmissions}
+            className="px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-rose-600 hover:from-orange-700 hover:to-rose-700 text-white font-semibold text-sm sm:text-base tracking-tight shadow-md hover:shadow-lg shadow-orange-600/20 transition-all active:scale-95 cursor-pointer flex items-center gap-2 group"
+          >
+            <span>Apply for 2026 Admissions</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollTo('departments')}
+            className="px-6 py-3.5 rounded-full bg-white hover:bg-stone-100 text-stone-900 font-semibold text-sm sm:text-base tracking-tight border border-stone-200/90 shadow-xs hover:shadow-sm transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+          >
+            <span>Explore Academic Disciplines</span>
+          </button>
+
+          {onOpenVirtualTour && (
+            <button
+              type="button"
+              onClick={onOpenVirtualTour}
+              className="px-5 py-3.5 rounded-full bg-stone-100/80 hover:bg-stone-200/90 text-stone-700 font-mono text-xs sm:text-sm font-semibold tracking-tight transition-all active:scale-95 cursor-pointer flex items-center gap-2 border border-stone-200/60"
+            >
+              <Compass className="w-4 h-4 text-orange-600" />
+              <span>360&deg; Campus Tour</span>
+            </button>
+          )}
+        </motion.div>
+
+        {/* ========================================================= */}
+        {/* 5. APPLE-STYLE HERO BENTO SHOWCASE CENTERPIECE            */}
+        {/* High-impact interactive hardware/campus showcase stage     */}
+        {/* ========================================================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.85, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-12 sm:mt-16 text-left"
+        >
+          <div className="relative rounded-[28px] sm:rounded-[36px] bg-white/80 backdrop-blur-2xl border border-stone-200/90 shadow-[0_24px_70px_rgba(0,0,0,0.08)] p-3 sm:p-5 lg:p-6 overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
+              
+              {/* Left 7 Columns: Authentic ASET Campus Building in Cinematic Frame */}
+              <div className="lg:col-span-7 relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-stone-900 group shadow-inner">
+                <img
+                  src={asetCampusMainImg}
+                  alt="ASET College Authentic Campus Building"
+                  className="w-full h-full object-cover object-center select-none transition-transform duration-700 group-hover:scale-103"
+                  loading="eager"
+                />
+                
+                {/* Subtle vignette for contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+
+                {/* Floating On-Image Badges */}
+                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-medium shadow-md">
+                    <Building2 className="w-3 h-3 text-orange-400" />
+                    <span>Chennai &bull; Kuthambakkam</span>
+                  </span>
+                  <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-medium shadow-md">
+                    <Building2 className="w-3 h-3 text-orange-400" />
+                    <span>Coimbatore &bull; Saravanampatti</span>
+                  </span>
+                </div>
+
+                {/* Bottom Overlay Label */}
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex items-end justify-between text-white">
+                  <div>
+                    <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-amber-300 font-bold block mb-1">
+                      Academic Infrastructure &amp; Approved Assets
+                    </span>
+                    <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white drop-shadow-sm font-manrope">
+                      Full-Fledged Training Campuses
+                    </h3>
+                  </div>
+                  <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-mono font-semibold text-white border border-white/20">
+                    Live Simulator On-Site
+                  </span>
+                </div>
+              </div>
+
+              {/* Right 5 Columns: 3 Apple-Style Interactive Bento Tiles */}
+              <div className="lg:col-span-5 flex flex-col justify-between gap-3 sm:gap-4">
+                
+                {/* Tile 1: DGCA Simulator & Aviation Training */}
+                <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-stone-50/80 hover:bg-stone-50 border border-stone-200/80 shadow-2xs hover:shadow-md transition-all flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-orange-600/10 border border-orange-600/20 text-orange-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Plane className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-orange-600 font-bold">
+                        Aviation &amp; Defense
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    </div>
+                    <h4 className="text-base font-bold text-stone-900 tracking-tight">
+                      DGCA Flight Simulator Lab
+                    </h4>
+                    <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                      Advanced flight simulator bays with air traffic control simulation and ground school briefings.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tile 2: 10,000+ Alumni & Placements */}
+                <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-stone-50/80 hover:bg-stone-50 border border-stone-200/80 shadow-2xs hover:shadow-md transition-all flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-rose-600/10 border border-rose-600/20 text-rose-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <TrendingUp className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-rose-600 font-bold">
+                        Career Mobility
+                      </span>
+                      <span className="text-xs font-mono font-bold text-stone-900">100% Placement</span>
+                    </div>
+                    <h4 className="text-base font-bold text-stone-900 tracking-tight">
+                      500+ Active Recruiter Consortium
+                    </h4>
+                    <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                      Verified placement tie-ups across DHL, SpiceJet, KPMG, Airports Authority of India, and port authorities.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tile 3: Alagappa University Academic Support */}
+                <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-stone-50/80 hover:bg-stone-50 border border-stone-200/80 shadow-2xs hover:shadow-md transition-all flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-600/10 border border-amber-600/20 text-amber-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Award className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-amber-700 font-bold">
+                        Academic Support
+                      </span>
+                      <span className="text-xs font-mono font-semibold text-stone-600">NAAC A+</span>
+                    </div>
+                    <h4 className="text-base font-bold text-stone-900 tracking-tight">
+                      Alagappa University Backed
+                    </h4>
+                    <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                      Industry-tailored degrees under UGC regulations, ISO 9001:2015 frameworks, and global degree validity.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
