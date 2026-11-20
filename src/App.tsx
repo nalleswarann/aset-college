@@ -88,9 +88,7 @@ export default function App() {
         />
 
         {/* Quantitative Metric Strip */}
-        <SmoothSection>
-          <KeyMetricsBar />
-        </SmoothSection>
+        <KeyMetricsBar />
 
         {/* Student Ambassadors & Gradient Scroll Spotlight */}
         <StudentSpotlightSection

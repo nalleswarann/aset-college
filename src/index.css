@@ -343,18 +343,23 @@ pre {
 
 /* -------------------------------------------------------------
  * Title Gradient Utilities (Signature Vibrant Orange to Crimson Rose)
+ * With cross-browser fallbacks and solid contrast
  * ----------------------------------------------------------- */
 .text-gradient-title {
   background: linear-gradient(135deg, #ea580c 0%, #f97316 45%, #e1144b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #ea580c;
   display: inline-block;
 }
 
 .text-gradient-accent {
   background: linear-gradient(135deg, #ea580c 0%, #f97316 45%, #e1144b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #ea580c;
   display: inline-block;
 }
 
