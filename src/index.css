@@ -84,6 +84,31 @@
   font-display: swap;
 }
 
+/* Medium (500) */
+@font-face {
+  font-family: 'Season Mix';
+  src: local('Season Mix Medium'),
+    local('The Seasons Medium'),
+    local('SeasonMix-Bold'),
+    local('TheSeasons-Bold'),
+    url('/fonts/SeasonMix-Bold.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'The Seasons';
+  src: local('Season Mix Medium'),
+    local('The Seasons Medium'),
+    local('SeasonMix-Bold'),
+    local('TheSeasons-Bold'),
+    url('/fonts/SeasonMix-Bold.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Semibold (600) mapped to Bold */
 @font-face {
   font-family: 'Season Mix';
@@ -236,82 +261,79 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Universal Typography matching Reference Image Architecture */
-  --font-title: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Title & Heading Font: Season Mix, ui-sans-serif, system-ui, sans-serif */
+  --font-title: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+  --font-season: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+  --font-baskerville: "Season Mix", ui-sans-serif, system-ui, sans-serif;
 
-  /* Body & Paragraph Font: PP Neue Montreal */
-  --font-sans: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-paragraph: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "PP Neue Montreal", "Neue Montreal", monospace;
-  --font-inter: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-manrope: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-lausanne: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-roobert: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sf: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* Optional Serif Accents */
-  --font-serif: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
-  --font-season: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
-  --font-editorial: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
-  --font-baskerville: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
+  /* Body & Paragraph Font: PP Neue Montreal, ui-sans-serif, system-ui, sans-serif */
+  --font-sans: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-paragraph: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "PP Neue Montreal", ui-sans-serif, system-ui, monospace;
+  --font-inter: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-manrope: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-lausanne: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-roobert: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-sf: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   :root {
-    --font-title: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-heading: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-display: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-title: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+    --font-season: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+    --font-editorial: "Season Mix", ui-sans-serif, system-ui, sans-serif;
+    --font-baskerville: "Season Mix", ui-sans-serif, system-ui, sans-serif;
 
-    --font-sans: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-body: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-paragraph: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: "PP Neue Montreal", "Neue Montreal", monospace;
-    --font-inter: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-manrope: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-lausanne: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-roobert: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-sf: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-monument: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-    --font-serif: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
-    --font-season: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
-    --font-editorial: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
-    --font-baskerville: "Season Mix", "The Seasons", "SeasonMix", Georgia, serif;
+    --font-sans: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-paragraph: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "PP Neue Montreal", ui-sans-serif, system-ui, monospace;
+    --font-inter: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-manrope: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-lausanne: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-roobert: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-sf: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-monument: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
   }
 
   html {
     scroll-padding-top: 84px;
-    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   body {
-    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
     font-weight: 400;
     background-color: #faf8f5;
     color: #1c1917;
     overflow-x: hidden;
   }
 
-  /* All titles and headings: Signature Medium/Regular (500/400) weight from reference image */
+  /* All titles and headings strictly use Season Mix, ui-sans-serif, system-ui, sans-serif */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-family: "Season Mix", ui-sans-serif, system-ui, sans-serif !important;
     font-weight: 500;
     letter-spacing: -0.025em;
     line-height: 1.12;
   }
 
-  /* All paragraphs and general body: Regular weight (400) matching reference image */
+  /* All paragraphs and general body strictly use PP Neue Montreal, ui-sans-serif, system-ui, sans-serif */
   p,
   span,
   a,
@@ -321,11 +343,11 @@
   textarea,
   select,
   label {
-    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
   }
 
   p {
-    font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-family: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif !important;
     font-weight: 400;
     line-height: 1.625;
     letter-spacing: -0.01em;
@@ -355,8 +377,13 @@
 /* Titles & Display Typography Utilities */
 .font-title,
 .font-heading,
-.font-display {
-  font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+.font-display,
+.font-season,
+.font-serif,
+.font-editorial,
+.font-baskerville,
+.font-serif-display {
+  font-family: "Season Mix", ui-sans-serif, system-ui, sans-serif !important;
   font-weight: 500 !important;
   letter-spacing: -0.025em !important;
 }
@@ -378,18 +405,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: "PP Neue Montreal", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-}
-
-/* Season Mix Serif Accents (for designated editorial highlights) */
-.font-season,
-.font-serif,
-.font-editorial,
-.font-baskerville,
-.font-serif-display {
-  font-family: "Season Mix", "The Seasons", "SeasonMix", "Season", Georgia, serif !important;
-  font-weight: 400;
-  font-feature-settings: "liga" 1, "dlig" 1;
+  font-family: "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif !important;
 }
 
 /* -------------------------------------------------------------
