@@ -8,7 +8,6 @@ import { StudentSpotlightSection } from './components/StudentSpotlightSection';
 import { WhatWeStandForSection } from './components/WhatWeStandForSection';
 import { InstitutionalGradeSection } from './components/InstitutionalGradeSection';
 import { OurDifferenceSection } from './components/OurDifferenceSection';
-import { AboutSection } from './components/AboutSection';
 import { AdmissionsProcessSection } from './components/AdmissionsProcessSection';
 import { DepartmentSection } from './components/DepartmentSection';
 import { CampusLifeSection } from './components/CampusLifeSection';
@@ -112,11 +111,6 @@ export default function App() {
             <CampusLifeSection
               onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
             />
-          </SmoothSection>
-
-          {/* About Section (Career-Focused Higher Education Across Chennai & Coimbatore) */}
-          <SmoothSection>
-            <AboutSection />
           </SmoothSection>
 
           {/* Step-by-Step Admissions Process Section with Animated Traveling Line */}
