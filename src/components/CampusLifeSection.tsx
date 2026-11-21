@@ -3,14 +3,12 @@ import { motion } from 'motion/react';
 import {
   Briefcase,
   ArrowRight,
-  Compass,
   Building2,
   CheckCircle2,
   Plane,
   Ship,
   Flame,
   Award,
-  TrendingUp,
   Users,
   ArrowUpRight,
 } from 'lucide-react';
@@ -21,11 +19,6 @@ import {
   ScrollAction,
   LUXURY_EASE,
 } from './ScrollTypography';
-import {
-  PLACEMENT_SECTORS,
-  INDUSTRIAL_VISIT_PARTNERS,
-  PLACEMENT_TRAINING_AREAS,
-} from '../data/universityData';
 
 // Sector Showcase Images
 import sectorAviationImg from '../assets/images/sector-aviation-flight.jpg';
@@ -488,78 +481,6 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* ========================================================= */}
-        {/* 5. STRUCTURED TRAINING & DUAL FLAGSHIP CAMPUSES           */}
-        {/* ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
-          {/* Structured Placement Training & Industrial Visits (8 cols) */}
-          <div className="lg:col-span-8 p-6 sm:p-8 bg-stone-900 text-stone-100 rounded-2xl sm:rounded-3xl space-y-4 shadow-xl">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
-                Structured Placement Training &amp; Industrial Visits
-              </span>
-              <span className="text-xs font-mono text-stone-400">12 Training Areas</span>
-            </div>
-
-            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed max-w-3xl font-sans">
-              Pre-training assessments, customized mentoring, and post-module evaluations across 12 training areas, paired with guided monthly industrial visits.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2 text-xs">
-              <div>
-                <span className="font-mono uppercase text-[10px] text-amber-300 block mb-2 font-bold tracking-wider">
-                  Core Placement Modules
-                </span>
-                <ul className="space-y-1.5 text-stone-300">
-                  {PLACEMENT_TRAINING_AREAS.slice(0, 6).map((area) => (
-                    <li key={area} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                      <span>{area}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <span className="font-mono uppercase text-[10px] text-amber-300 block mb-2 font-bold tracking-wider">
-                  Industrial Visit Destinations
-                </span>
-                <p className="text-stone-300 leading-relaxed font-sans">
-                  {INDUSTRIAL_VISIT_PARTNERS.join(' · ')}
-                </p>
-                <div className="mt-4 pt-3 border-t border-stone-800 flex items-center gap-2 text-stone-400 font-mono text-[11px]">
-                  <TrendingUp className="w-3.5 h-3.5 text-orange-400" />
-                  <span>Integrated with Summer Internships</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Campus Tour Highlight Box (4 cols) */}
-          <div className="lg:col-span-4 p-6 sm:p-8 bg-amber-50/90 border border-amber-200/90 rounded-2xl sm:rounded-3xl flex flex-col justify-between space-y-4 shadow-md">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-900 font-bold">
-                <Compass className="w-4 h-4 text-amber-900" />
-                <span>Chennai &amp; Coimbatore</span>
-              </div>
-              <h4 className="text-lg font-bold text-stone-900 font-manrope">
-                State-of-the-Art Training Grounds
-              </h4>
-              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-sans">
-                Explore our dedicated Fire &amp; Safety Lab, firefighting &amp; CPR drill grounds, and specialized logistics training campuses in Kuthambakkam (Chennai) and Saravanampatti (Coimbatore).
-              </p>
-            </div>
-
-            <button
-              onClick={onOpenVirtualTour}
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-amber-950 hover:text-orange-700 transition-colors cursor-pointer pt-2 group"
-            >
-              <span>Inspect Training Facilities</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
         </div>
       </div>
