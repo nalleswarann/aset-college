@@ -371,9 +371,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 84px;
-    -webkit-overflow-scrolling: touch;
     font-family: "San Francisco", "SF Pro Display", "SF Pro Text", "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

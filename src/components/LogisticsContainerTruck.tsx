@@ -119,9 +119,9 @@ export const LogisticsContainerTruck: React.FC<LogisticsContainerTruckProps> = (
 
   // Spring-smoothed scroll progress for fluid momentum, natural inertia, and silky deceleration
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 180,
-    damping: 26,
-    mass: 0.25,
+    stiffness: 85,
+    damping: 24,
+    mass: 0.5,
   });
 
   // Clamp progress strictly between 0 and 1 so it comes to a definitive, stable stop at the end of the border-radius

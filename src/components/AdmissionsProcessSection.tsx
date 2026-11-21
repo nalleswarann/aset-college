@@ -36,9 +36,8 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 180,
-    damping: 26,
-    mass: 0.25,
+    stiffness: 110,
+    damping: 24,
     restDelta: 0.001,
   });
 

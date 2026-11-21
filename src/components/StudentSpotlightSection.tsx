@@ -25,9 +25,9 @@ export const StudentSpotlightSection: React.FC<StudentSpotlightSectionProps> = (
   });
 
   const smoothScroll = useSpring(scrollYProgress, {
-    stiffness: 180,
-    damping: 26,
-    mass: 0.25,
+    stiffness: 80,
+    damping: 25,
+    mass: 0.8,
     restDelta: 0.001,
   });
 

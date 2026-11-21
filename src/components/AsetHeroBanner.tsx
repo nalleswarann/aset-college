@@ -31,9 +31,9 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
 
   // Spring-smoothed scroll progress for immediate, buttery-smooth and fast response
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 200,
-    damping: 26,
-    mass: 0.2,
+    stiffness: 95,
+    damping: 22,
+    mass: 0.5,
   });
 
   // Scroll Parallax for the screen-wide monumental ASET typography:
