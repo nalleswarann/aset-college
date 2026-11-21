@@ -1062,29 +1062,6 @@ pre {
   will-change: transform;
 }
 
-/* 6b. Infinite Non-Stop Running Marquee for Recruitment Sectors with Images */
-@keyframes sectorsMarqueeLeft {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-
-.animate-marquee-sectors-seamless {
-  display: flex;
-  flex-shrink: 0;
-  animation: sectorsMarqueeLeft 38s linear infinite;
-  will-change: transform;
-}
-
-@media (max-width: 640px) {
-  .animate-marquee-sectors-seamless {
-    animation-duration: 26s;
-  }
-}
-
 /* 7. Realistic Mist & Floating Cloud Dynamics */
 @keyframes mistDriftSlow {
   0% {
