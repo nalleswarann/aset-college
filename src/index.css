@@ -1062,36 +1062,26 @@ pre {
   will-change: transform;
 }
 
-.group-marquee:hover .animate-marquee-left,
-.group-marquee:hover .animate-marquee-right {
-  animation-play-state: paused;
-}
-
-/* 6b. Infinite Running Marquee for Recruitment Sectors with Images */
+/* 6b. Infinite Non-Stop Running Marquee for Recruitment Sectors with Images */
 @keyframes sectorsMarqueeLeft {
   0% {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
 .animate-marquee-sectors-seamless {
   display: flex;
-  width: max-content;
-  animation: sectorsMarqueeLeft 42s linear infinite;
+  flex-shrink: 0;
+  animation: sectorsMarqueeLeft 38s linear infinite;
   will-change: transform;
-}
-
-.animate-marquee-sectors-seamless:hover,
-.group-sectors-marquee:hover .animate-marquee-sectors-seamless {
-  animation-play-state: paused;
 }
 
 @media (max-width: 640px) {
   .animate-marquee-sectors-seamless {
-    animation-duration: 32s;
+    animation-duration: 26s;
   }
 }
 

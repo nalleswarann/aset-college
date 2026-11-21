@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import {
   Briefcase,
@@ -12,9 +12,6 @@ import {
   Award,
   TrendingUp,
   Users,
-  ChevronLeft,
-  ChevronRight,
-  Sparkles,
   ArrowUpRight,
 } from 'lucide-react';
 import {
@@ -185,14 +182,6 @@ const SECTOR_SHOWCASE_ITEMS: SectorShowcaseItem[] = [
 export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
   onOpenVirtualTour,
 }) => {
-  const sectorScrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollSectors = (direction: 'left' | 'right') => {
-    if (sectorScrollRef.current) {
-      const scrollAmount = direction === 'left' ? -380 : 380;
-      sectorScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
   return (
     <section
       id="placements"
@@ -376,138 +365,128 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
               </p>
             </div>
 
-            {/* Interactive Controls & Live Stream Badge */}
-            <div className="flex items-center gap-3 self-start md:self-end">
-              <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-stone-600 text-xs font-mono">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                <span>Live Continuous Stream · Hover to Pause</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => scrollSectors('left')}
-                  aria-label="Previous sectors"
-                  className="w-9 h-9 rounded-full bg-white border border-stone-200 shadow-xs hover:border-orange-500/50 hover:bg-orange-50 hover:text-orange-600 text-stone-700 flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollSectors('right')}
-                  aria-label="Next sectors"
-                  className="w-9 h-9 rounded-full bg-white border border-stone-200 shadow-xs hover:border-orange-500/50 hover:bg-orange-50 hover:text-orange-600 text-stone-700 flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+            {/* Continuous Stream Live Status Badge */}
+            <div className="flex items-center gap-2 self-start md:self-end">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-stone-700 text-xs font-mono shadow-xs">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span className="font-semibold text-stone-800">Continuous Non-Stop Stream</span>
+                <span className="text-stone-300 hidden sm:inline">•</span>
+                <span className="text-stone-500 hidden sm:inline">5 Key Industry Tracks</span>
               </div>
             </div>
           </div>
 
           {/* Full-width Seamless Scrolling Marquee Container */}
-          <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden py-2 sm:py-4 group-sectors-marquee">
+          <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden py-3 sm:py-5">
             {/* Left Edge Gradient Fade */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-28 md:w-40 bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/85 to-transparent z-20"
+              className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-24 md:w-36 bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/85 to-transparent z-20"
             />
             {/* Right Edge Gradient Fade */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-28 md:w-40 bg-gradient-to-l from-[#faf8f5] via-[#faf8f5]/85 to-transparent z-20"
+              className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-24 md:w-36 bg-gradient-to-l from-[#faf8f5] via-[#faf8f5]/85 to-transparent z-20"
             />
 
-            {/* Scrollable Track with Seamless Double-Array for Infinite Looping */}
-            <div
-              ref={sectorScrollRef}
-              className="flex overflow-x-auto no-scrollbar scroll-smooth"
-            >
-              <div className="animate-marquee-sectors-seamless flex gap-5 sm:gap-6 px-4">
-                {[...SECTOR_SHOWCASE_ITEMS, ...SECTOR_SHOWCASE_ITEMS].map((sector, idx) => {
-                  const SectorIcon = sector.icon;
+            {/* Continuous Scrolling Without Stopping - 4 Synchronized Tracks */}
+            <div className="flex w-max select-none touch-pan-y">
+              {[0, 1, 2, 3].map((trackIdx) => (
+                <div
+                  key={`sector-track-${trackIdx}`}
+                  className="animate-marquee-sectors-seamless flex shrink-0 gap-4 sm:gap-6 pr-4 sm:pr-6"
+                  aria-hidden={trackIdx > 0}
+                >
+                  {SECTOR_SHOWCASE_ITEMS.map((sector, idx) => {
+                    const SectorIcon = sector.icon;
 
-                  return (
-                    <div
-                      key={`${sector.id}-${idx}`}
-                      className="w-[285px] sm:w-[350px] md:w-[390px] lg:w-[420px] shrink-0 rounded-3xl bg-white border border-stone-200/90 shadow-sm hover:shadow-2xl hover:border-orange-500/40 transition-all duration-500 overflow-hidden flex flex-col group/card"
-                    >
-                      {/* TOP HALF: Cinematic Sector Imagery */}
-                      <div className="h-48 sm:h-56 relative overflow-hidden bg-stone-900">
-                        <img
-                          src={sector.image}
-                          alt={sector.sector}
-                          className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover/card:scale-108"
-                          loading="lazy"
-                        />
-                        {/* Cinematic Vignette */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-black/20" />
+                    return (
+                      <div
+                        key={`${sector.id}-${trackIdx}-${idx}`}
+                        className="w-[280px] sm:w-[340px] md:w-[385px] lg:w-[415px] shrink-0 rounded-3xl bg-white border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-orange-500/40 transition-all duration-300 overflow-hidden flex flex-col group/card"
+                      >
+                        {/* TOP HALF: Cinematic Sector Imagery */}
+                        <div className="h-44 sm:h-52 md:h-56 relative overflow-hidden bg-stone-900">
+                          <img
+                            src={sector.image}
+                            alt={sector.sector}
+                            className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover/card:scale-108"
+                            loading="lazy"
+                          />
+                          {/* Cinematic Vignette */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-black/20" />
 
-                        {/* Top Badges Bar */}
-                        <div className="absolute top-3 inset-x-3 sm:top-3.5 sm:inset-x-3.5 flex items-center justify-between gap-2 z-10">
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-900/75 backdrop-blur-md border border-white/20 text-[11px] font-mono font-medium text-white shadow-xs">
-                            <SectorIcon className="w-3.5 h-3.5 text-amber-400" />
-                            <span>{sector.tag}</span>
-                          </span>
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-orange-600/95 backdrop-blur-md text-[10px] font-mono font-bold text-white tracking-wide shadow-xs">
-                            {sector.metric}
-                          </span>
-                        </div>
-
-                        {/* Bottom Title Bar */}
-                        <div className="absolute bottom-3 inset-x-3 sm:bottom-3.5 sm:inset-x-3.5 z-10 space-y-1">
-                          <div className="text-[10px] font-mono uppercase tracking-widest text-amber-300 font-bold">
-                            {sector.badge}
-                          </div>
-                          <h4 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-white tracking-tight leading-snug drop-shadow-sm">
-                            {sector.sector}
-                          </h4>
-                        </div>
-                      </div>
-
-                      {/* BOTTOM HALF: Sector Content & Recruiting Partners */}
-                      <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 space-y-4 bg-white">
-                        <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
-                          {sector.description}
-                        </p>
-
-                        {/* Recruiting Partners */}
-                        <div className="space-y-2 pt-1">
-                          <div className="flex items-center justify-between">
-                            <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-stone-400">
-                              Top Campus Recruiters
+                          {/* Top Badges Bar */}
+                          <div className="absolute top-3 inset-x-3 sm:top-3.5 sm:inset-x-3.5 flex items-center justify-between gap-2 z-10">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-900/75 backdrop-blur-md border border-white/20 text-[11px] font-mono font-medium text-white shadow-xs">
+                              <SectorIcon className="w-3.5 h-3.5 text-amber-400" />
+                              <span>{sector.tag}</span>
                             </span>
-                            <span className="text-[11px] font-mono font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
-                              {sector.partners.length} Key Partners
+                            <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-orange-600/95 backdrop-blur-md text-[10px] font-mono font-bold text-white tracking-wide shadow-xs">
+                              {sector.metric}
                             </span>
                           </div>
 
-                          <div className="flex flex-wrap gap-1.5 pt-0.5">
-                            {sector.partners.map((partner) => (
-                              <span
-                                key={partner}
-                                className="px-2.5 py-1 bg-stone-100/90 hover:bg-orange-50 border border-stone-200/80 hover:border-orange-300 rounded-full text-[11px] sm:text-xs font-medium text-stone-800 transition-colors"
-                              >
-                                {partner}
+                          {/* Bottom Title Bar */}
+                          <div className="absolute bottom-3 inset-x-3 sm:bottom-3.5 sm:inset-x-3.5 z-10 space-y-1">
+                            <div className="text-[10px] font-mono uppercase tracking-widest text-amber-300 font-bold">
+                              {sector.badge}
+                            </div>
+                            <h4 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-white tracking-tight leading-snug drop-shadow-sm">
+                              {sector.sector}
+                            </h4>
+                          </div>
+                        </div>
+
+                        {/* BOTTOM HALF: Sector Content & Recruiting Partners */}
+                        <div className="p-4 sm:p-6 flex flex-col justify-between flex-1 space-y-4 bg-white">
+                          <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed line-clamp-3">
+                            {sector.description}
+                          </p>
+
+                          {/* Recruiting Partners */}
+                          <div className="space-y-2 pt-1">
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-stone-400">
+                                Top Campus Recruiters
                               </span>
-                            ))}
-                          </div>
-                        </div>
+                              <span className="text-[11px] font-mono font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
+                                {sector.partners.length} Key Partners
+                              </span>
+                            </div>
 
-                        {/* Card Footer */}
-                        <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] font-mono text-stone-500">
-                          <div className="flex items-center gap-1.5 text-emerald-600 font-medium">
-                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                            <span>Annual On-Campus Drives</span>
+                            <div className="flex flex-wrap gap-1.5 pt-0.5">
+                              {sector.partners.map((partner) => (
+                                <span
+                                  key={partner}
+                                  className="px-2.5 py-1 bg-stone-100/90 hover:bg-orange-50 border border-stone-200/80 hover:border-orange-300 rounded-full text-[11px] sm:text-xs font-medium text-stone-800 transition-colors"
+                                >
+                                  {partner}
+                                </span>
+                              ))}
+                            </div>
                           </div>
-                          <span className="text-stone-400 flex items-center gap-0.5 group-hover/card:text-orange-600 transition-colors">
-                            <span>Placement Track</span>
-                            <ArrowUpRight className="w-3 h-3 transition-transform group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5" />
-                          </span>
+
+                          {/* Card Footer */}
+                          <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] font-mono text-stone-500">
+                            <div className="flex items-center gap-1.5 text-emerald-600 font-medium">
+                              <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                              <span>Annual On-Campus Drives</span>
+                            </div>
+                            <span className="text-stone-400 flex items-center gap-0.5 group-hover/card:text-orange-600 transition-colors">
+                              <span>Placement Track</span>
+                              <ArrowUpRight className="w-3 h-3 transition-transform group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5" />
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              ))}
             </div>
           </div>
         </div>
