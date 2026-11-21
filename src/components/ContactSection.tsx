@@ -13,7 +13,7 @@ import {
   Building2,
   GraduationCap,
 } from 'lucide-react';
-import roboticsTechImg from '../assets/images/dept_biotech_robotics_1794469703091.jpg';
+import roboticsTechImg from '../assets/images/contact.webp';
 
 interface ContactSectionProps {
   initialDepartment?: string;
@@ -157,13 +157,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-manrope"
     >
       <div className="max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* ========================================================= */}
         {/* CONTACT SECTION CARD                                      */}
         {/* Clean, balanced split layout with proper alignment        */}
         {/* ========================================================= */}
         <div className="bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-          
+
           {/* ------------------------------------------------------- */}
           {/* LEFT PANE: Precision Visual, Floating Badge & Clock     */}
           {/* ------------------------------------------------------- */}
@@ -274,7 +274,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* (Giant "Contact Form" removed for balanced alignment)   */}
           {/* ------------------------------------------------------- */}
           <div className="lg:col-span-8 xl:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between bg-white space-y-8">
-            
+
             {/* Top Header: Eyebrow + General & Admissions Helpline */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-stone-200/90">
               <div className="space-y-2">
@@ -373,7 +373,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                
+
                 {/* Row 1: Name & Email Inputs */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <div className="space-y-1.5">
@@ -385,9 +385,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="Your Name"
-                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all ${
-                        errors.fullName ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all ${errors.fullName ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
+                        }`}
                     />
                     {errors.fullName && (
                       <p className="text-[11px] text-rose-600 font-mono">{errors.fullName}</p>
@@ -403,9 +402,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="Your Email"
-                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all ${
-                        errors.email ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all ${errors.email ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
+                        }`}
                     />
                     {errors.email && (
                       <p className="text-[11px] text-rose-600 font-mono">{errors.email}</p>
@@ -415,7 +413,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 {/* Row 2: MODERN ANIMATED CUSTOM DROPDOWNS (No clipping, sleek animations) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-                  
+
                   {/* Department Custom Animated Dropdown */}
                   <div className="space-y-1.5 relative" ref={deptRef}>
                     <label className="block text-xs font-medium text-stone-700">
@@ -428,11 +426,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         setIsDeptOpen(!isDeptOpen);
                         setIsCampusOpen(false);
                       }}
-                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${
-                        isDeptOpen
-                          ? 'border-orange-500 bg-white ring-2 ring-orange-500/20 shadow-sm'
-                          : 'border-stone-200 hover:border-stone-300'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${isDeptOpen
+                        ? 'border-orange-500 bg-white ring-2 ring-orange-500/20 shadow-sm'
+                        : 'border-stone-200 hover:border-stone-300'
+                        }`}
                     >
                       <span className="truncate font-medium text-stone-800">
                         {formData.department}
@@ -465,11 +462,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                                   setFormData({ ...formData, department: dept.name });
                                   setIsDeptOpen(false);
                                 }}
-                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between gap-2 transition-colors cursor-pointer ${
-                                  isSelected
-                                    ? 'bg-orange-50 text-orange-900 font-semibold border-l-2 border-orange-600'
-                                    : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950'
-                                }`}
+                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between gap-2 transition-colors cursor-pointer ${isSelected
+                                  ? 'bg-orange-50 text-orange-900 font-semibold border-l-2 border-orange-600'
+                                  : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950'
+                                  }`}
                               >
                                 <span className="truncate">{dept.name}</span>
                                 {isSelected && (
@@ -495,11 +491,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         setIsCampusOpen(!isCampusOpen);
                         setIsDeptOpen(false);
                       }}
-                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${
-                        isCampusOpen
-                          ? 'border-orange-500 bg-white ring-2 ring-orange-500/20 shadow-sm'
-                          : 'border-stone-200 hover:border-stone-300'
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${isCampusOpen
+                        ? 'border-orange-500 bg-white ring-2 ring-orange-500/20 shadow-sm'
+                        : 'border-stone-200 hover:border-stone-300'
+                        }`}
                     >
                       <span className="truncate font-medium text-stone-800">
                         {formData.campus}
@@ -532,11 +527,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                                   setFormData({ ...formData, campus: campus.name });
                                   setIsCampusOpen(false);
                                 }}
-                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between gap-2 transition-colors cursor-pointer ${
-                                  isSelected
-                                    ? 'bg-orange-50 text-orange-900 font-semibold border-l-2 border-orange-600'
-                                    : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950'
-                                }`}
+                                className={`w-full px-4 py-2.5 text-left flex items-center justify-between gap-2 transition-colors cursor-pointer ${isSelected
+                                  ? 'bg-orange-50 text-orange-900 font-semibold border-l-2 border-orange-600'
+                                  : 'text-stone-700 hover:bg-stone-50 hover:text-stone-950'
+                                  }`}
                               >
                                 <div className="flex items-center gap-2 truncate">
                                   <MapPin className="w-3.5 h-3.5 text-stone-400 shrink-0" />
@@ -565,9 +559,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Mention your 10th / 12th / UG score, preferred program, or request an admissions counseling session..."
-                    className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 resize-none transition-all ${
-                      errors.message ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
-                    }`}
+                    className={`w-full px-4 py-3 rounded-xl bg-stone-50/80 border text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 resize-none transition-all ${errors.message ? 'border-rose-400 bg-rose-50/30' : 'border-stone-200'
+                      }`}
                   />
                   {errors.message && (
                     <p className="text-[11px] text-rose-600 font-mono">{errors.message}</p>
