@@ -116,16 +116,18 @@ const PILLARS_DATA: InstitutionalPillar[] = [
   },
 ];
 
-// Cadence of auto-scroll in milliseconds (4.2 seconds)
-const AUTO_SCROLL_DURATION = 4200;
+// Cadence of auto-scroll in milliseconds (increased to 6.5s for comfortable reading)
+const AUTO_SCROLL_DURATION = 6500;
 
 export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps> = ({
   onOpenAdmissions,
 }) => {
   // Start with pillar 3 (Third-Party Audited Quality) matching user's exact screenshot
   const [activeIndex, setActiveIndex] = useState(3);
+  const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
-  const [progressTick, setProgressTick] = useState(0);
+  const [keyCounter, setKeyCounter] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   // -------------------------------------------------------------
   // CONTINUOUS CIRCULAR AUTO-SCROLL ENGINE
@@ -134,35 +136,50 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
   useEffect(() => {
     if (isPaused) return;
 
-    const intervalTime = 40;
-    const totalTicks = AUTO_SCROLL_DURATION / intervalTime;
-
     const timer = setInterval(() => {
-      setProgressTick((prev) => {
-        if (prev >= totalTicks) {
-          setActiveIndex((currentIdx) => (currentIdx + 1) % PILLARS_DATA.length);
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, intervalTime);
+      setDirection(1);
+      setActiveIndex((currentIdx) => (currentIdx + 1) % PILLARS_DATA.length);
+      setKeyCounter((k) => k + 1);
+    }, AUTO_SCROLL_DURATION);
 
     return () => clearInterval(timer);
   }, [isPaused]);
 
   const handlePrev = () => {
-    setProgressTick(0);
+    setDirection(-1);
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : PILLARS_DATA.length - 1));
+    setKeyCounter((k) => k + 1);
   };
 
   const handleNext = () => {
-    setProgressTick(0);
+    setDirection(1);
     setActiveIndex((prev) => (prev < PILLARS_DATA.length - 1 ? prev + 1 : 0));
+    setKeyCounter((k) => k + 1);
   };
 
   const handleSelectPillar = (index: number) => {
-    setProgressTick(0);
+    setDirection(index >= activeIndex ? 1 : -1);
     setActiveIndex(index);
+    setKeyCounter((k) => k + 1);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current !== null) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const deltaX = touchEndX - touchStartX.current;
+      if (deltaX < -35) {
+        handleNext();
+      } else if (deltaX > 35) {
+        handlePrev();
+      }
+      touchStartX.current = null;
+    }
+    setTimeout(() => setIsPaused(false), 3000);
   };
 
   const total = PILLARS_DATA.length;
@@ -171,13 +188,24 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
   // Slot 0 is the permanently FIXED ACTIVE SPOTLIGHT position!
   // Slots [-2, -1] are queued on the left, Slots [+1, +2] on the right.
   const slotOffsets = [-2, -1, 0, 1, 2];
-  const activePillar = PILLARS_DATA[activeIndex];
-  const ActiveIcon = activePillar.icon;
 
-  const currentProgressPercent = Math.min(
-    100,
-    (progressTick / (AUTO_SCROLL_DURATION / 40)) * 100
-  );
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 60 : -60,
+      opacity: 0,
+      filter: 'blur(3px)',
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -60 : 60,
+      opacity: 0,
+      filter: 'blur(3px)',
+    }),
+  };
 
   return (
     <section
@@ -239,14 +267,14 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
       {/* 3. FIXED ACTIVE SPOTLIGHT CAROUSEL TRACK                  */}
       {/* The active card sits at a FIXED spotlight position!       */}
       {/* Every card smoothly scrolls to this position & opens!     */}
-      {/* Seamless infinite circular rotation across all devices    */}
+      {/* Seamless horizontal sliding animation with touch gestures */}
       {/* ========================================================= */}
       <div
-        className="relative z-10 w-full mt-10 sm:mt-14 mb-8 overflow-hidden"
+        className="relative z-10 w-full mt-10 sm:mt-14 mb-8 overflow-hidden touch-pan-y"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setTimeout(() => setIsPaused(false), 2400)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <div className="max-w-[1540px] 2xl:max-w-[1660px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-center gap-3 sm:gap-4 md:gap-5 pb-4 pt-2">
@@ -265,7 +293,7 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
                   <motion.div
                     key="fixed-spotlight-active-card"
                     layout
-                    className="w-[90vw] sm:w-[480px] md:w-[540px] lg:w-[580px] shrink-0 bg-white text-stone-900 rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_24px_60px_rgba(0,0,0,0.6)] border border-stone-100 z-20 will-change-transform"
+                    className="w-[92vw] sm:w-[480px] md:w-[540px] lg:w-[580px] shrink-0 bg-white text-stone-900 rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_24px_60px_rgba(0,0,0,0.6)] border border-stone-100 z-20 will-change-transform overflow-hidden"
                     transition={{
                       type: 'spring',
                       stiffness: 240,
@@ -273,13 +301,19 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
                       mass: 0.8,
                     }}
                   >
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="wait" custom={direction}>
                       <motion.div
                         key={pillar.id}
-                        initial={{ opacity: 0, y: 14 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -14 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{
+                          x: { type: 'spring', stiffness: 280, damping: 30 },
+                          opacity: { duration: 0.35 },
+                          filter: { duration: 0.35 },
+                        }}
                       >
                         {/* Stamp Icon Badge on Top + Tag Badge */}
                         <div className="flex items-center justify-between mb-4 sm:mb-5">
@@ -292,7 +326,7 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
                         </div>
 
                         {/* Card Title */}
-                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-stone-900 tracking-tight leading-snug">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-stone-900 tracking-tight leading-snug">
                           {pillar.fullTitle}
                         </h3>
 
@@ -346,16 +380,22 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
                   }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleSelectPillar(pillarIndex)}
-                  className={`w-32 sm:w-40 md:w-48 lg:w-52 h-[190px] sm:h-[220px] shrink-0 bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-4 sm:p-5 flex flex-col justify-between text-white transition-all duration-300 cursor-pointer shadow-lg ${isFarEdge ? 'hidden lg:flex' : 'hidden sm:flex'
-                    }`}
+                  className={`w-32 sm:w-40 md:w-48 lg:w-52 h-[190px] sm:h-[220px] shrink-0 bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-4 sm:p-5 flex flex-col justify-between text-white transition-all duration-300 cursor-pointer shadow-lg overflow-hidden ${
+                    isFarEdge ? 'hidden lg:flex' : 'hidden sm:flex'
+                  }`}
                 >
-                  <AnimatePresence mode="wait">
+                  <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
                       key={pillar.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{
+                        x: { type: 'spring', stiffness: 280, damping: 30 },
+                        opacity: { duration: 0.3 },
+                      }}
                       className="w-full h-full flex flex-col justify-between"
                     >
                       {/* Top Minimalist Icon */}
@@ -395,12 +435,13 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
                 width: `${((activeIndex + 1) / total) * 100}%`,
               }}
             />
-            {/* Live Continuous Cycle Fill */}
+            {/* Live Continuous Cycle Fill with smooth 6.5s animation */}
             <motion.div
-              className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-orange-500 via-rose-500 to-red-500 rounded-full"
-              style={{
-                width: `${((activeIndex + currentProgressPercent / 100) / total) * 100}%`,
-              }}
+              key={keyCounter}
+              initial={{ width: '0%' }}
+              animate={{ width: isPaused ? '0%' : '100%' }}
+              transition={{ duration: AUTO_SCROLL_DURATION / 1000, ease: 'linear' }}
+              className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-orange-500 via-rose-500 to-amber-500 rounded-full"
             />
           </div>
           <span className="text-xs font-mono font-bold text-white/80">
