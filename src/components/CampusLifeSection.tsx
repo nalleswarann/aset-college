@@ -13,62 +13,94 @@ import {
 } from './ScrollTypography';
 
 // =========================================================================
-// OFFICIAL PLACEMENT & RECRUITING PARTNER LOGOS (Matching Reference Image)
+// OFFICIAL PLACEMENT PARTNER LOGOS SOURCED DIRECTLY FROM asetcollege.ac.in
 // =========================================================================
-import msuLogo from '../assets/images/partners/msu.png';
-import sasLogo from '../assets/images/partners/sas.png';
-import arrivoLogo from '../assets/images/partners/arrivo_clean.png';
-import crestShieldLogo from '../assets/images/partners/crest-shield.png';
-import hsuLogo from '../assets/images/partners/hsu_clean.png';
-import tharaviationLogo from '../assets/images/partners/tharaviation.png';
-import campusworldLogo from '../assets/images/partners/campusworld.png';
+// Aviation & Logistics Recruiters
+import akasaAirLogo from '../assets/images/placement-partners/home-co-akasa.webp';
+import spicejetLogo from '../assets/images/placement-partners/home-co-spicejet.webp';
+import aisatsLogo from '../assets/images/placement-partners/home-co-ai-sats.webp';
+import aiExpressLogo from '../assets/images/placement-partners/home-co-ai-express.webp';
+import dhlLogo from '../assets/images/placement-partners/lp-logistics-dhl.png';
+import maerskLogo from '../assets/images/placement-partners/lp-logistics-maersk.png';
+import mscLogo from '../assets/images/placement-partners/lp-logistics-msc.png';
+import dbSchenkerLogo from '../assets/images/placement-partners/lp-logistics-dbschenker.png';
+import tvsLogo from '../assets/images/placement-partners/lp-logistics-tvs.png';
+import delhiveryLogo from '../assets/images/placement-partners/lg-logo-delhivery.png';
+import ntcLogo from '../assets/images/placement-partners/lg-logo-ntc.png';
+import galleonLogo from '../assets/images/placement-partners/co-galleon.webp';
+import haesokLogo from '../assets/images/placement-partners/home-co-haesok.webp';
+import vsaLogo from '../assets/images/placement-partners/lg-co-vsa.webp';
+
+// Enterprise Tech, Safety, Real Estate & Corporate Leaders
+import zohoLogo from '../assets/images/placement-partners/fs-logo-zoho.png';
+import dlfLogo from '../assets/images/placement-partners/fs-logo-dlf.png';
+import casagrandLogo from '../assets/images/placement-partners/fs-logo-casagrand.png';
+import ttfLogo from '../assets/images/placement-partners/fs-logo-ttf.png';
+import sprLogo from '../assets/images/placement-partners/fs-logo-spr.png';
+import swastikLogo from '../assets/images/placement-partners/fs-logo-swastik.png';
+import tennecoLogo from '../assets/images/placement-partners/fs-logo-tenneco.png';
+import planysLogo from '../assets/images/placement-partners/lg-co-planys.webp';
+
+// Core Statutory & Academic Councils
 import aaiLogo from '../assets/images/partners/aai_clean.png';
-import naturalsLogo from '../assets/images/partners/naturals.webp';
-import lscLogo from '../assets/images/partners/lsc.png';
 import kpmgLogo from '../assets/images/partners/kpmg.webp';
+import lscLogo from '../assets/images/partners/lsc.png';
 import aasscLogo from '../assets/images/partners/aassc.png';
-import shinawatraLogo from '../assets/images/partners/shinawatra.png';
-import intiLogo from '../assets/images/partners/inti_clean.png';
-import hasanuddinLogo from '../assets/images/partners/hasanuddin.png';
+import tharaviationLogo from '../assets/images/partners/tharaviation.png';
 import muscatLogo from '../assets/images/partners/muscat.avif';
+import naturalsLogo from '../assets/images/partners/naturals.webp';
+import campusworldLogo from '../assets/images/partners/campusworld.png';
 
 interface CampusLifeSectionProps {
   onOpenVirtualTour: () => void;
 }
 
 // -----------------------------------------------------------------
-// Primary Partners Ribbon (Order matching user's uploaded reference)
+// Track 1: Aviation, Airlines & Multimodal Logistics Recruiters
 // -----------------------------------------------------------------
 const PLACEMENT_LOGOS_ROW_1 = [
-  { name: 'MSU Management & Science University', logo: msuLogo },
-  { name: 'SAS Gas Pvt. Ltd.', logo: sasLogo },
-  { name: 'Arrivo Gas Pvt. Ltd.', logo: arrivoLogo },
-  { name: 'ASET Institutional Shield', logo: crestShieldLogo },
-  { name: 'Health Sciences University (HSU)', logo: hsuLogo },
-  { name: 'Thar Aviation Academy', logo: tharaviationLogo },
-  { name: 'Campus World International', logo: campusworldLogo },
+  { name: 'Akasa Air', logo: akasaAirLogo },
+  { name: 'DHL Global Forwarding', logo: dhlLogo },
+  { name: 'SpiceJet Airlines', logo: spicejetLogo },
+  { name: 'Maersk Line Shipping', logo: maerskLogo },
+  { name: 'Air India SATS (AISATS)', logo: aisatsLogo },
+  { name: 'MSC Mediterranean Shipping', logo: mscLogo },
+  { name: 'Air India Express', logo: aiExpressLogo },
+  { name: 'DB Schenker Logistics', logo: dbSchenkerLogo },
+  { name: 'TVS Supply Chain Solutions', logo: tvsLogo },
   { name: 'Airports Authority of India (AAI)', logo: aaiLogo },
-  { name: 'Naturals Group', logo: naturalsLogo },
-  { name: 'Logistics Sector Skill Council (LSC)', logo: lscLogo },
+  { name: 'Delhivery Supply Chain', logo: delhiveryLogo },
+  { name: 'Galleon Maritime Logistics', logo: galleonLogo },
+  { name: 'NTC Logistics', logo: ntcLogo },
+  { name: 'Thar Aviation Academy', logo: tharaviationLogo },
+  { name: 'VSA Logistics', logo: vsaLogo },
 ];
 
+// -----------------------------------------------------------------
+// Track 2: Enterprise Tech, Industrial Safety, Real Estate & Skill Councils
+// -----------------------------------------------------------------
 const PLACEMENT_LOGOS_ROW_2 = [
+  { name: 'Zoho Corporation', logo: zohoLogo },
+  { name: 'DLF Limited', logo: dlfLogo },
   { name: 'KPMG Worldwide', logo: kpmgLogo },
-  { name: 'Aerospace & Aviation Sector Skill Council (AASSC)', logo: aasscLogo },
-  { name: 'Shinawatra University', logo: shinawatraLogo },
-  { name: 'INTI International University', logo: intiLogo },
-  { name: 'Hasanuddin University', logo: hasanuddinLogo },
-  { name: 'Muscat Overseas Logistics', logo: muscatLogo },
-  { name: 'Airports Authority of India (AAI)', logo: aaiLogo },
-  { name: 'Thar Aviation Academy', logo: tharaviationLogo },
-  { name: 'MSU Management & Science University', logo: msuLogo },
+  { name: 'Casagrand Builder', logo: casagrandLogo },
+  { name: 'SPR City Infrastructure', logo: sprLogo },
+  { name: 'TTF Technologies', logo: ttfLogo },
+  { name: 'Tenneco Clean Air', logo: tennecoLogo },
+  { name: 'Swastik Corporation', logo: swastikLogo },
+  { name: 'Planys Technologies Marine Robotics', logo: planysLogo },
+  { name: 'Haesok Global Logistics', logo: haesokLogo },
   { name: 'Logistics Sector Skill Council (LSC)', logo: lscLogo },
+  { name: 'Aerospace & Aviation Sector Skill Council (AASSC)', logo: aasscLogo },
+  { name: 'Muscat Overseas Logistics', logo: muscatLogo },
+  { name: 'Naturals Group', logo: naturalsLogo },
+  { name: 'Campus World International', logo: campusworldLogo },
 ];
 
-// Highlight metrics
+// Verified Highlight Metrics
 const PLACEMENT_METRICS = [
   { label: 'Placement Record', value: '100%', detail: 'Career support & guidance' },
-  { label: 'Recruiting Partners', value: '500+', detail: 'Domestic & global employers' },
+  { label: 'Recruiting Partners', value: '500+', detail: 'Airlines, ports & enterprise firms' },
   { label: 'Highest International CTC', value: '₹12 LPA', detail: 'Overseas aviation & maritime' },
   { label: 'Training Modules', value: '12 Areas', detail: 'Pre-placement grooming' },
 ];
@@ -157,7 +189,8 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
 
           {/* Full-bleed Wide Running Marquee (Zero Boxes, Pure Logos) */}
           <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-3 sm:py-5 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-            {/* Track 1: Smooth Left Scrolling Ticker */}
+            
+            {/* Track 1: Smooth Left Scrolling Ticker (Aviation & Logistics) */}
             <div className="overflow-hidden relative w-full py-2">
               <div className="animate-marquee-left-seamless flex items-center">
                 {[
@@ -168,13 +201,13 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
                 ].map((item, idx) => (
                   <div
                     key={`p1-${item.name}-${idx}`}
-                    className="flex items-center justify-center shrink-0 px-6 sm:px-10 md:px-14 select-none group cursor-default"
+                    className="flex items-center justify-center shrink-0 px-4 xs:px-6 sm:px-10 md:px-14 select-none group cursor-default"
                     title={item.name}
                   >
                     <img
                       src={item.logo}
                       alt={item.name}
-                      className="h-8 sm:h-10 md:h-12 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[200px] object-contain transition-transform duration-300 group-hover:scale-105"
+                      className="h-7 xs:h-8 sm:h-10 md:h-12 w-auto max-w-[110px] xs:max-w-[130px] sm:max-w-[160px] md:max-w-[190px] object-contain transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
@@ -182,7 +215,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
               </div>
             </div>
 
-            {/* Track 2: Smooth Right Scrolling Ticker */}
+            {/* Track 2: Smooth Right Scrolling Ticker (Tech, Safety & Infrastructure) */}
             <div className="overflow-hidden relative w-full py-2">
               <div className="animate-marquee-right-seamless flex items-center">
                 {[
@@ -193,26 +226,27 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
                 ].map((item, idx) => (
                   <div
                     key={`p2-${item.name}-${idx}`}
-                    className="flex items-center justify-center shrink-0 px-6 sm:px-10 md:px-14 select-none group cursor-default"
+                    className="flex items-center justify-center shrink-0 px-4 xs:px-6 sm:px-10 md:px-14 select-none group cursor-default"
                     title={item.name}
                   >
                     <img
                       src={item.logo}
                       alt={item.name}
-                      className="h-8 sm:h-10 md:h-12 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[200px] object-contain transition-transform duration-300 group-hover:scale-105"
+                      className="h-7 xs:h-8 sm:h-10 md:h-12 w-auto max-w-[110px] xs:max-w-[130px] sm:max-w-[160px] md:max-w-[190px] object-contain transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
                 ))}
               </div>
             </div>
+
           </div>
         </div>
 
         {/* ========================================================= */}
         {/* 3. KEY PLACEMENT METRICS STRIP                            */}
         {/* ========================================================= */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {PLACEMENT_METRICS.map((m, idx) => (
             <motion.div
               key={m.label}
@@ -224,7 +258,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
                 delay: 0.05 + idx * 0.08,
                 ease: LUXURY_EASE,
               }}
-              className="p-5 sm:p-6 rounded-2xl bg-white/90 border border-stone-200/80 shadow-xs hover:shadow-md hover:border-orange-500/30 transition-all"
+              className="p-4 sm:p-6 rounded-2xl bg-white/90 border border-stone-200/80 shadow-xs hover:shadow-md hover:border-orange-500/30 transition-all"
             >
               <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-tight mb-1">
                 <span className="text-gradient-title">{m.value}</span>
@@ -232,7 +266,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
               <div className="text-xs sm:text-sm font-bold text-stone-800 font-manrope">
                 {m.label}
               </div>
-              <div className="text-[11px] text-stone-500 font-sans mt-0.5">
+              <div className="text-[10px] sm:text-[11px] text-stone-500 font-sans mt-0.5">
                 {m.detail}
               </div>
             </motion.div>
