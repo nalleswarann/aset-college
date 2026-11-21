@@ -700,18 +700,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="pointer-events-none absolute top-1/2 -left-16 w-56 h-56 rounded-full bg-amber-200/20 blur-2xl -z-10"
             />
 
-            {/* Mobile Header Bar */}
-            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-stone-200/80 bg-white/70 backdrop-blur-md">
+            {/* Mobile Header Bar: Dark color for high contrast & prominent branding */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-stone-800 bg-stone-950 text-white shadow-md">
               <div className="flex items-center gap-3">
-                <img src={asetLogo} alt="ASET College" className="h-7 w-auto object-contain" />
+                <img src={asetLogo} alt="ASET College" className="h-7 w-auto object-contain brightness-110" />
               </div>
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-stone-700 hover:text-stone-950 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-200/80 transition-colors cursor-pointer"
+                className="p-2 text-white hover:text-white rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 border border-white/20 transition-colors cursor-pointer"
                 aria-label="Close menu"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 text-white" />
               </motion.button>
             </div>
 
