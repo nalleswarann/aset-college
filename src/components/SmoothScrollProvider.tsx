@@ -2,32 +2,31 @@ import React, { useEffect } from 'react';
 
 /**
  * Modern hardware-accelerated momentum smooth scrolling provider.
- * Eliminates mouse wheel jitter and notch-stutter on desktop, providing
- * 60fps/120fps liquid gliding without lagging or stuttering.
- * 
- * Automatically leaves mobile and tablet touchscreens completely untouched
- * to preserve native 120Hz ProMotion inertial physics with zero touch latency.
+ * Eliminates mouse wheel notch-stutter on desktop mice while preserving:
+ * 1. Native 120Hz/60Hz OS trackpad gestures (Mac & Windows Precision Trackpads)
+ * 2. Native mobile & tablet touchscreens (Apple ProMotion & Android 120Hz)
+ * 3. Native anchor link smooth jumping with zero scroll fighting
  */
 export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   useEffect(() => {
-    // Only activate for fine pointer devices (desktop mice / trackpads)
-    // Never hijack touchscreens (phones / tablets)
     if (typeof window === 'undefined') return;
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    if (isTouch) return;
+
+    // Never hijack touchscreens (phones, tablets, touch displays)
+    const isTouchOnly = window.matchMedia('(pointer: coarse) and (hover: none)').matches;
+    if (isTouchOnly) return;
 
     let currentY = window.scrollY;
     let targetY = window.scrollY;
     let isRunning = false;
     let rafId: number | null = null;
 
-    // Optimal damping factor: 0.088 provides luxurious fluid momentum without sluggish lag
-    const LERP = 0.088;
+    // Snappy, luxurious fluid lerp rate: 0.14 provides immediate response without lag
+    const LERP = 0.14;
 
     const onWheel = (e: WheelEvent) => {
-      // Do not hijack if user is scrolling inside an internal scrollable container (e.g. modal)
+      // 1. Do not hijack internal scrollable containers (e.g. modals, drawers, code blocks)
       let el = e.target as HTMLElement | null;
       let insideScrollable = false;
       while (el && el !== document.body && el !== document.documentElement) {
@@ -43,19 +42,33 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
       }
       if (insideScrollable) return;
 
-      // Normalize wheel delta across browsers & OS
-      let delta = e.deltaY;
-      if (e.deltaMode === 1) delta *= 38; // lines
-      if (e.deltaMode === 2) delta *= 750; // pages
+      // 2. Distinguish between physical notched mouse wheel and continuous trackpad gestures.
+      // Trackpads deliver fractional deltaY or rapid small deltas (< 35px in pixel mode).
+      // Let trackpads run 100% natively on the OS compositor thread for zero latency!
+      const isTrackpad = e.deltaMode === 0 && (!Number.isInteger(e.deltaY) || Math.abs(e.deltaY) < 35);
+      if (isTrackpad) {
+        if (isRunning) {
+          // If a wheel momentum animation was running, stop it and sync
+          isRunning = false;
+          if (rafId) cancelAnimationFrame(rafId);
+          currentY = window.scrollY;
+          targetY = window.scrollY;
+        }
+        return; // Allow native OS trackpad scrolling
+      }
 
-      // Clamp delta to prevent massive jumps on fast scroll wheels
-      delta = Math.max(-130, Math.min(130, delta * 0.92));
+      // 3. For notched mouse wheels, smooth the stepped jump
+      let delta = e.deltaY;
+      if (e.deltaMode === 1) delta *= 40; // lines mode
+      if (e.deltaMode === 2) delta *= 600; // pages mode
 
       const maxScroll = Math.max(
         0,
         document.documentElement.scrollHeight - window.innerHeight
       );
-      targetY = Math.max(0, Math.min(maxScroll, targetY + delta));
+
+      // Accumulate delta naturally without hard clamping
+      targetY = Math.max(0, Math.min(maxScroll, (isRunning ? targetY : window.scrollY) + delta));
 
       if (!isRunning) {
         isRunning = true;
@@ -68,7 +81,7 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
 
     const updateScroll = () => {
       const diff = targetY - currentY;
-      if (Math.abs(diff) < 0.5) {
+      if (Math.abs(diff) < 0.6) {
         currentY = targetY;
         window.scrollTo(0, currentY);
         isRunning = false;
@@ -80,7 +93,7 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
       rafId = requestAnimationFrame(updateScroll);
     };
 
-    // Keep targetY in sync if user drags native scrollbar or presses PageDown/Home/End
+    // Keep target in sync on native anchor jumps or scrollbar drags
     const onScroll = () => {
       if (!isRunning) {
         targetY = window.scrollY;
