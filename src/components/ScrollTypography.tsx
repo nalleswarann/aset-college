@@ -1,18 +1,21 @@
 import React from 'react';
 import { motion, type HTMLMotionProps } from 'motion/react';
 
-// Modern luxury easing curve (Apple / Linear / Stripe style)
+// Modern luxury easing curves (Apple / Linear / Stripe editorial standard)
 export const LUXURY_EASE = [0.16, 1, 0.3, 1] as const;
+export const EDITORIAL_EASE = [0.22, 1, 0.36, 1] as const;
 
 /* =========================================================================
    SCROLL HEADING
    High-impact cinematic text reveal: upward glide with pure GPU translation.
    No laggy blur filter repaints — 120fps hardware-accelerated.
+   Supports optional masked clip reveal for luxury magazine-grade presentation.
    ========================================================================= */
 interface ScrollHeadingProps extends HTMLMotionProps<'h2'> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   delay?: number;
   yOffset?: number;
+  clipReveal?: boolean;
 }
 
 export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
@@ -20,18 +23,45 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
   children,
   className = '',
   delay = 0.05,
-  yOffset = 24,
+  yOffset = 20,
+  clipReveal = false,
   ...props
 }) => {
   const Component = motion[as] as typeof motion.h2;
+
+  if (clipReveal) {
+    return (
+      <div className="overflow-hidden select-none">
+        <Component
+          initial={{ opacity: 0, y: '100%' }}
+          whileInView={{ opacity: 1, y: '0%' }}
+          viewport={{ once: true, amount: 0.1, margin: '0px 0px -25px 0px' }}
+          transition={{
+            duration: 0.72,
+            delay,
+            ease: EDITORIAL_EASE,
+          }}
+          style={{
+            willChange: 'transform, opacity',
+            transform: 'translate3d(0, 0, 0)',
+            backfaceVisibility: 'hidden',
+          }}
+          className={className}
+          {...props}
+        >
+          {children}
+        </Component>
+      </div>
+    );
+  }
 
   return (
     <Component
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
+      viewport={{ once: true, amount: 0.1, margin: '0px 0px -25px 0px' }}
       transition={{
-        duration: 0.78,
+        duration: 0.7,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -61,17 +91,17 @@ interface ScrollParagraphProps extends HTMLMotionProps<'p'> {
 export const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
   children,
   className = '',
-  delay = 0.16,
-  yOffset = 18,
+  delay = 0.14,
+  yOffset = 14,
   ...props
 }) => {
   return (
     <motion.p
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
+      viewport={{ once: true, amount: 0.1, margin: '0px 0px -25px 0px' }}
       transition={{
-        duration: 0.72,
+        duration: 0.65,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -104,11 +134,11 @@ export const ScrollEyebrow: React.FC<ScrollEyebrowProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: -8, scale: 0.98 }}
+      initial={{ opacity: 0, y: -6, scale: 0.96 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
+      viewport={{ once: true, amount: 0.1, margin: '0px 0px -25px 0px' }}
       transition={{
-        duration: 0.6,
+        duration: 0.55,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -135,16 +165,16 @@ interface ScrollActionProps extends HTMLMotionProps<'div'> {
 export const ScrollAction: React.FC<ScrollActionProps> = ({
   children,
   className = '',
-  delay = 0.22,
+  delay = 0.2,
   ...props
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 14, scale: 0.97 }}
+      initial={{ opacity: 0, y: 12, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
+      viewport={{ once: true, amount: 0.1, margin: '0px 0px -25px 0px' }}
       transition={{
-        duration: 0.65,
+        duration: 0.6,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -173,16 +203,16 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   className = '',
   delay = 0.1,
-  yOffset = 22,
+  yOffset = 20,
   ...props
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.12, margin: '0px 0px -30px 0px' }}
+      viewport={{ once: true, amount: 0.1, margin: '0px 0px -25px 0px' }}
       transition={{
-        duration: 0.75,
+        duration: 0.7,
         delay,
         ease: LUXURY_EASE,
       }}
@@ -244,8 +274,8 @@ export const ScrollWordReveal: React.FC<ScrollWordRevealProps> = ({
                 y: '0%',
                 opacity: 1,
                 transition: {
-                  duration: 0.7,
-                  ease: LUXURY_EASE,
+                  duration: 0.65,
+                  ease: EDITORIAL_EASE,
                 },
               },
             }}

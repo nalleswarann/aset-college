@@ -10,11 +10,11 @@ interface SmoothSectionProps {
 export const SmoothSection: React.FC<SmoothSectionProps> = ({ children, delay = 0 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.05 }}
+      viewport={{ once: true, amount: 0.05, margin: '0px 0px -25px 0px' }}
       transition={{
-        duration: 0.8,
+        duration: 0.68,
         delay,
         ease: LUXURY_EASE,
       }}

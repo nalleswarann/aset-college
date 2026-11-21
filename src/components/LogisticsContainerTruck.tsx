@@ -245,9 +245,6 @@ export const LogisticsContainerTruck: React.FC<LogisticsContainerTruckProps> = (
                   ASET LOGISTICS
                 </span>
               </div>
-
-              {/* Front Cab Headlight Glow Beam */}
-              <div className="absolute top-[68%] right-0 w-8 sm:w-12 md:w-16 h-4 bg-gradient-to-r from-amber-300 via-amber-200 to-transparent blur-xs rounded-r-full pointer-events-none" />
             </div>
 
             {/* Arrival Indicator Tag when reaching end of border radius */}

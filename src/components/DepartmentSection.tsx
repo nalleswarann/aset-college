@@ -11,7 +11,7 @@ import { Department } from '../types/university';
 
 // High-resolution authentic imagery
 import asetCampusMainImg from '../assets/images/aset-campus-main-building.webp';
-import aviationImg from '../assets/images/departments/dept-aviation.jpg';
+import aviationImg from '../assets/images/departments/pilot-training-aviaition.webp';
 import logisticsImg from '../assets/images/departments/dept-logistics.jpg';
 import safetyImg from '../assets/images/departments/dept-safety.jpg';
 import analyticsImg from '../assets/images/departments/dept-analytics.jpg';
