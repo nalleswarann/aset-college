@@ -240,20 +240,20 @@ export const LogisticsContainerTruck: React.FC<LogisticsContainerTruckProps> = (
               />
 
               {/* Red Cargo Container ASET Decal Branding */}
-              <div className="absolute top-[22%] left-[12%] z-25 flex items-center gap-1.5 opacity-90 select-none">
-                <span className="font-mono text-[6px] sm:text-[7px] md:text-[8px] font-extrabold text-white/95 tracking-widest uppercase drop-shadow-xs">
+              <div className="absolute top-[22%] left-[12%] z-25 flex items-center gap-1.5 select-none">
+                <span className="font-mono text-[6px] sm:text-[7px] md:text-[8px] font-extrabold text-white tracking-widest uppercase drop-shadow-xs">
                   ASET LOGISTICS
                 </span>
               </div>
 
               {/* Front Cab Headlight Glow Beam */}
-              <div className="absolute top-[68%] right-0 w-8 sm:w-12 md:w-16 h-4 bg-gradient-to-r from-amber-200/50 via-amber-100/20 to-transparent blur-xs rounded-r-full pointer-events-none" />
+              <div className="absolute top-[68%] right-0 w-8 sm:w-12 md:w-16 h-4 bg-gradient-to-r from-amber-300 via-amber-200 to-transparent blur-xs rounded-r-full pointer-events-none" />
             </div>
 
             {/* Arrival Indicator Tag when reaching end of border radius */}
             <motion.div
               style={{ opacity: arrivalBadgeOpacity }}
-              className="absolute -top-6 right-0 z-30 hidden sm:flex items-center gap-1 px-2 py-0.5 rounded-full bg-stone-900/80 backdrop-blur-md border border-white/20 text-[9px] font-mono font-medium text-amber-300 shadow-sm"
+              className="absolute -top-6 right-0 z-30 hidden sm:flex items-center gap-1 px-2.5 py-1 rounded-full bg-stone-900 border border-stone-700 text-[9px] font-mono font-medium text-amber-300 shadow-sm"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Logistics Fleet Arrived</span>

@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
-import { motion } from 'motion/react';
 import { Users, BookOpen, Compass, MapPin } from 'lucide-react';
 import { LogisticsContainerTruck } from './LogisticsContainerTruck';
-import { LUXURY_EASE } from './ScrollTypography';
 
 export const KeyMetricsBar: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -37,61 +35,40 @@ export const KeyMetricsBar: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative -mt-12 sm:-mt-16 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-manrope"
+      className="relative -mt-6 sm:-mt-10 lg:-mt-14 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans"
     >
-      {/* Floating Frosted Glass Card with Ambient Under-Glow */}
-      <div className="relative rounded-[28px] sm:rounded-[32px] bg-white/78 backdrop-blur-2xl border border-white/80 shadow-[0_24px_50px_-12px_rgba(0,10,28,0.12)] p-7 sm:p-9 lg:p-11">
+      {/* 100% Solid Opaque White Card (Zero Opacity, Zero Transparency Bleed) */}
+      <div className="relative rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-white border border-stone-200 shadow-xl shadow-stone-900/10 p-6 sm:p-8 lg:p-10">
         {/* Animated Logistics Container Truck rolling across the top layer/rim */}
         <LogisticsContainerTruck targetRef={sectionRef} />
 
-        {/* Soft glowing ambient orbs under frosted glass clipped to card radius */}
-        <div className="absolute inset-0 rounded-[28px] sm:rounded-[32px] overflow-hidden pointer-events-none">
-          <div
-            aria-hidden="true"
-            className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-orange-500/20 via-rose-500/15 to-transparent blur-3xl pointer-events-none"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-gradient-to-tl from-rose-500/18 via-orange-400/14 to-transparent blur-3xl pointer-events-none"
-          />
-        </div>
-
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 divide-y sm:divide-y-0 sm:divide-x divide-stone-200/80">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 lg:divide-x divide-stone-200">
           {metrics.map((m, idx) => {
             const Icon = m.icon;
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: 0.72,
-                  delay: idx * 0.08,
-                  ease: LUXURY_EASE,
-                }}
-                style={{
-                  willChange: 'transform, opacity',
-                  transform: 'translate3d(0, 0, 0)',
-                }}
-                className={`flex flex-col justify-between ${idx > 0 ? 'sm:pl-8 lg:pl-10 pt-6 sm:pt-0' : ''
-                  }`}
+                className={`flex flex-col justify-between ${
+                  idx > 0 ? 'lg:pl-8 xl:pl-10' : ''
+                } ${idx < metrics.length - 1 ? 'lg:pr-8 xl:pr-10' : ''} ${
+                  idx > 0 ? 'pt-5 sm:pt-0 border-t sm:border-t-0 border-stone-200' : ''
+                }`}
               >
                 <div className="flex items-center gap-2.5 mb-2.5">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/15 flex items-center justify-center text-amber-700">
-                    <Icon className="w-4 h-4 text-amber-600" />
+                  <div className="w-8 h-8 rounded-full bg-amber-100 border border-amber-200 flex items-center justify-center text-amber-700 shrink-0">
+                    <Icon className="w-4 h-4 text-amber-700" />
                   </div>
-                  <span className="text-[11px] uppercase tracking-wider font-mono font-bold text-stone-500">
+                  <span className="text-[11px] sm:text-xs uppercase tracking-wider font-mono font-bold text-stone-800">
                     {m.sub}
                   </span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-manrope font-extrabold tracking-tight tabular-nums text-stone-900 mb-1">
+                <div className="text-3xl sm:text-4xl font-heading font-extrabold tracking-tight tabular-nums text-stone-900 mb-1.5">
                   <span className="text-gradient-title">{m.value}</span>
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed font-manrope">
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-sans font-normal">
                   {m.label}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>
