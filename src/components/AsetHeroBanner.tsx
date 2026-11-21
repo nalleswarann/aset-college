@@ -48,29 +48,29 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
   const studentsScale = useTransform(smoothProgress, [0, 1], [1, 1.05]);
 
   // Fast Scroll Parallax for the Aeroplane (Flying from Back to Front):
-  // Starts in the deep distant background above 'A' (small scale),
-  // swoops rapidly forward towards the viewer (scaling up 4x),
+  // Starts in the deep distant background above 'A' (scale 0.45),
+  // swoops rapidly forward towards the viewer (scaling up 3x),
   // crosses through 'S' and 'E' behind the students, and reaches 'T' on the right
   const planeX = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    ['8vw', '34vw', '64vw', '88vw']
+    ['18vw', '42vw', '68vw', '90vw']
   );
   const planeY = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    ['24vh', '29vh', '21vh', '12vh']
+    ['18vh', '24vh', '18vh', '12vh']
   );
   const planeRotate = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    [4, 10, 2, -4]
+    [3, 8, 2, -4]
   );
-  // Back to front scale expansion: starts small in the background (0.35) and flies forward (1.45)
+  // Back to front scale expansion: starts visible in the background (0.46) and flies forward (1.45)
   const planeScale = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    [0.35, 0.74, 1.2, 1.45]
+    [0.46, 0.82, 1.2, 1.45]
   );
   // Fast flight opacity: solid during flight, then seamlessly dissolves into the sky past 'T'
   const planeOpacity = useTransform(
@@ -83,7 +83,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[175vh] bg-black"
+      className="relative w-full h-[130vh] sm:h-[155vh] lg:h-[175vh] bg-black"
     >
       {/* Sticky 100vh Hero Viewport Stage */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
@@ -104,10 +104,10 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           </video>
         </div>
 
-        {/* Layer 1: Screen-Wide Edge-to-Edge "ASET" Typography Placed at Bottom */}
+        {/* Layer 1: Screen-Wide "ASET" Typography Placed Behind Students */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
+          className="absolute inset-x-0 bottom-[14vh] xs:bottom-[16vh] sm:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
         >
           <motion.div
             style={{
@@ -117,10 +117,48 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             }}
             className="w-full max-w-none text-center will-change-transform flex justify-center items-end"
           >
-            {/* Edge-to-edge responsive SVG wordmark for 100% screen-width stretch with increased vertical height */}
+            {/* Mobile View: Proportional, undistorted monumental ASET typography with natural geometry */}
+            <svg
+              viewBox="0 0 1600 520"
+              className="block sm:hidden w-full h-auto max-h-[22vh] select-none overflow-visible px-2"
+              preserveAspectRatio="xMidYBottom meet"
+            >
+              <defs>
+                <linearGradient id="asetWideGradMob" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#FFFFFF" />
+                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                  <stop offset="100%" stopColor="#E2F0FD" stopOpacity="0.88" />
+                </linearGradient>
+
+                <filter id="asetWideShadowMob" x="-15%" y="-15%" width="130%" height="130%">
+                  <feDropShadow dx="0" dy="12" stdDeviation="16" floodColor="#000000" floodOpacity="0.45" />
+                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.3" />
+                </filter>
+              </defs>
+
+              <text
+                x="50%"
+                y="84%"
+                textAnchor="middle"
+                fontFamily="'NewGrotesk', 'San Francisco', 'Neue Montreal', ui-sans-serif, system-ui, sans-serif"
+                fontWeight="900"
+                fontSize="540"
+                fill="url(#asetWideGradMob)"
+                stroke="rgba(255, 255, 255, 0.55)"
+                strokeWidth="2"
+                filter="url(#asetWideShadowMob)"
+                style={{
+                  letterSpacing: '0.04em',
+                }}
+              >
+                ASET
+              </text>
+            </svg>
+
+            {/* Desktop View (sm and above): Full-bleed edge-to-edge cinematic stretch */}
             <svg
               viewBox="0 0 2000 650"
-              className="w-full h-[45vh] sm:h-[58vh] md:h-[68vh] lg:h-[78vh] xl:h-[84vh] select-none overflow-visible"
+              className="hidden sm:block w-full sm:h-[58vh] md:h-[68vh] lg:h-[78vh] xl:h-[84vh] select-none overflow-visible"
               preserveAspectRatio="none"
             >
               <defs>
@@ -186,7 +224,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             <img
               src={asetAeroplane}
               alt="ASET Aviation Commercial Aeroplane"
-              className="w-[180px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
+              className="w-[140px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
             />
           </div>
         </motion.div>
@@ -198,13 +236,13 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             scale: studentsScale,
           }}
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-4"
+          className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-2 sm:px-4"
         >
-          <div className="relative w-full max-w-[540px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
+          <div className="relative w-full max-w-[440px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
             <img
               src={asetAviationStudents}
               alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[64vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+              className="w-full h-auto max-h-[58vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
             />
           </div>
         </motion.div>
