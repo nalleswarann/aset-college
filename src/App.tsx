@@ -107,7 +107,14 @@ export default function App() {
           {/* Our Difference / Operational Excellence Kinetic Showcase */}
           <OurDifferenceSection />
 
-          {/* About Section */}
+          {/* Our Placement Partners Section */}
+          <SmoothSection>
+            <CampusLifeSection
+              onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            />
+          </SmoothSection>
+
+          {/* About Section (Career-Focused Higher Education Across Chennai & Coimbatore) */}
           <SmoothSection>
             <AboutSection />
           </SmoothSection>
@@ -124,13 +131,6 @@ export default function App() {
           {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
           <SmoothSection>
             <TestimonialsSection />
-          </SmoothSection>
-
-          {/* Our Placement Partners Section */}
-          <SmoothSection>
-            <CampusLifeSection
-              onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
-            />
           </SmoothSection>
 
           {/* Life at ASET (Students Feedback with Auto-Moving Cards) */}
