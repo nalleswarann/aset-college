@@ -204,7 +204,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-white/60 shadow-xs text-xs font-semibold text-stone-900 hover:bg-white transition-all cursor-pointer"
                 >
-                  <span>Menu</span>
+                  {/* <span>Menu</span> hello */}
                   <motion.span
                     animate={{ rotate: isMenuOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
