@@ -679,7 +679,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* ========================================================= */}
       {/* MOBILE DRAWER MENU (Responsive for all phones & tablets)  */}
-      {/* Smooth spring slide-down with backdrop blur               */}
+      {/* Warm luxury cream/parchment background matching website  */}
       {/* ========================================================= */}
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -688,17 +688,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.99 }}
             transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-stone-950/95 backdrop-blur-2xl text-white border-b border-white/15 shadow-2xl max-h-[92vh] overflow-y-auto"
+            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-[#faf8f5]/98 backdrop-blur-2xl text-stone-900 border-b border-stone-200 shadow-2xl shadow-stone-900/15 max-h-[92vh] overflow-y-auto font-manrope"
           >
+            {/* Subtle warm atmospheric glow in corner */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-12 -right-12 w-64 h-64 rounded-full bg-gradient-to-b from-orange-300/30 via-rose-200/20 to-transparent blur-2xl -z-10"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1/2 -left-16 w-56 h-56 rounded-full bg-amber-200/20 blur-2xl -z-10"
+            />
+
             {/* Mobile Header Bar */}
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-stone-200/80 bg-white/70 backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <img src={asetLogo} alt="ASET College" className="h-7 w-auto object-contain" />
               </div>
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-stone-300 hover:text-white rounded-full bg-white/10 cursor-pointer"
+                className="p-2 text-stone-700 hover:text-stone-950 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-200/80 transition-colors cursor-pointer"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -706,7 +716,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Mobile Navigation List with Expandable Accordions */}
-            <div className="p-4 space-y-2">
+            <div className="p-4 sm:p-5 space-y-2">
               {menuItems.map((item) => {
                 const isExpanded = mobileExpandedAccordion === item.id;
 
@@ -717,41 +727,46 @@ export const Navbar: React.FC<NavbarProps> = ({
                       whileTap={{ scale: 0.98 }}
                       href={item.href || '#'}
                       onClick={(e) => handleNavClick(e, item.href || '#')}
-                      className="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-white/10 text-base font-semibold text-white transition-colors"
+                      className="group flex items-center justify-between py-3.5 px-3 rounded-xl hover:bg-stone-100/80 text-base font-bold text-stone-900 transition-colors"
                     >
                       <div className="flex items-center gap-2">
                         <span>{item.label}</span>
                         {item.badge && (
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${item.badgeColor || 'bg-emerald-400 text-stone-950'
-                              }`}
+                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                              item.badgeColor || 'bg-emerald-500 text-white'
+                            }`}
                           >
                             {item.badge}
                           </span>
                         )}
                       </div>
-                      <ArrowUpRight className="w-4 h-4 text-white/60" />
+                      <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-orange-600 transition-colors" />
                     </motion.a>
                   );
                 }
 
                 return (
-                  <div key={item.id} className="border-b border-white/10 pb-1">
+                  <div key={item.id} className="border-b border-stone-200/70 pb-1">
                     <motion.button
                       whileTap={{ scale: 0.98 }}
                       type="button"
                       onClick={() =>
                         setMobileExpandedAccordion(isExpanded ? null : item.id)
                       }
-                      className="w-full flex items-center justify-between py-3 px-3 text-base font-semibold text-white rounded-xl hover:bg-white/10 transition-colors"
+                      className="w-full flex items-center justify-between py-3.5 px-3 text-base font-bold text-stone-900 rounded-xl hover:bg-stone-100/80 transition-colors cursor-pointer"
                     >
                       <span>{item.label}</span>
                       <motion.span
                         animate={{ rotate: isExpanded ? 45 : 0 }}
                         transition={{ duration: 0.2 }}
-                        className="p-1 rounded-full bg-white/10 text-white/80"
+                        className={`p-1.5 rounded-full transition-colors ${
+                          isExpanded
+                            ? 'bg-orange-600 text-white shadow-xs'
+                            : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                        }`}
                       >
-                        {isExpanded ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                        {isExpanded ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                       </motion.span>
                     </motion.button>
 
@@ -763,12 +778,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                          className="pl-4 pr-2 pb-4 space-y-2 overflow-hidden"
+                          className="pl-3 pr-2 pb-3.5 space-y-1.5 overflow-hidden"
                         >
-                          <div className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider pt-2 pb-1">
-                            {item.categoryTitle}
+                          <div className="text-[11px] font-mono font-bold text-orange-600 uppercase tracking-wider pt-2 pb-1 flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
+                            <span>{item.categoryTitle}</span>
                           </div>
-                          <div className="space-y-2.5">
+                          <div className="space-y-1">
                             {[...item.columns.col1, ...item.columns.col2].map((link, idx) => (
                               <motion.a
                                 key={link.label}
@@ -785,9 +801,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                                     handleNavClick(e, link.href);
                                   }
                                 }}
-                                className="block text-sm text-stone-200 hover:text-white py-1 transition-colors"
+                                className="group flex items-center justify-between text-sm font-semibold text-stone-700 hover:text-orange-600 hover:bg-orange-50/70 px-2.5 py-2 rounded-xl transition-all"
                               >
-                                • {link.label}
+                                <span className="flex items-center gap-2">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover:bg-orange-500 transition-colors shrink-0" />
+                                  <span>{link.label}</span>
+                                </span>
+                                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-orange-600 opacity-0 group-hover:opacity-100 transition-all shrink-0" />
                               </motion.a>
                             ))}
                           </div>
@@ -800,24 +820,24 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Mobile Bottom Actions */}
-            <div className="p-4 pt-2 border-t border-white/10 space-y-3 bg-stone-900/60">
+            <div className="p-4 sm:p-5 pt-3 border-t border-stone-200/90 space-y-3 bg-stone-100/70">
               <motion.button
                 whileTap={{ scale: 0.97 }}
                 onClick={handleContactClick}
-                className="w-full py-3.5 px-5 text-center text-sm font-bold text-stone-950 bg-white hover:bg-stone-100 transition-colors rounded-full shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 px-5 text-center text-sm font-bold text-white bg-gradient-to-r from-orange-600 via-orange-500 to-rose-600 hover:from-orange-700 hover:to-rose-700 transition-all rounded-full shadow-lg shadow-orange-600/25 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Contact Admissions &amp; Campus</span>
                 <ArrowUpRight className="w-4 h-4" />
               </motion.button>
 
-              <div className="flex items-center justify-around pt-2 text-xs text-stone-400">
+              <div className="flex items-center justify-around pt-1 text-xs font-medium text-stone-600">
                 <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                  Chennai &amp; Coimbatore
+                  <MapPin className="w-3.5 h-3.5 text-orange-600" />
+                  <span>Chennai &amp; Coimbatore</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
-                  Alagappa University
+                  <GraduationCap className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Alagappa University</span>
                 </span>
               </div>
             </div>
