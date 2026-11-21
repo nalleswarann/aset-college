@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import {
   Briefcase,
@@ -12,6 +12,10 @@ import {
   Award,
   TrendingUp,
   Users,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  ArrowUpRight,
 } from 'lucide-react';
 import {
   ScrollHeading,
@@ -25,6 +29,13 @@ import {
   INDUSTRIAL_VISIT_PARTNERS,
   PLACEMENT_TRAINING_AREAS,
 } from '../data/universityData';
+
+// Sector Showcase Images
+import sectorAviationImg from '../assets/images/sector-aviation-flight.jpg';
+import sectorLogisticsImg from '../assets/images/sector-logistics-maritime.jpg';
+import sectorSafetyImg from '../assets/images/sector-safety-engineering.jpg';
+import sectorTechImg from '../assets/images/sector-tech-enterprise.jpg';
+import sectorHospitalityImg from '../assets/images/departments/dept-hospitality.jpg';
 
 // =========================================================================
 // OFFICIAL PLACEMENT & RECRUITING PARTNER LOGOS (Matching Reference Image)
@@ -87,9 +98,101 @@ const PLACEMENT_METRICS = [
   { label: 'Training Modules', value: '12 Areas', detail: 'Pre-placement grooming' },
 ];
 
+interface SectorShowcaseItem {
+  id: string;
+  sector: string;
+  badge: string;
+  tag: string;
+  metric: string;
+  description: string;
+  image: string;
+  icon: React.ElementType;
+  partners: string[];
+}
+
+const SECTOR_SHOWCASE_ITEMS: SectorShowcaseItem[] = [
+  {
+    id: 'aviation',
+    sector: 'Aviation & Airport Services',
+    badge: 'Aviation & Ground Operations',
+    tag: 'DGCA & IATA Curriculum',
+    metric: '100% Airport Prep',
+    description:
+      'Direct recruitment pathways across domestic and international airlines, ground handling, flight operations, air cargo management, and passenger services.',
+    image: sectorAviationImg,
+    icon: Plane,
+    partners: ['Air India', 'Air India SATS', 'Air India Express', 'Akasa Air', 'SpiceJet', 'AAI'],
+  },
+  {
+    id: 'logistics',
+    sector: 'Logistics, Shipping & Supply Chain',
+    badge: 'Maritime & Multimodal Freight',
+    tag: 'Global Trade Corridor',
+    metric: '₹12 LPA Top Global CTC',
+    description:
+      'End-to-end global supply chain, multimodal container freight forwarding, seaport operations, customs brokerage, and smart 3PL logistics networks.',
+    image: sectorLogisticsImg,
+    icon: Ship,
+    partners: [
+      'Maersk',
+      'DHL Supply Chain',
+      'MSC',
+      'DB Schenker',
+      'TVS Supply Chain',
+      'Delhivery',
+      'Haesok Shipping',
+      'Vinayak Shipping',
+    ],
+  },
+  {
+    id: 'safety',
+    sector: 'Industrial Safety & Fire Engineering',
+    badge: 'HSE & High-Hazard Engineering',
+    tag: 'Zero-Harm HSE Standards',
+    metric: 'NEBOSH & IOSH Standards',
+    description:
+      'Rigorous campus recruitment for certified Safety Officers, HSE Consultants, and Fire Prevention Engineers across industrial mega-projects.',
+    image: sectorSafetyImg,
+    icon: Flame,
+    partners: ['DLF', 'Casagrand', 'SPR Construction', 'Tenneco Clean Air', 'Swastik Corporation'],
+  },
+  {
+    id: 'technology',
+    sector: 'Technology & Enterprise Solutions',
+    badge: 'Software & Data Architecture',
+    tag: 'Digital Transformation',
+    metric: 'Fortune 500 Network',
+    description:
+      'Strategic enterprise technology hiring for full-cycle business analytics, enterprise software development, system audits, and digital transformation.',
+    image: sectorTechImg,
+    icon: Building2,
+    partners: ['Zoho', 'TTF Technologies', 'KPMG', 'Enterprise Tech Hubs'],
+  },
+  {
+    id: 'hospitality',
+    sector: 'Hospitality & Luxury Cabin Services',
+    badge: '5-Star Consortia & Cabin Crew',
+    tag: 'International Hospitality',
+    metric: 'Global Service Excellence',
+    description:
+      'Premier operational placement across elite hotel chains, luxury aviation cabin service, cruise liners, and high-end guest experiences worldwide.',
+    image: sectorHospitalityImg,
+    icon: Award,
+    partners: ['Naturals Group', 'Taj Hotels Consortia', 'Star Alliance Cabin Teams', 'International Flight Consortia'],
+  },
+];
+
 export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
   onOpenVirtualTour,
 }) => {
+  const sectorScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollSectors = (direction: 'left' | 'right') => {
+    if (sectorScrollRef.current) {
+      const scrollAmount = direction === 'left' ? -380 : 380;
+      sectorScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
   return (
     <section
       id="placements"
@@ -254,75 +357,158 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
         </div>
 
         {/* ========================================================= */}
-        {/* 4. PLACEMENT SECTORS CARDS (4 Modern Pillars)             */}
+        {/* 4. INDUSTRY-WISE RECRUITMENT SECTORS (Modern Continuous Stream) */}
         {/* ========================================================= */}
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h3 className="text-xl sm:text-2xl font-manrope font-bold text-stone-900">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+                <span className="text-xs font-mono font-bold tracking-widest uppercase text-orange-600">
+                  Career Mobility Sectors
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-stone-900 tracking-tight">
                 Industry-Wise Recruitment Sectors
               </h3>
-              <p className="text-xs sm:text-sm text-stone-500 font-sans">
-                Dedicated training tracks tailored to direct on-campus hiring requirements.
+              <p className="text-xs sm:text-sm text-stone-600 font-sans mt-1 max-w-2xl leading-relaxed">
+                Dedicated training tracks tailored to direct on-campus hiring requirements, multinational placements, and specialized domain competencies.
               </p>
             </div>
-            <span className="text-xs font-mono text-stone-500 self-start sm:self-auto">
-              Domestic &amp; International Drives
-            </span>
+
+            {/* Interactive Controls & Live Stream Badge */}
+            <div className="flex items-center gap-3 self-start md:self-end">
+              <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-stone-600 text-xs font-mono">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                <span>Live Continuous Stream · Hover to Pause</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => scrollSectors('left')}
+                  aria-label="Previous sectors"
+                  className="w-9 h-9 rounded-full bg-white border border-stone-200 shadow-xs hover:border-orange-500/50 hover:bg-orange-50 hover:text-orange-600 text-stone-700 flex items-center justify-center transition-all cursor-pointer active:scale-95"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollSectors('right')}
+                  aria-label="Next sectors"
+                  className="w-9 h-9 rounded-full bg-white border border-stone-200 shadow-xs hover:border-orange-500/50 hover:bg-orange-50 hover:text-orange-600 text-stone-700 flex items-center justify-center transition-all cursor-pointer active:scale-95"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {PLACEMENT_SECTORS.map((group, idx) => {
-              const icons = [Plane, Ship, Flame, Building2];
-              const SectorIcon = icons[idx % icons.length];
+          {/* Full-width Seamless Scrolling Marquee Container */}
+          <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden py-2 sm:py-4 group-sectors-marquee">
+            {/* Left Edge Gradient Fade */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-28 md:w-40 bg-gradient-to-r from-[#faf8f5] via-[#faf8f5]/85 to-transparent z-20"
+            />
+            {/* Right Edge Gradient Fade */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-28 md:w-40 bg-gradient-to-l from-[#faf8f5] via-[#faf8f5]/85 to-transparent z-20"
+            />
 
-              return (
-                <motion.div
-                  key={group.sector}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{
-                    duration: 0.68,
-                    delay: idx * 0.08,
-                    ease: LUXURY_EASE,
-                  }}
-                  whileHover={{ y: -4 }}
-                  className="p-6 rounded-2xl sm:rounded-3xl bg-white/95 border border-stone-200/90 flex flex-col justify-between space-y-4 hover:border-orange-500/40 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center">
-                        <SectorIcon className="w-5 h-5" />
+            {/* Scrollable Track with Seamless Double-Array for Infinite Looping */}
+            <div
+              ref={sectorScrollRef}
+              className="flex overflow-x-auto no-scrollbar scroll-smooth"
+            >
+              <div className="animate-marquee-sectors-seamless flex gap-5 sm:gap-6 px-4">
+                {[...SECTOR_SHOWCASE_ITEMS, ...SECTOR_SHOWCASE_ITEMS].map((sector, idx) => {
+                  const SectorIcon = sector.icon;
+
+                  return (
+                    <div
+                      key={`${sector.id}-${idx}`}
+                      className="w-[285px] sm:w-[350px] md:w-[390px] lg:w-[420px] shrink-0 rounded-3xl bg-white border border-stone-200/90 shadow-sm hover:shadow-2xl hover:border-orange-500/40 transition-all duration-500 overflow-hidden flex flex-col group/card"
+                    >
+                      {/* TOP HALF: Cinematic Sector Imagery */}
+                      <div className="h-48 sm:h-56 relative overflow-hidden bg-stone-900">
+                        <img
+                          src={sector.image}
+                          alt={sector.sector}
+                          className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover/card:scale-108"
+                          loading="lazy"
+                        />
+                        {/* Cinematic Vignette */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-black/20" />
+
+                        {/* Top Badges Bar */}
+                        <div className="absolute top-3 inset-x-3 sm:top-3.5 sm:inset-x-3.5 flex items-center justify-between gap-2 z-10">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-900/75 backdrop-blur-md border border-white/20 text-[11px] font-mono font-medium text-white shadow-xs">
+                            <SectorIcon className="w-3.5 h-3.5 text-amber-400" />
+                            <span>{sector.tag}</span>
+                          </span>
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-orange-600/95 backdrop-blur-md text-[10px] font-mono font-bold text-white tracking-wide shadow-xs">
+                            {sector.metric}
+                          </span>
+                        </div>
+
+                        {/* Bottom Title Bar */}
+                        <div className="absolute bottom-3 inset-x-3 sm:bottom-3.5 sm:inset-x-3.5 z-10 space-y-1">
+                          <div className="text-[10px] font-mono uppercase tracking-widest text-amber-300 font-bold">
+                            {sector.badge}
+                          </div>
+                          <h4 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-white tracking-tight leading-snug drop-shadow-sm">
+                            {sector.sector}
+                          </h4>
+                        </div>
                       </div>
-                      <span className="text-[11px] font-mono font-bold text-orange-600 px-2 py-0.5 rounded-full bg-orange-50 border border-orange-200">
-                        {group.partners.length} Partners
-                      </span>
+
+                      {/* BOTTOM HALF: Sector Content & Recruiting Partners */}
+                      <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 space-y-4 bg-white">
+                        <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+                          {sector.description}
+                        </p>
+
+                        {/* Recruiting Partners */}
+                        <div className="space-y-2 pt-1">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[11px] font-mono font-bold tracking-wider uppercase text-stone-400">
+                              Top Campus Recruiters
+                            </span>
+                            <span className="text-[11px] font-mono font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
+                              {sector.partners.length} Key Partners
+                            </span>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1.5 pt-0.5">
+                            {sector.partners.map((partner) => (
+                              <span
+                                key={partner}
+                                className="px-2.5 py-1 bg-stone-100/90 hover:bg-orange-50 border border-stone-200/80 hover:border-orange-300 rounded-full text-[11px] sm:text-xs font-medium text-stone-800 transition-colors"
+                              >
+                                {partner}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Card Footer */}
+                        <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] font-mono text-stone-500">
+                          <div className="flex items-center gap-1.5 text-emerald-600 font-medium">
+                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                            <span>Annual On-Campus Drives</span>
+                          </div>
+                          <span className="text-stone-400 flex items-center gap-0.5 group-hover/card:text-orange-600 transition-colors">
+                            <span>Placement Track</span>
+                            <ArrowUpRight className="w-3 h-3 transition-transform group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5" />
+                          </span>
+                        </div>
+                      </div>
                     </div>
-
-                    <h4 className="text-base font-bold text-stone-900 font-manrope leading-snug">
-                      {group.sector}
-                    </h4>
-
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {group.partners.map((partner) => (
-                        <span
-                          key={partner}
-                          className="px-2.5 py-1 bg-stone-100/90 border border-stone-200/70 rounded-full text-xs font-medium text-stone-800"
-                        >
-                          {partner}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-3 border-t border-stone-100 flex items-center gap-1.5 text-[11px] text-stone-500 font-mono">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span>Annual On-Campus Drives</span>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 

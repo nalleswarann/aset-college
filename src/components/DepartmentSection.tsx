@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   motion,
   AnimatePresence,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
 } from 'motion/react';
 import { DEPARTMENTS, PROGRAM_MATRIX } from '../data/universityData';
 import { Department } from '../types/university';
@@ -122,8 +125,9 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
   onSelectDepartment,
   onApplyForDepartment,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [showCampusPhoto, setShowCampusPhoto] = useState(false);
+  const [isVisionPhase, setIsVisionPhase] = useState(false);
   const [durationMode, setDurationMode] = useState<'standard' | 'lateral'>('standard');
   const [isMatrixDrawerOpen, setIsMatrixDrawerOpen] = useState(false);
   const [matrixFilter, setMatrixFilter] = useState('');
@@ -132,19 +136,65 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
   const matchedFullDept =
     DEPARTMENTS.find((d) => d.name === activeItem.deptRef) || DEPARTMENTS[activeIdx];
 
+  // Continuous scroll tracking across the pinned section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  // Desktop transforms: image reduces smoothly from 100% full-screen to the right 50%
+  const imageWidth = useTransform(scrollYProgress, [0.08, 0.20], ['100%', '50%']);
+  const imageLeft = useTransform(scrollYProgress, [0.08, 0.20], ['0%', '50%']);
+
+  // Mobile transforms: image reduces from 100% full-screen to top 40% height
+  const imageHeightMobile = useTransform(scrollYProgress, [0.08, 0.20], ['100%', '40%']);
+
+  // Phase 1 (02 OUR VALUES) text fades out during the initial morph
+  const valuesTextOpacity = useTransform(scrollYProgress, [0.04, 0.12], [1, 0]);
+
+  // Track phase threshold to cleanly separate Phase 1 (Values) and Phase 2 (Vision)
+  // This guarantees Phase 1 and Phase 2 text NEVER overlap under any circumstances
+  useMotionValueEvent(scrollYProgress, 'change', (progress) => {
+    const isVision = progress >= 0.16;
+    setIsVisionPhase(isVision);
+
+    if (progress < 0.20) {
+      setActiveIdx(0);
+    } else {
+      const visionProgress = Math.max(0, (progress - 0.20) / 0.80);
+      const idx = Math.min(
+        REFINED_DEPARTMENTS.length - 1,
+        Math.floor(visionProgress * REFINED_DEPARTMENTS.length)
+      );
+      setActiveIdx(idx);
+    }
+  });
+
+  // Scroll to a specific department on dot click or arrow click
+  const scrollToDepartment = (idx: number) => {
+    setActiveIdx(idx);
+    if (!isVisionPhase) {
+      setIsVisionPhase(true);
+    }
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const currentScrollY = window.scrollY;
+      const containerTop = currentScrollY + rect.top;
+      const totalScrollHeight = containerRef.current.scrollHeight - window.innerHeight;
+      const targetProgress = 0.20 + (idx / REFINED_DEPARTMENTS.length) * 0.78 + 0.02;
+      const targetY = containerTop + targetProgress * totalScrollHeight;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
+  };
+
   const handlePrev = () => {
-    setShowCampusPhoto(false);
-    setActiveIdx((prev) => (prev > 0 ? prev - 1 : REFINED_DEPARTMENTS.length - 1));
+    const nextIdx = activeIdx === 0 ? REFINED_DEPARTMENTS.length - 1 : activeIdx - 1;
+    scrollToDepartment(nextIdx);
   };
 
   const handleNext = () => {
-    setShowCampusPhoto(false);
-    setActiveIdx((prev) => (prev < REFINED_DEPARTMENTS.length - 1 ? prev + 1 : 0));
-  };
-
-  const handleSelectDept = (idx: number) => {
-    setShowCampusPhoto(false);
-    setActiveIdx(idx);
+    const nextIdx = activeIdx === REFINED_DEPARTMENTS.length - 1 ? 0 : activeIdx + 1;
+    scrollToDepartment(nextIdx);
   };
 
   const handleOpenCurriculum = () => {
@@ -168,222 +218,324 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIdx]);
+  }, [activeIdx, isVisionPhase]);
 
   return (
     <section id="departments" className="relative bg-[#faf8f5] text-stone-900 font-manrope">
       {/* ========================================================================= */}
-      {/* EDITORIAL DEPARTMENT SHOWCASE (Matching Reference Layout Image 3)         */}
-      {/* 1. Large prominent headline across the top in NewGrotesk                  */}
-      {/* 2. Left side: Authentic ASET College image & Department Labs              */}
-      {/* 3. Right side: Editorial text, horizontal divider, numbered highlight    */}
-      {/* 4. Natural scroll flow: zero sticky lock, instant 120Hz smooth scrolling  */}
+      {/* TELHA CLARKE SCROLL CANVAS                                                */}
+      {/* 1. Starts with authentic ASET campus building ("02 OUR DEPARTMENTS")        */}
+      {/* 2. Image smoothly reduces to right side (50% desktop, 40% mobile)         */}
+      {/* 3. Left side reveals solid website cream (#faf8f5) with solid black text  */}
+      {/* 4. Sliding elevator film-strip for the department images                  */}
       {/* ========================================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20">
-        
-        {/* Top Eyebrow + Accreditation Badge */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8">
-          <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-stone-500">
-            <span className="font-bold text-orange-600">02</span>
-            <span className="w-8 h-px bg-stone-300" />
-            <h2 className="font-semibold text-stone-900 tracking-[0.22em]">OUR DEPARTMENTS</h2>
-          </div>
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-orange-100/70 text-orange-800 border border-orange-200/70">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-            <span>Affiliated with Alagappa University · Admissions 2026–2027</span>
-          </span>
-        </div>
+      <div ref={containerRef} className="relative h-[380vh] sm:h-[420vh]">
+        {/* Pinned 100vh Viewport */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col lg:flex-row bg-[#faf8f5]">
 
-        {/* Large Prominent Headline (Directly matching Image 3) */}
-        <div className="max-w-4xl mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-[#111111] leading-[1.12] font-heading">
-            We provide specialized academic excellence and a{' '}
-            <span className="text-gradient-title font-bold">hands-on approach.</span>
-          </h2>
-        </div>
+          {/* ========================================================================= */}
+          {/* THE REDUCING IMAGE VIEWPORT (Desktop: right 50%, Mobile: top 40%)         */}
+          {/* Sits at z-20 so it remains 100% VISIBLE and never covered by left panel   */}
+          {/* ========================================================================= */}
 
-        {/* Two-Column Swiss Grid (Left: Visual Showcase, Right: Editorial Content) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
-          {/* LEFT COLUMN: Visual Media */}
-          <div className="lg:col-span-6 w-full space-y-4">
-            <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-stone-900 border border-stone-200/80 shadow-xl group">
+          {/* --- DESKTOP VIEWPORT IMAGE --- */}
+          <motion.div
+            style={{
+              width: imageWidth,
+              left: imageLeft,
+            }}
+            className="hidden lg:block absolute top-0 bottom-0 z-20 overflow-hidden bg-stone-950 will-change-transform shadow-2xl"
+          >
+            {/* Phase 1 Hero Image (Shown during Values phase and initial reduction) */}
+            <div
+              className={`absolute inset-0 z-10 transition-opacity duration-500 ease-out pointer-events-none ${isVisionPhase ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
+            >
+              <img
+                src={asetCampusMainImg}
+                alt="ASET College Campus Building"
+                className="w-full h-full object-cover object-center filter brightness-[0.78] contrast-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/60 pointer-events-none" />
+            </div>
+
+            {/* Phase 2 Department Filmstrip (Hardware-accelerated vertical elevator) */}
+            <div
+              className={`absolute inset-0 z-20 transition-opacity duration-500 ease-out ${isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
+            >
+              <div
+                className="w-full h-full flex flex-col"
+                style={{
+                  transform: `translate3d(0, -${activeIdx * 100}%, 0)`,
+                  transition: 'transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                {REFINED_DEPARTMENTS.map((dept, fIdx) => (
+                  <div key={fIdx} className="w-full h-full min-h-full shrink-0 relative overflow-hidden bg-stone-900">
+                    <img
+                      src={dept.image}
+                      alt={dept.fullName}
+                      loading={fIdx === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      style={{ objectPosition: dept.objectPosition || 'center center' }}
+                      className="w-full h-full object-cover select-none transition-transform duration-700"
+                    />
+                    {/* Cinematic vignette overlay for maximum contrast and elegance */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-black/20 to-stone-950/40 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-stone-950/35 via-transparent to-stone-950/15 pointer-events-none" />
+
+                    {/* Department Tag Pill in Top-Left */}
+                    <div className="absolute top-8 left-8 z-30 pointer-events-none">
+                      <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/65 backdrop-blur-xl border border-white/20 text-white shadow-2xl">
+                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                        <span className="text-xs font-mono font-bold tracking-widest uppercase">
+                          0{fIdx + 1} / 0{REFINED_DEPARTMENTS.length} · {dept.tag}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Department Name Indicator in Bottom-Left */}
+                    <div className="absolute bottom-10 left-8 z-30 pointer-events-none max-w-sm hidden sm:block">
+                      <span className="text-[11px] font-mono uppercase tracking-widest text-orange-400 font-bold block mb-1 drop-shadow-sm">
+                        Department Focus &amp; Practical Training
+                      </span>
+                      <p className="text-sm lg:text-base font-semibold text-white/95 drop-shadow-md leading-snug">
+                        {dept.fullName}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Minimalist Carousel Arrow Controls */}
+              <div className="absolute bottom-10 right-10 z-30 flex items-center gap-2">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous Department"
+                  className="w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-xl active:scale-95"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next Department"
+                  className="w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-xl active:scale-95"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* --- MOBILE VIEWPORT IMAGE (Top 40%) --- */}
+          <motion.div
+            style={{
+              height: imageHeightMobile,
+            }}
+            className="lg:hidden w-full relative z-20 overflow-hidden bg-stone-950 shrink-0 will-change-transform shadow-lg order-first"
+          >
+            {/* Phase 1 Mobile */}
+            <div
+              className={`absolute inset-0 z-10 transition-opacity duration-500 ease-out pointer-events-none ${isVisionPhase ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
+            >
+              <img
+                src={asetCampusMainImg}
+                alt="ASET College Campus Building"
+                className="w-full h-full object-cover object-center filter brightness-[0.78]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 pointer-events-none" />
+            </div>
+
+            {/* Phase 2 Mobile Filmstrip */}
+            <div
+              className={`absolute inset-0 z-20 transition-opacity duration-500 ease-out ${isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
+            >
+              <div
+                className="w-full h-full flex flex-col"
+                style={{
+                  transform: `translate3d(0, -${activeIdx * 100}%, 0)`,
+                  transition: 'transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                {REFINED_DEPARTMENTS.map((dept, fIdx) => (
+                  <div key={fIdx} className="w-full h-full min-h-full shrink-0 relative overflow-hidden bg-stone-900">
+                    <img
+                      src={dept.image}
+                      alt={dept.fullName}
+                      loading={fIdx === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      style={{ objectPosition: dept.objectPosition || 'center center' }}
+                      className="w-full h-full object-cover select-none"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-black/10 to-stone-950/30 pointer-events-none" />
+
+                    {/* Mobile Badge */}
+                    <div className="absolute top-3 left-3 z-30 pointer-events-none">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold tracking-wider uppercase text-white shadow-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                        <span>0{fIdx + 1} · {dept.highlight}</span>
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile Arrows */}
+              <div className="absolute bottom-3 right-3 z-30 flex items-center gap-1.5">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous"
+                  className="w-8 h-8 rounded-full bg-black/70 text-white backdrop-blur-md flex items-center justify-center border border-white/20 cursor-pointer active:scale-95"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next"
+                  className="w-8 h-8 rounded-full bg-black/70 text-white backdrop-blur-md flex items-center justify-center border border-white/20 cursor-pointer active:scale-95"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ========================================================================= */}
+          {/* PHASE 1: "02 OUR VALUES" (Full Screen Architectural Hero)                 */}
+          {/* Rendered ONLY before Vision Phase, eliminating any possibility of overlap */}
+          {/* ========================================================================= */}
+          {!isVisionPhase && (
+            <motion.div
+              style={{ opacity: valuesTextOpacity }}
+              className="absolute inset-0 z-30 flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 lg:px-20 pointer-events-none will-change-transform"
+            >
+              {/* Top-Left: 02 OUR DEPARTMENTS (Padded safely below floating glass navbar) */}
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-white">
+                <span className="font-bold text-orange-400">02</span>
+                <span className="w-8 h-px bg-white/40" />
+                <h2 className="font-semibold text-white tracking-[0.22em] drop-shadow-sm">OUR DEPARTMENTS</h2>
+              </div>
+
+              {/* Bottom Row: Telha Clarke layout (Left: Pill CTA, Right: Department Manifesto) */}
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 pointer-events-auto">
+                {/* Left Side: Floating Black Pill CTA */}
+                <div className="shrink-0">
+                  <button
+                    onClick={() => scrollToDepartment(0)}
+                    className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-lg bg-black/85 hover:bg-black text-white text-xs font-mono font-medium tracking-wide shadow-2xl transition-all duration-300 cursor-pointer border border-white/20 active:scale-95"
+                  >
+                    <span className="text-orange-400 text-sm leading-none">❖</span>
+                    <span>Explore All Departments</span>
+                  </button>
+                </div>
+
+                {/* Right Side: Editorial Department Manifesto */}
+                <div className="max-w-xl lg:text-right space-y-3">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-white leading-relaxed drop-shadow-sm">
+                    Specialized academic departments engineered for <span className="font-medium text-amber-200">practical mastery</span> and global careers.
+                  </p>
+                  <p className="text-xs sm:text-sm lg:text-base text-white/90 font-normal leading-relaxed">
+                    From DGCA flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
+                  </p>
+                  <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300/90 pt-1">
+                    Academically Supported by Alagappa University &bull; Chennai &amp; Coimbatore &bull; Admissions 2026&ndash;2027
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ========================================================================= */}
+          {/* PHASE 2: "03 OUR VISION" (Left 50% on desktop, bottom 60% on mobile)      */}
+          {/* Strictly w-full lg:w-1/2 lg:max-w-[50%] so it NEVER covers the right image*/}
+          {/* Signature website color combos: #111111 + text-gradient-title (#ea580c)   */}
+          {/* ========================================================================= */}
+          <div
+            className={`w-full lg:w-1/2 lg:max-w-[50%] h-[60%] lg:h-full flex flex-col justify-between pt-4 sm:pt-6 lg:pt-32 xl:pt-36 pb-4 sm:pb-6 lg:pb-16 px-5 sm:px-10 lg:px-12 xl:px-16 bg-[#faf8f5] z-10 shrink-0 transition-opacity duration-300 overflow-y-auto ${isVisionPhase ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              }`}
+          >
+            {/* 1. Top-Left: 03 OUR DEPARTMENTS Eyebrow with Alagappa Badge */}
+            <div className="flex items-center justify-between gap-3 shrink-0">
+              <div className="flex items-center gap-3 text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-stone-500">
+                <span className="font-bold text-orange-600">03</span>
+                <span className="w-8 h-px bg-stone-300" />
+                <h2 className="font-semibold text-stone-900 tracking-[0.22em]">OUR DEPARTMENTS</h2>
+              </div>
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-orange-100/70 text-orange-800 border border-orange-200/60">
+                Alagappa University
+              </span>
+            </div>
+
+            {/* 2 & 3. Middle Body: Monumental Title with Signature Gradient Combo & Description */}
+            <div className="my-auto py-2 sm:py-4 lg:py-6 space-y-3 sm:space-y-5 max-w-xl">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={showCampusPhoto ? 'campus' : activeItem.id}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full relative"
+                  key={activeIdx}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-3 sm:space-y-5"
                 >
-                  <img
-                    src={showCampusPhoto ? asetCampusMainImg : activeItem.image}
-                    alt={showCampusPhoto ? 'ASET College Flagship Campus Building' : activeItem.fullName}
-                    style={{ objectPosition: showCampusPhoto ? 'center 40%' : activeItem.objectPosition }}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Subtle vignette gradient for high contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-stone-950/30 pointer-events-none" />
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Top-Left Image Badge */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md text-white text-[11px] font-mono tracking-wider border border-white/20">
-                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                  <span>
-                    {showCampusPhoto
-                      ? 'Flagship Campus · Chennai & Coimbatore'
-                      : `0${activeIdx + 1} / 0${REFINED_DEPARTMENTS.length} · ${activeItem.tag}`}
-                  </span>
-                </span>
-              </div>
-
-              {/* Bottom Image Controls */}
-              <div className="absolute bottom-4 inset-x-4 z-10 flex items-center justify-between gap-3">
-                {/* Toggle between Campus View & Department Lab */}
-                <div className="inline-flex items-center p-1 rounded-xl bg-black/75 backdrop-blur-md border border-white/20 text-xs font-mono">
-                  <button
-                    onClick={() => setShowCampusPhoto(false)}
-                    className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                      !showCampusPhoto
-                        ? 'bg-orange-600 text-white font-semibold shadow-xs'
-                        : 'text-stone-300 hover:text-white'
-                    }`}
-                  >
-                    Department Lab
-                  </button>
-                  <button
-                    onClick={() => setShowCampusPhoto(true)}
-                    className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                      showCampusPhoto
-                        ? 'bg-orange-600 text-white font-semibold shadow-xs'
-                        : 'text-stone-300 hover:text-white'
-                    }`}
-                  >
-                    Campus Building
-                  </button>
-                </div>
-
-                {/* Arrow Controls */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={handlePrev}
-                    aria-label="Previous Department"
-                    className="w-9 h-9 rounded-full bg-black/75 hover:bg-black text-white border border-white/20 flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={handleNext}
-                    aria-label="Next Department"
-                    className="w-9 h-9 rounded-full bg-black/75 hover:bg-black text-white border border-white/20 flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Department Quick Switcher Strip Below Image */}
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 pt-2">
-              {REFINED_DEPARTMENTS.map((dept, idx) => (
-                <button
-                  key={dept.id}
-                  onClick={() => handleSelectDept(idx)}
-                  className={`px-2.5 py-2 rounded-xl text-left transition-all border cursor-pointer ${
-                    activeIdx === idx && !showCampusPhoto
-                      ? 'bg-stone-900 text-white border-stone-900 shadow-sm'
-                      : 'bg-white/80 hover:bg-white text-stone-700 border-stone-200/80 hover:border-stone-300'
-                  }`}
-                >
-                  <span className={`block text-[10px] font-mono font-bold ${activeIdx === idx && !showCampusPhoto ? 'text-orange-400' : 'text-stone-400'}`}>
-                    0{idx + 1}
-                  </span>
-                  <span className="block text-xs font-semibold truncate mt-0.5">
-                    {dept.prefix} {dept.highlight}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN: Editorial Narrative & Numbered Features (Directly matching Image 3) */}
-          <div className="lg:col-span-6 w-full flex flex-col justify-between space-y-6">
-            
-            {/* Top Paragraph: Institutional Philosophy (Matching Image 3 & Image 2) */}
-            <div className="space-y-4">
-              <p className="text-base sm:text-lg text-stone-800 leading-relaxed font-body">
-                Underpinning all of our disciplines is an understanding of industry demand, student potential, and experiential training, so that academic pathways and degrees remain meaningful and relevant over time.
-              </p>
-              <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-body">
-                From DGCA-approved flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
-              </p>
-            </div>
-
-            {/* Subtle Divider Line (Directly matching Image 3's horizontal line) */}
-            <div className="w-full h-px bg-stone-300/80 my-2" />
-
-            {/* Active Department Numbered Feature (Directly matching Image 3's "01 Connect and disconnect...") */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeItem.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
-                className="space-y-4"
-              >
-                <div className="flex items-baseline gap-3 sm:gap-4">
-                  <span className="text-lg sm:text-xl font-mono font-bold text-orange-600 shrink-0">
-                    0{activeIdx + 1}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-stone-900 font-heading">
+                  {/* Giant Headline: Solid Deep Black (#111111) + Signature Orange-to-Rose Gradient Highlight */}
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-[#111111] leading-[1.12]">
                     {activeItem.prefix}{' '}
                     <span className="text-gradient-title">{activeItem.highlight}</span>
                   </h3>
-                </div>
 
-                <p className="text-sm sm:text-base text-stone-700 leading-relaxed font-body pl-7 sm:pl-9 border-l-2 border-orange-500/40">
-                  {activeItem.description}
-                </p>
+                  {/* Editorial Description: Dark Charcoal (#333333) with high contrast */}
+                  <p className="text-xs sm:text-sm lg:text-[15px] xl:text-base text-[#333333] font-normal leading-relaxed">
+                    {activeItem.description}
+                  </p>
 
-                {/* Practical Mastery Tag */}
-                <div className="pl-7 sm:pl-9 pt-1 flex flex-wrap items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-stone-100 text-stone-700 border border-stone-200">
-                    Focus: {activeItem.tag}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-orange-50 text-orange-800 border border-orange-200/60">
-                    Degree Conferred by Alagappa University
-                  </span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  {/* Clean curriculum detail link */}
+                  <div className="pt-1">
+                    <button
+                      onClick={handleOpenCurriculum}
+                      className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-semibold text-stone-900 hover:text-orange-600 transition-colors cursor-pointer group"
+                    >
+                      <span>Explore Syllabus &amp; Degrees</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-orange-600" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-            {/* Action Buttons Row */}
-            <div className="pt-4 flex flex-wrap items-center gap-4 border-t border-stone-200/80">
+            {/* 4. Bottom Row: Telha Clarke Floating Black Pill + Slide Dots */}
+            <div className="flex items-center justify-between gap-4 shrink-0 pt-3 sm:pt-4 border-t border-stone-200/80">
               <button
                 onClick={handleOpenApply}
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-black hover:bg-stone-800 text-white text-xs sm:text-sm font-mono font-semibold tracking-wide shadow-lg transition-all duration-200 cursor-pointer active:scale-95 border border-white/10"
+                className="inline-flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-lg bg-black hover:bg-stone-800 text-white text-xs font-mono font-medium tracking-wide shadow-xl transition-all duration-300 cursor-pointer border border-white/10 shrink-0 active:scale-95"
               >
                 <span className="text-orange-400 text-sm leading-none">❖</span>
                 <span>Apply for Department</span>
               </button>
 
-              <button
-                onClick={handleOpenCurriculum}
-                className="inline-flex items-center gap-2 px-4 py-3 text-xs sm:text-sm font-mono uppercase tracking-wider font-semibold text-stone-900 hover:text-orange-600 transition-colors cursor-pointer group"
-              >
-                <span>Explore Syllabus &amp; Degrees</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-orange-600" />
-              </button>
+              {/* Minimalist Slide Progress Dots with Gradient Active Dot */}
+              <div className="flex items-center gap-1.5">
+                {REFINED_DEPARTMENTS.map((dept, idx) => (
+                  <button
+                    key={dept.id}
+                    onClick={() => scrollToDepartment(idx)}
+                    aria-label={`Jump to ${dept.fullName}`}
+                    className={`h-1.5 rounded-full transition-all cursor-pointer ${activeIdx === idx
+                      ? 'w-6 sm:w-7 bg-gradient-to-r from-orange-600 to-rose-600 shadow-xs'
+                      : 'w-1.5 sm:w-2 bg-stone-300 hover:bg-stone-400'
+                      }`}
+                  />
+                ))}
+                <span className="text-xs font-mono text-stone-500 ml-2">
+                  0{activeIdx + 1} / 0{REFINED_DEPARTMENTS.length}
+                </span>
+              </div>
             </div>
-
           </div>
 
         </div>
-
       </div>
 
       {/* ========================================================================= */}
@@ -432,22 +584,20 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               <button
                 type="button"
                 onClick={() => setDurationMode('standard')}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                  durationMode === 'standard'
-                    ? 'bg-white text-stone-900 shadow-xs'
-                    : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${durationMode === 'standard'
+                  ? 'bg-white text-stone-900 shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 Standard Degree Pathways
               </button>
               <button
                 type="button"
                 onClick={() => setDurationMode('lateral')}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${
-                  durationMode === 'lateral'
-                    ? 'bg-white text-stone-900 shadow-xs'
-                    : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${durationMode === 'lateral'
+                  ? 'bg-white text-stone-900 shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 <span>Fast-Track &amp; Lateral Entry</span>
                 <span className="bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-2xs">
