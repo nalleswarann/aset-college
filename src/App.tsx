@@ -27,18 +27,25 @@ export default function App() {
   const [isVirtualTourOpen, setIsVirtualTourOpen] = useState(false);
   const [inquiryDepartment, setInquiryDepartment] = useState<string>('');
 
-  // Scroll spy to highlight active section in navbar
+  // Scroll spy to highlight active section in navbar with rAF throttling
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const sections = ['home', 'about', 'departments', 'testimonials', 'placements', 'sponsors', 'contact'];
-      const scrollPosition = window.scrollY + 200;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = ['home', 'about', 'departments', 'testimonials', 'placements', 'sponsors', 'contact'];
+          const scrollPosition = window.scrollY + 200;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i]);
+            if (el && el.offsetTop <= scrollPosition) {
+              setActiveSection(sections[i]);
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

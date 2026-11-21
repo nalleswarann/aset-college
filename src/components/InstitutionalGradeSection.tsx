@@ -125,7 +125,6 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
   // Start with pillar 3 (Third-Party Audited Quality) matching user's exact screenshot
   const [activeIndex, setActiveIndex] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
-  const [progressTick, setProgressTick] = useState(0);
 
   // -------------------------------------------------------------
   // CONTINUOUS CIRCULAR AUTO-SCROLL ENGINE
@@ -134,34 +133,22 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
   useEffect(() => {
     if (isPaused) return;
 
-    const intervalTime = 40;
-    const totalTicks = AUTO_SCROLL_DURATION / intervalTime;
-
     const timer = setInterval(() => {
-      setProgressTick((prev) => {
-        if (prev >= totalTicks) {
-          setActiveIndex((currentIdx) => (currentIdx + 1) % PILLARS_DATA.length);
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, intervalTime);
+      setActiveIndex((currentIdx) => (currentIdx + 1) % PILLARS_DATA.length);
+    }, AUTO_SCROLL_DURATION);
 
     return () => clearInterval(timer);
   }, [isPaused]);
 
   const handlePrev = () => {
-    setProgressTick(0);
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : PILLARS_DATA.length - 1));
   };
 
   const handleNext = () => {
-    setProgressTick(0);
     setActiveIndex((prev) => (prev < PILLARS_DATA.length - 1 ? prev + 1 : 0));
   };
 
   const handleSelectPillar = (index: number) => {
-    setProgressTick(0);
     setActiveIndex(index);
   };
 
@@ -173,11 +160,6 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
   const slotOffsets = [-2, -1, 0, 1, 2];
   const activePillar = PILLARS_DATA[activeIndex];
   const ActiveIcon = activePillar.icon;
-
-  const currentProgressPercent = Math.min(
-    100,
-    (progressTick / (AUTO_SCROLL_DURATION / 40)) * 100
-  );
 
   return (
     <section
@@ -388,18 +370,11 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
         {/* Left: Dynamic Continuous Progress Bar Line */}
         <div className="flex items-center gap-3">
           <div className="relative w-28 sm:w-44 h-1.5 bg-white/20 rounded-full overflow-hidden">
-            {/* Base Step Indicator */}
+            {/* Live Progress Fill */}
             <div
-              className="absolute left-0 top-0 bottom-0 bg-white/35 rounded-full transition-all duration-300"
+              className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-orange-500 via-rose-500 to-red-500 rounded-full transition-all duration-500 ease-out"
               style={{
                 width: `${((activeIndex + 1) / total) * 100}%`,
-              }}
-            />
-            {/* Live Continuous Cycle Fill */}
-            <motion.div
-              className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-orange-500 via-rose-500 to-red-500 rounded-full"
-              style={{
-                width: `${((activeIndex + currentProgressPercent / 100) / total) * 100}%`,
               }}
             />
           </div>

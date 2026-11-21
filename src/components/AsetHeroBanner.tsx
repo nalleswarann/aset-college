@@ -29,11 +29,11 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     offset: ['start start', 'end start'],
   });
 
-  // Spring-smoothed scroll progress for immediate, buttery-smooth and fast response
+  // Instant-response scroll progress: tracking 1:1 with user scroll input with zero lag
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 95,
-    damping: 22,
-    mass: 0.5,
+    stiffness: 280,
+    damping: 32,
+    mass: 0.15,
   });
 
   // Scroll Parallax for the screen-wide monumental ASET typography:
@@ -83,7 +83,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[175vh] bg-black"
+      className="relative w-full h-[135vh] lg:h-[145vh] bg-black"
     >
       {/* Sticky 100vh Hero Viewport Stage */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
