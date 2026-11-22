@@ -8,6 +8,12 @@ import {
   Minus,
   GraduationCap,
   MapPin,
+  Search,
+  Lock,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
 } from 'lucide-react';
 import asetLogo from '../assets/images/aset-logo.png';
 import asetAviationStudents from '../assets/images/aset-aviation-students.png';
@@ -60,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isVisible, setIsVisible] = useState(true);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileExpandedAccordion, setMobileExpandedAccordion] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastScrollYRef = useRef(0);
@@ -180,6 +186,53 @@ export const Navbar: React.FC<NavbarProps> = ({
         }
       }
     }, 35);
+  };
+
+  // Mobile Navigation Items matching minimal editorial layout
+  const mobileNavLinks = [
+    { label: 'HOME', href: '#home' },
+    { label: 'ABOUT', href: '#about' },
+    { label: 'DEPARTMENTS', href: '#departments', onAction: onExploreDepartments },
+    { label: 'ADMISSIONS', href: '#admissions-process', onAction: onOpenAdmissions },
+    { label: 'PLACEMENTS', href: '#placements' },
+    { label: 'CONTACT', href: '#contact', onAction: handleContactClick },
+  ];
+
+  // Mobile search handler
+  const handleSearch = () => {
+    if (!searchQuery.trim()) return;
+    const q = searchQuery.toLowerCase().trim();
+    setMobileMenuOpen(false);
+    document.body.style.overflow = '';
+
+    let target = '#departments';
+    if (q.includes('about') || q.includes('campus') || q.includes('history') || q.includes('heritage')) {
+      target = '#about';
+    } else if (q.includes('admi') || q.includes('apply') || q.includes('fee') || q.includes('scholar') || q.includes('eligib')) {
+      target = '#admissions-process';
+      onOpenAdmissions?.();
+    } else if (q.includes('place') || q.includes('job') || q.includes('recruit') || q.includes('salary') || q.includes('pack')) {
+      target = '#placements';
+    } else if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('reach')) {
+      target = '#contact';
+    } else if (q.includes('home') || q.includes('top')) {
+      target = '#home';
+    } else if (q.includes('dept') || q.includes('pilot') || q.includes('aviat') || q.includes('safe') || q.includes('logic') || q.includes('mba') || q.includes('bba')) {
+      target = '#departments';
+      onExploreDepartments?.();
+    }
+
+    setTimeout(() => {
+      if (window.__lenis) {
+        window.__lenis.scrollTo(target, { offset: -84, duration: 1.15 });
+      } else {
+        const el = document.querySelector(target);
+        if (el) {
+          const y = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 84;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }, 40);
   };
 
   // Silky hover handlers with spring debounce
@@ -697,168 +750,164 @@ export const Navbar: React.FC<NavbarProps> = ({
       </motion.header>
 
       {/* ========================================================= */}
-      {/* MOBILE DRAWER MENU (Responsive for all phones & tablets)  */}
-      {/* Warm luxury cream/parchment background matching website  */}
+      {/* MOBILE DRAWER MENU (Editorial Minimalist Full-Screen)     */}
+      {/* Exact Match to Reference: Pure white, clean typography,  */}
+      {/* orange accents, centered stack, sub-links & search bar   */}
       {/* ========================================================= */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -24, scale: 0.99 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.99 }}
-            transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-[#faf8f5]/98 backdrop-blur-2xl text-stone-900 border-b border-stone-200 shadow-2xl shadow-stone-900/15 max-h-[92vh] overflow-y-auto font-manrope"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            data-lenis-prevent
+            className="fixed inset-0 z-50 lg:hidden bg-white text-stone-900 flex flex-col justify-between items-center px-6 py-7 sm:py-8 overflow-y-auto select-none font-sans min-h-screen"
           >
-            {/* Subtle warm atmospheric glow in corner */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-12 -right-12 w-64 h-64 rounded-full bg-gradient-to-b from-orange-300/30 via-rose-200/20 to-transparent blur-2xl -z-10"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 -left-16 w-56 h-56 rounded-full bg-amber-200/20 blur-2xl -z-10"
-            />
-
-            {/* Mobile Header Bar: Dark color for high contrast & prominent branding */}
-            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-stone-800 bg-stone-950 text-white shadow-md">
-              <div className="flex items-center gap-3">
-                <img src={asetLogo} alt="ASET College" className="h-7 w-auto object-contain brightness-110" />
-              </div>
+            {/* Top Bar: Left Close Icon (orange) | Center ASET Wordmark | Right Padlock (orange) */}
+            <div className="w-full flex items-center justify-between pt-1 pb-4">
               <motion.button
                 whileTap={{ scale: 0.9 }}
+                type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-white hover:text-white rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 border border-white/20 transition-colors cursor-pointer"
-                aria-label="Close menu"
+                className="p-2 -ml-2 text-[#ea580c] hover:text-[#c2410c] active:opacity-75 transition-colors cursor-pointer"
+                aria-label="Close navigation"
               >
-                <X className="w-5 h-5 text-white" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
               </motion.button>
-            </div>
 
-            {/* Mobile Navigation List with Expandable Accordions */}
-            <div className="p-4 sm:p-5 space-y-2">
-              {menuItems.map((item) => {
-                const isExpanded = mobileExpandedAccordion === item.id;
+              <span className="font-heading font-extrabold text-base sm:text-lg tracking-[0.25em] text-stone-950 uppercase select-none">
+                ASET
+              </span>
 
-                if (!item.hasDropdown) {
-                  return (
-                    <motion.a
-                      key={item.id}
-                      whileTap={{ scale: 0.98 }}
-                      href={item.href || '#'}
-                      onClick={(e) => handleNavClick(e, item.href || '#')}
-                      className="group flex items-center justify-between py-3.5 px-3 rounded-xl hover:bg-stone-100/80 text-base font-bold text-stone-900 transition-colors"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span>{item.label}</span>
-                        {item.badge && (
-                          <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                              item.badgeColor || 'bg-emerald-500 text-white'
-                            }`}
-                          >
-                            {item.badge}
-                          </span>
-                        )}
-                      </div>
-                      <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-orange-600 transition-colors" />
-                    </motion.a>
-                  );
-                }
-
-                return (
-                  <div key={item.id} className="border-b border-stone-200/70 pb-1">
-                    <motion.button
-                      whileTap={{ scale: 0.98 }}
-                      type="button"
-                      onClick={() =>
-                        setMobileExpandedAccordion(isExpanded ? null : item.id)
-                      }
-                      className="w-full flex items-center justify-between py-3.5 px-3 text-base font-bold text-stone-900 rounded-xl hover:bg-stone-100/80 transition-colors cursor-pointer"
-                    >
-                      <span>{item.label}</span>
-                      <motion.span
-                        animate={{ rotate: isExpanded ? 45 : 0 }}
-                        transition={{ duration: 0.2 }}
-                        className={`p-1.5 rounded-full transition-colors ${
-                          isExpanded
-                            ? 'bg-orange-600 text-white shadow-xs'
-                            : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
-                        }`}
-                      >
-                        {isExpanded ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
-                      </motion.span>
-                    </motion.button>
-
-                    {/* Accordion Content */}
-                    <AnimatePresence>
-                      {isExpanded && item.columns && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                          className="pl-3 pr-2 pb-3.5 space-y-1.5 overflow-hidden"
-                        >
-                          <div className="text-[11px] font-mono font-bold text-orange-600 uppercase tracking-wider pt-2 pb-1 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-                            <span>{item.categoryTitle}</span>
-                          </div>
-                          <div className="space-y-1">
-                            {[...item.columns.col1, ...item.columns.col2].map((link, idx) => (
-                              <motion.a
-                                key={link.label}
-                                initial={{ opacity: 0, x: -6 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: idx * 0.02, duration: 0.18 }}
-                                href={link.href}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  setMobileMenuOpen(false);
-                                  if (link.onClick) {
-                                    link.onClick();
-                                  } else {
-                                    handleNavClick(e, link.href);
-                                  }
-                                }}
-                                className="group flex items-center justify-between text-sm font-semibold text-stone-700 hover:text-orange-600 hover:bg-orange-50/70 px-2.5 py-2 rounded-xl transition-all"
-                              >
-                                <span className="flex items-center gap-2">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-stone-300 group-hover:bg-orange-500 transition-colors shrink-0" />
-                                  <span>{link.label}</span>
-                                </span>
-                                <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-orange-600 opacity-0 group-hover:opacity-100 transition-all shrink-0" />
-                              </motion.a>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Mobile Bottom Actions */}
-            <div className="p-4 sm:p-5 pt-3 border-t border-stone-200/90 space-y-3 bg-stone-100/70">
               <motion.button
-                whileTap={{ scale: 0.97 }}
-                onClick={handleContactClick}
-                className="w-full py-3.5 px-5 text-center text-sm font-bold text-white bg-gradient-to-r from-orange-600 via-orange-500 to-rose-600 hover:from-orange-700 hover:to-rose-700 transition-all rounded-full shadow-lg shadow-orange-600/25 flex items-center justify-center gap-2 cursor-pointer"
+                whileTap={{ scale: 0.9 }}
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenAdmissions();
+                }}
+                className="p-2 -mr-2 text-[#ea580c] hover:text-[#c2410c] active:opacity-75 transition-colors cursor-pointer"
+                aria-label="Admissions Portal"
               >
-                <span>Contact Admissions &amp; Campus</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <Lock className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
               </motion.button>
+            </div>
 
-              <div className="flex items-center justify-around pt-1 text-xs font-medium text-stone-600">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-orange-600" />
-                  <span>Chennai &amp; Coimbatore</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <GraduationCap className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Alagappa University</span>
-                </span>
+            {/* Center Content: Primary Navigation Stack & Sub-links */}
+            <div className="flex-1 flex flex-col items-center justify-center w-full max-w-sm my-auto py-6 space-y-6 sm:space-y-8 text-center">
+              {/* Primary Links */}
+              <nav className="flex flex-col items-center space-y-4 sm:space-y-5" aria-label="Mobile Navigation">
+                {mobileNavLinks.map((item) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileMenuOpen(false);
+                      if (item.onAction) {
+                        item.onAction();
+                      }
+                      handleNavClick(e, item.href);
+                    }}
+                    className="block font-heading font-bold text-sm sm:text-base tracking-[0.26em] text-stone-950 hover:text-[#ea580c] transition-colors uppercase cursor-pointer"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* Secondary Sub-Links */}
+              <div className="flex flex-col items-center space-y-2 pt-2 sm:pt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleContactClick();
+                  }}
+                  className="text-xs sm:text-[13px] font-medium text-stone-600 hover:text-stone-950 tracking-wider transition-colors cursor-pointer"
+                >
+                  Student Login
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenAdmissions();
+                  }}
+                  className="text-xs sm:text-[13px] font-medium text-stone-600 hover:text-stone-950 tracking-wider transition-colors cursor-pointer"
+                >
+                  Apply Online
+                </button>
               </div>
+
+              {/* Centered Social Media Icons */}
+              <div className="flex items-center justify-center gap-6 pt-3 text-stone-800">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#ea580c] transition-colors p-1"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#ea580c] transition-colors p-1"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#ea580c] transition-colors p-1"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#ea580c] transition-colors p-1"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Bottom Search Bar */}
+            <div className="w-full max-w-xs flex items-center justify-center gap-3 pt-4 pb-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSearch();
+                    }
+                  }}
+                  className="bg-[#f0f0f0] text-stone-800 placeholder-stone-400 text-xs sm:text-sm px-4 py-2 w-48 sm:w-56 focus:outline-none focus:ring-1 focus:ring-stone-400 font-sans"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={handleSearch}
+                className="text-stone-700 hover:text-stone-950 p-1 transition-colors cursor-pointer"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
+              </button>
             </div>
           </motion.div>
         )}
