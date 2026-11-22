@@ -59,7 +59,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
   const planeY = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    ['16vh', '22vh', '18vh', '10vh']
+    ['29vh', '35vh', '24vh', '14vh']
   );
   const planeRotate = useTransform(
     smoothProgress,
@@ -70,7 +70,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
   const planeScale = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    [0.64, 0.98, 1.32, 1.55]
+    [0.58, 0.92, 1.28, 1.52]
   );
   // Fast flight opacity: solid during flight, then seamlessly dissolves into the sky past 'T'
   const planeOpacity = useTransform(
@@ -83,12 +83,12 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[95vh] sm:h-[135vh] md:h-[155vh] lg:h-[175vh] bg-[#faf8f5] overflow-hidden"
+      className="relative w-full h-[135vh] sm:h-[155vh] lg:h-[175vh] bg-black"
     >
-      {/* Sticky Hero Viewport Stage: Pinned gracefully with immediate peek of the next section on mobile */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[#faf8f5]">
+      {/* Sticky 100vh Hero Viewport Stage */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
         {/* Layer 0: High-Definition Sky Video Background (Pure video background with zero dark blue tint) */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0 bg-[#faf8f5]">
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <video
             ref={videoRef}
             autoPlay
@@ -102,15 +102,12 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             <source src={skyVideo} type="video/mp4" />
             <source src="/videos/sky-video-banner.mp4" type="video/mp4" />
           </video>
-
-          {/* Seamless soft fade into page background at the bottom edge (Zero black background) */}
-          <div className="absolute inset-x-0 bottom-0 h-36 sm:h-48 bg-gradient-to-b from-transparent via-[#faf8f5]/50 to-[#faf8f5] pointer-events-none z-[5]" />
         </div>
 
-        {/* Layer 1: Screen-Wide "ASET" Typography (Elevated on mobile, grounded edge-to-edge on desktop) */}
+        {/* Layer 1: Screen-Wide "ASET" Typography Placed Behind Students */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[11vh] xs:top-[13vh] sm:top-auto sm:bottom-0 flex items-start sm:items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
+          className="absolute inset-x-0 bottom-[15vh] xs:bottom-[16vh] sm:bottom-[18vh] lg:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
         >
           <motion.div
             style={{
@@ -118,34 +115,36 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
               scale: asettitleScale,
               opacity: asettitleOpacity,
             }}
-            className="w-full max-w-none text-center will-change-transform flex justify-center items-start sm:items-end"
+            className="w-full max-w-none text-center will-change-transform flex justify-center items-end"
           >
-            {/* Mobile View: Monumental elevated ASET typography displayed prominently in the open sky */}
+            {/* Mobile & Tablet View (below lg): Monumental BIG ASET Typography */}
             <svg
-              viewBox="0 0 1500 480"
-              className="block sm:hidden w-full h-[28vh] xs:h-[32vh] select-none overflow-visible px-2"
-              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 1600 680"
+              className="block lg:hidden w-full h-[38vh] xs:h-[44vh] sm:h-[54vh] md:h-[66vh] select-none overflow-visible px-1 sm:px-3"
+              preserveAspectRatio="none"
             >
               <defs>
                 <linearGradient id="asetWideGradMob" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.98" />
-                  <stop offset="100%" stopColor="#E2F0FD" stopOpacity="0.92" />
+                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.96" />
+                  <stop offset="100%" stopColor="#D9ECFE" stopOpacity="0.88" />
                 </linearGradient>
 
                 <filter id="asetWideShadowMob" x="-15%" y="-15%" width="130%" height="130%">
-                  <feDropShadow dx="0" dy="12" stdDeviation="16" floodColor="#000000" floodOpacity="0.45" />
-                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.3" />
+                  <feDropShadow dx="0" dy="14" stdDeviation="18" floodColor="#000000" floodOpacity="0.45" />
+                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.32" />
                 </filter>
               </defs>
 
               <text
                 x="50%"
-                y="80%"
+                y="88%"
                 textAnchor="middle"
+                textLength="100%"
+                lengthAdjust="spacingAndGlyphs"
                 fontFamily="'NewGrotesk', 'San Francisco', 'Neue Montreal', ui-sans-serif, system-ui, sans-serif"
                 fontWeight="900"
-                fontSize="520"
+                fontSize="680"
                 fill="url(#asetWideGradMob)"
                 stroke="rgba(255, 255, 255, 0.65)"
                 strokeWidth="2.5"
@@ -158,10 +157,10 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
               </text>
             </svg>
 
-            {/* Desktop View (sm and above): Full-bleed edge-to-edge cinematic stretch */}
+            {/* Desktop View (lg and above): Full-bleed edge-to-edge cinematic stretch */}
             <svg
               viewBox="0 0 2000 650"
-              className="hidden sm:block w-full sm:h-[58vh] md:h-[68vh] lg:h-[78vh] xl:h-[84vh] select-none overflow-visible"
+              className="hidden lg:block w-full lg:h-[78vh] xl:h-[84vh] select-none overflow-visible"
               preserveAspectRatio="none"
             >
               <defs>
@@ -216,18 +215,18 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             {/* Aerodynamic Jet Engine Contrails (Left & Right Engines) */}
             <div
               aria-hidden="true"
-              className="absolute right-[80%] top-[56%] w-32 sm:w-44 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[80%] top-[56%] w-40 sm:w-52 md:w-68 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
             <div
               aria-hidden="true"
-              className="absolute right-[78%] top-[68%] w-26 sm:w-36 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[78%] top-[68%] w-36 sm:w-44 md:w-56 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
 
             {/* Aeroplane Cutout Image */}
             <img
               src={asetAeroplane}
               alt="ASET Aviation Commercial Aeroplane"
-              className="w-[180px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
+              className="w-[185px] xs:w-[215px] sm:w-[260px] md:w-[330px] lg:w-[400px] xl:w-[450px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
             />
           </div>
         </motion.div>
@@ -241,11 +240,11 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-2 sm:px-4"
         >
-          <div className="relative w-[115%] xs:w-[108%] sm:w-full max-w-[480px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
+          <div className="relative w-[130%] xs:w-[120%] sm:w-full max-w-[540px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
             <img
               src={asetAviationStudents}
               alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[58vh] xs:max-h-[62vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+              className="w-full h-auto max-h-[70vh] xs:max-h-[74vh] sm:max-h-[76vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
             />
           </div>
         </motion.div>
