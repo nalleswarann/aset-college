@@ -83,9 +83,9 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[95vh] sm:h-[110vh] lg:h-[130vh] bg-[#faf8f5] overflow-hidden"
+      className="relative w-full h-[95vh] sm:h-[135vh] md:h-[155vh] lg:h-[175vh] bg-[#faf8f5] overflow-hidden"
     >
-      {/* Sticky Hero Viewport Stage: Pinned gracefully with immediate peek of the next section */}
+      {/* Sticky Hero Viewport Stage: Pinned gracefully with immediate peek of the next section on mobile */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[#faf8f5]">
         {/* Layer 0: High-Definition Sky Video Background (Pure video background with zero dark blue tint) */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0 bg-[#faf8f5]">
@@ -107,10 +107,10 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           <div className="absolute inset-x-0 bottom-0 h-36 sm:h-48 bg-gradient-to-b from-transparent via-[#faf8f5]/50 to-[#faf8f5] pointer-events-none z-[5]" />
         </div>
 
-        {/* Layer 1: Screen-Wide "ASET" Typography Elevated into Clear Sky (Always visible, never hidden) */}
+        {/* Layer 1: Screen-Wide "ASET" Typography (Elevated on mobile, grounded edge-to-edge on desktop) */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[11vh] xs:top-[13vh] sm:top-[11vh] md:top-auto md:bottom-0 flex items-start md:items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
+          className="absolute inset-x-0 top-[11vh] xs:top-[13vh] sm:top-auto sm:bottom-0 flex items-start sm:items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
         >
           <motion.div
             style={{
@@ -118,7 +118,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
               scale: asettitleScale,
               opacity: asettitleOpacity,
             }}
-            className="w-full max-w-none text-center will-change-transform flex justify-center items-start md:items-end"
+            className="w-full max-w-none text-center will-change-transform flex justify-center items-start sm:items-end"
           >
             {/* Mobile View: Monumental elevated ASET typography displayed prominently in the open sky */}
             <svg
@@ -216,18 +216,18 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             {/* Aerodynamic Jet Engine Contrails (Left & Right Engines) */}
             <div
               aria-hidden="true"
-              className="absolute right-[80%] top-[56%] w-48 sm:w-60 md:w-76 lg:w-92 h-3.5 bg-gradient-to-l from-white/60 via-sky-200/40 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[80%] top-[56%] w-32 sm:w-44 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
             <div
               aria-hidden="true"
-              className="absolute right-[78%] top-[68%] w-40 sm:w-50 md:w-64 lg:w-76 h-3 bg-gradient-to-l from-white/50 via-sky-200/30 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[78%] top-[68%] w-26 sm:w-36 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
 
             {/* Aeroplane Cutout Image */}
             <img
               src={asetAeroplane}
               alt="ASET Aviation Commercial Aeroplane"
-              className="w-[210px] xs:w-[240px] sm:w-[285px] md:w-[350px] lg:w-[420px] xl:w-[470px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
+              className="w-[180px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
             />
           </div>
         </motion.div>
@@ -241,11 +241,11 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-2 sm:px-4"
         >
-          <div className="relative w-[115%] xs:w-[108%] sm:w-full max-w-[480px] sm:max-w-[660px] md:max-w-[760px] lg:max-w-[880px] xl:max-w-[960px] flex justify-center">
+          <div className="relative w-[115%] xs:w-[108%] sm:w-full max-w-[480px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
             <img
               src={asetAviationStudents}
               alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[58vh] xs:max-h-[62vh] sm:max-h-[70vh] md:max-h-[78vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.45)]"
+              className="w-full h-auto max-h-[58vh] xs:max-h-[62vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
             />
           </div>
         </motion.div>
