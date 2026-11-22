@@ -48,42 +48,42 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
   const studentsScale = useTransform(smoothProgress, [0, 1], [1, 1.05]);
 
   // Fast Scroll Parallax for the Aeroplane (Flying from Back to Front):
-  // Starts in the deep distant background above 'A' (scale 0.45),
-  // swoops rapidly forward towards the viewer (scaling up 3x),
+  // Starts in the deep distant background above 'A' (scale 0.54),
+  // swoops rapidly forward towards the viewer (scaling up 2.8x),
   // crosses through 'S' and 'E' behind the students, and reaches 'T' on the right
   const planeX = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    ['18vw', '42vw', '68vw', '90vw']
+    ['16vw', '40vw', '66vw', '90vw']
   );
   const planeY = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    ['18vh', '24vh', '18vh', '12vh']
+    ['25vh', '31vh', '22vh', '13vh']
   );
   const planeRotate = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
     [3, 8, 2, -4]
   );
-  // Back to front scale expansion: starts visible in the background (0.46) and flies forward (1.45)
+  // Back to front scale expansion: starts visible in the background (0.54) and flies forward (1.48)
   const planeScale = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    [0.46, 0.82, 1.2, 1.45]
+    [0.54, 0.88, 1.24, 1.48]
   );
   // Fast flight opacity: solid during flight, then seamlessly dissolves into the sky past 'T'
   const planeOpacity = useTransform(
     smoothProgress,
     [0, 0.04, 0.44, 0.58],
-    [0.85, 1, 1, 0]
+    [0.9, 1, 1, 0]
   );
 
   return (
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[130vh] sm:h-[155vh] lg:h-[175vh] bg-black"
+      className="relative w-full h-[135vh] sm:h-[155vh] lg:h-[175vh] bg-black"
     >
       {/* Sticky 100vh Hero Viewport Stage */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
@@ -107,7 +107,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
         {/* Layer 1: Screen-Wide "ASET" Typography Placed Behind Students */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-[14vh] xs:bottom-[16vh] sm:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
+          className="absolute inset-x-0 bottom-[18vh] xs:bottom-[20vh] sm:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
         >
           <motion.div
             style={{
@@ -120,7 +120,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             {/* Mobile View: Proportional, undistorted monumental ASET typography with natural geometry */}
             <svg
               viewBox="0 0 1600 520"
-              className="block sm:hidden w-full h-auto max-h-[22vh] select-none overflow-visible px-2"
+              className="block sm:hidden w-full h-auto max-h-[26vh] xs:max-h-[30vh] select-none overflow-visible px-2"
               preserveAspectRatio="xMidYBottom meet"
             >
               <defs>
@@ -213,18 +213,18 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             {/* Aerodynamic Jet Engine Contrails (Left & Right Engines) */}
             <div
               aria-hidden="true"
-              className="absolute right-[80%] top-[56%] w-28 sm:w-44 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[80%] top-[56%] w-36 sm:w-48 md:w-64 lg:w-80 h-3 bg-gradient-to-l from-white/50 via-sky-200/35 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
             <div
               aria-hidden="true"
-              className="absolute right-[78%] top-[68%] w-24 sm:w-36 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
+              className="absolute right-[78%] top-[68%] w-32 sm:w-40 md:w-52 lg:w-68 h-2.5 bg-gradient-to-l from-white/40 via-sky-200/25 to-transparent rounded-full blur-[2px] pointer-events-none -translate-y-1/2"
             />
 
             {/* Aeroplane Cutout Image */}
             <img
               src={asetAeroplane}
               alt="ASET Aviation Commercial Aeroplane"
-              className="w-[140px] sm:w-[240px] md:w-[310px] lg:w-[380px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
+              className="w-[165px] xs:w-[195px] sm:w-[250px] md:w-[320px] lg:w-[390px] xl:w-[440px] h-auto object-contain drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]"
             />
           </div>
         </motion.div>
@@ -238,11 +238,11 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-2 sm:px-4"
         >
-          <div className="relative w-full max-w-[440px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
+          <div className="relative w-[118%] xs:w-[110%] sm:w-full max-w-[480px] xs:max-w-[540px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
             <img
               src={asetAviationStudents}
               alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[58vh] sm:max-h-[70vh] md:max-h-[76vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+              className="w-full h-auto max-h-[64vh] xs:max-h-[68vh] sm:max-h-[72vh] md:max-h-[78vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
             />
           </div>
         </motion.div>
