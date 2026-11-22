@@ -59,7 +59,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
   const planeY = useTransform(
     smoothProgress,
     [0, 0.16, 0.33, 0.48],
-    ['32vh', '36vh', '26vh', '14vh']
+    ['16vh', '22vh', '18vh', '10vh']
   );
   const planeRotate = useTransform(
     smoothProgress,
@@ -83,12 +83,12 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[88vh] xs:h-[90vh] sm:h-[105vh] lg:h-[125vh] bg-black"
+      className="relative w-full h-[95vh] sm:h-[110vh] lg:h-[130vh] bg-[#faf8f5] overflow-hidden"
     >
       {/* Sticky Hero Viewport Stage: Pinned gracefully with immediate peek of the next section */}
-      <div className="sticky top-0 h-[76vh] xs:h-[80vh] sm:h-[86vh] lg:h-screen w-full overflow-hidden flex flex-col justify-between bg-black">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[#faf8f5]">
         {/* Layer 0: High-Definition Sky Video Background (Pure video background with zero dark blue tint) */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0 bg-[#faf8f5]">
           <video
             ref={videoRef}
             autoPlay
@@ -102,12 +102,15 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             <source src={skyVideo} type="video/mp4" />
             <source src="/videos/sky-video-banner.mp4" type="video/mp4" />
           </video>
+
+          {/* Seamless soft fade into page background at the bottom edge (Zero black background) */}
+          <div className="absolute inset-x-0 bottom-0 h-36 sm:h-48 bg-gradient-to-b from-transparent via-[#faf8f5]/50 to-[#faf8f5] pointer-events-none z-[5]" />
         </div>
 
-        {/* Layer 1: Screen-Wide "ASET" Typography Placed Behind Students */}
+        {/* Layer 1: Screen-Wide "ASET" Typography Elevated into Clear Sky (Always visible, never hidden) */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-[18vh] xs:bottom-[20vh] sm:bottom-[8vh] md:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
+          className="absolute inset-x-0 top-[11vh] xs:top-[13vh] sm:top-[11vh] md:top-auto md:bottom-0 flex items-start md:items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
         >
           <motion.div
             style={{
@@ -115,19 +118,19 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
               scale: asettitleScale,
               opacity: asettitleOpacity,
             }}
-            className="w-full max-w-none text-center will-change-transform flex justify-center items-end"
+            className="w-full max-w-none text-center will-change-transform flex justify-center items-start md:items-end"
           >
-            {/* Mobile View: Proportional, undistorted monumental ASET typography with natural geometry */}
+            {/* Mobile View: Monumental elevated ASET typography displayed prominently in the open sky */}
             <svg
-              viewBox="0 0 1600 520"
-              className="block sm:hidden w-full h-auto max-h-[30vh] xs:max-h-[34vh] select-none overflow-visible px-2"
-              preserveAspectRatio="xMidYBottom meet"
+              viewBox="0 0 1500 480"
+              className="block sm:hidden w-full h-[28vh] xs:h-[32vh] select-none overflow-visible px-2"
+              preserveAspectRatio="xMidYMid meet"
             >
               <defs>
                 <linearGradient id="asetWideGradMob" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.95" />
-                  <stop offset="100%" stopColor="#E2F0FD" stopOpacity="0.88" />
+                  <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.98" />
+                  <stop offset="100%" stopColor="#E2F0FD" stopOpacity="0.92" />
                 </linearGradient>
 
                 <filter id="asetWideShadowMob" x="-15%" y="-15%" width="130%" height="130%">
@@ -138,14 +141,14 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
 
               <text
                 x="50%"
-                y="84%"
+                y="80%"
                 textAnchor="middle"
                 fontFamily="'NewGrotesk', 'San Francisco', 'Neue Montreal', ui-sans-serif, system-ui, sans-serif"
                 fontWeight="900"
-                fontSize="540"
+                fontSize="520"
                 fill="url(#asetWideGradMob)"
-                stroke="rgba(255, 255, 255, 0.55)"
-                strokeWidth="2"
+                stroke="rgba(255, 255, 255, 0.65)"
+                strokeWidth="2.5"
                 filter="url(#asetWideShadowMob)"
                 style={{
                   letterSpacing: '0.04em',
@@ -238,11 +241,11 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 z-[30] flex justify-center items-end pointer-events-none select-none will-change-transform px-2 sm:px-4"
         >
-          <div className="relative w-[135%] xs:w-[125%] sm:w-full max-w-[560px] sm:max-w-[680px] md:max-w-[780px] lg:max-w-[900px] xl:max-w-[980px] flex justify-center">
+          <div className="relative w-[115%] xs:w-[108%] sm:w-full max-w-[480px] sm:max-w-[660px] md:max-w-[760px] lg:max-w-[880px] xl:max-w-[960px] flex justify-center">
             <img
               src={asetAviationStudents}
               alt="ASET College Aviation Students"
-              className="w-full h-auto max-h-[68vh] xs:max-h-[72vh] sm:max-h-[76vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)]"
+              className="w-full h-auto max-h-[58vh] xs:max-h-[62vh] sm:max-h-[70vh] md:max-h-[78vh] lg:max-h-[84vh] xl:max-h-[88vh] object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.45)]"
             />
           </div>
         </motion.div>

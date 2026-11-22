@@ -99,7 +99,7 @@ export default function App() {
           />
 
           {/* Quantitative Metric Strip */}
-          <SmoothSection className="relative z-30 -mt-28 xs:-mt-36 sm:-mt-44 md:-mt-56 lg:-mt-64">
+          <SmoothSection className="relative z-30 -mt-20 xs:-mt-24 sm:-mt-32 md:-mt-40 lg:-mt-48">
             <KeyMetricsBar />
           </SmoothSection>
 
