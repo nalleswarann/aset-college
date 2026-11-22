@@ -42,12 +42,12 @@ export const StudentSpotlightSection: React.FC<StudentSpotlightSectionProps> = (
     <section
       ref={sectionRef}
       id="spotlight"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-white font-manrope py-16 sm:py-20 lg:py-28 select-none border-b border-stone-200/90"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-white font-manrope py-10 xs:py-12 sm:py-16 lg:py-22 select-none border-b border-stone-200/90"
     >
       {/* Expansive Wide Container */}
       <div className="w-full max-w-[1540px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Master Poster Canvas: Rich vibrant crimson velvet red background */}
-        <div className="relative rounded-[32px] sm:rounded-[44px] bg-gradient-to-br from-[#a8161e] via-[#851117] to-[#4e070c] border border-red-500/30 shadow-[0_24px_70px_rgba(185,28,28,0.22)] overflow-hidden min-h-0 md:min-h-[700px] lg:min-h-[740px] xl:min-h-[780px] flex flex-col justify-between">
+        <div className="relative rounded-[32px] sm:rounded-[44px] bg-gradient-to-br from-[#a8161e] via-[#851117] to-[#4e070c] border border-red-500/30 shadow-[0_24px_70px_rgba(185,28,28,0.22)] overflow-hidden min-h-0 md:min-h-[640px] lg:min-h-[700px] xl:min-h-[740px] flex flex-col justify-between">
           {/* ========================================================= */}
           {/* BACKGROUND LAYER: Optimized Crimson Petal Atmosphere Glow */}
           {/* ========================================================= */}

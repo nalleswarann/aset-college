@@ -38,11 +38,11 @@ export const KeyMetricsBar: React.FC = () => {
       className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans"
     >
       {/* 100% Solid Opaque White Card (Zero Opacity, Zero Transparency Bleed) */}
-      <div className="relative rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-white border border-stone-200 shadow-xl shadow-stone-900/10 p-6 sm:p-8 lg:p-10">
+      <div className="relative rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-white border border-stone-200 shadow-xl shadow-stone-900/10 p-4 xs:p-5 sm:p-7 lg:p-9">
         {/* Animated Logistics Container Truck rolling across the top layer/rim */}
         <LogisticsContainerTruck targetRef={sectionRef} />
 
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 lg:divide-x divide-stone-200">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 lg:gap-0 lg:divide-x divide-stone-200">
           {metrics.map((m, idx) => {
             const Icon = m.icon;
             return (

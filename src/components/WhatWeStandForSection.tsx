@@ -82,7 +82,7 @@ export const WhatWeStandForSection: React.FC = () => {
   return (
     <section
       id="values"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-24 lg:py-28 border-t border-b border-stone-200/90 select-none"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-12 xs:py-14 sm:py-18 lg:py-22 border-t border-b border-stone-200/90 select-none"
     >
       {/* Anchor for About & Institutional Heritage */}
       <div id="about" className="absolute -top-24 pointer-events-none" />
