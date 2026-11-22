@@ -107,7 +107,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
         {/* Layer 1: Screen-Wide "ASET" Typography Placed Behind Students */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-[15vh] xs:bottom-[16vh] sm:bottom-[18vh] lg:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
+          className="absolute inset-x-0 bottom-[10vh] xs:bottom-[12vh] sm:bottom-[14vh] lg:bottom-0 flex items-end justify-center pointer-events-none select-none z-10 w-full px-0 pb-0"
         >
           <motion.div
             style={{
@@ -119,8 +119,8 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
           >
             {/* Mobile & Tablet View (below lg): Monumental BIG ASET Typography */}
             <svg
-              viewBox="0 0 1600 680"
-              className="block lg:hidden w-full h-[38vh] xs:h-[44vh] sm:h-[54vh] md:h-[66vh] select-none overflow-visible px-1 sm:px-3"
+              viewBox="0 0 1600 620"
+              className="block lg:hidden w-full h-[50vh] xs:h-[56vh] sm:h-[66vh] md:h-[76vh] select-none overflow-visible px-0.5 sm:px-2"
               preserveAspectRatio="none"
             >
               <defs>
@@ -131,23 +131,23 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
                 </linearGradient>
 
                 <filter id="asetWideShadowMob" x="-15%" y="-15%" width="130%" height="130%">
-                  <feDropShadow dx="0" dy="14" stdDeviation="18" floodColor="#000000" floodOpacity="0.45" />
-                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.32" />
+                  <feDropShadow dx="0" dy="16" stdDeviation="20" floodColor="#000000" floodOpacity="0.45" />
+                  <feDropShadow dx="0" dy="5" stdDeviation="10" floodColor="#000000" floodOpacity="0.32" />
                 </filter>
               </defs>
 
               <text
                 x="50%"
-                y="88%"
+                y="92%"
                 textAnchor="middle"
                 textLength="100%"
                 lengthAdjust="spacingAndGlyphs"
                 fontFamily="'NewGrotesk', 'San Francisco', 'Neue Montreal', ui-sans-serif, system-ui, sans-serif"
                 fontWeight="900"
-                fontSize="680"
+                fontSize="720"
                 fill="url(#asetWideGradMob)"
                 stroke="rgba(255, 255, 255, 0.65)"
-                strokeWidth="2.5"
+                strokeWidth="3"
                 filter="url(#asetWideShadowMob)"
                 style={{
                   letterSpacing: '0.04em',
