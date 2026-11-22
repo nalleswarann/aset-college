@@ -83,7 +83,7 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full h-[135vh] sm:h-[155vh] lg:h-[175vh] bg-black"
+      className="relative w-full h-[115vh] sm:h-[135vh] lg:h-[155vh] bg-black"
     >
       {/* Sticky 100vh Hero Viewport Stage */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-black">

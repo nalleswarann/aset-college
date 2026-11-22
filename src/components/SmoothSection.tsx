@@ -5,9 +5,14 @@ import { LUXURY_EASE } from './ScrollTypography';
 interface SmoothSectionProps {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }
 
-export const SmoothSection: React.FC<SmoothSectionProps> = ({ children, delay = 0 }) => {
+export const SmoothSection: React.FC<SmoothSectionProps> = ({
+  children,
+  delay = 0,
+  className = '',
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,6 +27,7 @@ export const SmoothSection: React.FC<SmoothSectionProps> = ({ children, delay = 
         willChange: 'transform, opacity',
         transform: 'translate3d(0, 0, 0)',
       }}
+      className={className}
     >
       {children}
     </motion.div>

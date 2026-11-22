@@ -35,7 +35,7 @@ export const KeyMetricsBar: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative -mt-6 sm:-mt-10 lg:-mt-14 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans"
+      className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans"
     >
       {/* 100% Solid Opaque White Card (Zero Opacity, Zero Transparency Bleed) */}
       <div className="relative rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-white border border-stone-200 shadow-xl shadow-stone-900/10 p-6 sm:p-8 lg:p-10">
