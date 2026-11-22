@@ -147,20 +147,39 @@ export const Navbar: React.FC<NavbarProps> = ({
     e.preventDefault();
     setActiveMenu(null);
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.body.style.overflow = '';
+
+    const targetSelector = href === '#admissions' ? '#admissions-process' : href;
+    setTimeout(() => {
+      if (window.__lenis) {
+        window.__lenis.scrollTo(targetSelector, { offset: -84, duration: 1.15 });
+      } else {
+        const target = document.querySelector(targetSelector);
+        if (target) {
+          const y = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 84;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }, 35);
   };
 
   // Scroll directly to contact section
   const handleContactClick = () => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
-    const target = document.querySelector('#contact');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.body.style.overflow = '';
+
+    setTimeout(() => {
+      if (window.__lenis) {
+        window.__lenis.scrollTo('#contact', { offset: -84, duration: 1.15 });
+      } else {
+        const target = document.querySelector('#contact');
+        if (target) {
+          const y = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 84;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }, 35);
   };
 
   // Silky hover handlers with spring debounce

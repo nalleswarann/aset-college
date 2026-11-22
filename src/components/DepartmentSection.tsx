@@ -183,7 +183,11 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
       const totalScrollHeight = containerRef.current.scrollHeight - window.innerHeight;
       const targetProgress = 0.20 + (idx / REFINED_DEPARTMENTS.length) * 0.78 + 0.02;
       const targetY = containerTop + targetProgress * totalScrollHeight;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      if (window.__lenis) {
+        window.__lenis.scrollTo(targetY, { duration: 1.15 });
+      } else {
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+      }
     }
   };
 

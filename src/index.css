@@ -386,6 +386,20 @@
     overflow-x: hidden;
   }
 
+  /* Lenis hardware-accelerated smooth scrolling */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
   /* All titles and headings strictly use NewGrotesk with San Francisco and Neue Montreal fallbacks */
   h1,
   h2,

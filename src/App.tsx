@@ -46,24 +46,36 @@ export default function App() {
   }, []);
 
   const handleOpenAdmissions = () => {
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth' });
+    if (window.__lenis) {
+      window.__lenis.scrollTo('#contact', { offset: -84, duration: 1.15 });
+    } else {
+      const contactEl = document.getElementById('contact');
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
   const handleExploreDepartments = () => {
-    const deptsEl = document.getElementById('departments');
-    if (deptsEl) {
-      deptsEl.scrollIntoView({ behavior: 'smooth' });
+    if (window.__lenis) {
+      window.__lenis.scrollTo('#departments', { offset: -84, duration: 1.15 });
+    } else {
+      const deptsEl = document.getElementById('departments');
+      if (deptsEl) {
+        deptsEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
   const handleApplyForDepartment = (deptName: string) => {
     setInquiryDepartment(deptName);
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth' });
+    if (window.__lenis) {
+      window.__lenis.scrollTo('#contact', { offset: -84, duration: 1.15 });
+    } else {
+      const contactEl = document.getElementById('contact');
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

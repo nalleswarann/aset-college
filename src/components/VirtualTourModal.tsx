@@ -135,7 +135,7 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
       aria-modal="true"
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-950/80 backdrop-blur-sm animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-5xl bg-stone-900 text-stone-100 border border-stone-800 rounded-sm shadow-2xl flex flex-col overflow-hidden max-h-[94vh]">
+      <div data-lenis-prevent className="relative w-full max-w-5xl bg-stone-900 text-stone-100 border border-stone-800 rounded-sm shadow-2xl flex flex-col overflow-hidden max-h-[94vh]">
         {/* Modal Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-800 bg-stone-950">
           <div className="flex items-center gap-3">

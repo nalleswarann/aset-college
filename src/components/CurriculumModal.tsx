@@ -38,7 +38,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
       aria-modal="true"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-xs animate-in fade-in duration-200"
     >
-      <div className="relative w-full max-w-3xl bg-white border border-stone-200 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div data-lenis-prevent className="relative w-full max-w-3xl bg-white border border-stone-200 rounded-2xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Modal Top Header with Department Authentic Facility Imagery */}
         <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-stone-900 shrink-0">
           {department.image ? (

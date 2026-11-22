@@ -65,6 +65,8 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
       id="admissions-process"
       className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-24 lg:py-32 select-none border-b border-stone-200/90"
     >
+      {/* Anchor alias for #admissions */}
+      <div id="admissions" className="absolute -top-24 pointer-events-none" />
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Rose Glow   */}
       {/* ========================================================= */}

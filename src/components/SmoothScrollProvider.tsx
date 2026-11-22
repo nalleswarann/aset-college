@@ -1,18 +1,26 @@
 import React, { useEffect } from 'react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
+
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
 
 /**
- * Ultra-Smooth Hardware-Accelerated Momentum Scroll Engine.
+ * Ultra-Smooth Hardware-Accelerated Momentum Scroll Engine (Lenis).
  * 
- * Key Physics & Behavioral Architecture:
- * 1. Native Trackpad & Touch Passthrough:
- *    Leaves macOS trackpads, Windows Precision Touchpads, and mobile/tablet
- *    touchscreens completely untouched with native 120Hz/ProMotion physics.
- * 2. Notched Mouse Wheel Glide:
- *    Transforms harsh discrete mouse-wheel steps into fluid, luxurious momentum
- *    using a high-frequency RAF loop with optimal damping (0.14 lerp).
- * 3. Zero Conflict:
- *    Bypasses internal scrollable elements (modals, dropdowns) and passes
- *    'instant' behavior so CSS scroll rules never fight the RAF loop.
+ * Features:
+ * 1. 100% Native ProMotion 120Hz Touch on Mobile & Tablet:
+ *    Touch devices retain native kinetic momentum with zero latency.
+ * 2. Apple/Linear-Style Momentum on Desktop Mice:
+ *    Transforms discrete mouse-wheel steps into fluid, luxurious momentum.
+ * 3. Trackpad & Touchpad Integrity:
+ *    Windows Precision Touchpads and macOS trackpads glide naturally.
+ * 4. Universal Anchor Sync:
+ *    All hashtag navigation anchors (#about, #departments, #placements, etc.)
+ *    are intercepted and smoothly animated with precise header offset (-84px).
  */
 export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -20,110 +28,63 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // 1. Mobile & tablet touchscreens: 100% native ProMotion touch physics
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    // Respect user OS preference for reduced motion
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
 
-    let currentY = window.scrollY;
-    let targetY = window.scrollY;
-    let isRunning = false;
-    let rafId: number | null = null;
-    let lastWheelTime = 0;
+    if (prefersReducedMotion) return;
 
-    // Snappy modern lerp damping: responsive immediate start, silky ease-out
-    const LERP = 0.14;
+    // Initialize Lenis
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.0,
+      syncTouch: false,
+      infinite: false,
+    });
 
-    const onWheel = (e: WheelEvent) => {
-      // Never hijack if user is scrolling inside an internal scrollable container (e.g. modal)
-      let el = e.target as HTMLElement | null;
-      let insideScrollable = false;
-      while (el && el !== document.body && el !== document.documentElement) {
-        const overflowY = window.getComputedStyle(el).overflowY;
-        if (
-          (overflowY === 'auto' || overflowY === 'scroll') &&
-          el.scrollHeight > el.clientHeight
-        ) {
-          insideScrollable = true;
-          break;
+    window.__lenis = lenis;
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
+    // Global anchor link smooth scroll interceptor
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const anchor = target?.closest('a');
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1) {
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          e.preventDefault();
+          // Unlock body overflow if any drawer was open
+          document.body.style.overflow = '';
+          lenis.scrollTo(targetElement as HTMLElement, {
+            offset: -84,
+            duration: 1.15,
+          });
         }
-        el = el.parentElement;
-      }
-      if (insideScrollable) return;
-
-      const now = performance.now();
-      const timeDiff = now - lastWheelTime;
-      lastWheelTime = now;
-
-      // Trackpad vs Notched Mouse Wheel Detection:
-      // Trackpads fire high-frequency events with non-integer or low delta values (< 45px).
-      // Notched mouse wheels fire discrete clicks (deltaMode 1 or abs(deltaY) >= 100).
-      const isFractional = Math.abs(e.deltaY % 1) > 0.05;
-      const isSmallContinuousDelta = Math.abs(e.deltaY) < 45 && timeDiff < 40;
-      const isTrackpad = isFractional || isSmallContinuousDelta;
-
-      if (isTrackpad) {
-        // Trackpads have superior native OS inertia and 120Hz gesture physics
-        // Do not intercept or preventDefault
-        targetY = window.scrollY;
-        currentY = window.scrollY;
-        isRunning = false;
-        if (rafId) cancelAnimationFrame(rafId);
-        return;
-      }
-
-      // Traditional notched mouse wheel: smooth the harsh discrete jumps
-      let delta = e.deltaY;
-      if (e.deltaMode === 1) delta *= 36; // Line mode
-      if (e.deltaMode === 2) delta *= window.innerHeight; // Page mode
-
-      // Allow natural velocity accumulation without aggressive clamping
-      const maxScroll = Math.max(
-        0,
-        document.documentElement.scrollHeight - window.innerHeight
-      );
-
-      // Natural proportional dampening
-      delta = Math.sign(delta) * Math.min(360, Math.abs(delta) * 1.05);
-
-      targetY = Math.max(0, Math.min(maxScroll, targetY + delta));
-
-      if (!isRunning) {
-        isRunning = true;
-        currentY = window.scrollY;
-        rafId = requestAnimationFrame(updateScroll);
-      }
-
-      e.preventDefault();
-    };
-
-    const updateScroll = () => {
-      const diff = targetY - currentY;
-      if (Math.abs(diff) < 0.35) {
-        currentY = targetY;
-        window.scrollTo({ top: currentY, behavior: 'instant' });
-        isRunning = false;
-        return;
-      }
-
-      currentY += diff * LERP;
-      window.scrollTo({ top: Math.round(currentY * 10) / 10, behavior: 'instant' });
-      rafId = requestAnimationFrame(updateScroll);
-    };
-
-    // Synchronize immediately if user drags native scrollbar or presses PageDown/Home/End
-    const onScroll = () => {
-      if (!isRunning) {
-        targetY = window.scrollY;
-        currentY = window.scrollY;
       }
     };
 
-    window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('click', handleAnchorClick, { capture: true });
 
     return () => {
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('scroll', onScroll);
-      if (rafId) cancelAnimationFrame(rafId);
+      document.removeEventListener('click', handleAnchorClick, { capture: true });
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      delete window.__lenis;
     };
   }, []);
 
