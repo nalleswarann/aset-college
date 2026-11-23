@@ -10,7 +10,6 @@ import {
   VolumeX,
   BadgeCheck,
   Building2,
-  GraduationCap,
 } from 'lucide-react';
 
 // Authentic Real Student Images from ASET website "Real Success Stories"
@@ -249,7 +248,6 @@ export const TestimonialsSection: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState(1);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const avatarScrollRef = useRef<HTMLDivElement | null>(null);
 
   const current = TESTIMONIALS[currentIndex];
 
@@ -262,21 +260,6 @@ export const TestimonialsSection: React.FC = () => {
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   };
-
-  const goToSlide = (idx: number) => {
-    setDirection(idx > currentIndex ? 1 : -1);
-    setCurrentIndex(idx);
-  };
-
-  // Scroll active avatar into view smoothly
-  useEffect(() => {
-    if (avatarScrollRef.current) {
-      const activeEl = avatarScrollRef.current.children[currentIndex] as HTMLElement | undefined;
-      if (activeEl) {
-        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-  }, [currentIndex]);
 
   // Seamless automatic sliding animation (pauses on hover or modal)
   useEffect(() => {
@@ -352,65 +335,6 @@ export const TestimonialsSection: React.FC = () => {
           <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-600 max-w-md lg:max-w-lg leading-relaxed font-sans self-start md:self-end">
             Real experiences from ASET graduates placed across leading domestic and international aviation, shipping, logistics, and industrial safety organizations.
           </ScrollParagraph>
-        </div>
-
-        {/* ========================================================= */}
-        {/* INTERACTIVE ALUMNI AVATAR THUMBNAIL RIBBON                */}
-        {/* Displays authentic student photos for one-click access   */}
-        {/* ========================================================= */}
-        <div className="mb-6 sm:mb-8">
-          <div className="flex items-center justify-between pb-3 text-xs font-semibold text-stone-500">
-            <span className="flex items-center gap-1.5 font-mono uppercase tracking-wider text-[11px] text-stone-600">
-              <GraduationCap className="w-4 h-4 text-orange-600" />
-              <span>Meet Our Placed Alumni ({TESTIMONIALS.length} Stories)</span>
-            </span>
-            <span className="hidden sm:inline-block font-mono text-[11px] text-stone-400">
-              Scroll or tap any student portrait
-            </span>
-          </div>
-
-          <div
-            ref={avatarScrollRef}
-            className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-stone-300 scrollbar-track-transparent snap-x snap-mandatory"
-          >
-            {TESTIMONIALS.map((item, idx) => {
-              const isActive = idx === currentIndex;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => goToSlide(idx)}
-                  className={`group shrink-0 flex items-center gap-2.5 p-1.5 sm:p-2 rounded-full transition-all duration-200 snap-center cursor-pointer border ${
-                    isActive
-                      ? 'bg-stone-900 border-orange-500 text-white shadow-md shadow-stone-950/20'
-                      : 'bg-white/80 hover:bg-white border-stone-200 text-stone-700 hover:border-stone-300'
-                  }`}
-                  aria-label={`View story of ${item.authorName}`}
-                >
-                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shrink-0 border border-white/20">
-                    <img
-                      src={item.image}
-                      alt={item.authorName}
-                      className="w-full h-full object-cover object-top"
-                    />
-                    {isActive && (
-                      <span className="absolute inset-0 rounded-full ring-2 ring-orange-500 ring-offset-1" />
-                    )}
-                  </div>
-                  <div className="text-left pr-2 sm:pr-3 hidden xs:block">
-                    <div className="text-xs font-bold leading-tight truncate max-w-[110px] sm:max-w-[130px]">
-                      {item.authorName}
-                    </div>
-                    <div className={`text-[10px] truncate max-w-[110px] sm:max-w-[130px] ${
-                      isActive ? 'text-orange-400 font-medium' : 'text-stone-500'
-                    }`}>
-                      {item.brand}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {/* ========================================================= */}
