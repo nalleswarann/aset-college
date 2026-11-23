@@ -8,63 +8,236 @@ import {
   X,
   Volume2,
   VolumeX,
+  BadgeCheck,
+  Building2,
+  GraduationCap,
 } from 'lucide-react';
 
-import nirmalPortrait from '../assets/images/testimonial-nirmal-portrait.jpg';
-import sophiePortrait from '../assets/images/testimonial-sophie-portrait.jpg';
-import meharajPortrait from '../assets/images/testimonial-meharaj-portrait.jpg';
-import jeevaPortrait from '../assets/images/testimonial-jeeva-portrait.jpg';
+// Authentic Real Student Images from ASET website "Real Success Stories"
+import homeStory1 from '../assets/images/home-story-1.jpg'; // Firdhouse Ahamed
+import homeStory2 from '../assets/images/home-story-2.jpg'; // Nirmal kumar P
+import homeStory3 from '../assets/images/home-story-3.jpg'; // Sushmitha
+import homeStory4 from '../assets/images/home-story-4.jpg'; // B. Prasath
+import avAlumniAravind from '../assets/images/av-alumni-aravind.webp'; // Kasukurthi Aravind
+import avAlumniBrindha from '../assets/images/av-alumni-brindha.webp'; // Brindha
+import avAlumniDeva from '../assets/images/av-alumni-deva.webp'; // Deva. P
+import avAlumniSyed from '../assets/images/av-alumni-syed.webp'; // Syed Ali Mustafa
+import lgAlumniArun from '../assets/images/lg-alumni-arunachalesawaran.webp'; // Arunachalesawaran
+import lgAlumniMeharaj from '../assets/images/lg-alumni-meharaj.webp'; // Meharaj S.
+import lgAlumniVarsha from '../assets/images/lg-alumni-varsha.webp'; // Varsha M.
+import fsAlumniHakkim from '../assets/images/fs-alumni-hakkim.webp'; // Hakkim Mahmood B
+import fsAlumniGopinath from '../assets/images/fs-alumni-gopinath.webp'; // Gopinath S
+import fsAlumniPratheesh from '../assets/images/fs-alumni-pratheesh.webp'; // S. Pratheesh
+import fsAlumniJeeva from '../assets/images/fs-alumni-jeeva.webp'; // J. Jeeva
+
+// Authentic Placement Partner Company Logos
+import logoHaesok from '../assets/images/placement-partners/home-co-haesok.webp';
+import logoDhl from '../assets/images/placement-partners/lp-logistics-dhl.png';
+import logoSpicejet from '../assets/images/placement-partners/home-co-spicejet.webp';
+import logoAkasa from '../assets/images/placement-partners/home-co-akasa.webp';
+import logoAiSats from '../assets/images/placement-partners/home-co-ai-sats.webp';
+import logoAiExpress from '../assets/images/placement-partners/home-co-ai-express.webp';
+import logoVsa from '../assets/images/placement-partners/lg-co-vsa.webp';
+import logoGalleon from '../assets/images/placement-partners/co-galleon.webp';
+import logoPlanys from '../assets/images/placement-partners/lg-co-planys.webp';
+import logoSprCity from '../assets/images/placement-partners/fs-co-sprcity.webp';
+import logoTenneco from '../assets/images/placement-partners/fs-logo-tenneco.png';
+import logoNtc from '../assets/images/placement-partners/lg-logo-ntc.png';
+import logoSpr from '../assets/images/placement-partners/fs-logo-spr.png';
+
 import campusVideo from '../assets/videos/sky-video-banner.mp4';
 
-interface Testimonial {
+export interface Testimonial {
   id: string;
   brand: string;
+  brandLogo: string;
   quote: string;
   authorName: string;
   authorRole: string;
+  department: string;
   image: string;
   videoUrl?: string;
 }
 
 const TESTIMONIALS: Testimonial[] = [
   {
+    id: 'firdhouse',
+    brand: 'Haesok Shipping Private Limited',
+    brandLogo: logoHaesok,
+    quote:
+      'ASET gave me the right guidance and practical exposure to build my confidence and take the next step in my career.',
+    authorName: 'Firdhouse Ahamed',
+    authorRole: 'Logistics Operations · Haesok Shipping Private Limited',
+    department: 'Logistics & Shipping',
+    image: homeStory1,
+    videoUrl: campusVideo,
+  },
+  {
     id: 'nirmal',
     brand: 'DHL Supply Chain Pvt. Ltd.',
+    brandLogo: logoDhl,
     quote:
       'The hands-on learning and career opportunities at ASET gave me the confidence to prepare for my future.',
     authorName: 'Nirmal Kumar P.',
-    authorRole: 'DHL Supply Chain Pvt. Ltd.',
-    image: nirmalPortrait,
+    authorRole: 'Supply Chain Operations · DHL Supply Chain Pvt. Ltd.',
+    department: 'Logistics & Shipping',
+    image: homeStory2,
     videoUrl: campusVideo,
   },
   {
     id: 'sushmitha',
     brand: 'SpiceJet Limited',
+    brandLogo: logoSpicejet,
     quote:
       'ASET provided me with practical knowledge and valuable guidance that prepared me well for the professional world.',
     authorName: 'Sushmitha',
-    authorRole: 'SpiceJet Limited',
-    image: sophiePortrait,
+    authorRole: 'Airport Passenger & Operations · SpiceJet Limited',
+    department: 'Aviation Management',
+    image: homeStory3,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'prasath',
+    brand: 'Akasa Air',
+    brandLogo: logoAkasa,
+    quote:
+      'My journey at ASET has been truly rewarding. The faculty and learning environment helped me grow with confidence.',
+    authorName: 'B. Prasath',
+    authorRole: 'Commercial Airline Services · Akasa Air',
+    department: 'Aviation Management',
+    image: homeStory4,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'aravind',
+    brand: 'Air India SATS',
+    brandLogo: logoAiSats,
+    quote:
+      'My journey in aviation began with the strong foundation I received from my professional degree at ASET.',
+    authorName: 'Kasukurthi Aravind',
+    authorRole: 'Airport Ground Operations · Air India SATS',
+    department: 'Aviation Management',
+    image: avAlumniAravind,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'brindha',
+    brand: 'Air India Express',
+    brandLogo: logoAiExpress,
+    quote:
+      'ASET gave me the foundation, and Air India Express gave me the opportunity to grow in aviation.',
+    authorName: 'Brindha',
+    authorRole: 'Cabin & In-Flight Operations · Air India Express',
+    department: 'Aviation Management',
+    image: avAlumniBrindha,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'deva',
+    brand: 'Air India SATS',
+    brandLogo: logoAiSats,
+    quote:
+      'My educational journey gave me the foundation, and my experience with Air India SATS is helping me grow with confidence in the aviation industry.',
+    authorName: 'Deva. P',
+    authorRole: 'Aviation Ground Services · Air India SATS',
+    department: 'Aviation Management',
+    image: avAlumniDeva,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'syed',
+    brand: 'Air India SATS',
+    brandLogo: logoAiSats,
+    quote:
+      'My time at academic learning for the aviation industry, and working in cargo security is giving me the opportunity to apply what I learned in a real-world environment.',
+    authorName: 'Syed Ali Mustafa',
+    authorRole: 'Aviation Cargo Security Specialist · Air India SATS',
+    department: 'Aviation Management',
+    image: avAlumniSyed,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'arunachalesawaran',
+    brand: 'Vinayak Shipping Agencies',
+    brandLogo: logoVsa,
+    quote:
+      'My MBA in Logistics & Shipping helped me understand the shipping industry from both operational and business perspectives. It strengthened my communication and industry knowledge, which are essential when working with clients.',
+    authorName: 'Arunachalesawaran',
+    authorRole: 'Shipping & Operations Executive · Vinayak Shipping Agencies',
+    department: 'Logistics & Shipping (MBA)',
+    image: lgAlumniArun,
     videoUrl: campusVideo,
   },
   {
     id: 'meharaj',
     brand: 'Galleon Shipping Agencies Sdn Bhd',
+    brandLogo: logoGalleon,
     quote:
-      'My MBA in Logistics & Shipping gave me a strong understanding of export processes and documentation. Today, I apply those skills every day in my role as an Export Documentation Executive.',
+      'My MBA in Logistics & Shipping gave me a strong understanding of export processes and documentation. It helped me build confidence in handling shipping documents with greater accuracy and responsibility. Today, I apply those skills every day in my role as an Export Documentation Executive.',
     authorName: 'Meharaj S.',
     authorRole: 'Export Documentation Executive · Galleon Shipping Agencies Sdn Bhd',
-    image: meharajPortrait,
+    department: 'Logistics & Shipping (MBA)',
+    image: lgAlumniMeharaj,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'varsha',
+    brand: 'Planys Technology',
+    brandLogo: logoPlanys,
+    quote:
+      'My MBA in Logistics & Shipping gave me a clear understanding of how procurement and logistics work together. The course helped me develop a practical approach to sourcing, coordination, and movement of materials. These skills have been valuable in my current role as a Procurement & Logistics Executive.',
+    authorName: 'Varsha M.',
+    authorRole: 'Procurement & Logistics Executive · Planys Technology',
+    department: 'Logistics & Shipping (MBA)',
+    image: lgAlumniVarsha,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'hakkim',
+    brand: 'SPR City',
+    brandLogo: logoSprCity,
+    quote:
+      'I believe this is a very good institution for students to update their knowledge and settle well in their future career. I would personally like to thank all the faculty members and the placement team for the wonderful support, guidance, and drive provided throughout my studies.',
+    authorName: 'Hakkim Mahmood B.',
+    authorRole: 'Safety Engineer · SPR City',
+    department: 'Fire & Industrial Safety',
+    image: fsAlumniHakkim,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'gopinath',
+    brand: 'Tenneco Clean Air India Limited',
+    brandLogo: logoTenneco,
+    quote:
+      'ASET College has created a wonderful opportunity for me. I have grown academically through industrial visits and various training programs. I sincerely thank the college management for providing this great opportunity. I am proud to study at this college.',
+    authorName: 'Gopinath S.',
+    authorRole: 'Industrial Safety Officer · Tenneco Clean Air India Limited',
+    department: 'Fire & Industrial Safety',
+    image: fsAlumniGopinath,
+    videoUrl: campusVideo,
+  },
+  {
+    id: 'pratheesh',
+    brand: 'NTC Logistics Pvt Limited',
+    brandLogo: logoNtc,
+    quote:
+      'The placement opportunities at our college are quite impressive and improve every year. ASET provided me with direct campus placement support into specialized logistics operations.',
+    authorName: 'S. Pratheesh',
+    authorRole: 'Logistics Operations Officer · NTC Logistics Pvt Limited',
+    department: 'Logistics & Shipping',
+    image: fsAlumniPratheesh,
     videoUrl: campusVideo,
   },
   {
     id: 'jeeva',
     brand: 'SPR Construction',
+    brandLogo: logoSpr,
     quote:
-      'I have been placed as a Safety Officer at SPR Construction through the campus placement drive. The college fulfilled its commitment by arranging on-campus placement in a reputed company.',
+      'I have been placed as a Safety Officer at SPR Construction through the campus placement drive. The college fulfilled its commitment by arranging on-campus placement in a reputed company with a good salary for freshers. I sincerely thank all the faculty members and the placement team for their continuous support and guidance.',
     authorName: 'J. Jeeva',
-    authorRole: 'Safety Officer, SPR Construction',
-    image: jeevaPortrait,
+    authorRole: 'Safety Officer · SPR Construction',
+    department: 'Fire & Industrial Safety',
+    image: fsAlumniJeeva,
     videoUrl: campusVideo,
   },
 ];
@@ -76,6 +249,7 @@ export const TestimonialsSection: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState(1);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const avatarScrollRef = useRef<HTMLDivElement | null>(null);
 
   const current = TESTIMONIALS[currentIndex];
 
@@ -94,18 +268,26 @@ export const TestimonialsSection: React.FC = () => {
     setCurrentIndex(idx);
   };
 
-  // Seamless automatic sliding animation
-  // Pauses on mouse hover or when modal is opened, resumes on mouse leave
+  // Scroll active avatar into view smoothly
+  useEffect(() => {
+    if (avatarScrollRef.current) {
+      const activeEl = avatarScrollRef.current.children[currentIndex] as HTMLElement | undefined;
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [currentIndex]);
+
+  // Seamless automatic sliding animation (pauses on hover or modal)
   useEffect(() => {
     if (isPaused || isVideoOpen) return;
-
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5500);
+    }, 6500);
 
-    return () => clearInterval(timer);
-  }, [isPaused, isVideoOpen, currentIndex]);
+    return () => clearInterval(interval);
+  }, [isPaused, isVideoOpen]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -114,8 +296,8 @@ export const TestimonialsSection: React.FC = () => {
         if (e.key === 'Escape') setIsVideoOpen(false);
         return;
       }
-      if (e.key === 'ArrowRight') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -140,31 +322,10 @@ export const TestimonialsSection: React.FC = () => {
     touchStartXRef.current = null;
   };
 
-  // Stylized brand logo glyph matching reference //\ style with signature website gradient accents
-  const renderBrandLogo = () => {
-    return (
-      <div className="flex items-center gap-3 select-none">
-        <svg
-          className="w-7 h-7 sm:w-8 sm:h-8 shrink-0"
-          viewBox="0 0 28 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M4 18L10 6H13.5L7.5 18H4Z" className="text-orange-500" opacity="0.65" />
-          <path d="M10 18L16 6H19.5L13.5 18H10Z" className="text-amber-500" opacity="0.85" />
-          <path d="M16 18L22 6H25.5L19.5 18H16Z" className="text-white" />
-        </svg>
-        <span className="font-manrope font-extrabold text-xl sm:text-2xl text-white tracking-tight">
-          {current.brand}
-        </span>
-      </div>
-    );
-  };
-
   return (
     <section
       id="testimonials"
-      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
+      className="relative w-full py-16 sm:py-20 lg:py-28 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={() => setIsPaused(true)}
@@ -176,7 +337,7 @@ export const TestimonialsSection: React.FC = () => {
         {/* ========================================================= */}
         {/* SECTION HEADER: Title & Paragraph in Website Brand Colors */}
         {/* ========================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12 pb-10 sm:pb-12 border-b border-stone-200">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10 pb-8 sm:pb-10 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
             <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
@@ -189,19 +350,79 @@ export const TestimonialsSection: React.FC = () => {
             </ScrollHeading>
           </div>
           <ScrollParagraph delay={0.2} className="text-sm sm:text-base text-stone-600 max-w-md lg:max-w-lg leading-relaxed font-sans self-start md:self-end">
-            Real experiences from ASET graduates placed across leading domestic and international aviation, shipping, and corporate organizations.
+            Real experiences from ASET graduates placed across leading domestic and international aviation, shipping, logistics, and industrial safety organizations.
           </ScrollParagraph>
         </div>
 
         {/* ========================================================= */}
-        {/* WIDER TESTIMONIAL CARD (Adjusted Height for Optimal Scale) */}
+        {/* INTERACTIVE ALUMNI AVATAR THUMBNAIL RIBBON                */}
+        {/* Displays authentic student photos for one-click access   */}
         {/* ========================================================= */}
-        <div className="relative rounded-[2.2rem] sm:rounded-[2.8rem] bg-[#141416] border border-stone-800/80 p-3 sm:p-4 lg:p-5 shadow-[0_24px_70px_rgba(0,0,0,0.32)] overflow-hidden">
-          <div className="flex flex-col md:flex-row items-stretch md:h-[430px] lg:h-[460px] xl:h-[480px] gap-3.5 sm:gap-4 lg:gap-5">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center justify-between pb-3 text-xs font-semibold text-stone-500">
+            <span className="flex items-center gap-1.5 font-mono uppercase tracking-wider text-[11px] text-stone-600">
+              <GraduationCap className="w-4 h-4 text-orange-600" />
+              <span>Meet Our Placed Alumni ({TESTIMONIALS.length} Stories)</span>
+            </span>
+            <span className="hidden sm:inline-block font-mono text-[11px] text-stone-400">
+              Scroll or tap any student portrait
+            </span>
+          </div>
+
+          <div
+            ref={avatarScrollRef}
+            className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-stone-300 scrollbar-track-transparent snap-x snap-mandatory"
+          >
+            {TESTIMONIALS.map((item, idx) => {
+              const isActive = idx === currentIndex;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => goToSlide(idx)}
+                  className={`group shrink-0 flex items-center gap-2.5 p-1.5 sm:p-2 rounded-full transition-all duration-200 snap-center cursor-pointer border ${
+                    isActive
+                      ? 'bg-stone-900 border-orange-500 text-white shadow-md shadow-stone-950/20'
+                      : 'bg-white/80 hover:bg-white border-stone-200 text-stone-700 hover:border-stone-300'
+                  }`}
+                  aria-label={`View story of ${item.authorName}`}
+                >
+                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shrink-0 border border-white/20">
+                    <img
+                      src={item.image}
+                      alt={item.authorName}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    {isActive && (
+                      <span className="absolute inset-0 rounded-full ring-2 ring-orange-500 ring-offset-1" />
+                    )}
+                  </div>
+                  <div className="text-left pr-2 sm:pr-3 hidden xs:block">
+                    <div className="text-xs font-bold leading-tight truncate max-w-[110px] sm:max-w-[130px]">
+                      {item.authorName}
+                    </div>
+                    <div className={`text-[10px] truncate max-w-[110px] sm:max-w-[130px] ${
+                      isActive ? 'text-orange-400 font-medium' : 'text-stone-500'
+                    }`}>
+                      {item.brand}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* MAIN TESTIMONIAL CARD (Responsive for all screen sizes)   */}
+        {/* ========================================================= */}
+        <div className="relative rounded-[2rem] sm:rounded-[2.6rem] bg-[#141416] border border-stone-800/80 p-3.5 sm:p-5 lg:p-6 shadow-[0_24px_70px_rgba(0,0,0,0.32)] overflow-hidden">
+          <div className="flex flex-col md:flex-row items-stretch md:min-h-[440px] lg:min-h-[470px] xl:min-h-[500px] gap-4 sm:gap-5 lg:gap-6">
+            
             {/* ----------------------------------------------------- */}
-            {/* LEFT CARD: Vertical Portrait with "Watch Testimonial" */}
+            {/* LEFT CARD: Vertical Student Portrait & Watch Pill     */}
             {/* ----------------------------------------------------- */}
-            <div className="w-full md:w-[320px] lg:w-[380px] xl:w-[420px] shrink-0 relative rounded-[1.8rem] sm:rounded-[2.2rem] overflow-hidden bg-stone-900 aspect-[4/3] sm:aspect-[16/10] md:aspect-auto md:h-full min-h-[260px] md:min-h-0 shadow-inner group">
+            <div className="w-full md:w-[310px] lg:w-[370px] xl:w-[410px] shrink-0 relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden bg-stone-900 aspect-[4/5] xs:aspect-[4/5] sm:aspect-[16/11] md:aspect-auto md:h-auto min-h-[300px] xs:min-h-[350px] md:min-h-0 shadow-inner group">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={current.id + '-img'}
@@ -215,10 +436,18 @@ export const TestimonialsSection: React.FC = () => {
                 />
               </AnimatePresence>
 
-              {/* Ambient bottom shadow gradient for pill contrast */}
+              {/* Department Badge Top Left */}
+              <div className="absolute top-3.5 sm:top-4 left-3.5 sm:left-4 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-950/75 backdrop-blur-md border border-white/15 text-white shadow-lg">
+                <BadgeCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="text-[11px] font-semibold tracking-wide">
+                  {current.department}
+                </span>
+              </div>
+
+              {/* Ambient bottom shadow gradient for contrast */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"
+                className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"
               />
 
               {/* Frosted Glass Pill Button: "Watch Testimonial ▷" */}
@@ -227,12 +456,15 @@ export const TestimonialsSection: React.FC = () => {
                 whileTap={{ scale: 0.97 }}
                 type="button"
                 onClick={() => setIsVideoOpen(true)}
-                className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5 bg-stone-950/65 hover:bg-stone-900/85 backdrop-blur-xl border border-white/20 hover:border-white/40 text-white rounded-full py-2.5 sm:py-3 px-5 sm:px-6 flex items-center justify-between transition-all duration-300 shadow-2xl cursor-pointer select-none group/btn"
+                className="absolute bottom-3.5 sm:bottom-4 left-3.5 sm:left-4 right-3.5 sm:right-4 bg-stone-950/75 hover:bg-stone-900/90 backdrop-blur-xl border border-white/20 hover:border-white/40 text-white rounded-full py-2.5 sm:py-3 px-4 sm:px-5 flex items-center justify-between transition-all duration-300 shadow-2xl cursor-pointer select-none group/btn"
                 aria-label={`Watch testimonial video of ${current.authorName}`}
               >
-                <span className="text-xs sm:text-sm font-semibold tracking-wide text-white/95">
-                  Watch Testimonial
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-xs sm:text-sm font-semibold tracking-wide text-white/95">
+                    Watch Testimonial
+                  </span>
+                </div>
                 <span className="w-7 h-7 rounded-full bg-white/15 group-hover/btn:bg-white/25 flex items-center justify-center transition-all duration-300">
                   <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
                 </span>
@@ -240,12 +472,37 @@ export const TestimonialsSection: React.FC = () => {
             </div>
 
             {/* ----------------------------------------------------- */}
-            {/* RIGHT CARD: Quote Box, Author, Dots & Arrow Controls  */}
+            {/* RIGHT CARD: Quote Box, Author, Company Logo & Controls*/}
             {/* ----------------------------------------------------- */}
-            <div className="flex-1 relative rounded-[1.8rem] sm:rounded-[2.2rem] bg-[#18181b] border border-white/5 p-6 sm:p-8 lg:p-10 xl:p-12 flex flex-col justify-between text-white overflow-hidden">
-              <div>
-                {/* Brand Logo Header */}
-                <div className="mb-4 sm:mb-6">{renderBrandLogo()}</div>
+            <div className="flex-1 relative rounded-[1.6rem] sm:rounded-[2rem] bg-[#18181b] border border-white/5 p-5 sm:p-7 lg:p-9 xl:p-10 flex flex-col justify-between text-white overflow-hidden">
+              <div className="space-y-4 sm:space-y-6">
+                
+                {/* Brand / Partner Company Header */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="h-9 sm:h-11 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md flex items-center justify-center">
+                      <img
+                        src={current.brandLogo}
+                        alt={`${current.brand} logo`}
+                        className="h-6 sm:h-8 w-auto max-w-[130px] sm:max-w-[160px] object-contain brightness-105"
+                      />
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-mono text-orange-400 uppercase tracking-wider font-bold">
+                        Hiring Partner
+                      </div>
+                      <div className="text-sm sm:text-base font-extrabold text-white tracking-tight">
+                        {current.brand}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Verified Placement Badge */}
+                  <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+                    <Building2 className="w-3.5 h-3.5" />
+                    <span>Campus Placement Drive</span>
+                  </div>
+                </div>
 
                 {/* Animated Quote Paragraph with Website Typography */}
                 <AnimatePresence mode="wait">
@@ -255,21 +512,20 @@ export const TestimonialsSection: React.FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: direction * -16 }}
                     transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                    className="space-y-4"
                   >
-                    <p className="text-lg sm:text-xl lg:text-[22px] font-normal text-stone-100 leading-relaxed tracking-normal select-text">
+                    <p className="text-base sm:text-lg lg:text-xl xl:text-[21px] font-normal text-stone-100 leading-relaxed tracking-normal select-text">
                       &ldquo;{current.quote}&rdquo;
                     </p>
 
-                    {/* Subtle Divider Line */}
-                    <div className="border-t border-white/10 my-4 sm:my-6" />
-
                     {/* Author Details with Website Brand Accents */}
-                    <div>
-                      <h4 className="font-manrope font-bold text-white text-base sm:text-lg tracking-tight">
-                        — {current.authorName}
+                    <div className="pt-2">
+                      <h4 className="font-manrope font-bold text-white text-lg sm:text-xl tracking-tight flex items-center gap-2">
+                        <span>— {current.authorName}</span>
+                        <BadgeCheck className="w-4 h-4 text-orange-500 inline-block" />
                       </h4>
-                      <p className="text-xs sm:text-sm font-sans tracking-normal mt-0.5">
-                        <span className="text-orange-400 font-medium">{current.authorRole}</span>
+                      <p className="text-xs sm:text-sm font-sans tracking-normal mt-0.5 text-stone-300">
+                        <span className="text-orange-400 font-semibold">{current.authorRole}</span>
                       </p>
                     </div>
                   </motion.div>
@@ -277,40 +533,34 @@ export const TestimonialsSection: React.FC = () => {
               </div>
 
               {/* --------------------------------------------------- */}
-              {/* BOTTOM BAR: Dot Indicators (Left) & Arrows (Right) */}
+              {/* BOTTOM BAR: Slide Counter (Left) & Controls (Right) */}
               {/* --------------------------------------------------- */}
-              <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-transparent">
-                {/* Left: Pagination Dots with Website Orange Glow */}
-                <div className="flex items-center gap-2.5">
-                  {TESTIMONIALS.map((item, idx) => {
-                    const isActive = idx === currentIndex;
-                    return (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => goToSlide(idx)}
-                        className="relative flex items-center justify-center p-1 cursor-pointer focus:outline-hidden"
-                        aria-label={`Go to slide ${idx + 1}`}
-                      >
-                        {isActive ? (
-                          <div className="relative flex items-center justify-center w-4 h-4">
-                            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-rose-600" />
-                            <motion.span
-                              layoutId="active-dot-ring-wide"
-                              className="absolute inset-0 rounded-full border-2 border-orange-500 shadow-[0_0_8px_rgba(234,88,12,0.6)]"
-                              transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-                            />
-                          </div>
-                        ) : (
-                          <span className="w-1.5 h-1.5 rounded-full bg-stone-600 hover:bg-stone-400 transition-colors" />
-                        )}
-                      </button>
-                    );
-                  })}
+              <div className="flex items-center justify-between pt-6 mt-4 border-t border-white/10">
+                {/* Left: Slide Progress Counter & Quick Track */}
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs sm:text-sm font-bold text-stone-400 tracking-wider">
+                    <span className="text-white text-sm sm:text-base font-extrabold">
+                      {String(currentIndex + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-stone-600 mx-1">/</span>
+                    <span>{String(TESTIMONIALS.length).padStart(2, '0')}</span>
+                  </span>
+
+                  {/* Mini progress bar */}
+                  <div className="w-16 sm:w-28 h-1.5 rounded-full bg-white/10 overflow-hidden hidden xs:block">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-orange-500 via-amber-500 to-rose-500 rounded-full"
+                      initial={false}
+                      animate={{
+                        width: `${((currentIndex + 1) / TESTIMONIALS.length) * 100}%`,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
                 </div>
 
                 {/* Right: Circular Arrow Navigation Buttons with Brand Hover */}
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <button
                     type="button"
                     onClick={prevSlide}
@@ -359,7 +609,7 @@ export const TestimonialsSection: React.FC = () => {
                 <div className="flex items-center gap-2.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
                   <span className="font-manrope font-bold text-white text-sm sm:text-base">
-                    {current.authorName} · Testimonial Spotlight
+                    {current.authorName} · Verified Alumni Spotlight
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -401,13 +651,27 @@ export const TestimonialsSection: React.FC = () => {
 
               {/* Modal Bottom Summary */}
               <div className="p-4 sm:p-5 bg-stone-950/80 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <div>
-                  <h4 className="font-bold text-white text-sm sm:text-base">{current.authorName}</h4>
-                  <p className="text-xs text-stone-400">{current.authorRole}</p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={current.image}
+                    alt={current.authorName}
+                    className="w-10 h-10 rounded-full object-cover object-top border border-white/20"
+                  />
+                  <div>
+                    <h4 className="font-bold text-white text-sm sm:text-base">{current.authorName}</h4>
+                    <p className="text-xs text-stone-400">{current.authorRole}</p>
+                  </div>
                 </div>
-                <span className="text-[11px] font-mono text-amber-400 uppercase tracking-widest bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-                  {current.brand}
-                </span>
+                <div className="flex items-center gap-2">
+                  <img
+                    src={current.brandLogo}
+                    alt={current.brand}
+                    className="h-6 w-auto max-w-[100px] object-contain brightness-105"
+                  />
+                  <span className="text-[11px] font-mono text-amber-400 uppercase tracking-widest bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+                    {current.brand}
+                  </span>
+                </div>
               </div>
             </motion.div>
           </motion.div>
