@@ -14,11 +14,13 @@ import asetLogo from '../assets/images/aset-logo.png';
 interface FooterProps {
   onOpenAdmissions: () => void;
   onOpenVirtualTour?: () => void;
+  onNavigateToAbout?: (targetHash?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenAdmissions,
   onOpenVirtualTour,
+  onNavigateToAbout,
 }) => {
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -98,7 +100,13 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={() => scrollTo('#about')}
+                  onClick={() => {
+                    if (onNavigateToAbout) {
+                      onNavigateToAbout('#about-overview');
+                    } else {
+                      scrollTo('#about');
+                    }
+                  }}
                   className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
                 >
                   About ASET

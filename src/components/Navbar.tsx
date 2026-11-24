@@ -20,7 +20,10 @@ import deptBusinessImg from '../assets/images/dept_global_business_1794469703130
 interface NavbarProps {
   onOpenAdmissions: () => void;
   onExploreDepartments?: () => void;
+  onNavigateToAbout?: (targetHash?: string) => void;
+  onNavigateToHome?: () => void;
   activeSection?: string;
+  currentPage?: 'home' | 'about';
 }
 
 interface MegaMenuLink {
@@ -54,7 +57,10 @@ interface MegaMenuItem {
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenAdmissions,
   onExploreDepartments,
+  onNavigateToAbout,
+  onNavigateToHome,
   activeSection,
+  currentPage = 'home',
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -149,6 +155,54 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileMenuOpen(false);
     document.body.style.overflow = '';
 
+    if (href.startsWith('http://') || href.startsWith('https://')) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (href.startsWith('#about') || href === '/about') {
+      if (onNavigateToAbout) {
+        onNavigateToAbout(href);
+        return;
+      }
+    }
+
+    if (href === '#home') {
+      if (onNavigateToHome) {
+        onNavigateToHome();
+        return;
+      }
+    }
+
+    if (currentPage === 'about') {
+      const targetInAbout = document.querySelector(href);
+      if (targetInAbout) {
+        setTimeout(() => {
+          if (window.__lenis) {
+            window.__lenis.scrollTo(href, { offset: -84, duration: 1.15 });
+          } else {
+            const y = targetInAbout.getBoundingClientRect().top + window.scrollY - 84;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 35);
+        return;
+      } else if (onNavigateToHome) {
+        onNavigateToHome();
+        setTimeout(() => {
+          if (window.__lenis) {
+            window.__lenis.scrollTo(href, { offset: -84, duration: 1.15 });
+          } else {
+            const target = document.querySelector(href);
+            if (target) {
+              const y = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 84;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        }, 150);
+        return;
+      }
+    }
+
     const targetSelector = href === '#admissions' ? '#admissions-process' : href;
     setTimeout(() => {
       if (window.__lenis) {
@@ -168,6 +222,23 @@ export const Navbar: React.FC<NavbarProps> = ({
     setActiveMenu(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = '';
+
+    if (currentPage === 'about') {
+      if (onNavigateToHome) {
+        onNavigateToHome();
+        setTimeout(() => {
+          if (window.__lenis) {
+            window.__lenis.scrollTo('#contact', { offset: -84, duration: 1.15 });
+          } else {
+            const target = document.querySelector('#contact');
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }, 150);
+        return;
+      }
+    }
 
     setTimeout(() => {
       if (window.__lenis) {
@@ -214,22 +285,28 @@ export const Navbar: React.FC<NavbarProps> = ({
       categoryTitle: 'Institutional Heritage & Excellence',
       columns: {
         col1: [
-          { label: 'Overview', href: '#about' },
-          { label: 'Campuses', href: '#about' },
-          { label: 'Campus Life', href: '#about' },
-          { label: 'Gallery', href: '#about' },
-          { label: 'Student Login', href: '#about' },
-          { label: 'Journel', href: '#about' },
+          { label: 'Overview', href: '#about-overview', onClick: () => onNavigateToAbout && onNavigateToAbout('#about-overview') },
+          { label: 'Campuses', href: '#about-campuses', onClick: () => onNavigateToAbout && onNavigateToAbout('#campuses') },
+          { label: 'Campus Life', href: '#about-life', onClick: () => onNavigateToAbout && onNavigateToAbout('#life-at-aset') },
+          { label: 'Gallery', href: '#about-gallery', onClick: () => onNavigateToAbout && onNavigateToAbout('#life-at-aset') },
+          { label: 'Student Login', href: 'https://asetcollege.ac.in/' },
+          { label: 'Journal & IQAC', href: '#about-iqac', onClick: () => onNavigateToAbout && onNavigateToAbout('#iqac') },
         ],
         col2: [
-
+          { label: 'Why ASET is Different', href: '#about-why-aset', onClick: () => onNavigateToAbout && onNavigateToAbout('#why-aset') },
+          { label: 'Leadership & Vision', href: '#about-leadership', onClick: () => onNavigateToAbout && onNavigateToAbout('#leadership') },
+          { label: 'Pilot Training Flying School', href: '#about-flying-school', onClick: () => onNavigateToAbout && onNavigateToAbout('#flying-school') },
+          { label: 'International MoUs & Awards', href: '#about-partnerships', onClick: () => onNavigateToAbout && onNavigateToAbout('#partnerships') },
+          { label: 'Career Outcomes & Placements', href: '#about-careers', onClick: () => onNavigateToAbout && onNavigateToAbout('#career-outcomes') },
+          { label: 'FAQs & Admissions Support', href: '#about-faqs', onClick: () => onNavigateToAbout && onNavigateToAbout('#faqs') },
         ],
       },
       featured: {
         image: asetCampusModernClean,
         alt: 'ASET College Campus',
         buttonLabel: 'Discover Our Heritage ↗',
-        buttonHref: '#about',
+        buttonHref: '#about-overview',
+        onButtonClick: () => onNavigateToAbout && onNavigateToAbout('#about-overview'),
       },
     },
     {
@@ -415,8 +492,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div
           className={`relative max-w-7xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'
-            } ${isScrolled
-              ? 'bg-stone-950/60 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full border border-white/20 shadow-[0_16px_40px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] py-2 sm:py-2.5 px-3.5 sm:px-6 ring-1 ring-white/10'
+            } ${isScrolled || currentPage === 'about'
+              ? 'bg-stone-950/80 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full border border-white/20 shadow-[0_16px_40px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] py-2 sm:py-2.5 px-3.5 sm:px-6 ring-1 ring-white/10'
               : 'bg-transparent py-1 sm:py-2 px-0'
             }`}
         >
@@ -673,11 +750,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                               if (currentMegaMenu.featured?.onButtonClick) {
                                 currentMegaMenu.featured.onButtonClick();
                               } else if (currentMegaMenu.featured?.buttonHref) {
-                                const target = document.querySelector(
-                                  currentMegaMenu.featured.buttonHref
-                                );
-                                if (target) {
-                                  target.scrollIntoView({ behavior: 'smooth' });
+                                if (currentMegaMenu.featured.buttonHref.startsWith('#about') && onNavigateToAbout) {
+                                  onNavigateToAbout(currentMegaMenu.featured.buttonHref);
+                                } else {
+                                  const target = document.querySelector(
+                                    currentMegaMenu.featured.buttonHref
+                                  );
+                                  if (target) {
+                                    target.scrollIntoView({ behavior: 'smooth' });
+                                  }
                                 }
                               }
                             }}

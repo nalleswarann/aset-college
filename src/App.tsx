@@ -18,13 +18,86 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CurriculumModal } from './components/CurriculumModal';
 import { VirtualTourModal } from './components/VirtualTourModal';
+import { AboutOverviewPage } from './components/AboutOverviewPage';
 import { Department } from './types/university';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
   const [activeSection, setActiveSection] = useState<string>('home');
   const [selectedDepartment, setSelectedDepartment] = useState<Department | null>(null);
   const [isVirtualTourOpen, setIsVirtualTourOpen] = useState(false);
   const [inquiryDepartment, setInquiryDepartment] = useState<string>('');
+
+  // Routing listener for hash and pathname
+  useEffect(() => {
+    const handleRouteChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      const path = window.location.pathname.toLowerCase();
+      if (
+        hash.startsWith('#about') ||
+        hash.startsWith('#/about') ||
+        path === '/about' ||
+        path.startsWith('/about')
+      ) {
+        setCurrentPage('about');
+        if (
+          hash &&
+          hash !== '#about' &&
+          hash !== '#about-overview' &&
+          hash !== '#/about'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    handleRouteChange();
+    window.addEventListener('hashchange', handleRouteChange);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => {
+      window.removeEventListener('hashchange', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
+
+  const handleNavigateToAbout = (targetHash: string = '#about-overview') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('about');
+    if (targetHash && targetHash !== '#about' && targetHash !== '#about-overview') {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToHome = (targetHash: string = '#home') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('home');
+    if (targetHash && targetHash !== '#home') {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   // Scroll spy to highlight active section in navbar
   useEffect(() => {
@@ -46,6 +119,10 @@ export default function App() {
   }, []);
 
   const handleOpenAdmissions = () => {
+    if (currentPage === 'about') {
+      handleNavigateToHome('#contact');
+      return;
+    }
     if (window.__lenis) {
       window.__lenis.scrollTo('#contact', { offset: -84, duration: 1.15 });
     } else {
@@ -82,85 +159,97 @@ export default function App() {
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-[#faf8f5] text-stone-900 selection:bg-amber-800 selection:text-white flex flex-col font-body">
-        {/* Top Bar Navigation (Transparent over Hero, Frosted Navy on Scroll) */}
+        {/* Top Bar Navigation (Always present on both Home and About pages) */}
         <Navbar
           onOpenAdmissions={handleOpenAdmissions}
           onExploreDepartments={handleExploreDepartments}
+          onNavigateToAbout={handleNavigateToAbout}
+          onNavigateToHome={() => handleNavigateToHome('#home')}
           activeSection={activeSection}
+          currentPage={currentPage}
         />
 
-        {/* Main Experience */}
-        <main className="flex-1">
-          {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
-          <AsetHeroBanner
+        {/* Main Content: Home sections or Dedicated About Overview */}
+        {currentPage === 'about' ? (
+          <AboutOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
             onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
-            onExploreDepartments={handleExploreDepartments}
-            onOpenAdmissions={handleOpenAdmissions}
           />
-
-          {/* Quantitative Metric Strip */}
-          <SmoothSection className="relative z-30 -mt-20 xs:-mt-24 sm:mt-0">
-            <KeyMetricsBar />
-          </SmoothSection>
-
-          {/* Student Ambassadors & Gradient Scroll Spotlight */}
-          <StudentSpotlightSection
-            onOpenAdmissions={handleOpenAdmissions}
-            onExploreDepartments={handleExploreDepartments}
-          />
-
-          {/* What We Stand For Section (Core Institutional Values) */}
-          <WhatWeStandForSection />
-
-          {/* Institutional Grade In All We Do (Horizontal Kinetic Pillar Showcase) */}
-          <InstitutionalGradeSection onOpenAdmissions={handleOpenAdmissions} />
-
-          {/* Our Difference / Operational Excellence Kinetic Showcase */}
-          <OurDifferenceSection />
-
-          {/* Our Placement Partners Section */}
-          <SmoothSection>
-            <CampusLifeSection
+        ) : (
+          <main className="flex-1">
+            {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
+            <AsetHeroBanner
               onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+              onExploreDepartments={handleExploreDepartments}
+              onOpenAdmissions={handleOpenAdmissions}
             />
-          </SmoothSection>
 
-          {/* Step-by-Step Admissions Process Section with Animated Traveling Line */}
-          <AdmissionsProcessSection onOpenAdmissions={handleOpenAdmissions} />
+            {/* Quantitative Metric Strip */}
+            <SmoothSection className="relative z-30 -mt-20 xs:-mt-24 sm:mt-0">
+              <KeyMetricsBar />
+            </SmoothSection>
 
-          {/* Department Section */}
-          <DepartmentSection
-            onSelectDepartment={(dept) => setSelectedDepartment(dept)}
-            onApplyForDepartment={handleApplyForDepartment}
-          />
-
-          {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
-          <SmoothSection>
-            <TestimonialsSection />
-          </SmoothSection>
-
-          {/* Life at ASET (Students Feedback with Auto-Moving Cards) */}
-          <SmoothSection>
-            <LifeAtAsetSection />
-          </SmoothSection>
-
-          {/* Global Partners & Sponsors Section */}
-          <SmoothSection>
-            <SponsorsSection />
-          </SmoothSection>
-
-          {/* Contact & Admissions Form */}
-          <SmoothSection>
-            <ContactSection
-              initialDepartment={inquiryDepartment}
+            {/* Student Ambassadors & Gradient Scroll Spotlight */}
+            <StudentSpotlightSection
+              onOpenAdmissions={handleOpenAdmissions}
+              onExploreDepartments={handleExploreDepartments}
             />
-          </SmoothSection>
-        </main>
 
-        {/* Institutional Footer */}
+            {/* What We Stand For Section (Core Institutional Values) */}
+            <WhatWeStandForSection />
+
+            {/* Institutional Grade In All We Do (Horizontal Kinetic Pillar Showcase) */}
+            <InstitutionalGradeSection onOpenAdmissions={handleOpenAdmissions} />
+
+            {/* Our Difference / Operational Excellence Kinetic Showcase */}
+            <OurDifferenceSection />
+
+            {/* Our Placement Partners Section */}
+            <SmoothSection>
+              <CampusLifeSection
+                onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+              />
+            </SmoothSection>
+
+            {/* Step-by-Step Admissions Process Section with Animated Traveling Line */}
+            <AdmissionsProcessSection onOpenAdmissions={handleOpenAdmissions} />
+
+            {/* Department Section */}
+            <DepartmentSection
+              onSelectDepartment={(dept) => setSelectedDepartment(dept)}
+              onApplyForDepartment={handleApplyForDepartment}
+            />
+
+            {/* Alumni Success Stories Section (Verified Placements & Career Journeys) */}
+            <SmoothSection>
+              <TestimonialsSection />
+            </SmoothSection>
+
+            {/* Life at ASET (Students Feedback with Auto-Moving Cards) */}
+            <SmoothSection>
+              <LifeAtAsetSection />
+            </SmoothSection>
+
+            {/* Global Partners & Sponsors Section */}
+            <SmoothSection>
+              <SponsorsSection />
+            </SmoothSection>
+
+            {/* Contact & Admissions Form */}
+            <SmoothSection>
+              <ContactSection
+                initialDepartment={inquiryDepartment}
+              />
+            </SmoothSection>
+          </main>
+        )}
+
+        {/* Institutional Footer (Always present on both Home and About pages) */}
         <Footer
           onOpenAdmissions={handleOpenAdmissions}
           onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+          onNavigateToAbout={handleNavigateToAbout}
         />
 
         {/* Interactive Curriculum & Syllabus Modal */}
