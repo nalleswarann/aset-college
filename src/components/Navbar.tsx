@@ -16,14 +16,25 @@ import asetCampusSunset from '../assets/images/aset-college-pathway-sunset.jpg';
 import asetGraduates from '../assets/images/aset-graduates-celebration.jpg';
 import asetCampusModernClean from '../assets/images/aset-campus-modern-clean.png';
 import deptBusinessImg from '../assets/images/dept_global_business_1794469703130.jpg';
+import { DEPARTMENTS } from '../data/universityData';
+import { Department } from '../types/university';
 
 interface NavbarProps {
   onOpenAdmissions: () => void;
   onExploreDepartments?: () => void;
   onNavigateToAbout?: (targetHash?: string) => void;
+  onNavigateToCampuses?: (targetHash?: string) => void;
+  onNavigateToLife?: (targetHash?: string) => void;
+  onNavigateToAdmissions?: (targetHash?: string) => void;
+  onNavigateToRequirements?: (targetHash?: string) => void;
+  onNavigateToFeePayment?: (targetHash?: string) => void;
+  onNavigateToApplyOnline?: (targetHash?: string) => void;
+  onNavigateToExamCell?: (targetHash?: string) => void;
   onNavigateToHome?: () => void;
+  onSelectDepartment?: (dept: Department) => void;
+  onOpenExamCell?: () => void;
   activeSection?: string;
-  currentPage?: 'home' | 'about';
+  currentPage?: 'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell';
 }
 
 interface MegaMenuLink {
@@ -58,7 +69,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAdmissions,
   onExploreDepartments,
   onNavigateToAbout,
+  onNavigateToCampuses,
+  onNavigateToLife,
+  onNavigateToAdmissions,
+  onNavigateToRequirements,
+  onNavigateToFeePayment,
+  onNavigateToApplyOnline,
+  onNavigateToExamCell,
   onNavigateToHome,
+  onSelectDepartment,
+  onOpenExamCell,
   activeSection,
   currentPage = 'home',
 }) => {
@@ -149,8 +169,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [mobileMenuOpen]);
 
   // Handle smooth scroll navigation
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = (e?: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string = '#') => {
+    if (e && typeof e.preventDefault === 'function') {
+      e.preventDefault();
+    }
     setActiveMenu(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = '';
@@ -158,6 +180,118 @@ export const Navbar: React.FC<NavbarProps> = ({
     if (href.startsWith('http://') || href.startsWith('https://')) {
       window.open(href, '_blank', 'noopener,noreferrer');
       return;
+    }
+
+    if (href === '#examination-cell') {
+      if (onOpenExamCell) {
+        onOpenExamCell();
+        return;
+      }
+    }
+
+    if (href === '#journal') {
+      if (onNavigateToAbout) {
+        onNavigateToAbout('#journal');
+        return;
+      }
+    }
+
+    if (
+      href === '#gallery' ||
+      href === '#campus-routine' ||
+      href === '#day-one' ||
+      href === '#talent-stage' ||
+      href.startsWith('#life') ||
+      href.startsWith('#campus-life') ||
+      href === '/campus-life' ||
+      href === '/life'
+    ) {
+      if (onNavigateToLife) {
+        onNavigateToLife(href);
+        return;
+      }
+    }
+
+    if (
+      href.startsWith('#requirements') ||
+      href.startsWith('#/requirements') ||
+      href.startsWith('#requirement') ||
+      href.startsWith('#/requirement') ||
+      href.startsWith('#admission/requirements') ||
+      href.startsWith('#/admission/requirements') ||
+      href === '/requirements' ||
+      href === '/admission/requirements'
+    ) {
+      if (onNavigateToRequirements) {
+        onNavigateToRequirements(href);
+        return;
+      }
+    }
+
+    if (
+      href.startsWith('#fee-payment') ||
+      href.startsWith('#/fee-payment') ||
+      href.startsWith('#mode-of-fee-payment') ||
+      href.startsWith('#payment-overview') ||
+      href === '/fee-payment' ||
+      href === '/admission/fee-payment'
+    ) {
+      if (onNavigateToFeePayment) {
+        onNavigateToFeePayment(href);
+        return;
+      }
+    }
+
+    if (
+      href.startsWith('#examination-cell') ||
+      href.startsWith('#/examination-cell') ||
+      href.startsWith('#exam-cell') ||
+      href.startsWith('#exam') ||
+      href === '/examination-cell'
+    ) {
+      if (onNavigateToExamCell) {
+        onNavigateToExamCell(href);
+        return;
+      }
+    }
+
+    if (
+      href.startsWith('#apply-online') ||
+      href.startsWith('#/apply-online') ||
+      href.startsWith('#online-application') ||
+      href.startsWith('#/online-application') ||
+      href.startsWith('#apply') ||
+      href === '/apply-online' ||
+      href === '/online-application' ||
+      href === '/admission/apply'
+    ) {
+      if (onNavigateToApplyOnline) {
+        onNavigateToApplyOnline(href);
+        return;
+      }
+    }
+
+    if (
+      href.startsWith('#admission') ||
+      href.startsWith('#/admission') ||
+      href.startsWith('#admissions') ||
+      href.startsWith('#/admissions') ||
+      href.startsWith('#documents-required') ||
+      href.startsWith('#courses-offered') ||
+      href === '/admission' ||
+      href === '/admissions'
+    ) {
+      if (onNavigateToAdmissions) {
+        onNavigateToAdmissions(href);
+        return;
+      }
+    }
+
+    if (href.startsWith('#campuses') || href.startsWith('#campus') || href === '/campuses') {
+      if (onNavigateToCampuses) {
+        onNavigateToCampuses(href);
+        return;
+      }
     }
 
     if (href.startsWith('#about') || href === '/about') {
@@ -174,14 +308,23 @@ export const Navbar: React.FC<NavbarProps> = ({
       }
     }
 
-    if (currentPage === 'about') {
-      const targetInAbout = document.querySelector(href);
-      if (targetInAbout) {
+    if (
+      currentPage === 'about' ||
+      currentPage === 'campuses' ||
+      currentPage === 'life' ||
+      currentPage === 'admissions' ||
+      currentPage === 'requirements' ||
+      currentPage === 'fee-payment' ||
+      currentPage === 'apply-online' ||
+      currentPage === 'examination-cell'
+    ) {
+      const targetInPage = document.querySelector(href);
+      if (targetInPage) {
         setTimeout(() => {
           if (window.__lenis) {
             window.__lenis.scrollTo(href, { offset: -84, duration: 1.15 });
           } else {
-            const y = targetInAbout.getBoundingClientRect().top + window.scrollY - 84;
+            const y = targetInPage.getBoundingClientRect().top + window.scrollY - 84;
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
         }, 35);
@@ -217,13 +360,54 @@ export const Navbar: React.FC<NavbarProps> = ({
     }, 35);
   };
 
+  // Helper to select and display department modal & smooth scroll
+  const handleSelectDepartmentByName = (searchQuery: string) => {
+    setActiveMenu(null);
+    setMobileMenuOpen(false);
+    document.body.style.overflow = '';
+
+    const matchedDept = DEPARTMENTS.find(
+      (d) =>
+        d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        d.id.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (currentPage !== 'home' && onNavigateToHome) {
+      onNavigateToHome();
+    }
+
+    setTimeout(() => {
+      if (matchedDept && onSelectDepartment) {
+        onSelectDepartment(matchedDept);
+      }
+      const target = document.querySelector('#departments');
+      if (target) {
+        if (window.__lenis) {
+          window.__lenis.scrollTo('#departments', { offset: -84, duration: 1.15 });
+        } else {
+          const y = target.getBoundingClientRect().top + window.scrollY - 84;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }, currentPage !== 'home' ? 180 : 35);
+  };
+
   // Scroll directly to contact section
   const handleContactClick = () => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = '';
 
-    if (currentPage === 'about') {
+    if (
+      currentPage === 'about' ||
+      currentPage === 'campuses' ||
+      currentPage === 'life' ||
+      currentPage === 'admissions' ||
+      currentPage === 'requirements' ||
+      currentPage === 'fee-payment' ||
+      currentPage === 'apply-online' ||
+      currentPage === 'examination-cell'
+    ) {
       if (onNavigateToHome) {
         onNavigateToHome();
         setTimeout(() => {
@@ -275,35 +459,82 @@ export const Navbar: React.FC<NavbarProps> = ({
     }, 180);
   };
 
-  // Curated navigation data matching user's exact list:
-  // About, Admission, Department, Student, Placement, Blogs
+  // Curated navigation data matching user's exact specification:
+  // Home
+  // About (Overview, Campuses, Campus Life, Gallery, Student Login, Journal)
+  // Admission (Admission Overview, Requirements, Mode of Fee Payment, Apply Online)
+  // Departments (Aviation, Logistics & Shipping, Fire & Industrial Safety, Management Studies, School of Commerce, Hotel Management)
+  // Student (Examination Cell, Student Events, Alumni, News & Events)
+  // Placement (Our Placement Cell, Placement Training, Internship Program, Industrial Visits, Student Registration, Testimonials)
+  // Contact
   const menuItems: MegaMenuItem[] = [
+    {
+      id: 'home',
+      label: 'Home',
+      hasDropdown: false,
+      href: '#home',
+    },
     {
       id: 'about',
       label: 'About',
       hasDropdown: true,
-      categoryTitle: 'Institutional Heritage & Excellence',
+      categoryTitle: 'Institutional Heritage & Campuses',
       columns: {
         col1: [
-          { label: 'Overview', href: '#about-overview', onClick: () => onNavigateToAbout && onNavigateToAbout('#about-overview') },
-          { label: 'Campuses', href: '#about-campuses', onClick: () => onNavigateToAbout && onNavigateToAbout('#campuses') },
-          { label: 'Campus Life', href: '#about-life', onClick: () => onNavigateToAbout && onNavigateToAbout('#life-at-aset') },
-          { label: 'Gallery', href: '#about-gallery', onClick: () => onNavigateToAbout && onNavigateToAbout('#life-at-aset') },
-          { label: 'Student Login', href: 'https://asetcollege.ac.in/' },
-          { label: 'Journal & IQAC', href: '#about-iqac', onClick: () => onNavigateToAbout && onNavigateToAbout('#iqac') },
+          {
+            label: 'Overview',
+            href: '#about-overview',
+            onClick: () => onNavigateToAbout && onNavigateToAbout('#about-overview'),
+          },
+          {
+            label: 'Campuses',
+            href: '#campuses-overview',
+            onClick: () => {
+              if (onNavigateToCampuses) {
+                onNavigateToCampuses('#campuses-overview');
+              } else if (onNavigateToAbout) {
+                onNavigateToAbout('#campuses');
+              }
+            },
+          },
+          {
+            label: 'Campus Life',
+            href: '#life-overview',
+            onClick: () => {
+              if (onNavigateToLife) {
+                onNavigateToLife('#life-overview');
+              } else if (onNavigateToAbout) {
+                onNavigateToAbout('#life-at-aset');
+              }
+            },
+          },
         ],
         col2: [
-          { label: 'Why ASET is Different', href: '#about-why-aset', onClick: () => onNavigateToAbout && onNavigateToAbout('#why-aset') },
-          { label: 'Leadership & Vision', href: '#about-leadership', onClick: () => onNavigateToAbout && onNavigateToAbout('#leadership') },
-          { label: 'Pilot Training Flying School', href: '#about-flying-school', onClick: () => onNavigateToAbout && onNavigateToAbout('#flying-school') },
-          { label: 'International MoUs & Awards', href: '#about-partnerships', onClick: () => onNavigateToAbout && onNavigateToAbout('#partnerships') },
-          { label: 'Career Outcomes & Placements', href: '#about-careers', onClick: () => onNavigateToAbout && onNavigateToAbout('#career-outcomes') },
-          { label: 'FAQs & Admissions Support', href: '#about-faqs', onClick: () => onNavigateToAbout && onNavigateToAbout('#faqs') },
+          {
+            label: 'Gallery',
+            href: '#gallery',
+            onClick: () => {
+              if (onNavigateToLife) {
+                onNavigateToLife('#gallery');
+              } else if (onNavigateToAbout) {
+                onNavigateToAbout('#life-at-aset');
+              }
+            },
+          },
+          {
+            label: 'Student Login',
+            href: 'https://asetcollege.ac.in/',
+          },
+          {
+            label: 'Journal',
+            href: '#journal',
+            onClick: () => onNavigateToAbout && onNavigateToAbout('#journal'),
+          },
         ],
       },
       featured: {
         image: asetCampusModernClean,
-        alt: 'ASET College Campus',
+        alt: 'ASET College Campuses & Heritage',
         buttonLabel: 'Discover Our Heritage ↗',
         buttonHref: '#about-overview',
         onButtonClick: () => onNavigateToAbout && onNavigateToAbout('#about-overview'),
@@ -313,49 +544,104 @@ export const Navbar: React.FC<NavbarProps> = ({
       id: 'admission',
       label: 'Admission',
       hasDropdown: true,
-      categoryTitle: '2026–2027 Admissions Gateway',
+      categoryTitle: 'Academic Year 2026–2027 Admissions',
       columns: {
         col1: [
-          { label: 'Step-by-Step Admissions Process', href: '#admissions-process' },
-          { label: 'Eligibility & Marksheet Verification', href: '#admissions-process' },
-          { label: '1-on-1 Academic Counseling & Guidance', href: '#admissions-process' },
-          { label: 'Seat Allotment & Enrollment Records', href: '#admissions-process' },
+          {
+            label: 'Admission Overview',
+            href: '#admission-overview',
+            onClick: () => onNavigateToAdmissions && onNavigateToAdmissions('#admission-overview'),
+          },
+          {
+            label: 'Requirements',
+            href: '#requirements-overview',
+            onClick: () => {
+              if (onNavigateToRequirements) {
+                onNavigateToRequirements('#requirements-overview');
+              } else if (onNavigateToAdmissions) {
+                onNavigateToAdmissions('#documents-required');
+              }
+            },
+          },
         ],
         col2: [
-          { label: 'Merit Scholarships (Up to 100%)', href: '#admissions-process' },
-          { label: 'Alagappa University Degree Recognition', href: '#about' },
-          { label: 'Campus Tour: Chennai & Coimbatore', href: '#contact' },
           {
-            label: 'Online Application Portal 2026–2027',
-            href: '#admissions',
-            isAction: true,
-            onClick: onOpenAdmissions,
+            label: 'Mode of Fee Payment',
+            href: '#fee-payment',
+            onClick: () => {
+              if (onNavigateToFeePayment) {
+                onNavigateToFeePayment('#fee-payment');
+              } else if (onNavigateToAdmissions) {
+                onNavigateToAdmissions('#fee-payment');
+              }
+            },
+          },
+          {
+            label: 'Apply Online',
+            href: '#apply-online',
+            onClick: () => {
+              if (onNavigateToApplyOnline) {
+                onNavigateToApplyOnline('#apply-online');
+              } else if (onNavigateToAdmissions) {
+                onNavigateToAdmissions('#online-application');
+              }
+            },
           },
         ],
       },
       featured: {
         image: asetCampusSunset,
-        alt: 'ASET College Campus Pathway',
-        buttonLabel: 'Start Application 2026 ↗',
-        buttonHref: '#admissions-process',
-        onButtonClick: onOpenAdmissions,
+        alt: 'ASET College Admissions Guide',
+        buttonLabel: 'Apply Online 2026–27 ↗',
+        buttonHref: '#apply-online',
+        onButtonClick: () => {
+          if (onNavigateToApplyOnline) {
+            onNavigateToApplyOnline('#apply-online');
+          } else if (onNavigateToAdmissions) {
+            onNavigateToAdmissions('#admission-overview');
+          }
+        },
       },
     },
     {
-      id: 'department',
-      label: 'Department',
+      id: 'departments',
+      label: 'Departments',
       hasDropdown: true,
-      categoryTitle: 'Six Core High-Growth Schools',
+      categoryTitle: 'Six Core Industry-Aligned Schools',
       columns: {
         col1: [
-          { label: 'Pilot Training, Aviation & Airport Management', href: '#departments' },
-          { label: 'Fire & Industrial Safety Engineering', href: '#departments' },
-          { label: 'Logistics, Shipping & Supply Chain Management', href: '#departments' },
+          {
+            label: 'Aviation',
+            href: '#departments',
+            onClick: () => handleSelectDepartmentByName('Aviation'),
+          },
+          {
+            label: 'Logistics & Shipping',
+            href: '#departments',
+            onClick: () => handleSelectDepartmentByName('Logistics'),
+          },
+          {
+            label: 'Fire & Industrial Safety',
+            href: '#departments',
+            onClick: () => handleSelectDepartmentByName('Safety'),
+          },
         ],
         col2: [
-          { label: 'Management Studies & Business Analytics', href: '#departments' },
-          { label: 'School of Commerce & Professional Accounting', href: '#departments' },
-          { label: 'International Hotel & Tourism Management', href: '#departments' },
+          {
+            label: 'Management Studies',
+            href: '#departments',
+            onClick: () => handleSelectDepartmentByName('Management'),
+          },
+          {
+            label: 'School of Commerce',
+            href: '#departments',
+            onClick: () => handleSelectDepartmentByName('Commerce'),
+          },
+          {
+            label: 'Hotel Management',
+            href: '#departments',
+            onClick: () => handleSelectDepartmentByName('Hotel'),
+          },
         ],
       },
       featured: {
@@ -370,26 +656,59 @@ export const Navbar: React.FC<NavbarProps> = ({
       id: 'student',
       label: 'Student',
       hasDropdown: true,
-      categoryTitle: 'Student Life, Ambassadorship & Community',
+      categoryTitle: 'Student Life, Governance & Events',
       columns: {
         col1: [
-          { label: 'Student Spotlight & Campus Ambassadors', href: '#spotlight' },
-          { label: 'Campus Culture, Festivities & Tech Clubs', href: '#spotlight' },
-          { label: 'Flight Simulators & Practical Safety Drills', href: '#about' },
-          { label: 'Mentorship & Peer Learning Circles', href: '#spotlight' },
+          {
+            label: 'Examination Cell',
+            href: '#examination-cell',
+            onClick: () => {
+              if (onNavigateToExamCell) {
+                onNavigateToExamCell('#examination-cell');
+              } else if (onOpenExamCell) {
+                onOpenExamCell();
+              } else {
+                handleNavClick(undefined, '#examination-cell');
+              }
+            },
+          },
+          {
+            label: 'Student Events',
+            href: '#campus-routine',
+            onClick: () => {
+              if (onNavigateToLife) {
+                onNavigateToLife('#campus-routine');
+              } else {
+                handleNavClick(undefined, '#campus-routine');
+              }
+            },
+          },
         ],
         col2: [
-          { label: 'Hostel & Residential Campus Life', href: '#about' },
-          { label: 'Sports, Gymnasium & Fitness Facilities', href: '#spotlight' },
-          { label: 'Student Welfare & Anti-Ragging Cell', href: '#about' },
-          { label: 'Global Student Exchange Pathways', href: '#sponsors' },
+          {
+            label: 'Alumni',
+            href: '#testimonials',
+            onClick: () => handleNavClick(undefined, '#testimonials'),
+          },
+          {
+            label: 'News & Events',
+            href: '#day-one',
+            onClick: () => {
+              if (onNavigateToLife) {
+                onNavigateToLife('#day-one');
+              } else {
+                handleNavClick(undefined, '#day-one');
+              }
+            },
+          },
         ],
       },
       featured: {
         image: asetAviationStudents,
-        alt: 'ASET College Students',
-        buttonLabel: 'Meet Student Ambassadors ↗',
-        buttonHref: '#spotlight',
+        alt: 'ASET College Student Life',
+        buttonLabel: 'Explore Campus Life ↗',
+        buttonHref: '#life-overview',
+        onButtonClick: () => onNavigateToLife && onNavigateToLife('#life-overview'),
       },
     },
     {
@@ -399,16 +718,44 @@ export const Navbar: React.FC<NavbarProps> = ({
       categoryTitle: 'Corporate Partnerships & Placements',
       columns: {
         col1: [
-          { label: '100% Placement Assurance Cell', href: '#placements' },
-          { label: 'Aviation Recruiters (Air India, SpiceJet)', href: '#placements' },
-          { label: 'Logistics Giants (DHL, Maersk, TVS)', href: '#placements' },
-          { label: 'Safety & Infrastructure (DLF, SPR, Casagrand)', href: '#placements' },
+          {
+            label: 'Our Placement Cell',
+            href: '#placements',
+            onClick: () => handleNavClick(undefined, '#placements'),
+          },
+          {
+            label: 'Placement Training',
+            href: '#placements',
+            onClick: () => handleNavClick(undefined, '#placements'),
+          },
+          {
+            label: 'Internship Program',
+            href: '#placements',
+            onClick: () => handleNavClick(undefined, '#placements'),
+          },
         ],
         col2: [
-          { label: 'Aptitude & Soft Skills Grooming Labs', href: '#placements' },
-          { label: 'Monthly Industrial & Port Visits', href: '#placements' },
-          { label: 'Global Alumni Across 12+ Countries', href: '#placements' },
-          { label: 'Corporate Recruiter Registration', href: '#contact' },
+          {
+            label: 'Industrial Visits',
+            href: '#placements',
+            onClick: () => handleNavClick(undefined, '#placements'),
+          },
+          {
+            label: 'Student Registration',
+            href: '#contact',
+            onClick: () => {
+              if (onOpenAdmissions) {
+                onOpenAdmissions();
+              } else {
+                handleNavClick(undefined, '#contact');
+              }
+            },
+          },
+          {
+            label: 'Testimonials',
+            href: '#testimonials',
+            onClick: () => handleNavClick(undefined, '#testimonials'),
+          },
         ],
       },
       featured: {
@@ -416,31 +763,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         alt: 'ASET College Placements & Alumni',
         buttonLabel: 'View Placement Records ↗',
         buttonHref: '#placements',
+        onButtonClick: () => handleNavClick(undefined, '#placements'),
       },
     },
     {
-      id: 'blogs',
-      label: 'Blogs',
-      hasDropdown: true,
-      categoryTitle: 'Campus News, Articles & Industry Trends',
-      columns: {
-        col1: [
-          { label: 'Aviation Careers: Scope for Commercial Pilots & Ground Crew', href: '#departments' },
-          { label: 'Industrial Safety: High Global Demand for Certified Officers', href: '#departments' },
-          { label: 'Why Logistics & Supply Chain is a Booming Career Choice', href: '#departments' },
-        ],
-        col2: [
-          { label: 'Campus Chronicles: Life at Chennai & Coimbatore Campuses', href: '#about' },
-          { label: 'Alumni Journey: From Classroom to DHL, Maersk & SpiceJet', href: '#placements' },
-          { label: 'Scholarship Guide: How to Secure up to 100% Merit Aid', href: '#admissions-process' },
-        ],
-      },
-      featured: {
-        image: deptBusinessImg,
-        alt: 'ASET College Articles & News',
-        buttonLabel: 'Read All Insights ↗',
-        buttonHref: '#about',
-      },
+      id: 'contact',
+      label: 'Contact',
+      hasDropdown: false,
+      href: '#contact',
     },
   ];
 
@@ -485,16 +815,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           y: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
           opacity: { duration: 0.22, ease: 'easeInOut' },
         }}
-        className={`fixed top-0 left-0 right-0 z-50 font-manrope pointer-events-none transition-[padding] duration-300 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 font-sans pointer-events-none transition-[padding] duration-300 ${isScrolled
           ? 'pt-2.5 sm:pt-4 px-3 sm:px-6 lg:px-8'
           : 'pt-3.5 sm:pt-5 px-4 sm:px-6 lg:px-8'
           }`}
       >
         <div
           className={`relative max-w-7xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'
-            } ${isScrolled || currentPage === 'about'
-              ? 'bg-stone-950/80 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full border border-white/20 shadow-[0_16px_40px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] py-2 sm:py-2.5 px-3.5 sm:px-6 ring-1 ring-white/10'
-              : 'bg-transparent py-1 sm:py-2 px-0'
+            } ${isScrolled
+              ? 'bg-stone-950/85 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full shadow-2xl py-2 sm:py-2.5 px-3.5 sm:px-6'
+              : 'bg-transparent py-1 sm:py-2 px-0 border-0 shadow-none'
             }`}
         >
           <div className="flex items-center justify-between gap-4 lg:gap-6">
@@ -511,7 +841,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className="bg-white/15 hover:bg-white/25 px-3.5 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full border border-white/25 backdrop-blur-xl shadow-md flex items-center justify-center"
+                className={`px-3.5 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full backdrop-blur-xl flex items-center justify-center transition-all ${
+                  isScrolled
+                    ? 'bg-white/10 hover:bg-white/20'
+                    : 'bg-white/15 hover:bg-white/25 shadow-md'
+                }`}
               >
                 <img
                   src={asetLogo}
@@ -541,11 +875,31 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <button
                       type="button"
                       onClick={() => {
-                        if (item.hasDropdown) {
+                        if (!item.hasDropdown) {
+                          setActiveMenu(null);
+                          if (item.href === '#home') {
+                            if (onNavigateToHome) onNavigateToHome();
+                          } else if (item.href === '#contact') {
+                            handleContactClick();
+                          } else if (item.href) {
+                            handleNavClick(undefined, item.href);
+                          }
+                          return;
+                        }
+                        if (item.id === 'about' && onNavigateToAbout) {
+                          setActiveMenu(null);
+                          onNavigateToAbout('#about-overview');
+                        } else if (item.id === 'admission' && onNavigateToAdmissions) {
+                          setActiveMenu(null);
+                          onNavigateToAdmissions('#admission-overview');
+                        } else if (item.id === 'departments' && onExploreDepartments) {
+                          setActiveMenu(null);
+                          onExploreDepartments();
+                        } else if (item.hasDropdown) {
                           setActiveMenu(activeMenu === item.id ? null : item.id);
                         }
                       }}
-                      className="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium tracking-tight cursor-pointer select-none"
+                      className="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-semibold tracking-tight cursor-pointer select-none"
                       aria-expanded={isHovered}
                     >
                       {/* Shared Layout Spring Pill Indicator: Glides seamlessly across tabs */}
@@ -560,7 +914,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {/* Pill Text Content */}
                       <span
                         className={`relative z-10 transition-colors duration-200 ${isHovered
-                          ? 'text-stone-950 font-bold'
+                          ? 'text-stone-950 font-semibold'
                           : 'text-white/90 hover:text-white'
                           }`}
                       >
@@ -585,19 +939,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             </nav>
 
             {/* ===================================================== */}
-            {/* Right Action: Contact Pill (Desktop only) & Menu Button */}
+            {/* Right Action: Apply Now Pill (Desktop only) & Menu Button */}
             {/* ===================================================== */}
             <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-              {/* Contact Pill Button (Desktop only: hidden on mobile/tablet per user instruction) */}
+              {/* Apply Now Pill Button (Desktop only) */}
               <motion.button
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                onClick={handleContactClick}
-                className="group hidden lg:inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold text-stone-950 bg-white hover:bg-stone-50 transition-all rounded-full shadow-lg shadow-black/20 whitespace-nowrap cursor-pointer border border-white shrink-0"
+                onClick={onOpenAdmissions}
+                className="group hidden lg:inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold text-white bg-[#dc2626] hover:bg-[#b91c1c] transition-all rounded-full shadow-lg shadow-red-900/30 whitespace-nowrap cursor-pointer border border-red-500/40 shrink-0"
               >
-                <span>Contact</span>
-                <ArrowUpRight className="w-4 h-4 text-stone-900 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span>Apply 2026–27</span>
+                <ArrowUpRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </motion.button>
 
               {/* Hamburger Menu Icon (Always visible on mobile & tablet, hidden on lg desktop) */}
@@ -605,7 +959,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 whileTap={{ scale: 0.92 }}
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 flex items-center justify-center text-white rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 border border-white/25 backdrop-blur-md shadow-md transition-all focus:outline-hidden cursor-pointer shrink-0"
+                className="lg:hidden w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 flex items-center justify-center text-white rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 backdrop-blur-md shadow-md transition-all focus:outline-hidden cursor-pointer shrink-0"
                 aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileMenuOpen}
               >
@@ -679,7 +1033,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                                       handleNavClick(e, link.href);
                                     }
                                   }}
-                                  className="block font-bold text-stone-900 hover:text-red-700 text-[15px] sm:text-[16px] tracking-tight transition-colors leading-snug cursor-pointer group"
+                                  className="block font-semibold text-stone-900 hover:text-red-700 text-[15px] sm:text-[16px] tracking-tight transition-colors leading-snug cursor-pointer group"
                                 >
                                   <span className="flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -712,7 +1066,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                                       handleNavClick(e, link.href);
                                     }
                                   }}
-                                  className="block font-bold text-stone-900 hover:text-red-700 text-[15px] sm:text-[16px] tracking-tight transition-colors leading-snug cursor-pointer group"
+                                  className="block font-semibold text-stone-900 hover:text-red-700 text-[15px] sm:text-[16px] tracking-tight transition-colors leading-snug cursor-pointer group"
                                 >
                                   <span className="flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -788,7 +1142,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.99 }}
             transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-[#0c0d0f]/98 backdrop-blur-2xl text-stone-100 border-b border-stone-800 shadow-2xl shadow-black/60 max-h-[92vh] overflow-y-auto font-manrope"
+            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-[#0c0d0f]/98 backdrop-blur-2xl text-stone-100 border-b border-stone-800 shadow-2xl shadow-black/60 max-h-[92vh] overflow-y-auto font-sans"
           >
             {/* Subtle atmospheric glow */}
             <div
@@ -826,8 +1180,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                       key={item.id}
                       whileTap={{ scale: 0.98 }}
                       href={item.href || '#'}
-                      onClick={(e) => handleNavClick(e, item.href || '#')}
-                      className="group flex items-center justify-between py-3.5 px-3 rounded-xl hover:bg-white/5 text-base font-bold text-white transition-colors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMobileMenuOpen(false);
+                        if (item.href === '#home') {
+                          if (onNavigateToHome) onNavigateToHome();
+                        } else if (item.href === '#contact') {
+                          handleContactClick();
+                        } else {
+                          handleNavClick(e, item.href || '#');
+                        }
+                      }}
+                      className="group flex items-center justify-between py-3.5 px-3 rounded-xl hover:bg-white/5 text-base font-bold text-white transition-colors cursor-pointer"
                     >
                       <div className="flex items-center gap-2">
                         <span>{item.label}</span>
@@ -854,7 +1218,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() =>
                         setMobileExpandedAccordion(isExpanded ? null : item.id)
                       }
-                      className="w-full flex items-center justify-between py-3.5 px-3 text-base font-bold text-white rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-between py-3.5 px-3 text-base font-semibold text-white rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
                     >
                       <span>{item.label}</span>
                       <motion.span
@@ -924,7 +1288,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <motion.button
                 whileTap={{ scale: 0.97 }}
                 onClick={handleContactClick}
-                className="w-full py-3.5 px-5 text-center text-sm font-bold text-stone-950 bg-white hover:bg-stone-100 transition-all rounded-full shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 px-5 text-center text-sm font-semibold text-stone-950 bg-white hover:bg-stone-100 transition-all rounded-full shadow-lg flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Contact Admissions &amp; Campus</span>
                 <ArrowUpRight className="w-4 h-4 text-stone-950" />

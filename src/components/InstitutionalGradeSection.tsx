@@ -210,7 +210,7 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
   return (
     <section
       id="institutional-grade"
-      className="relative w-full min-h-[92vh] lg:min-h-screen py-16 sm:py-24 lg:py-28 flex flex-col justify-between overflow-hidden bg-stone-950 text-white font-manrope select-none"
+      className="relative w-full min-h-[92vh] lg:min-h-screen py-16 sm:py-24 lg:py-28 flex flex-col justify-between overflow-hidden bg-stone-950 text-white font-serif font-semibold select-none"
     >
       {/* ========================================================= */}
       {/* 1. CINEMATIC ASET CAMPUS BUILDING BACKGROUND              */}
@@ -251,7 +251,7 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
           </ScrollEyebrow>
 
           {/* Standardized Headline with smooth reveal */}
-          <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-white leading-tight">
+          <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-white leading-tight">
             Institutional Grade <br />
             <span className="text-gradient-title">In All We Do</span>
           </ScrollHeading>

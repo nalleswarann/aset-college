@@ -154,7 +154,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section
       id="contact"
-      className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-manrope"
+      className="relative py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 font-serif font-semibold"
     >
       <div className="max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -284,7 +284,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     ADMISSIONS &amp; COUNSELING 2026–2027
                   </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-manrope font-bold text-stone-900 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-stone-900 tracking-tight">
                   Get in Touch with{' '}
                   <span className="text-gradient-title font-extrabold">
                     ASET

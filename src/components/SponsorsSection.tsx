@@ -253,7 +253,7 @@ export const SponsorsSection: React.FC = () => {
         </ScrollEyebrow>
 
         {/* Heading */}
-        <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
+        <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight">
           MOUs with{' '}
           <span className="text-gradient-title">ASET</span>
         </ScrollHeading>
@@ -337,7 +337,7 @@ export const SponsorsSection: React.FC = () => {
                       loading="lazy"
                     />
                     {/* Hover Floating Tooltip */}
-                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-sans whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
                       {partner.name}
                     </div>
                   </div>
@@ -390,7 +390,7 @@ export const SponsorsSection: React.FC = () => {
                       loading="lazy"
                     />
                     {/* Hover Floating Tooltip */}
-                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-sans whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
                       {partner.name}
                     </div>
                   </div>
@@ -443,7 +443,7 @@ export const SponsorsSection: React.FC = () => {
                       loading="lazy"
                     />
                     {/* Hover Floating Tooltip */}
-                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-sans whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
                       {partner.name}
                     </div>
                   </div>
@@ -496,7 +496,7 @@ export const SponsorsSection: React.FC = () => {
                       loading="lazy"
                     />
                     {/* Hover Floating Tooltip */}
-                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-inter whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
+                    <div className="opacity-0 group-hover/badge:opacity-100 pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-stone-900 text-white text-xs font-sans whitespace-nowrap shadow-xl transition-opacity duration-200 z-40 border border-stone-700">
                       {partner.name}
                     </div>
                   </div>
@@ -542,7 +542,7 @@ export const SponsorsSection: React.FC = () => {
                 className="w-11 h-11 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain select-none transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(255,255,255,0.4)] shrink-0"
               />
               {/* "Global Network Partners" placed directly under the logo inside the circular disc */}
-              <span className="mt-1 sm:mt-1.5 text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] font-inter font-bold uppercase tracking-wider text-sky-200/90 text-center leading-tight select-none px-1">
+              <span className="mt-1 sm:mt-1.5 text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] font-sans font-bold uppercase tracking-wider text-sky-200/90 text-center leading-tight select-none px-1">
                 Global Network Partners
               </span>
             </div>
@@ -567,10 +567,10 @@ export const SponsorsSection: React.FC = () => {
                   <img src={activePartner.logo} alt={activePartner.alt} className="w-auto h-auto max-h-10 max-w-[85%] object-contain" />
                 </div>
                 <div>
-                  <h4 className="font-manrope font-bold text-base text-stone-900 leading-snug">
+                  <h4 className="font-serif font-semibold text-base text-stone-900 leading-snug">
                     {activePartner.name}
                   </h4>
-                  <span className="inline-block mt-0.5 text-xs text-purple-700 font-inter font-semibold bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200/60">
+                  <span className="inline-block mt-0.5 text-xs text-purple-700 font-sans font-semibold bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200/60">
                     {activePartner.category}
                   </span>
                 </div>
@@ -599,7 +599,7 @@ export const SponsorsSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="pt-6 border-t border-stone-200/80 flex flex-wrap items-center justify-center gap-6 text-xs font-inter text-stone-500"
+          className="pt-6 border-t border-stone-200/80 flex flex-wrap items-center justify-center gap-6 text-xs font-sans text-stone-500"
         >
           <div className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />

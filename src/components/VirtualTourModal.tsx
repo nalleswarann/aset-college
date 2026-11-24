@@ -144,7 +144,7 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
               <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold block">
                 {current.category}
               </span>
-              <h3 className="text-lg font-manrope font-bold text-white tracking-tight">
+              <h3 className="text-lg font-serif font-semibold text-white tracking-tight">
                 {current.title}
               </h3>
             </div>
@@ -211,7 +211,7 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
                 </span>
                 <span className="text-stone-400 text-[10px]">ASET Facility</span>
               </div>
-              <h4 className="text-sm font-bold text-white font-serif">
+              <h4 className="text-sm font-bold text-white font-serif font-semibold">
                 {current.hotspots[activeHotspot].label}
               </h4>
               <p className="text-stone-300 leading-relaxed">
@@ -243,7 +243,7 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
                 <span className="text-[10px] font-mono uppercase text-amber-400">
                   Campus 0{idx + 1}
                 </span>
-                <span className="text-xs font-medium font-serif line-clamp-1">
+                <span className="text-xs font-medium font-serif font-semibold line-clamp-1">
                   {v.title}
                 </span>
               </button>

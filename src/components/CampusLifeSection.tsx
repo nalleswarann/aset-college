@@ -111,7 +111,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
   return (
     <section
       id="placements"
-      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 border-b border-stone-200/90 overflow-hidden select-none font-manrope"
+      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#faf8f5] text-stone-900 border-b border-stone-200/90 overflow-hidden select-none font-serif font-semibold"
     >
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Glow       */}
@@ -143,7 +143,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
             {/* Main Section Heading: Exactly "Our Placement Partners" */}
             <ScrollHeading
               delay={0.12}
-              className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight"
             >
               Our Placement <span className="text-gradient-title font-medium">Partners</span>
             </ScrollHeading>
@@ -263,7 +263,7 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
               <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-tight mb-1">
                 <span className="text-gradient-title">{m.value}</span>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-stone-800 font-manrope">
+              <div className="text-xs sm:text-sm font-bold text-stone-800 font-serif font-semibold">
                 {m.label}
               </div>
               <div className="text-[10px] sm:text-[11px] text-stone-500 font-sans mt-0.5">

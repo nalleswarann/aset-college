@@ -82,7 +82,7 @@ export const WhatWeStandForSection: React.FC = () => {
   return (
     <section
       id="values"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-12 xs:py-14 sm:py-24 lg:py-28 border-t border-b border-stone-200/90 select-none"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-serif font-semibold py-12 xs:py-14 sm:py-24 lg:py-28 border-t border-b border-stone-200/90 select-none"
     >
       {/* Anchor for About & Institutional Heritage */}
       <div id="about" className="absolute -top-24 pointer-events-none" />
@@ -143,7 +143,7 @@ export const WhatWeStandForSection: React.FC = () => {
             {/* Standard Section Heading with Smooth Entrance */}
             <ScrollHeading
               delay={0.12}
-              className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight"
             >
               What We <span className="text-gradient-title font-medium">Stand For</span>
             </ScrollHeading>

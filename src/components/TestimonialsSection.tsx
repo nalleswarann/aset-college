@@ -308,7 +308,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section
       id="testimonials"
-      className="relative w-full py-16 sm:py-20 lg:py-28 bg-[#faf8f5] text-stone-900 font-manrope overflow-hidden border-b border-stone-200/90 select-none"
+      className="relative w-full py-16 sm:py-20 lg:py-28 bg-[#faf8f5] text-stone-900 font-serif font-semibold overflow-hidden border-b border-stone-200/90 select-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={() => setIsPaused(true)}
@@ -328,7 +328,7 @@ export const TestimonialsSection: React.FC = () => {
                 VERIFIED PLACEMENTS &amp; CAREER JOURNEYS
               </span>
             </ScrollEyebrow>
-            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
+            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight">
               Alumni <span className="text-gradient-title font-medium">Success Stories</span>
             </ScrollHeading>
           </div>
@@ -444,7 +444,7 @@ export const TestimonialsSection: React.FC = () => {
 
                     {/* Author Details with Website Brand Accents */}
                     <div className="pt-2">
-                      <h4 className="font-manrope font-bold text-white text-lg sm:text-xl tracking-tight flex items-center gap-2">
+                      <h4 className="font-serif font-semibold text-white text-lg sm:text-xl tracking-tight flex items-center gap-2">
                         <span>— {current.authorName}</span>
                         <BadgeCheck className="w-4 h-4 text-orange-500 inline-block" />
                       </h4>
@@ -532,7 +532,7 @@ export const TestimonialsSection: React.FC = () => {
               <div className="flex items-center justify-between p-4 sm:p-5 border-b border-white/10 bg-black/40">
                 <div className="flex items-center gap-2.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
-                  <span className="font-manrope font-bold text-white text-sm sm:text-base">
+                  <span className="font-serif font-semibold text-white text-sm sm:text-base">
                     {current.authorName} · Verified Alumni Spotlight
                   </span>
                 </div>

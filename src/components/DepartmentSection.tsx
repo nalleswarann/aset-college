@@ -225,7 +225,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
   }, [activeIdx, isVisionPhase]);
 
   return (
-    <section id="departments" className="relative bg-[#faf8f5] text-stone-900 font-manrope">
+    <section id="departments" className="relative bg-[#faf8f5] text-stone-900 font-serif font-semibold">
       {/* ========================================================================= */}
       {/* TELHA CLARKE SCROLL CANVAS                                                */}
       {/* 1. Starts with authentic ASET campus building ("02 OUR DEPARTMENTS")        */}
@@ -565,7 +565,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
           <ScrollHeading
             as="h3"
             delay={0.08}
-            className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-extrabold tracking-tight text-stone-900 text-center leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 text-center leading-tight"
           >
             Program Duration &amp;{' '}
             <span className="text-gradient-title font-medium">
@@ -575,7 +575,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
 
           {/* Centered Subtitle */}
           <ScrollAction delay={0.14} className="mt-4 max-w-2xl mx-auto text-center px-4">
-            <p className="text-sm sm:text-base text-stone-600 font-manrope leading-relaxed">
+            <p className="text-sm sm:text-base text-stone-600 font-serif font-semibold leading-relaxed">
               Explore industry-certified undergraduate, postgraduate, and fast-track diploma specifications affiliated with{' '}
               <strong className="text-stone-900 font-semibold">Alagappa University</strong>{' '}
               designed for high-growth global careers.
@@ -622,12 +622,12 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               className="bg-white rounded-3xl border border-stone-200/90 p-7 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <h4 className="text-xl font-bold font-manrope text-stone-900">
+                <h4 className="text-xl font-serif font-semibold text-stone-900">
                   Diploma &amp; Fast-Track
                 </h4>
 
                 <div className="mt-4 mb-3 flex items-baseline">
-                  <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-manrope">
+                  <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-serif font-semibold">
                     {durationMode === 'standard' ? '1–3' : '1'}
                   </span>
                   <span className="text-stone-500 font-medium text-xs sm:text-sm ml-2">
@@ -635,7 +635,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-stone-500 font-manrope leading-relaxed min-h-[40px]">
+                <p className="text-xs sm:text-sm text-stone-500 font-serif font-semibold leading-relaxed min-h-[40px]">
                   Ideal for 10th &amp; 12th pass students seeking immediate vocational readiness and DGCA/industrial credentials.
                 </p>
 
@@ -649,49 +649,49 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 </button>
 
                 <div className="mt-8 pt-6 border-t border-stone-100 space-y-3">
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>10th Std / SSLC or 12th Std (HSC) Pass</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>Fire &amp; Industrial Safety Operations (1 &amp; 3 Yrs)</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>Shipping, Logistics &amp; Cargo Operations (1 Yr)</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>Aviation Ground Operations &amp; Pilot Ground School</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>DGCA Simulator Flight Training Lab Access</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>Direct Airport &amp; Seaport Apprenticeship Pipeline</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
@@ -714,12 +714,12 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
 
               <div className="p-7 sm:p-8 flex flex-col justify-between flex-1">
                 <div>
-                  <h4 className="text-xl font-bold font-manrope text-stone-900">
+                  <h4 className="text-xl font-serif font-semibold text-stone-900">
                     Undergraduate Degrees (UG)
                   </h4>
 
                   <div className="mt-4 mb-3 flex items-baseline">
-                    <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-manrope">
+                    <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-serif font-semibold">
                       {durationMode === 'standard' ? '3' : '2'}
                     </span>
                     <span className="text-stone-500 font-medium text-xs sm:text-sm ml-2">
@@ -727,7 +727,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-stone-500 font-manrope leading-relaxed min-h-[40px]">
+                  <p className="text-xs sm:text-sm text-stone-500 font-serif font-semibold leading-relaxed min-h-[40px]">
                     Flagship bachelor curricula affiliated with Alagappa University for high-demand corporate and technical careers.
                   </p>
 
@@ -741,56 +741,56 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   </button>
 
                   <div className="mt-8 pt-6 border-t border-orange-100 space-y-3">
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>12th Std (HSC) Pass in Any Stream / Group</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span className="font-semibold text-stone-900">Conferred by Alagappa University</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>B.Sc. Aviation &amp; BBA Airline Management</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>B.Sc. Fire &amp; Industrial Safety (LE Available)</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>BBA Shipping &amp; Logistics Management</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>Integrated B.Com + CA / CMA / CS / ACCA (UK)</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
                       <span>B.Sc. Artificial Intelligence &amp; Analytics</span>
                     </div>
 
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-manrope leading-relaxed">
+                    <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 font-serif font-semibold leading-relaxed">
                       <div className="w-4 h-4 rounded-full border border-orange-400 bg-orange-50 text-orange-600 shrink-0 mt-0.5 flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                       </div>
@@ -810,12 +810,12 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
               className="bg-white rounded-3xl border border-stone-200/90 p-7 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <h4 className="text-xl font-bold font-manrope text-stone-900">
+                <h4 className="text-xl font-serif font-semibold text-stone-900">
                   Postgraduate &amp; MBA (PG)
                 </h4>
 
                 <div className="mt-4 mb-3 flex items-baseline">
-                  <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-manrope">
+                  <span className="text-5xl sm:text-6xl font-extrabold text-stone-900 tracking-tight font-serif font-semibold">
                     {durationMode === 'standard' ? '2' : '1'}
                   </span>
                   <span className="text-stone-500 font-medium text-xs sm:text-sm ml-2">
@@ -823,7 +823,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-stone-500 font-manrope leading-relaxed min-h-[40px]">
+                <p className="text-xs sm:text-sm text-stone-500 font-serif font-semibold leading-relaxed min-h-[40px]">
                   Master's degree curricula for graduates and professionals targeting corporate leadership and industrial oversight.
                 </p>
 
@@ -837,56 +837,56 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                 </button>
 
                 <div className="mt-8 pt-6 border-t border-stone-100 space-y-3">
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>Any Recognized Undergraduate Degree (UG)</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span className="font-semibold text-stone-900">Conferred by Alagappa University</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>MBA Business Analytics &amp; Quantitative BI</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>MBA Airline, Airport &amp; Aviation Operations</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>MBA Shipping &amp; Global Port Logistics</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>M.Sc. Industrial Safety &amp; Hygiene (B.E./B.Sc.)</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
                     <span>1 Major Project + 2 Capstone Mini-Projects</span>
                   </div>
 
-                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-manrope leading-relaxed">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 font-serif font-semibold leading-relaxed">
                     <div className="w-4 h-4 rounded-full border border-stone-300 text-stone-500 shrink-0 mt-0.5 flex items-center justify-center">
                       <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                     </div>
@@ -905,7 +905,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                   <Table className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm text-stone-900 font-manrope">
+                  <h4 className="font-bold text-sm text-stone-900 font-serif font-semibold">
                     Detailed Department-by-Department Matrix
                   </h4>
                   <p className="text-xs text-stone-500">
@@ -966,7 +966,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                             <th className="py-4 px-5 text-right">Apply</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-stone-200/80 font-manrope">
+                        <tbody className="divide-y divide-stone-200/80 font-serif font-semibold">
                           {PROGRAM_MATRIX.filter((row) => {
                             if (!matrixFilter.trim()) return true;
                             const q = matrixFilter.toLowerCase();

@@ -63,7 +63,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
     <section
       ref={sectionRef}
       id="admissions-process"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope py-20 sm:py-24 lg:py-32 select-none border-b border-stone-200/90"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-serif font-semibold py-20 sm:py-24 lg:py-32 select-none border-b border-stone-200/90"
     >
       {/* Anchor alias for #admissions */}
       <div id="admissions" className="absolute -top-24 pointer-events-none" />
@@ -110,10 +110,10 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* Left: ADMISSIONS PROCESS | Right: 2026–2027 Session       */}
         {/* ========================================================= */}
         <div className="flex items-center justify-between pb-3.5 border-b border-stone-200/90 mb-8 sm:mb-10">
-          <span className="text-xs sm:text-sm font-inter uppercase tracking-widest text-stone-500 font-bold">
+          <span className="text-xs sm:text-sm font-sans uppercase tracking-widest text-stone-500 font-bold">
             Admissions Process
           </span>
-          <span className="text-xs sm:text-sm font-inter font-bold text-amber-800">
+          <span className="text-xs sm:text-sm font-sans font-bold text-amber-800">
             2026–2027 Session
           </span>
         </div>
@@ -129,7 +129,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
             </span>
           </ScrollEyebrow>
 
-          <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
+          <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight">
             Your Step-by-Step Pathway to{' '}
             <span className="text-gradient-title font-medium">
               ASET Excellence
@@ -140,7 +140,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
             From eligibility verification to official enrollment confirmation, our streamlined admission journey ensures personal academic mentorship and career-aligned guidance every step of the way.
           </ScrollParagraph>
 
-          <ScrollAction delay={0.28} className="pt-1.5 flex flex-wrap items-center justify-center gap-4 text-xs font-inter text-stone-600">
+          <ScrollAction delay={0.28} className="pt-1.5 flex flex-wrap items-center justify-center gap-4 text-xs font-sans text-stone-600">
             <div className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span className="font-medium">Academically Supported by Alagappa University</span>
@@ -255,28 +255,28 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
                       <div className="flex items-center justify-between pb-2.5 border-b border-stone-100 mb-2.5 gap-2 flex-wrap">
                         <div className="flex items-center gap-2">
                           <span
-                            className={`font-manrope text-lg sm:text-xl md:text-2xl font-black tracking-tight whitespace-nowrap ${isCurrent ? 'text-red-700' : 'text-stone-900'
+                            className={`font-serif font-semibold text-lg sm:text-xl md:text-2xl font-black tracking-tight whitespace-nowrap ${isCurrent ? 'text-red-700' : 'text-stone-900'
                               }`}
                           >
                             {step.step}
                           </span>
-                          <span className="text-[9px] sm:text-[10px] font-inter uppercase tracking-wider px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold border border-stone-200/80 whitespace-nowrap">
+                          <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-wider px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold border border-stone-200/80 whitespace-nowrap">
                             Milestone 0{idx + 1}
                           </span>
                         </div>
 
                         {isCurrent ? (
-                          <span className="text-[11px] sm:text-xs font-inter font-bold text-red-700 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-50 border border-red-200/70 whitespace-nowrap">
+                          <span className="text-[11px] sm:text-xs font-sans font-bold text-red-700 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-50 border border-red-200/70 whitespace-nowrap">
                             <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
                             <span>Active Step</span>
                           </span>
                         ) : isPassed ? (
-                          <span className="text-[11px] sm:text-xs font-inter font-semibold text-emerald-700 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/70 whitespace-nowrap">
+                          <span className="text-[11px] sm:text-xs font-sans font-semibold text-emerald-700 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/70 whitespace-nowrap">
                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                             <span>Completed</span>
                           </span>
                         ) : (
-                          <span className="text-[11px] sm:text-xs font-inter font-medium text-stone-400 px-2 py-0.5 rounded-full bg-stone-50 border border-stone-200/60 whitespace-nowrap">
+                          <span className="text-[11px] sm:text-xs font-sans font-medium text-stone-400 px-2 py-0.5 rounded-full bg-stone-50 border border-stone-200/60 whitespace-nowrap">
                             Upcoming
                           </span>
                         )}
@@ -284,7 +284,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
 
                       {/* Title & Summary */}
                       <div className="space-y-1 mb-2.5">
-                        <h3 className="text-base sm:text-lg md:text-xl font-manrope font-bold text-stone-900 tracking-tight leading-snug">
+                        <h3 className="text-base sm:text-lg md:text-xl font-serif font-semibold text-stone-900 tracking-tight leading-snug">
                           {step.title}
                         </h3>
                         <p className="text-xs sm:text-[13px] md:text-sm text-stone-600 leading-relaxed font-sans">
@@ -293,7 +293,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
                       </div>
 
                       {/* Highlighted Note Alert Banner */}
-                      <div className="px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-amber-50/80 border-l-[3px] border-amber-600 text-[11px] sm:text-xs text-stone-700 font-inter flex items-baseline gap-1.5 leading-relaxed">
+                      <div className="px-3 py-2 sm:px-3.5 sm:py-2 rounded-lg bg-amber-50/80 border-l-[3px] border-amber-600 text-[11px] sm:text-xs text-stone-700 font-sans flex items-baseline gap-1.5 leading-relaxed">
                         <strong className="text-amber-800 font-bold uppercase tracking-wider text-[10px] shrink-0">
                           Note:
                         </strong>
@@ -305,13 +305,13 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
                         <div className="pt-3 mt-3 border-t border-stone-100 flex flex-wrap items-center justify-between gap-2.5">
                           <button
                             onClick={onOpenAdmissions}
-                            className="group inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#a8161e] via-[#dc2626] to-[#a8161e] hover:from-[#dc2626] hover:to-[#ef4444] text-white text-xs font-inter font-bold shadow-md shadow-red-900/15 hover:scale-102 active:scale-98 transition-all cursor-pointer"
+                            className="group inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#a8161e] via-[#dc2626] to-[#a8161e] hover:from-[#dc2626] hover:to-[#ef4444] text-white text-xs font-sans font-bold shadow-md shadow-red-900/15 hover:scale-102 active:scale-98 transition-all cursor-pointer"
                           >
                             <Sparkles className="w-3 h-3 text-amber-300 animate-pulse" />
                             <span>Apply for 2026–2027 Batch</span>
                             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                           </button>
-                          <span className="text-[11px] sm:text-xs font-inter text-stone-500">
+                          <span className="text-[11px] sm:text-xs font-sans text-stone-500">
                             Supported by Alagappa University
                           </span>
                         </div>
@@ -329,7 +329,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* ========================================================= */}
         <div className="mt-14 sm:mt-18 text-center p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-red-50/70 via-white to-amber-50/70 border border-stone-200 max-w-3xl mx-auto shadow-sm">
           <div className="space-y-2.5">
-            <h4 className="text-xl sm:text-2xl md:text-3xl font-manrope font-extrabold text-stone-900">
+            <h4 className="text-xl sm:text-2xl md:text-3xl font-serif font-semibold text-stone-900">
               Ready to Begin Your Admissions Journey?
             </h4>
             <p className="text-xs sm:text-sm text-stone-600 max-w-xl mx-auto font-sans leading-relaxed">
@@ -338,13 +338,13 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={onOpenAdmissions}
-                className="group inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#a8161e] to-[#7f1d1d] hover:from-[#dc2626] hover:to-[#991b1b] text-white text-xs sm:text-sm font-inter font-bold shadow-md shadow-red-900/20 hover:scale-102 active:scale-98 transition-all cursor-pointer"
+                className="group inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#a8161e] to-[#7f1d1d] hover:from-[#dc2626] hover:to-[#991b1b] text-white text-xs sm:text-sm font-sans font-bold shadow-md shadow-red-900/20 hover:scale-102 active:scale-98 transition-all cursor-pointer"
               >
                 <span>Start Application for 2026–2027</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-            <div className="pt-1 text-[11px] sm:text-xs font-inter text-stone-500">
+            <div className="pt-1 text-[11px] sm:text-xs font-sans text-stone-500">
               Academically supported by Alagappa University · Campuses in Chennai &amp; Coimbatore
             </div>
           </div>

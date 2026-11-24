@@ -1,33 +1,40 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------
- * 1. NewGrotesk Font Declarations
- * Architectural Display Neo-Grotesque Typography
- * Designed for High-Impact Titles, Monumental Headings & Banners
+ * Suisse Int'l Font Family Declarations
+ * Primary Typeface: Suisse Int'l Book (and full Suisse Int'l family)
+ * Weights:
+ * - Book / Regular (400)
+ * - Medium (500)
+ * - SemiBold (600)
+ * - Bold (700)
  * ----------------------------------------------------------- */
 
-/* Regular (400) */
+/* Book (400) - Primary Body & Text */
 @font-face {
-  font-family: 'NewGrotesk';
-  src: local('NewGrotesk Regular'),
-    local('New Grotesk Regular'),
-    local('EuropaGroNr2SHOP-Med'),
-    local('Europa-Grotesk'),
-    url('/fonts/NewGrotesk-Regular.woff2') format('woff2'),
-    url('/fonts/Europa-Grotesk.woff2') format('woff2');
+  font-family: "Suisse Int'l Book";
+  src: url('/fonts/SuisseIntl-Book.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-Book.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'New Grotesk';
-  src: local('NewGrotesk Regular'),
-    local('New Grotesk Regular'),
-    local('EuropaGroNr2SHOP-Med'),
-    local('Europa-Grotesk'),
-    url('/fonts/NewGrotesk-Regular.woff2') format('woff2'),
-    url('/fonts/Europa-Grotesk.woff2') format('woff2');
+  font-family: "Suisse Int'l";
+  src: url('/fonts/SuisseIntl-Book.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-Regular.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SuisseIntl";
+  src: url('/fonts/SuisseIntl-Book.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-Regular.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-Book.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -35,157 +42,52 @@
 
 /* Medium (500) */
 @font-face {
-  font-family: 'NewGrotesk';
-  src: local('NewGrotesk Medium'),
-    local('New Grotesk Medium'),
-    local('EuropaGroNr2SHOP-Med'),
-    local('Europa-Grotesk'),
-    url('/fonts/NewGrotesk-Medium.woff2') format('woff2'),
-    url('/fonts/Europa-Grotesk.woff2') format('woff2');
+  font-family: "Suisse Int'l Book";
+  src: url('/fonts/SuisseIntl-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'New Grotesk';
-  src: local('NewGrotesk Medium'),
-    local('New Grotesk Medium'),
-    local('EuropaGroNr2SHOP-Med'),
-    local('Europa-Grotesk'),
-    url('/fonts/NewGrotesk-Medium.woff2') format('woff2'),
-    url('/fonts/Europa-Grotesk.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Bold (700) */
-@font-face {
-  font-family: 'NewGrotesk';
-  src: local('NewGrotesk Bold'),
-    local('New Grotesk Bold'),
-    local('EuropaGroNr2SHOP-Med'),
-    local('Europa-Grotesk'),
-    url('/fonts/NewGrotesk-Bold.woff2') format('woff2'),
-    url('/fonts/Europa-Grotesk.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'New Grotesk';
-  src: local('NewGrotesk Bold'),
-    local('New Grotesk Bold'),
-    local('EuropaGroNr2SHOP-Med'),
-    local('Europa-Grotesk'),
-    url('/fonts/NewGrotesk-Bold.woff2') format('woff2'),
-    url('/fonts/Europa-Grotesk.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* -------------------------------------------------------------
- * 2. Apple San Francisco (SF Pro) Font Declarations
- * Native High-Precision Apple System Interface Typography
- * Weights: Light (300), Regular (400), Medium (500), Semibold (600), Bold (700)
- * ----------------------------------------------------------- */
-
-/* Light (300) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Light'),
-    local('SF Pro Text Light'),
-    local('SFProDisplay-Light'),
-    url('/fonts/SF-Pro-Text-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Light'),
-    local('SFProDisplay-Light'),
-    url('/fonts/SF-Pro-Text-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Regular (400) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Regular'),
-    local('SF Pro Text Regular'),
-    local('SFProDisplay-Regular'),
-    local('SF Pro'),
-    url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Regular'),
-    local('SFProDisplay-Regular'),
-    local('SF Pro'),
-    url('/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Medium (500) */
-@font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Medium'),
-    local('SF Pro Text Medium'),
-    local('SFProDisplay-Medium'),
-    url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
+  font-family: "Suisse Int'l";
+  src: url('/fonts/SuisseIntl-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Medium'),
-    local('SFProDisplay-Medium'),
-    url('/fonts/SF-Pro-Display-Medium.woff2') format('woff2');
+  font-family: "SuisseIntl";
+  src: url('/fonts/SuisseIntl-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
-/* Semibold (600) */
+/* SemiBold (600) */
 @font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Semibold'),
-    local('SF Pro Text Semibold'),
-    local('SFProDisplay-Semibold'),
-    url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
+  font-family: "Suisse Int'l Book";
+  src: url('/fonts/SuisseIntl-SemiBold.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Semibold'),
-    local('SFProDisplay-Semibold'),
-    url('/fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
+  font-family: "Suisse Int'l";
+  src: url('/fonts/SuisseIntl-SemiBold.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SuisseIntl";
+  src: url('/fonts/SuisseIntl-SemiBold.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -193,122 +95,27 @@
 
 /* Bold (700) */
 @font-face {
-  font-family: 'San Francisco';
-  src: local('-apple-system'),
-    local('SF Pro Display Bold'),
-    local('SF Pro Text Bold'),
-    local('SFProDisplay-Bold'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+  font-family: "Suisse Int'l Book";
+  src: url('/fonts/SuisseIntl-Bold.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-SemiBold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: local('-apple-system'),
-    local('SF Pro Display Bold'),
-    local('SFProDisplay-Bold'),
-    url('/fonts/SF-Pro-Display-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* -------------------------------------------------------------
- * 3. Neue Montreal (PP Neue Montreal) Font Declarations
- * Modern Swiss Grotesque Typography by Pangram Pangram
- * Designed for High-Readability Narrative Paragraphs & Body Text
- * Weights: Regular (400), Medium (500), Bold (700)
- * ----------------------------------------------------------- */
-
-/* Regular (400) */
-@font-face {
-  font-family: 'Neue Montreal';
-  src: local('Neue Montreal'),
-    local('PP Neue Montreal'),
-    local('PPNeueMontreal-Regular'),
-    url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PP Neue Montreal';
-  src: local('PP Neue Montreal'),
-    local('Neue Montreal'),
-    local('PPNeueMontreal-Regular'),
-    url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Medium (500) */
-@font-face {
-  font-family: 'Neue Montreal';
-  src: local('Neue Montreal Medium'),
-    local('PP Neue Montreal Medium'),
-    local('PPNeueMontreal-Medium'),
-    url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PP Neue Montreal';
-  src: local('PP Neue Montreal Medium'),
-    local('Neue Montreal Medium'),
-    local('PPNeueMontreal-Medium'),
-    url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Semibold (600) mapped to Bold */
-@font-face {
-  font-family: 'Neue Montreal';
-  src: local('Neue Montreal Bold'),
-    local('PP Neue Montreal Bold'),
-    local('PPNeueMontreal-Bold'),
-    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PP Neue Montreal';
-  src: local('PP Neue Montreal Bold'),
-    local('Neue Montreal Bold'),
-    local('PPNeueMontreal-Bold'),
-    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Bold (700) */
-@font-face {
-  font-family: 'Neue Montreal';
-  src: local('Neue Montreal Bold'),
-    local('PP Neue Montreal Bold'),
-    local('PPNeueMontreal-Bold'),
-    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-family: "Suisse Int'l";
+  src: url('/fonts/SuisseIntl-Bold.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-SemiBold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'PP Neue Montreal';
-  src: local('PP Neue Montreal Bold'),
-    local('Neue Montreal Bold'),
-    local('PPNeueMontreal-Bold'),
-    url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-family: "SuisseIntl";
+  src: url('/fonts/SuisseIntl-Bold.woff2') format('woff2'),
+       url('/fonts/SuisseIntl-SemiBold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -317,69 +124,64 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Title & Display: NewGrotesk with San Francisco and Neue Montreal fallbacks */
-  --font-title: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-newgrotesk: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Unified Suisse Int'l typography mapping */
+  --font-sans: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-title: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-paragraph: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Suisse Int'l Book", "Suisse Int'l", monospace;
 
-  /* Body & Paragraph: Neue Montreal with San Francisco fallbacks */
-  --font-body: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", "SF Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-paragraph: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", "SF Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-neuemontreal: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", "SF Pro", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* UI, System, & Navigation: San Francisco with Neue Montreal fallbacks */
-  --font-sans: "San Francisco", "SF Pro Display", "SF Pro Text", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sf: "San Francisco", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "San Francisco", "SF Pro Text", ui-sans-serif, system-ui, monospace;
-  --font-inter: "San Francisco", "SF Pro Display", "Neue Montreal", sans-serif;
-  --font-manrope: "San Francisco", "SF Pro Display", "Neue Montreal", sans-serif;
-  --font-lausanne: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-  --font-roobert: "San Francisco", "SF Pro Display", "Neue Montreal", sans-serif;
-
-  /* Map all legacy serif / accent aliases to NewGrotesk & San Francisco */
-  --font-serif: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-  --font-season: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-  --font-editorial: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-  --font-baskerville: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
+  /* Aliases pointing directly to Suisse Int'l Book */
+  --font-manrope: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-newgrotesk: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-neuemontreal: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-inter: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-sf: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-lausanne: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-roobert: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-monument: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-season: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-editorial: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+  --font-baskerville: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
 }
 
 @layer base {
   :root {
-    --font-title: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
-    --font-heading: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
-    --font-display: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
-    --font-newgrotesk: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-title: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-display: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-paragraph: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "Suisse Int'l Book", "Suisse Int'l", monospace;
 
-    --font-body: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
-    --font-paragraph: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
-    --font-neuemontreal: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
-
-    --font-sans: "San Francisco", "SF Pro Display", "SF Pro Text", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
-    --font-sf: "San Francisco", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: "San Francisco", "SF Pro Text", ui-sans-serif, system-ui, monospace;
-    --font-inter: "San Francisco", "SF Pro Display", "Neue Montreal", sans-serif;
-    --font-manrope: "San Francisco", "SF Pro Display", "Neue Montreal", sans-serif;
-    --font-lausanne: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-    --font-roobert: "San Francisco", "SF Pro Display", "Neue Montreal", sans-serif;
-    --font-monument: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-
-    --font-serif: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-    --font-season: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-    --font-editorial: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
-    --font-baskerville: "NewGrotesk", "San Francisco", "Neue Montreal", sans-serif;
+    --font-manrope: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-newgrotesk: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-neuemontreal: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-inter: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-sf: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-lausanne: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-roobert: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-monument: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-season: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-editorial: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
+    --font-baskerville: "Suisse Int'l Book", "Suisse Int'l", sans-serif;
   }
 
   html {
     scroll-padding-top: 84px;
-    font-family: "San Francisco", "SF Pro Display", "SF Pro Text", "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   body {
-    font-family: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
     background-color: #faf8f5;
     color: #1c1917;
@@ -400,43 +202,65 @@
     overscroll-behavior: contain;
   }
 
-  /* All titles and headings strictly use NewGrotesk with San Francisco and Neue Montreal fallbacks */
+  /* Headings: Suisse Int'l Book (Tight optical tracking, clean high impact) */
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
-    font-family: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1.12;
+  h6,
+  .hero-heading,
+  .section-heading {
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif !important;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
   }
 
-  /* All paragraphs and general narrative strictly use Neue Montreal */
-  p {
-    font-family: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif !important;
-    font-weight: 400;
+  /* Paragraph: Suisse Int'l Book (Weight: 400, optimal line-height & tracking) */
+  p,
+  .paragraph-text {
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif !important;
+    font-weight: 400 !important;
     line-height: 1.625;
+    letter-spacing: -0.008em;
+  }
+
+  /* Navigation: Suisse Int'l Book (Weight: 500/600) */
+  nav,
+  nav a,
+  nav button,
+  nav span,
+  .nav-item,
+  .nav-link,
+  header nav,
+  header a,
+  header button,
+  [role="navigation"],
+  [role="navigation"] * {
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif !important;
     letter-spacing: -0.01em;
   }
 
-  /* UI controls, buttons, inputs, tags, and labels use San Francisco */
-  span,
-  a,
-  li,
+  /* Buttons: Suisse Int'l Book */
   button,
+  .btn,
+  [role="button"] {
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif !important;
+    letter-spacing: -0.01em;
+  }
+
+  /* Universal inputs, textareas, labels */
   input,
   textarea,
   select,
   label {
-    font-family: "San Francisco", "SF Pro Display", "SF Pro Text", "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif;
   }
 }
 
 /* -------------------------------------------------------------
- * Weight Normalizers & Italic Removal:
- * Balanced 400-500 typography hierarchy and strictly non-italic
+ * Typography Normalizers & Classes:
+ * Unified Suisse Int'l Book
  * ----------------------------------------------------------- */
 *,
 *::before,
@@ -455,61 +279,33 @@ address,
   font-style: normal !important;
 }
 
-.font-light,
-.font-thin,
-[class*="font-light"],
-[class*="font-thin"] {
-  font-weight: 400 !important;
-}
-
-.font-black {
-  font-weight: 500 !important;
-}
-
-.font-extrabold {
-  font-weight: 600 !important;
-}
-
-/* NewGrotesk Title & Heading Typography Utilities */
+/* Headings font classes -> Suisse Int'l Book */
+.font-serif,
 .font-title,
 .font-heading,
 .font-display,
+.font-manrope,
 .font-newgrotesk,
+.font-lausanne,
+.font-monument,
 .font-season,
-.font-serif,
 .font-editorial,
 .font-baskerville,
 .font-serif-display {
-  font-family: "NewGrotesk", "New Grotesk", "Europa-Grotesk", "San Francisco", "SF Pro Display", "Neue Montreal", "PP Neue Montreal", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-weight: 500 !important;
-  letter-spacing: -0.025em !important;
+  font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif !important;
+  letter-spacing: -0.02em;
 }
 
-/* Neue Montreal Body & Paragraph Typography Utilities */
+/* Paragraph and UI font classes -> Suisse Int'l Book */
+.font-sans,
 .font-body,
 .font-paragraph,
-.font-neuemontreal {
-  font-family: "Neue Montreal", "PP Neue Montreal", "San Francisco", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.01em !important;
-}
-
-/* San Francisco Universal UI Typography Utilities */
-.font-sans,
+.font-neuemontreal,
 .font-sf,
 .font-neue,
-.font-manrope,
-.font-lausanne,
-.font-roobert,
 .font-inter,
-.font-monument,
-.font-mono,
-[class*="font-mono"],
-code,
-kbd,
-samp,
-pre {
-  font-family: "San Francisco", "SF Pro Display", "SF Pro Text", "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, sans-serif !important;
+.font-roobert {
+  font-family: "Suisse Int'l Book", "Suisse Int'l", "SuisseIntl", sans-serif !important;
 }
 
 /* -------------------------------------------------------------
@@ -522,6 +318,9 @@ pre {
   -webkit-text-fill-color: transparent;
   color: #ea580c;
   display: inline-block;
+  max-width: 100%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .text-gradient-accent {
@@ -531,13 +330,20 @@ pre {
   -webkit-text-fill-color: transparent;
   color: #ea580c;
   display: inline-block;
+  max-width: 100%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .text-gradient-copper {
   background: linear-gradient(135deg, #ea580c 0%, #f97316 45%, #e1144b 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  max-width: 100%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* -------------------------------------------------------------

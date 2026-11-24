@@ -119,7 +119,7 @@ export const OurDifferenceSection: React.FC = () => {
       {/* STICKY SCREEN CONTAINER: Pinned fixed viewport during      */}
       {/* scroll while items transition with fluid kinetic animation */}
       {/* ========================================================= */}
-      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[#faf8f5] border-b border-stone-200/90 text-stone-900 font-manrope">
+      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[#faf8f5] border-b border-stone-200/90 text-stone-900 font-serif font-semibold">
 
         {/* ======================================================= */}
         {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Glow     */}

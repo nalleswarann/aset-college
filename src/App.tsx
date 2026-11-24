@@ -18,14 +18,128 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CurriculumModal } from './components/CurriculumModal';
 import { VirtualTourModal } from './components/VirtualTourModal';
+import { ExaminationCellModal } from './components/ExaminationCellModal';
 import { AboutOverviewPage } from './components/AboutOverviewPage';
+import { CampusOverviewPage } from './components/CampusOverviewPage';
+import { CampusLifeOverviewPage } from './components/CampusLifeOverviewPage';
+import { AdmissionOverviewPage } from './components/AdmissionOverviewPage';
+import { RequirementOverviewPage } from './components/RequirementOverviewPage';
+import { FeePaymentOverviewPage } from './components/FeePaymentOverviewPage';
+import { ApplyOnlineOverviewPage } from './components/ApplyOnlineOverviewPage';
+import { ExaminationCellOverviewPage } from './components/ExaminationCellOverviewPage';
 import { Department } from './types/university';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell'>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      const path = window.location.pathname.toLowerCase();
+      if (
+        hash.startsWith('#examination-cell') ||
+        hash.startsWith('#/examination-cell') ||
+        hash.startsWith('#exam-cell') ||
+        hash.startsWith('#exam') ||
+        path === '/examination-cell' ||
+        path.startsWith('/examination-cell')
+      ) {
+        return 'examination-cell';
+      }
+      if (
+        hash.startsWith('#apply-online') ||
+        hash.startsWith('#/apply-online') ||
+        hash.startsWith('#online-application') ||
+        hash.startsWith('#/online-application') ||
+        hash.startsWith('#apply') ||
+        path === '/apply-online' ||
+        path.startsWith('/apply-online') ||
+        path === '/online-application' ||
+        path.startsWith('/online-application') ||
+        path === '/admission/apply' ||
+        path.startsWith('/admission/apply')
+      ) {
+        return 'apply-online';
+      }
+      if (
+        hash.startsWith('#fee-payment') ||
+        hash.startsWith('#/fee-payment') ||
+        hash.startsWith('#mode-of-fee-payment') ||
+        hash.startsWith('#payment-overview') ||
+        path === '/fee-payment' ||
+        path.startsWith('/fee-payment') ||
+        path === '/admission/fee-payment' ||
+        path.startsWith('/admission/fee-payment')
+      ) {
+        return 'fee-payment';
+      }
+      if (
+        hash.startsWith('#requirements') ||
+        hash.startsWith('#/requirements') ||
+        hash.startsWith('#requirement') ||
+        hash.startsWith('#/requirement') ||
+        hash.startsWith('#admission/requirements') ||
+        hash.startsWith('#/admission/requirements') ||
+        path === '/requirements' ||
+        path.startsWith('/requirements') ||
+        path === '/admission/requirements' ||
+        path.startsWith('/admission/requirements')
+      ) {
+        return 'requirements';
+      }
+      if (
+        hash.startsWith('#admission') ||
+        hash.startsWith('#/admission') ||
+        hash.startsWith('#admissions') ||
+        hash.startsWith('#/admissions') ||
+        hash.startsWith('#documents-required') ||
+        hash.startsWith('#online-application') ||
+        hash.startsWith('#courses-offered') ||
+        path === '/admission' ||
+        path.startsWith('/admission') ||
+        path === '/admissions' ||
+        path.startsWith('/admissions')
+      ) {
+        return 'admissions';
+      }
+      if (
+        hash.startsWith('#life') ||
+        hash.startsWith('#/life') ||
+        hash.startsWith('#campus-life') ||
+        hash.startsWith('#life-at-aset') ||
+        hash.startsWith('#gallery') ||
+        hash.startsWith('#campus-routine') ||
+        hash.startsWith('#day-one') ||
+        path === '/campus-life' ||
+        path.startsWith('/campus-life') ||
+        path === '/life'
+      ) {
+        return 'life';
+      }
+      if (
+        hash.startsWith('#campuses') ||
+        hash.startsWith('#/campuses') ||
+        hash.startsWith('#campus') ||
+        path === '/campuses' ||
+        path.startsWith('/campuses')
+      ) {
+        return 'campuses';
+      }
+      if (
+        hash.startsWith('#about') ||
+        hash.startsWith('#/about') ||
+        hash.startsWith('#journal') ||
+        hash.startsWith('#iqac') ||
+        path === '/about' ||
+        path.startsWith('/about')
+      ) {
+        return 'about';
+      }
+    }
+    return 'home';
+  });
   const [activeSection, setActiveSection] = useState<string>('home');
   const [selectedDepartment, setSelectedDepartment] = useState<Department | null>(null);
   const [isVirtualTourOpen, setIsVirtualTourOpen] = useState(false);
+  const [isExamCellOpen, setIsExamCellOpen] = useState(false);
   const [inquiryDepartment, setInquiryDepartment] = useState<string>('');
 
   // Routing listener for hash and pathname
@@ -33,9 +147,208 @@ export default function App() {
     const handleRouteChange = () => {
       const hash = window.location.hash.toLowerCase();
       const path = window.location.pathname.toLowerCase();
+
       if (
+        hash.startsWith('#examination-cell') ||
+        hash.startsWith('#/examination-cell') ||
+        hash.startsWith('#exam-cell') ||
+        hash.startsWith('#exam') ||
+        path === '/examination-cell' ||
+        path.startsWith('/examination-cell')
+      ) {
+        setCurrentPage('examination-cell');
+        if (
+          hash &&
+          hash !== '#examination-cell' &&
+          hash !== '#/examination-cell' &&
+          hash !== '#exam-cell' &&
+          hash !== '#exam'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
+        hash.startsWith('#apply-online') ||
+        hash.startsWith('#/apply-online') ||
+        hash.startsWith('#online-application') ||
+        hash.startsWith('#/online-application') ||
+        hash.startsWith('#apply') ||
+        path === '/apply-online' ||
+        path.startsWith('/apply-online') ||
+        path === '/online-application' ||
+        path.startsWith('/online-application') ||
+        path === '/admission/apply' ||
+        path.startsWith('/admission/apply')
+      ) {
+        setCurrentPage('apply-online');
+        if (
+          hash &&
+          hash !== '#apply-online' &&
+          hash !== '#/apply-online' &&
+          hash !== '#online-application' &&
+          hash !== '#apply'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
+        hash.startsWith('#fee-payment') ||
+        hash.startsWith('#/fee-payment') ||
+        hash.startsWith('#mode-of-fee-payment') ||
+        hash.startsWith('#payment-overview') ||
+        path === '/fee-payment' ||
+        path.startsWith('/fee-payment') ||
+        path === '/admission/fee-payment' ||
+        path.startsWith('/admission/fee-payment')
+      ) {
+        setCurrentPage('fee-payment');
+        if (
+          hash &&
+          hash !== '#fee-payment' &&
+          hash !== '#/fee-payment' &&
+          hash !== '#mode-of-fee-payment' &&
+          hash !== '#payment-overview'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
+        hash.startsWith('#requirements') ||
+        hash.startsWith('#/requirements') ||
+        hash.startsWith('#requirement') ||
+        hash.startsWith('#/requirement') ||
+        hash.startsWith('#admission/requirements') ||
+        hash.startsWith('#/admission/requirements') ||
+        path === '/requirements' ||
+        path.startsWith('/requirements') ||
+        path === '/admission/requirements' ||
+        path.startsWith('/admission/requirements')
+      ) {
+        setCurrentPage('requirements');
+        if (
+          hash &&
+          hash !== '#requirements' &&
+          hash !== '#requirements-overview' &&
+          hash !== '#requirement' &&
+          hash !== '#/requirements'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
+        hash.startsWith('#admission') ||
+        hash.startsWith('#/admission') ||
+        hash.startsWith('#admissions') ||
+        hash.startsWith('#/admissions') ||
+        hash.startsWith('#documents-required') ||
+        hash.startsWith('#fee-payment') ||
+        hash.startsWith('#online-application') ||
+        hash.startsWith('#courses-offered') ||
+        path === '/admission' ||
+        path.startsWith('/admission') ||
+        path === '/admissions' ||
+        path.startsWith('/admissions')
+      ) {
+        setCurrentPage('admissions');
+        if (
+          hash &&
+          hash !== '#admission' &&
+          hash !== '#admissions' &&
+          hash !== '#admission-overview' &&
+          hash !== '#/admission' &&
+          hash !== '#/admissions'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
+        hash.startsWith('#life') ||
+        hash.startsWith('#/life') ||
+        hash.startsWith('#campus-life') ||
+        hash.startsWith('#life-at-aset') ||
+        hash.startsWith('#gallery') ||
+        hash.startsWith('#campus-routine') ||
+        hash.startsWith('#day-one') ||
+        path === '/campus-life' ||
+        path.startsWith('/campus-life') ||
+        path === '/life'
+      ) {
+        setCurrentPage('life');
+        if (
+          hash &&
+          hash !== '#life' &&
+          hash !== '#life-overview' &&
+          hash !== '#campus-life' &&
+          hash !== '#life-at-aset'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
+        hash.startsWith('#campuses') ||
+        hash.startsWith('#/campuses') ||
+        hash.startsWith('#campus') ||
+        path === '/campuses' ||
+        path.startsWith('/campuses')
+      ) {
+        setCurrentPage('campuses');
+        if (
+          hash &&
+          hash !== '#campuses' &&
+          hash !== '#campuses-overview' &&
+          hash !== '#campus-overview' &&
+          hash !== '#/campuses'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
         hash.startsWith('#about') ||
         hash.startsWith('#/about') ||
+        hash.startsWith('#journal') ||
+        hash.startsWith('#iqac') ||
         path === '/about' ||
         path.startsWith('/about')
       ) {
@@ -57,6 +370,14 @@ export default function App() {
         }
       } else {
         setCurrentPage('home');
+        if (hash && hash !== '#home') {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        }
       }
     };
 
@@ -68,6 +389,150 @@ export default function App() {
       window.removeEventListener('popstate', handleRouteChange);
     };
   }, []);
+
+  const handleNavigateToApplyOnline = (targetHash: string = '#apply-online') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('apply-online');
+    if (
+      targetHash &&
+      targetHash !== '#apply-online' &&
+      targetHash !== '#/apply-online' &&
+      targetHash !== '#online-application' &&
+      targetHash !== '#apply'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToExamCell = (targetHash: string = '#examination-cell') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('examination-cell');
+    if (
+      targetHash &&
+      targetHash !== '#examination-cell' &&
+      targetHash !== '#/examination-cell' &&
+      targetHash !== '#exam-cell' &&
+      targetHash !== '#exam'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToFeePayment = (targetHash: string = '#fee-payment') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('fee-payment');
+    if (
+      targetHash &&
+      targetHash !== '#fee-payment' &&
+      targetHash !== '#/fee-payment' &&
+      targetHash !== '#mode-of-fee-payment' &&
+      targetHash !== '#payment-overview'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToRequirements = (targetHash: string = '#requirements-overview') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('requirements');
+    if (
+      targetHash &&
+      targetHash !== '#requirements' &&
+      targetHash !== '#requirements-overview' &&
+      targetHash !== '#requirement' &&
+      targetHash !== '#/requirements'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToAdmissions = (targetHash: string = '#admission-overview') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('admissions');
+    if (
+      targetHash &&
+      targetHash !== '#admission' &&
+      targetHash !== '#admissions' &&
+      targetHash !== '#admission-overview'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToLife = (targetHash: string = '#life-overview') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('life');
+    if (
+      targetHash &&
+      targetHash !== '#life' &&
+      targetHash !== '#life-overview' &&
+      targetHash !== '#campus-life'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNavigateToCampuses = (targetHash: string = '#campuses-overview') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('campuses');
+    if (
+      targetHash &&
+      targetHash !== '#campuses' &&
+      targetHash !== '#campuses-overview' &&
+      targetHash !== '#campus-overview'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleNavigateToAbout = (targetHash: string = '#about-overview') => {
     window.history.pushState(null, '', targetHash);
@@ -159,22 +624,108 @@ export default function App() {
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen bg-[#faf8f5] text-stone-900 selection:bg-amber-800 selection:text-white flex flex-col font-body">
-        {/* Top Bar Navigation (Always present on both Home and About pages) */}
+        {/* Top Bar Navigation (Always present across Home, About, Campus, and Life pages) */}
         <Navbar
           onOpenAdmissions={handleOpenAdmissions}
           onExploreDepartments={handleExploreDepartments}
           onNavigateToAbout={handleNavigateToAbout}
+          onNavigateToCampuses={handleNavigateToCampuses}
+          onNavigateToLife={handleNavigateToLife}
+          onNavigateToAdmissions={handleNavigateToAdmissions}
+          onNavigateToRequirements={handleNavigateToRequirements}
+          onNavigateToFeePayment={handleNavigateToFeePayment}
+          onNavigateToApplyOnline={handleNavigateToApplyOnline}
+          onNavigateToExamCell={handleNavigateToExamCell}
           onNavigateToHome={() => handleNavigateToHome('#home')}
+          onSelectDepartment={(dept) => {
+            if (currentPage !== 'home') {
+              handleNavigateToHome('#departments');
+            }
+            setSelectedDepartment(dept);
+          }}
+          onOpenExamCell={() => setIsExamCellOpen(true)}
           activeSection={activeSection}
           currentPage={currentPage}
         />
 
-        {/* Main Content: Home sections or Dedicated About Overview */}
+        {/* Main Content: Home sections, Dedicated About, Campuses, Campus Life, Admissions, or Requirements */}
         {currentPage === 'about' ? (
           <AboutOverviewPage
             onBackToHome={() => handleNavigateToHome('#home')}
             onOpenAdmissions={handleOpenAdmissions}
             onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+          />
+        ) : currentPage === 'campuses' ? (
+          <CampusOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToLife={handleNavigateToLife}
+          />
+        ) : currentPage === 'life' ? (
+          <CampusLifeOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+          />
+        ) : currentPage === 'admissions' ? (
+          <AdmissionOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+          />
+        ) : currentPage === 'requirements' ? (
+          <RequirementOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+            onNavigateToAdmissions={handleNavigateToAdmissions}
+            onNavigateToApplyOnline={handleNavigateToApplyOnline}
+          />
+        ) : currentPage === 'fee-payment' ? (
+          <FeePaymentOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+            onNavigateToAdmissions={handleNavigateToAdmissions}
+            onNavigateToRequirements={handleNavigateToRequirements}
+            onNavigateToApplyOnline={handleNavigateToApplyOnline}
+          />
+        ) : currentPage === 'apply-online' ? (
+          <ApplyOnlineOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+            onNavigateToAdmissions={handleNavigateToAdmissions}
+            onNavigateToRequirements={handleNavigateToRequirements}
+            onNavigateToFeePayment={handleNavigateToFeePayment}
+          />
+        ) : currentPage === 'examination-cell' ? (
+          <ExaminationCellOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+            onNavigateToAdmissions={handleNavigateToAdmissions}
+            onNavigateToRequirements={handleNavigateToRequirements}
+            onNavigateToFeePayment={handleNavigateToFeePayment}
+            onNavigateToApplyOnline={handleNavigateToApplyOnline}
           />
         ) : (
           <main className="flex-1">
@@ -245,11 +796,18 @@ export default function App() {
           </main>
         )}
 
-        {/* Institutional Footer (Always present on both Home and About pages) */}
+        {/* Institutional Footer (Always present on Home, About, Campus, Life, and Admissions pages) */}
         <Footer
           onOpenAdmissions={handleOpenAdmissions}
           onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
           onNavigateToAbout={handleNavigateToAbout}
+          onNavigateToCampuses={handleNavigateToCampuses}
+          onNavigateToLife={handleNavigateToLife}
+          onNavigateToAdmissions={handleNavigateToAdmissions}
+          onNavigateToRequirements={handleNavigateToRequirements}
+          onNavigateToFeePayment={handleNavigateToFeePayment}
+          onNavigateToApplyOnline={handleNavigateToApplyOnline}
+          onNavigateToExamCell={handleNavigateToExamCell}
         />
 
         {/* Interactive Curriculum & Syllabus Modal */}
@@ -263,6 +821,12 @@ export default function App() {
         <VirtualTourModal
           isOpen={isVirtualTourOpen}
           onClose={() => setIsVirtualTourOpen(false)}
+        />
+
+        {/* Interactive Examination Cell (COE) Modal */}
+        <ExaminationCellModal
+          isOpen={isExamCellOpen}
+          onClose={() => setIsExamCellOpen(false)}
         />
       </div>
     </SmoothScrollProvider>

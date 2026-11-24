@@ -152,7 +152,7 @@ export const MissionVisionValuesSection: React.FC<MissionVisionValuesSectionProp
     <div
       ref={containerRef}
       id="mission-vision-values"
-      className="relative w-full h-[300vh] bg-[#faf8f5] text-stone-900 font-manrope select-none border-b border-stone-200/90"
+      className="relative w-full h-[300vh] bg-[#faf8f5] text-stone-900 font-serif font-semibold select-none border-b border-stone-200/90"
     >
       {/* ========================================================= */}
       {/* STICKY 100VH VIEWPORT CANVAS: Pinned during scroll scrub  */}

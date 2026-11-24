@@ -8,6 +8,7 @@ import {
   Building,
   CheckCircle2,
   ChevronDown,
+  Compass,
   Globe,
   GraduationCap,
   HeartHandshake,
@@ -72,6 +73,8 @@ interface AboutOverviewPageProps {
   onBackToHome: () => void;
   onOpenAdmissions: () => void;
   onOpenVirtualTour?: () => void;
+  onNavigateToCampuses?: (targetHash?: string) => void;
+  onNavigateToLife?: (targetHash?: string) => void;
 }
 
 /* -------------------------------------------------------------
@@ -118,6 +121,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
   onBackToHome,
   onOpenAdmissions,
   onOpenVirtualTour,
+  onNavigateToCampuses,
+  onNavigateToLife,
 }) => {
   // Leadership message tab
   const [activeLeaderTab, setActiveLeaderTab] = useState<'ceo' | 'principal' | 'director'>('ceo');
@@ -136,9 +141,6 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Active section for sticky in-page jump bar
-  const [activeSubnav, setActiveSubnav] = useState<string>('hero');
-
   const toggleFaq = (index: number) => {
     setOpenFaqIndices((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
@@ -146,7 +148,6 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
   };
 
   const scrollToSection = (id: string) => {
-    setActiveSubnav(id);
     const el = document.getElementById(id);
     if (el) {
       if (window.__lenis) {
@@ -157,36 +158,6 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
       }
     }
   };
-
-  // Scroll spy to highlight active section in subnav
-  useEffect(() => {
-    const handleScroll = () => {
-      const sectionIds = [
-        'hero',
-        'life-at-aset',
-        'about-overview',
-        'leadership',
-        'departments',
-        'flying-school',
-        'why-aset',
-        'partnerships',
-        'career-outcomes',
-        'iqac',
-        'campuses',
-        'faqs',
-      ];
-      const scrollPos = window.scrollY + 180;
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSubnav(sectionIds[i]);
-          break;
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // 16 FAQs extracted from the official document
   const faqs = [
@@ -424,24 +395,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
     },
   ];
 
-  // Section anchors for in-page navigation
-  const subnavItems = [
-    { id: 'hero', label: 'Overview' },
-    { id: 'life-at-aset', label: 'Life at ASET' },
-    { id: 'about-overview', label: 'About ASET' },
-    { id: 'leadership', label: 'Leadership' },
-    { id: 'departments', label: 'Departments' },
-    { id: 'flying-school', label: 'Flying School' },
-    { id: 'why-aset', label: 'Why ASET' },
-    { id: 'partnerships', label: 'Partnerships' },
-    { id: 'career-outcomes', label: 'Careers' },
-    { id: 'iqac', label: 'IQAC' },
-    { id: 'campuses', label: 'Campuses' },
-    { id: 'faqs', label: 'FAQs' },
-  ];
-
   return (
-    <div className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope selection:bg-amber-800 selection:text-white">
+    <div className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-sans selection:bg-amber-800 selection:text-white">
       {/* ========================================================= */}
       {/* ATMOSPHERIC BACKGROUND GLOWS (Matching home page system)   */}
       {/* ========================================================= */}
@@ -465,21 +420,21 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
       {/* ========================================================= */}
       <section
         id="hero"
-        className="relative w-full min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-between overflow-hidden pt-28 sm:pt-36 lg:pt-40 text-white select-none"
+        className="relative w-full min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-between overflow-hidden pt-28 sm:pt-36 lg:pt-40 bg-stone-950 text-white select-none"
       >
-        {/* Background Image: Architectural Campus Building with Cinematic Vignette */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        {/* Background Image: Architectural College Building with Cinematic Vignette */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <motion.img
             initial={{ scale: 1.08 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             src={heroCampusImg}
-            alt="ASET College Campus"
-            className="w-full h-full object-cover object-center brightness-95"
+            alt="ASET College Building Architecture"
+            className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-[1.08]"
           />
           {/* Filmic Cinematic Dark Overlay matching reference screenshot */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/90 pointer-events-none" />
-          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75 pointer-events-none" />
+          <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/30 to-black/80 pointer-events-none" />
         </div>
 
         {/* Center Content Stage */}
@@ -501,9 +456,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.18, ease: LUXURY_EASE }}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.12] font-serif max-w-4xl"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white tracking-tight leading-[1.08] sm:leading-[1.05] max-w-4xl"
           >
-            Good Education to Build A Better Future
+            Good Education to Build <span className="text-gradient-title font-extrabold">A Better Future</span>
           </motion.h1>
 
           {/* Subtext Paragraph matching reference structure & ASET content */}
@@ -712,40 +667,6 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
       </section>
 
       {/* ========================================================= */}
-      {/* STICKY QUICK-JUMP SECTION BAR                             */}
-      {/* Smooth horizontal navigation across all 14 document parts */}
-      {/* ========================================================= */}
-      <nav
-        aria-label="About page section navigation"
-        className="sticky top-16 sm:top-20 z-40 py-2.5 bg-[#faf8f5]/95 backdrop-blur-xl border-y border-stone-200/90 shadow-xs"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-0.5">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-stone-400 shrink-0 mr-1 hidden sm:inline">
-              Jump To:
-            </span>
-            {subnavItems.map((item) => {
-              const isActive = activeSubnav === item.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer shrink-0 ${
-                    isActive
-                      ? 'bg-stone-950 text-white shadow-sm shadow-stone-950/20'
-                      : 'bg-white hover:bg-stone-100 text-stone-700 hover:text-stone-950 border border-stone-200/80'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </nav>
-
-      {/* ========================================================= */}
       {/* 2. LIFE AT ASET (PHOTOS AND VIDEOS)                       */}
       {/* Exact Document Content with Home Page Aesthetics          */}
       {/* ========================================================= */}
@@ -762,9 +683,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
               <ScrollHeading
                 as="h2"
                 delay={0.1}
-                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+                className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
               >
-                Life at ASET: Learning Beyond the Classroom
+                Life at ASET: <span className="text-gradient-title font-medium">Learning Beyond Classroom</span>
               </ScrollHeading>
 
               <ScrollParagraph
@@ -791,6 +712,17 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                 </div>
                 <span>Watch Campus Life Video</span>
               </button>
+
+              {onNavigateToLife && (
+                <button
+                  type="button"
+                  onClick={() => onNavigateToLife('#life-overview')}
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white hover:bg-stone-100 text-stone-900 font-semibold text-xs sm:text-sm border border-stone-200 shadow-xs transition-colors cursor-pointer"
+                >
+                  <span>Explore Dedicated Campus Life Page</span>
+                  <ArrowUpRight className="w-4 h-4 text-red-700" />
+                </button>
+              )}
             </ScrollAction>
           </div>
 
@@ -969,9 +901,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Why ASET is One of South India&apos;s Top Institutions
+              Why ASET is One of <span className="text-gradient-title font-medium">South India&apos;s Top Institutions</span>
             </ScrollHeading>
 
             <ScrollParagraph
@@ -1123,9 +1055,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Guided by Experience. Driven by Purpose.
+              Guided by Experience. <span className="text-gradient-title font-medium">Driven by Purpose.</span>
             </ScrollHeading>
           </div>
 
@@ -1244,7 +1176,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
               <div className="w-10 h-10 rounded-2xl bg-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-600/30">
                 <Target className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-extrabold text-stone-950 font-manrope">
+              <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
                 Our Institutional Vision
               </h3>
               <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-sans">
@@ -1271,9 +1203,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Academic Departments at ASET
+              Academic Departments <span className="text-gradient-title font-medium">at ASET</span>
             </ScrollHeading>
             <ScrollParagraph
               delay={0.16}
@@ -1316,7 +1248,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                 <span>{departments[activeDeptTab].badge}</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-stone-950 font-manrope">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-stone-950 font-serif font-semibold">
                 {departments[activeDeptTab].title}
               </h3>
 
@@ -1395,9 +1327,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white tracking-tight"
             >
-              Pilot Training with ASET Flying School, Thoothukudi
+              Pilot Training with <span className="text-gradient-title font-medium">ASET Flying School</span>
             </ScrollHeading>
 
             <ScrollParagraph
@@ -1483,9 +1415,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Why Students Choose ASET
+              Why Students <span className="text-gradient-title font-medium">Choose ASET</span>
             </ScrollHeading>
 
             <ScrollParagraph
@@ -1523,7 +1455,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                       Pillar {pillar.num}
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-extrabold text-stone-950 mb-2 font-manrope">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-stone-950 mb-2 font-serif font-semibold">
                       {pillar.title}
                     </h3>
 
@@ -1554,9 +1486,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Partnerships, Recognition &amp; Awards
+              Partnerships, Recognition <span className="text-gradient-title font-medium">&amp; Global Awards</span>
             </ScrollHeading>
 
             <ScrollParagraph
@@ -1686,9 +1618,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Where ASET Graduates Build Careers
+              Where ASET Graduates <span className="text-gradient-title font-medium">Build Careers</span>
             </ScrollHeading>
           </div>
 
@@ -1753,32 +1685,33 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
       </section>
 
       {/* ========================================================= */}
-      {/* 10. INTERNAL QUALITY ASSURANCE CELL (IQAC)                */}
-      {/* Exact Document Content: 6 Institutional Wings             */}
+      {/* 10. INTERNAL QUALITY ASSURANCE CELL (IQAC) & JOURNAL      */}
+      {/* Exact Document Content: 6 Institutional Wings & Research  */}
       {/* ========================================================= */}
+      <div id="journal" className="scroll-mt-24" />
       <section id="iqac" className="py-20 sm:py-28 bg-[#faf8f5] border-b border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 sm:mb-14">
             <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#dc2626]" />
-              <span>SECTION 10 · QUALITY &amp; AUDIT</span>
+              <span>SECTION 10 · QUALITY, AUDIT &amp; RESEARCH JOURNAL</span>
             </ScrollEyebrow>
 
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Internal Quality Assurance Cell (IQAC)
+              Internal Quality Assurance Cell <span className="text-gradient-title font-medium">(IQAC) &amp; Research</span>
             </ScrollHeading>
 
             <ScrollParagraph
               delay={0.16}
               className="text-stone-600 text-sm sm:text-base mt-3 leading-relaxed font-sans"
             >
-              The Internal Quality Assurance Cell (IQAC) at ASET College drives a culture of continuous
-              improvement in teaching, learning and student support. It works with management, faculty,
+              The Internal Quality Assurance Cell (IQAC) at ASET College drives continuous
+              improvement in teaching, research publications, peer-reviewed journals, and student support. It works with management, faculty,
               students, alumni and industry partners to plan, monitor and review academic and
               administrative quality.
             </ScrollParagraph>
@@ -1816,10 +1749,23 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Our Campuses &amp; Facilities
+              Our Dual Campuses <span className="text-gradient-title font-medium">&amp; Facilities</span>
             </ScrollHeading>
+
+            {onNavigateToCampuses && (
+              <div className="pt-3">
+                <button
+                  type="button"
+                  onClick={() => onNavigateToCampuses('#campuses-overview')}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-red-700 hover:text-red-800 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-full border border-red-200/80 transition-colors cursor-pointer"
+                >
+                  <span>Explore Dedicated Campuses &amp; Facilities Page</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -1830,7 +1776,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                 <div className="w-10 h-10 rounded-2xl bg-stone-950 text-white flex items-center justify-center font-bold">
                   01
                 </div>
-                <h3 className="text-xl font-extrabold text-stone-950 font-manrope">
+                <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
                   Chennai Campus
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
@@ -1860,7 +1806,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                 <div className="w-10 h-10 rounded-2xl bg-stone-950 text-white flex items-center justify-center font-bold">
                   02
                 </div>
-                <h3 className="text-xl font-extrabold text-stone-950 font-manrope">
+                <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
                   Coimbatore Campus
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
@@ -1890,7 +1836,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                 <div className="w-10 h-10 rounded-2xl bg-orange-600 text-white flex items-center justify-center font-bold">
                   03
                 </div>
-                <h3 className="text-xl font-extrabold text-stone-950 font-manrope">
+                <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
                   Thoothukudi Flight Base
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
@@ -1932,9 +1878,9 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             <ScrollHeading
               as="h2"
               delay={0.1}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight font-manrope"
+              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight"
             >
-              Frequently Asked Questions
+              Frequently Asked <span className="text-gradient-title font-medium">Questions</span>
             </ScrollHeading>
 
             <ScrollParagraph
@@ -2012,7 +1958,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-orange-400 text-xs font-mono font-bold uppercase tracking-wider">
                 <span>Admissions 2026–2027 Open</span>
               </div>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-manrope">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white tracking-tight">
                 Your Career Starts Here.
               </h3>
               <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-sans">

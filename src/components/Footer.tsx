@@ -15,12 +15,26 @@ interface FooterProps {
   onOpenAdmissions: () => void;
   onOpenVirtualTour?: () => void;
   onNavigateToAbout?: (targetHash?: string) => void;
+  onNavigateToCampuses?: (targetHash?: string) => void;
+  onNavigateToLife?: (targetHash?: string) => void;
+  onNavigateToAdmissions?: (targetHash?: string) => void;
+  onNavigateToRequirements?: (targetHash?: string) => void;
+  onNavigateToFeePayment?: (targetHash?: string) => void;
+  onNavigateToApplyOnline?: (targetHash?: string) => void;
+  onNavigateToExamCell?: (targetHash?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenAdmissions,
   onOpenVirtualTour,
   onNavigateToAbout,
+  onNavigateToCampuses,
+  onNavigateToLife,
+  onNavigateToAdmissions,
+  onNavigateToRequirements,
+  onNavigateToFeePayment,
+  onNavigateToApplyOnline,
+  onNavigateToExamCell,
 }) => {
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -32,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer
       id="footer"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-manrope select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
+      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-serif font-semibold select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
     >
       {/* ========================================================= */}
       {/* SCREEN-MERGED CANVAS (#faf8f5)                            */}
@@ -93,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* COLUMN 2: EXPLORE Navigation Links                    */}
           {/* ----------------------------------------------------- */}
           <div className="col-span-1 md:col-span-4 lg:col-span-2 space-y-4">
-            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-inter uppercase tracking-wider">
+            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-serif font-semibold uppercase tracking-wider">
               EXPLORE
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700 font-sans">
@@ -115,16 +129,103 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={onOpenAdmissions}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-medium"
+                  onClick={() => {
+                    if (onNavigateToCampuses) {
+                      onNavigateToCampuses('#campuses-overview');
+                    } else {
+                      scrollTo('#campuses');
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
                 >
-                  Admission
+                  Campuses &amp; Facilities
                 </button>
               </li>
               <li>
                 <button
                   type="button"
-                  onClick={() => scrollTo('#life-at-aset')}
+                  onClick={() => {
+                    if (onNavigateToRequirements) {
+                      onNavigateToRequirements('#requirements-overview');
+                    } else if (onNavigateToAdmissions) {
+                      onNavigateToAdmissions('#documents-required');
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
+                >
+                  Admission Requirements
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigateToFeePayment) {
+                      onNavigateToFeePayment('#fee-payment');
+                    } else if (onNavigateToAdmissions) {
+                      onNavigateToAdmissions('#fee-payment');
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-orange-700"
+                >
+                  Mode of Fee Payment
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigateToApplyOnline) {
+                      onNavigateToApplyOnline('#apply-online');
+                    } else if (onNavigateToAdmissions) {
+                      onNavigateToAdmissions('#online-application');
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-rose-700"
+                >
+                  Apply Online 2026–27
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigateToExamCell) {
+                      onNavigateToExamCell('#examination-cell');
+                    } else {
+                      scrollTo('#examination-cell');
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-orange-700"
+                >
+                  Examination Cell
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigateToAdmissions) {
+                      onNavigateToAdmissions('#admission-overview');
+                    } else {
+                      onOpenAdmissions();
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
+                >
+                  Admission Guide 2026–27
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigateToLife) {
+                      onNavigateToLife('#life-overview');
+                    } else {
+                      scrollTo('#life-at-aset');
+                    }
+                  }}
                   className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
                 >
                   Student Life
@@ -182,7 +283,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* COLUMN 3: DEPARTMENTS Programs List                   */}
           {/* ----------------------------------------------------- */}
           <div className="col-span-1 md:col-span-4 lg:col-span-3 space-y-4">
-            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-inter uppercase tracking-wider">
+            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-serif font-semibold uppercase tracking-wider">
               DEPARTMENTS
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700 font-sans">
@@ -247,7 +348,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* COLUMN 4: CONNECT Social Links & Email                */}
           {/* ----------------------------------------------------- */}
           <div className="col-span-1 md:col-span-4 lg:col-span-3 space-y-4">
-            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-inter uppercase tracking-wider">
+            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-serif font-semibold uppercase tracking-wider">
               CONNECT
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700 font-sans">
@@ -294,7 +395,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li className="pt-1.5">
                 <a
                   href="mailto:contact@asetsafety.ac.in"
-                  className="text-stone-900 font-medium hover:text-red-600 transition-colors inline-flex items-center gap-1.5 text-xs sm:text-sm whitespace-nowrap"
+                  className="text-stone-900 font-semibold hover:text-red-600 transition-colors inline-flex items-center gap-1.5 text-xs sm:text-sm whitespace-nowrap"
                 >
                   <Mail className="w-3.5 h-3.5 text-stone-500 shrink-0" />
                   <span>contact@asetsafety.ac.in</span>
@@ -316,7 +417,7 @@ export const Footer: React.FC<FooterProps> = ({
             <span>
               © {new Date().getFullYear()} ASET College of Science &amp; Technology. All rights reserved.
             </span>
-            <span className="text-stone-500 font-medium">
+            <span className="text-stone-500 font-semibold">
               Academically supported by Alagappa University · Chennai &amp; Coimbatore
             </span>
           </div>

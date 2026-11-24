@@ -67,7 +67,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
               <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
               <span>ASET Academic Curriculum · 2026–2027</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-manrope font-bold text-white tracking-tight drop-shadow-md">
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white tracking-tight drop-shadow-md">
               {department.name}
             </h3>
           </div>
@@ -79,13 +79,13 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-stone-100/60 border border-stone-200 rounded-xs text-xs font-mono">
             <div>
               <span className="text-stone-500 block uppercase">Typical Duration</span>
-              <strong className="text-stone-900 text-sm font-serif">
+              <strong className="text-stone-900 text-sm font-serif font-semibold">
                 {department.durationSummary}
               </strong>
             </div>
             <div>
               <span className="text-stone-500 block uppercase">Entry Eligibility</span>
-              <strong className="text-stone-900 text-sm font-serif">
+              <strong className="text-stone-900 text-sm font-serif font-semibold">
                 {department.eligibilitySummary}
               </strong>
             </div>
@@ -147,7 +147,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
                       {course.credits}
                     </span>
                   </div>
-                  <h5 className="text-base font-serif font-bold text-stone-900">
+                  <h5 className="text-base font-serif font-semibold text-stone-900">
                     {course.title}
                   </h5>
                   <p className="text-xs text-stone-600 leading-relaxed">

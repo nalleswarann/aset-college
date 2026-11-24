@@ -51,7 +51,7 @@ export const AboutSection: React.FC = () => {
                 INSTITUTIONAL OVERVIEW &amp; RECOGNITION
               </span>
             </ScrollEyebrow>
-            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-stone-900 leading-tight">
+            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight">
               Career-Focused Higher Education Across{' '}
               <span className="text-gradient-title">Chennai &amp; Coimbatore</span>
             </ScrollHeading>
@@ -65,7 +65,7 @@ export const AboutSection: React.FC = () => {
         {/* Editorial Essay & 4 Foundational Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16 items-start">
           <div className="lg:col-span-6 space-y-6">
-            <ScrollHeading as="h3" delay={0.08} className="text-2xl font-manrope font-semibold text-stone-900">
+            <ScrollHeading as="h3" delay={0.08} className="text-2xl font-serif font-semibold font-semibold text-stone-900">
               Industry-Aligned Pathways Backed by{' '}
               <span className="text-gradient-accent font-medium">Strong Foundations</span>
             </ScrollHeading>
@@ -78,7 +78,7 @@ export const AboutSection: React.FC = () => {
 
             {/* National & International Recognition Banner */}
             <ScrollAction delay={0.3} className="p-5 bg-amber-50/70 border-l-4 border-amber-800 rounded-r-sm space-y-1.5">
-              <div className="flex items-center gap-2 text-xs font-inter uppercase tracking-widest text-amber-900 font-bold">
+              <div className="flex items-center gap-2 text-xs font-sans uppercase tracking-widest text-amber-900 font-bold">
                 <Award className="w-4 h-4" />
                 <span>National &amp; International Recognition</span>
               </div>
@@ -91,10 +91,10 @@ export const AboutSection: React.FC = () => {
           {/* Right Column: 4 Pillars of Practical Learning & Exposure */}
           <div className="lg:col-span-6 space-y-6">
             <div className="flex items-center justify-between pb-2 border-b border-stone-200">
-              <h4 className="text-xs font-inter uppercase tracking-widest text-stone-500 font-semibold">
+              <h4 className="text-xs font-sans uppercase tracking-widest text-stone-500 font-semibold">
                 Core Pillars · Practical Learning &amp; Exposure
               </h4>
-              <span className="text-xs font-inter text-amber-900 font-semibold">
+              <span className="text-xs font-sans text-amber-900 font-semibold">
                 Chennai &amp; Coimbatore
               </span>
             </div>
@@ -114,7 +114,7 @@ export const AboutSection: React.FC = () => {
                   className="p-5 sm:p-6 glass-card rounded-2xl hover:shadow-xl hover:border-amber-400/40 transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <h5 className="text-sm font-bold text-stone-900 mb-2 font-manrope">
+                    <h5 className="text-sm font-bold text-stone-900 mb-2 font-serif font-semibold">
                       {pillar.title}
                     </h5>
                     <p className="text-xs text-stone-600 leading-relaxed font-sans">

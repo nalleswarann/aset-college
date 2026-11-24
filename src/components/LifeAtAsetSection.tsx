@@ -210,7 +210,7 @@ export const LifeAtAsetSection: React.FC = () => {
   return (
     <section
       id="life-at-aset"
-      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#0a0b0e] text-white font-manrope overflow-hidden select-none"
+      className="relative w-full py-20 sm:py-24 lg:py-32 bg-[#0a0b0e] text-white font-serif font-semibold overflow-hidden select-none"
     >
       {/* Ambient background glows with signature orange & crimson tones */}
       <div
@@ -238,7 +238,7 @@ export const LifeAtAsetSection: React.FC = () => {
             </ScrollEyebrow>
 
             {/* Title */}
-            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-manrope font-bold tracking-tight text-white leading-tight select-none">
+            <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-white leading-tight select-none">
               Life at <br />
               <span className="text-gradient-title font-extrabold">
                 Aset College
