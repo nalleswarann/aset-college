@@ -138,7 +138,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
     setTimeout(() => {
       setIsSubmitting(false);
-      const randomRef = `ASET-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      const randomRef = `ASET-2027-${Math.floor(1000 + Math.random() * 9000)}`;
       setSubmittedRef(randomRef);
     }, 600);
   };
@@ -253,7 +253,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         }}
                         className="w-full text-left px-4 py-2 text-rose-600 font-bold border-t border-stone-100 hover:bg-rose-50 transition-colors"
                       >
-                        Apply for 2026–2027 ↗
+                        Apply for 2027–2028 ↗
                       </button>
                     </motion.div>
                   )}
@@ -281,7 +281,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
                   <span className="text-xs font-mono font-bold tracking-[0.2em] text-orange-600 uppercase">
-                    ADMISSIONS &amp; COUNSELING 2026–2027
+                    ADMISSIONS &amp; COUNSELING 2027–2028
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-stone-900 tracking-tight">
@@ -577,7 +577,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-rose-700 hover:from-orange-500 hover:to-rose-600 text-white text-xs sm:text-sm font-semibold tracking-wide shadow-lg shadow-orange-600/25 hover:shadow-orange-600/40 transition-all cursor-pointer disabled:opacity-50 group"
                   >
                     <span>
-                      {isSubmitting ? 'Registering Inquiry...' : 'Request Counseling (2026–2027)'}
+                      {isSubmitting ? 'Registering Inquiry...' : 'Request Counseling (2027–2028)'}
                     </span>
                     <ArrowRight className="w-4 h-4 stroke-[2.4] group-hover:translate-x-1 transition-transform" />
                   </motion.button>

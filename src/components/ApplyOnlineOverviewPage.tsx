@@ -70,7 +70,7 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
   // Form State adhering to all fields from PDF
   const [formData, setFormData] = useState({
     // Step 1: Applicant Details
-    academicYear: '2026–27',
+    academicYear: '2027–28',
     applicationDate: new Date().toISOString().split('T')[0],
     applicantName: '',
     fatherName: '',
@@ -240,7 +240,7 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
     setCurrentStep(1);
     setValidationError(null);
     setFormData({
-      academicYear: '2026–27',
+      academicYear: '2027–28',
       applicationDate: new Date().toISOString().split('T')[0],
       applicantName: '',
       fatherName: '',
@@ -328,7 +328,7 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span>ASET COLLEGE · ONLINE APPLICATION FORM · ACADEMIC YEAR 2026–27</span>
+            <span>ASET COLLEGE · ONLINE APPLICATION FORM · ACADEMIC YEAR 2027–28</span>
           </motion.div>
 
           {/* Luxury Display Headline */}
@@ -338,7 +338,7 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight text-white mb-6 leading-[1.08] sm:leading-[1.05]"
           >
-            Online Application <span className="text-gradient-title font-extrabold">Form 2026–27</span>
+            Online Application <span className="text-gradient-title font-extrabold">Form 2027–28</span>
           </motion.h1>
 
           {/* Subtitle / Overview */}
@@ -348,7 +348,7 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-3xl mx-auto text-stone-200 text-sm sm:text-base md:text-lg leading-relaxed font-sans mb-8"
           >
-            The ASET College online application invites applicants to apply for the 2026–27 academic year.
+            The ASET College online application invites applicants to apply for the 2027–28 academic year.
             Follow our structured four-step submission process: Applicant Info, Contact &amp; ID Details,
             Academic Qualifications, and Final Review.
           </motion.p>
@@ -388,7 +388,7 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
                 </div>
                 <div>
                   <p className="text-xs text-stone-400 font-medium">Admissions Intake</p>
-                  <p className="text-xs sm:text-sm font-bold text-white">2026–27 Academic Year</p>
+                  <p className="text-xs sm:text-sm font-bold text-white">2027–28 Academic Year</p>
                 </div>
               </div>
 
@@ -439,9 +439,9 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
             </div>
             <div className="flex-1 text-xs sm:text-sm text-stone-800 leading-relaxed font-sans">
               <strong className="text-amber-950 font-bold block sm:inline mr-1">
-                Important Intake Notice (2026–27):
+                Important Intake Notice (2027–28):
               </strong>
-              The application page currently displays 2026–27. Fields marked with an asterisk (*) are mandatory.
+              The application page currently displays 2027–28. Fields marked with an asterisk (*) are mandatory.
               The completed application must be submitted at the admissions office along with the admission booking
               fee and photocopies of the required certificates.
             </div>

@@ -26,7 +26,7 @@ export const BANNER_SLIDES: BannerSlide[] = [
     id: 1,
     wordLeft: 'CAREER',
     wordRight: 'READY',
-    kicker: 'ADMISSIONS OPEN 2026–2027 • INSTITUTIONAL PROSPECTUS',
+    kicker: 'ADMISSIONS OPEN 2027–2028 • INSTITUTIONAL PROSPECTUS',
     tagline:
       'Build your career with industry-ready education in Aviation, Logistics & Shipping, Fire & Industrial Safety, Business Analytics, Commerce, and Hospitality.',
     departmentFocus: 'ASET College of Science & Technology',
@@ -454,7 +454,7 @@ export const ADMISSIONS_STEPS: AdmissionsStep[] = [
     title: 'Eligibility Verification',
     summary:
       'Submit 10th, 12th, or undergraduate degree marksheets according to program requirements.',
-    detail: 'Applies to 2026–2027 academic intakes.',
+    detail: 'Applies to 2027–2028 academic intakes.',
   },
   {
     step: 'Step 02',
@@ -474,7 +474,7 @@ export const ADMISSIONS_STEPS: AdmissionsStep[] = [
     step: 'Step 04',
     title: 'Enrollment Confirmation',
     summary:
-      'Complete registration and receive official admission allotment for the 2026–2027 batch.',
+      'Complete registration and receive official admission allotment for the 2027–2028 batch.',
     detail: 'Academically supported by Alagappa University.',
   },
 ];

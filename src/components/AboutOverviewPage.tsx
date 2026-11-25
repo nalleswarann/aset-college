@@ -504,7 +504,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
               onClick={onOpenAdmissions}
               className="px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/20 active:bg-white/25 text-white font-semibold text-sm sm:text-base tracking-wide backdrop-blur-md border border-white/25 transition-all cursor-pointer flex items-center gap-2"
             >
-              <span>Apply Now 2026–27</span>
+              <span>Apply Now 2027–28</span>
             </motion.button>
           </motion.div>
         </div>
@@ -1031,7 +1031,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                   onClick={onOpenAdmissions}
                   className="px-6 py-2.5 rounded-full bg-[#dc2626] hover:bg-[#b91c1c] text-white text-xs font-bold tracking-wide shadow-md transition-all cursor-pointer"
                 >
-                  Join 2026 Batch
+                  Join 2027 Batch
                 </button>
               </div>
             </div>
@@ -1284,7 +1284,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
                   Approved Programmes
                 </span>
                 <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  2026–27 Open
+                  2027–28 Open
                 </span>
               </div>
 
@@ -1386,7 +1386,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
           <div className="mt-10 sm:mt-12 p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-xs sm:text-sm text-stone-300">
               <span className="font-bold text-white block text-sm sm:text-base">Ready to earn your wings?</span>
-              Enquire today about CPL ground class schedules and flying hour allocations for 2026–27.
+              Enquire today about CPL ground class schedules and flying hour allocations for 2027–28.
             </div>
             <button
               type="button"
@@ -1956,7 +1956,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
 
             <div className="relative z-10 max-w-2xl space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-orange-400 text-xs font-mono font-bold uppercase tracking-wider">
-                <span>Admissions 2026–2027 Open</span>
+                <span>Admissions 2027–2028 Open</span>
               </div>
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white tracking-tight">
                 Your Career Starts Here.

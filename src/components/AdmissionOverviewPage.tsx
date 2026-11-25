@@ -310,7 +310,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/95 text-xs font-mono uppercase tracking-widest mb-6 shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-            <span>ASET COLLEGE · ADMISSIONS &amp; APPLICATION GUIDE · ACADEMIC YEAR 2026–27</span>
+            <span>ASET COLLEGE · ADMISSIONS &amp; APPLICATION GUIDE · ACADEMIC YEAR 2027–28</span>
           </motion.div>
 
           {/* Majestic Heading */}
@@ -320,7 +320,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
             transition={{ duration: 0.9, delay: 0.1, ease: LUXURY_EASE }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white tracking-tight leading-[1.08] sm:leading-[1.05]"
           >
-            Admissions &amp; Application <span className="text-gradient-title font-extrabold">Guide 2026–27</span>
+            Admissions &amp; Application <span className="text-gradient-title font-extrabold">Guide 2027–28</span>
           </motion.h1>
 
           {/* Subtitle from Official Document */}
@@ -346,7 +346,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
               onClick={onOpenAdmissions}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#991b1b] hover:bg-[#b91c1c] text-white text-sm font-bold tracking-wide uppercase shadow-lg shadow-red-950/40 hover:shadow-red-900/60 transition-all duration-300 group cursor-pointer"
             >
-              <span>Apply Online 2026–27</span>
+              <span>Apply Online 2027–28</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -433,7 +433,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-red-800/60 flex items-center justify-between text-xs text-amber-200/90 font-medium font-mono">
-                  <span>Academic Year 2026–27</span>
+                  <span>Academic Year 2027–28</span>
                   <a href="#online-application" className="hover:underline flex items-center gap-1">
                     <span>4 Stages</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -457,7 +457,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
               <ScrollEyebrow className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-red-700 animate-pulse" />
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                  OFFICIAL ADMISSIONS PORTAL · ACADEMIC YEAR 2026–27
+                  OFFICIAL ADMISSIONS PORTAL · ACADEMIC YEAR 2027–28
                 </span>
               </ScrollEyebrow>
 
@@ -479,7 +479,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
                 <span className="text-xs font-mono font-bold uppercase tracking-wider">Important Year Notice</span>
               </div>
               <p className="text-xs text-stone-600 leading-relaxed font-sans">
-                The main admission portal displays <strong>Academic Year 2026–27</strong>. Please confirm your current admission year, course availability, document checklist, and fee structure directly with the admissions counsellors.
+                The main admission portal displays <strong>Academic Year 2027–28</strong>. Please confirm your current admission year, course availability, document checklist, and fee structure directly with the admissions counsellors.
               </p>
               <div className="mt-4 pt-3 border-t border-stone-200/80 flex items-center justify-between text-xs font-bold text-stone-800">
                 <span>Admissions Helpline:</span>
@@ -1201,7 +1201,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
                 as="h2"
                 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-2"
               >
-                Programmes Offered <span className="text-gradient-title font-bold">for 2026–27</span>
+                Programmes Offered <span className="text-gradient-title font-bold">for 2027–28</span>
               </ScrollHeading>
 
               <ScrollParagraph className="text-stone-600 text-sm sm:text-base mt-3 max-w-2xl font-sans">
@@ -1500,7 +1500,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
               onClick={onOpenAdmissions}
               className="px-7 py-3 rounded-full bg-red-700 hover:bg-red-800 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-colors cursor-pointer"
             >
-              Apply Online 2026–27 ↗
+              Apply Online 2027–28 ↗
             </button>
           </div>
 

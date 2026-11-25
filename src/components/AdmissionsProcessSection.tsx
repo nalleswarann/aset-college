@@ -107,14 +107,14 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
       <div className="relative z-10 w-full max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ========================================================= */}
         {/* TOP REFERENCE HEADER BAR (Matching Reference Image)        */}
-        {/* Left: ADMISSIONS PROCESS | Right: 2026–2027 Session       */}
+        {/* Left: ADMISSIONS PROCESS | Right: 2027–2028 Session       */}
         {/* ========================================================= */}
         <div className="flex items-center justify-between pb-3.5 border-b border-stone-200/90 mb-8 sm:mb-10">
           <span className="text-xs sm:text-sm font-sans uppercase tracking-widest text-stone-500 font-bold">
             Admissions Process
           </span>
           <span className="text-xs sm:text-sm font-sans font-bold text-amber-800">
-            2026–2027 Session
+            2027–2028 Session
           </span>
         </div>
 
@@ -308,7 +308,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
                             className="group inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#a8161e] via-[#dc2626] to-[#a8161e] hover:from-[#dc2626] hover:to-[#ef4444] text-white text-xs font-sans font-bold shadow-md shadow-red-900/15 hover:scale-102 active:scale-98 transition-all cursor-pointer"
                           >
                             <Sparkles className="w-3 h-3 text-amber-300 animate-pulse" />
-                            <span>Apply for 2026–2027 Batch</span>
+                            <span>Apply for 2027–2028 Batch</span>
                             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                           </button>
                           <span className="text-[11px] sm:text-xs font-sans text-stone-500">
@@ -340,7 +340,7 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
                 onClick={onOpenAdmissions}
                 className="group inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#a8161e] to-[#7f1d1d] hover:from-[#dc2626] hover:to-[#991b1b] text-white text-xs sm:text-sm font-sans font-bold shadow-md shadow-red-900/20 hover:scale-102 active:scale-98 transition-all cursor-pointer"
               >
-                <span>Start Application for 2026–2027</span>
+                <span>Start Application for 2027–2028</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
             </div>

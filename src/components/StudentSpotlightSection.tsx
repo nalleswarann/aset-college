@@ -270,7 +270,7 @@ export const StudentSpotlightSection: React.FC<StudentSpotlightSectionProps> = (
                     className="group inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-[#b91c1c] to-[#991b1b] hover:from-[#dc2626] hover:to-[#b91c1c] text-white text-xs font-sans font-bold shadow-md shadow-red-950/40 hover:scale-102 active:scale-98 transition-all cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-                    <span>Apply 2026–2027</span>
+                    <span>Apply 2027–2028</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                   </button>
 

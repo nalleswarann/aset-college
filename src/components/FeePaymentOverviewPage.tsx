@@ -236,7 +236,7 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span>ASET COLLEGE · MODE OF FEE PAYMENT · ACADEMIC SESSION 2026–27</span>
+            <span>ASET COLLEGE · MODE OF FEE PAYMENT · ACADEMIC SESSION 2027–28</span>
           </motion.div>
 
           {/* Luxury Display Headline */}
@@ -1228,7 +1228,7 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
                   onClick={() => onNavigateToApplyOnline('#apply-online')}
                   className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-rose-600 hover:from-orange-500 hover:to-rose-500 text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-md shadow-orange-600/20"
                 >
-                  <span>Apply Online 2026–27</span>
+                  <span>Apply Online 2027–28</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               )}

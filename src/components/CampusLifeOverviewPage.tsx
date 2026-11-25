@@ -1668,7 +1668,7 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
                 onClick={onOpenAdmissions}
                 className="px-6 py-3 rounded-xl bg-[#991b1b] hover:bg-[#851117] text-white font-bold text-xs tracking-wide shadow-lg border border-red-400/30 transition-all cursor-pointer flex items-center gap-1.5"
               >
-                <span>Apply for Admissions 2026–27</span>
+                <span>Apply for Admissions 2027–28</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -1697,7 +1697,7 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
               onClick={onOpenAdmissions}
               className="px-9 py-4 rounded-2xl bg-[#991b1b] hover:bg-[#851117] text-white font-bold text-sm tracking-wide shadow-xl border border-red-500/30 transition-all cursor-pointer"
             >
-              Apply for Admissions 2026–27
+              Apply for Admissions 2027–28
             </button>
             <button
               type="button"

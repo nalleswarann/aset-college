@@ -30,11 +30,12 @@ interface NavbarProps {
   onNavigateToFeePayment?: (targetHash?: string) => void;
   onNavigateToApplyOnline?: (targetHash?: string) => void;
   onNavigateToExamCell?: (targetHash?: string) => void;
+  onNavigateToContact?: (targetHash?: string) => void;
   onNavigateToHome?: () => void;
   onSelectDepartment?: (dept: Department) => void;
   onOpenExamCell?: () => void;
   activeSection?: string;
-  currentPage?: 'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell';
+  currentPage?: 'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell' | 'contact';
 }
 
 interface MegaMenuLink {
@@ -76,6 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateToFeePayment,
   onNavigateToApplyOnline,
   onNavigateToExamCell,
+  onNavigateToContact,
   onNavigateToHome,
   onSelectDepartment,
   onOpenExamCell,
@@ -256,6 +258,17 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
 
     if (
+      href.startsWith('#contact') ||
+      href.startsWith('#/contact') ||
+      href === '/contact'
+    ) {
+      if (onNavigateToContact) {
+        onNavigateToContact(href);
+        return;
+      }
+    }
+
+    if (
       href.startsWith('#apply-online') ||
       href.startsWith('#/apply-online') ||
       href.startsWith('#online-application') ||
@@ -316,7 +329,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       currentPage === 'requirements' ||
       currentPage === 'fee-payment' ||
       currentPage === 'apply-online' ||
-      currentPage === 'examination-cell'
+      currentPage === 'examination-cell' ||
+      currentPage === 'contact'
     ) {
       const targetInPage = document.querySelector(href);
       if (targetInPage) {
@@ -392,11 +406,16 @@ export const Navbar: React.FC<NavbarProps> = ({
     }, currentPage !== 'home' ? 180 : 35);
   };
 
-  // Scroll directly to contact section
+  // Scroll directly to contact section or navigate to contact page
   const handleContactClick = () => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = '';
+
+    if (onNavigateToContact) {
+      onNavigateToContact('#contact');
+      return;
+    }
 
     if (
       currentPage === 'about' ||
@@ -406,7 +425,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       currentPage === 'requirements' ||
       currentPage === 'fee-payment' ||
       currentPage === 'apply-online' ||
-      currentPage === 'examination-cell'
+      currentPage === 'examination-cell' ||
+      currentPage === 'contact'
     ) {
       if (onNavigateToHome) {
         onNavigateToHome();
@@ -544,7 +564,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       id: 'admission',
       label: 'Admission',
       hasDropdown: true,
-      categoryTitle: 'Academic Year 2026–2027 Admissions',
+      categoryTitle: 'Academic Year 2027–2028 Admissions',
       columns: {
         col1: [
           {
@@ -592,7 +612,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       featured: {
         image: asetCampusSunset,
         alt: 'ASET College Admissions Guide',
-        buttonLabel: 'Apply Online 2026–27 ↗',
+        buttonLabel: 'Apply Online 2027–28 ↗',
         buttonHref: '#apply-online',
         onButtonClick: () => {
           if (onNavigateToApplyOnline) {
@@ -950,7 +970,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={onOpenAdmissions}
                 className="group hidden lg:inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold text-white bg-[#dc2626] hover:bg-[#b91c1c] transition-all rounded-full shadow-lg shadow-red-900/30 whitespace-nowrap cursor-pointer border border-red-500/40 shrink-0"
               >
-                <span>Apply 2026–27</span>
+                <span>Apply 2027–28</span>
                 <ArrowUpRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </motion.button>
 
@@ -1142,7 +1162,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.99 }}
             transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-[#0c0d0f]/98 backdrop-blur-2xl text-stone-100 border-b border-stone-800 shadow-2xl shadow-black/60 max-h-[92vh] overflow-y-auto font-sans"
+            className="fixed inset-x-0 top-0 z-50 lg:hidden bg-[#0c0d0f]/98 backdrop-blur-2xl text-stone-100 border-b border-stone-800 shadow-2xl shadow-black/60 max-h-[92vh] overflow-y-auto overflow-x-hidden font-sans"
           >
             {/* Subtle atmospheric glow */}
             <div

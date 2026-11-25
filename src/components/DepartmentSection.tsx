@@ -445,7 +445,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                     From DGCA flight simulation bays and industrial safety drill-fields to maritime shipping hubs and digital analytics laboratories, our specialized departments combine rigorous academic curriculum with hands-on industry competence.
                   </p>
                   <p className="text-[11px] font-mono uppercase tracking-wider text-orange-300/90 pt-1">
-                    Academically Supported by Alagappa University &bull; Chennai &amp; Coimbatore &bull; Admissions 2026&ndash;2027
+                    Academically Supported by Alagappa University &bull; Chennai &amp; Coimbatore &bull; Admissions 2027&ndash;2028
                   </p>
                 </div>
               </div>
@@ -909,7 +909,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
                     Detailed Department-by-Department Matrix
                   </h4>
                   <p className="text-xs text-stone-500">
-                    Official 2026–2027 Academic Prospectus &bull; Conferred by Alagappa University
+                    Official 2027–2028 Academic Prospectus &bull; Conferred by Alagappa University
                   </p>
                 </div>
               </div>

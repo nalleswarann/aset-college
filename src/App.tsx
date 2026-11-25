@@ -27,13 +27,22 @@ import { RequirementOverviewPage } from './components/RequirementOverviewPage';
 import { FeePaymentOverviewPage } from './components/FeePaymentOverviewPage';
 import { ApplyOnlineOverviewPage } from './components/ApplyOnlineOverviewPage';
 import { ExaminationCellOverviewPage } from './components/ExaminationCellOverviewPage';
+import { ContactOverviewPage } from './components/ContactOverviewPage';
 import { Department } from './types/university';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell'>(() => {
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell' | 'contact'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       const path = window.location.pathname.toLowerCase();
+      if (
+        hash.startsWith('#contact') ||
+        hash.startsWith('#/contact') ||
+        path === '/contact' ||
+        path.startsWith('/contact')
+      ) {
+        return 'contact';
+      }
       if (
         hash.startsWith('#examination-cell') ||
         hash.startsWith('#/examination-cell') ||
@@ -149,6 +158,28 @@ export default function App() {
       const path = window.location.pathname.toLowerCase();
 
       if (
+        hash.startsWith('#contact') ||
+        hash.startsWith('#/contact') ||
+        path === '/contact' ||
+        path.startsWith('/contact')
+      ) {
+        setCurrentPage('contact');
+        if (
+          hash &&
+          hash !== '#contact' &&
+          hash !== '#/contact' &&
+          hash !== '#contact-overview'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
         hash.startsWith('#examination-cell') ||
         hash.startsWith('#/examination-cell') ||
         hash.startsWith('#exam-cell') ||
@@ -432,6 +463,26 @@ export default function App() {
     }
   };
 
+  const handleNavigateToContact = (targetHash: string = '#contact') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('contact');
+    if (
+      targetHash &&
+      targetHash !== '#contact' &&
+      targetHash !== '#/contact' &&
+      targetHash !== '#contact-overview'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleNavigateToFeePayment = (targetHash: string = '#fee-payment') => {
     window.history.pushState(null, '', targetHash);
     setCurrentPage('fee-payment');
@@ -636,6 +687,7 @@ export default function App() {
           onNavigateToFeePayment={handleNavigateToFeePayment}
           onNavigateToApplyOnline={handleNavigateToApplyOnline}
           onNavigateToExamCell={handleNavigateToExamCell}
+          onNavigateToContact={handleNavigateToContact}
           onNavigateToHome={() => handleNavigateToHome('#home')}
           onSelectDepartment={(dept) => {
             if (currentPage !== 'home') {
@@ -727,6 +779,19 @@ export default function App() {
             onNavigateToFeePayment={handleNavigateToFeePayment}
             onNavigateToApplyOnline={handleNavigateToApplyOnline}
           />
+        ) : currentPage === 'contact' ? (
+          <ContactOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+            onNavigateToAdmissions={handleNavigateToAdmissions}
+            onNavigateToRequirements={handleNavigateToRequirements}
+            onNavigateToFeePayment={handleNavigateToFeePayment}
+            onNavigateToApplyOnline={handleNavigateToApplyOnline}
+            initialDepartment={inquiryDepartment}
+          />
         ) : (
           <main className="flex-1">
             {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
@@ -808,6 +873,7 @@ export default function App() {
           onNavigateToFeePayment={handleNavigateToFeePayment}
           onNavigateToApplyOnline={handleNavigateToApplyOnline}
           onNavigateToExamCell={handleNavigateToExamCell}
+          onNavigateToContact={handleNavigateToContact}
         />
 
         {/* Interactive Curriculum & Syllabus Modal */}

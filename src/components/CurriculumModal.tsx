@@ -21,7 +21,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
   const handleDownloadProspectus = () => {
     const link = document.createElement('a');
     link.href = PROSPECTUS_PDF_URL;
-    link.download = 'ASET-College-Academic-Prospectus-2026-2027.pdf';
+    link.download = 'ASET-College-Academic-Prospectus-2027-2028.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -65,7 +65,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({
           <div className="absolute bottom-4 sm:bottom-5 left-5 sm:left-6 right-5 sm:right-6 pointer-events-none space-y-1.5">
             <div className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-amber-300 font-bold bg-black/60 px-2.5 py-0.5 rounded-full border border-white/15 backdrop-blur-md">
               <GraduationCap className="w-3.5 h-3.5 text-amber-400" />
-              <span>ASET Academic Curriculum · 2026–2027</span>
+              <span>ASET Academic Curriculum · 2027–2028</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white tracking-tight drop-shadow-md">
               {department.name}

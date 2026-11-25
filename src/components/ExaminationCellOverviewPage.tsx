@@ -860,7 +860,7 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
                   onClick={() => onNavigateToApplyOnline('#apply-online')}
                   className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-rose-600 hover:from-orange-500 hover:to-rose-500 text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-md shadow-orange-600/20"
                 >
-                  <span>Apply Online 2026–27</span>
+                  <span>Apply Online 2027–28</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               )}

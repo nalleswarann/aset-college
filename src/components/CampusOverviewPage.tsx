@@ -1156,7 +1156,7 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
                 onClick={onOpenAdmissions}
                 className="px-6 py-3 rounded-xl bg-[#991b1b] hover:bg-[#851117] text-white font-bold text-xs tracking-wide shadow-lg border border-red-400/30 transition-all cursor-pointer flex items-center gap-1.5"
               >
-                <span>Apply for Admissions 2026–27</span>
+                <span>Apply for Admissions 2027–28</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -1228,11 +1228,6 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
             })}
           </div>
 
-          {/* Source Citation */}
-          <div className="mt-10 p-4 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-500 font-mono text-center">
-            Source: <a href="https://www.asetcollege.ac.in/about/campuses" target="_blank" rel="noopener noreferrer" className="text-red-700 hover:underline">https://www.asetcollege.ac.in/about/campuses</a> — Prepared from official ASET College Campuses &amp; Facilities document.
-          </div>
-
         </div>
       </section>
 
@@ -1257,7 +1252,7 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
               onClick={onOpenAdmissions}
               className="px-9 py-4 rounded-2xl bg-[#991b1b] hover:bg-[#851117] text-white font-bold text-sm tracking-wide shadow-xl border border-red-500/30 transition-all cursor-pointer"
             >
-              Apply for Admissions 2026–27
+              Apply for Admissions 2027–28
             </button>
             <button
               type="button"

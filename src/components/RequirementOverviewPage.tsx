@@ -308,7 +308,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span>ASET COLLEGE · ADMISSION REQUIREMENTS · 2026–27 &amp; 2027–28</span>
+            <span>ASET COLLEGE · ADMISSION REQUIREMENTS · 2027–28</span>
           </motion.div>
 
           {/* Luxury Display Headline */}
@@ -361,7 +361,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
                 onClick={() => onNavigateToApplyOnline('#apply-online')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-stone-950 hover:bg-stone-100 active:scale-95 text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer shadow-md"
               >
-                <span>Apply Online 2026–27</span>
+                <span>Apply Online 2027–28</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             ) : onOpenAdmissions ? (
@@ -370,7 +370,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
                 onClick={onOpenAdmissions}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-stone-950 hover:bg-stone-100 active:scale-95 text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer shadow-md"
               >
-                <span>Apply Online 2026–27</span>
+                <span>Apply Online 2027–28</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             ) : null}
@@ -462,7 +462,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
               <div className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Affiliation Norms</div>
             </div>
             <div className="space-y-1 col-span-2 md:col-span-1">
-              <div className="text-2xl sm:text-3xl font-extrabold text-red-700 font-serif font-semibold">2026–28</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-red-700 font-serif font-semibold">2027–28</div>
               <div className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Admissions Open</div>
             </div>
           </div>
@@ -804,9 +804,9 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
               <li className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-600 mt-2 shrink-0" />
                 <span>
-                  <strong>Academic Year Guidance:</strong> The official requirements page lists
-                  “Admission Open for 2027–28”, with sections noting “Admission Open for 2026–27”.
-                  Confirm the exact target academic cycle directly with the admissions office.
+                  <strong>Academic Year Guidance:</strong> Admissions are currently open for the
+                  <strong>2027–28</strong> academic cycle. Confirm the exact intake schedule and course seat
+                  availability directly with the admissions office.
                 </span>
               </li>
               <li className="flex items-start gap-2.5">

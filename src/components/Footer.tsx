@@ -22,6 +22,7 @@ interface FooterProps {
   onNavigateToFeePayment?: (targetHash?: string) => void;
   onNavigateToApplyOnline?: (targetHash?: string) => void;
   onNavigateToExamCell?: (targetHash?: string) => void;
+  onNavigateToContact?: (targetHash?: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -35,6 +36,7 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateToFeePayment,
   onNavigateToApplyOnline,
   onNavigateToExamCell,
+  onNavigateToContact,
 }) => {
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -92,8 +94,12 @@ export const Footer: React.FC<FooterProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  onOpenAdmissions();
-                  scrollTo('#contact');
+                  if (onNavigateToContact) {
+                    onNavigateToContact('#contact');
+                  } else {
+                    onOpenAdmissions();
+                    scrollTo('#contact');
+                  }
                 }}
                 className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#dc2626] hover:bg-[#b91c1c] active:scale-95 text-white text-xs sm:text-sm font-semibold tracking-wide shadow-md shadow-red-600/25 hover:shadow-lg hover:shadow-red-600/35 transition-all cursor-pointer"
               >
@@ -183,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-rose-700"
                 >
-                  Apply Online 2026–27
+                  Apply Online 2027–28
                 </button>
               </li>
               <li>
@@ -213,7 +219,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
                 >
-                  Admission Guide 2026–27
+                  Admission Guide 2027–28
                 </button>
               </li>
               <li>
@@ -252,8 +258,14 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={() => scrollTo('#contact')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  onClick={() => {
+                    if (onNavigateToContact) {
+                      onNavigateToContact('#contact');
+                    } else {
+                      scrollTo('#contact');
+                    }
+                  }}
+                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-orange-700"
                 >
                   Contact Us
                 </button>
