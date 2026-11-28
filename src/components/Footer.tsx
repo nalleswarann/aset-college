@@ -8,6 +8,11 @@ import {
   Twitter,
   ArrowUpRight,
   Mail,
+  Phone,
+  MapPin,
+  ChevronRight,
+  ArrowUp,
+  Sparkles,
 } from 'lucide-react';
 import asetLogo from '../assets/images/aset-logo.png';
 
@@ -47,27 +52,48 @@ export const Footer: React.FC<FooterProps> = ({
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer
       id="footer"
-      className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-serif font-semibold select-none border-t border-stone-200/90 pt-14 sm:pt-18 lg:pt-20 pb-10 sm:pb-14"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-stone-950 via-[#131113] to-black text-white font-sans select-none border-t border-white/10 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16"
     >
       {/* ========================================================= */}
-      {/* SCREEN-MERGED CANVAS (#faf8f5)                            */}
-      {/* Seamless full-width integration with the rest of the site */}
+      {/* ATMOSPHERIC BACKGROUND: Warm Orange to Crimson Rose Glow   */}
       {/* ========================================================= */}
-      <div className="w-full max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-        
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/4 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-orange-500/12 via-rose-500/8 to-transparent blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 right-10 w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-rose-600/10 via-orange-600/6 to-transparent blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full bg-red-950/20 blur-3xl"
+      />
+
+      {/* Subtle radial sheen */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-radial-[circle_at_top,_var(--tw-gradient-stops)] from-white/[0.04] via-transparent to-transparent"
+      />
+
+      <div className="relative z-10 w-full max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* ======================================================= */}
-        {/* MAIN FOOTER GRID (4-Column Layout)                      */}
+        {/* MAIN FOOTER GRID (4-Column Symmetrical Layout)          */}
         {/* ======================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 pb-8 sm:pb-12 items-start">
-          
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-14 items-start">
+
           {/* ----------------------------------------------------- */}
-          {/* COLUMN 1: Official Logo, Description & Action Button   */}
+          {/* COLUMN 1: Official Logo, Description & Action Buttons  */}
           {/* ----------------------------------------------------- */}
-          <div className="md:col-span-12 lg:col-span-4 space-y-5">
-            {/* Properly Aligned Official Navigation Bar Logo with Dark Contrast Container */}
+          <div className="md:col-span-12 lg:col-span-4 space-y-6">
+            {/* Official Logo Container in Frosted Glass */}
             <a
               href="#home"
               onClick={(e) => {
@@ -77,22 +103,23 @@ export const Footer: React.FC<FooterProps> = ({
               className="inline-flex items-center group cursor-pointer select-none"
               aria-label="ASET College Home"
             >
-              <div className="bg-stone-950 hover:bg-stone-900 border border-stone-800/90 rounded-2xl px-4 py-2 sm:px-5 sm:py-2.5 shadow-md shadow-stone-950/10 transition-all duration-300 group-hover:scale-[1.02] flex items-center justify-center">
+              <div className="bg-white/10 hover:bg-white/15 border border-white/15 backdrop-blur-md rounded-2xl px-4 py-2 sm:px-5 sm:py-2.5 shadow-lg shadow-black/30 transition-all duration-300 group-hover:scale-[1.02] flex items-center justify-center">
                 <img
                   src={asetLogo}
                   alt="ASET College"
-                  className="h-7.5 sm:h-8.5 md:h-9.5 w-auto max-w-[190px] sm:max-w-[220px] object-contain brightness-105"
+                  className="h-8 sm:h-9 md:h-10 w-auto max-w-[190px] sm:max-w-[220px] object-contain brightness-105"
                 />
               </div>
             </a>
 
-            {/* Official Institutional Description from Website */}
-            <ScrollParagraph delay={0.1} className="text-xs sm:text-sm text-stone-700 max-w-md leading-relaxed font-sans">
+            {/* Official Institutional Narrative */}
+            <ScrollParagraph delay={0.08} className="text-xs sm:text-sm text-stone-300 max-w-md leading-relaxed font-sans">
               ASET College offers career-focused programmes in Aviation, Logistics &amp; Shipping, Fire &amp; Industrial Safety, Management Studies, Commerce and Hotel Management, with practical training, industry exposure and placement support, at campuses in Chennai and Coimbatore.
             </ScrollParagraph>
 
-            {/* Red Pill Call-to-Action Button */}
-            <ScrollAction delay={0.18} className="pt-1">
+            {/* Action Buttons Row */}
+            <ScrollAction delay={0.16} className="pt-1 flex flex-wrap items-center gap-3">
+              {/* Primary Contact CTA Button */}
               <button
                 type="button"
                 onClick={() => {
@@ -103,22 +130,40 @@ export const Footer: React.FC<FooterProps> = ({
                     scrollTo('#contact');
                   }
                 }}
-                className="inline-flex items-center gap-2 px-6 py-2.5 sm:py-3 rounded-full bg-[#dc2626] hover:bg-[#b91c1c] active:scale-95 text-white text-xs sm:text-sm font-semibold tracking-wide shadow-md shadow-red-600/25 hover:shadow-lg hover:shadow-red-600/35 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[46px] rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-rose-700 hover:from-orange-500 hover:to-rose-600 active:scale-95 text-white text-xs sm:text-sm font-semibold tracking-wide shadow-lg shadow-orange-600/25 hover:shadow-orange-600/40 hover:scale-102 transition-all cursor-pointer group w-full xs:w-auto"
               >
                 <span>Let&apos;s talk</span>
-                <ArrowUpRight className="w-4 h-4 stroke-[2.4]" />
+                <ArrowUpRight className="w-4 h-4 stroke-[2.4] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+
+              {/* Secondary Apply Online Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  if (onNavigateToApplyOnline) {
+                    onNavigateToApplyOnline('#apply-online');
+                  } else {
+                    onOpenAdmissions();
+                  }
+                }}
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 min-h-[46px] rounded-full bg-white/10 hover:bg-white/15 active:scale-95 text-stone-200 hover:text-white text-xs sm:text-sm font-semibold tracking-wide border border-white/15 hover:border-white/25 transition-all cursor-pointer w-full xs:w-auto"
+              >
+                <span>Apply 2027–28</span>
               </button>
             </ScrollAction>
+
+            {/* Quick Admissions Hotline Badge */}
+
           </div>
 
           {/* ----------------------------------------------------- */}
           {/* COLUMN 2: EXPLORE Navigation Links                    */}
           {/* ----------------------------------------------------- */}
-          <div className="col-span-1 md:col-span-4 lg:col-span-2 space-y-4">
-            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-serif font-semibold uppercase tracking-wider">
-              EXPLORE
+          <div className="col-span-1 md:col-span-4 lg:col-span-3 space-y-4">
+            <h3 className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.18em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-red-400 flex items-center gap-2">
+              <span>EXPLORE</span>
             </h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700 font-sans">
+            <ul className="space-y-2 text-xs sm:text-sm font-sans">
               <li>
                 <button
                   type="button"
@@ -129,7 +174,7 @@ export const Footer: React.FC<FooterProps> = ({
                       scrollTo('#about');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   About ASET
                 </button>
@@ -144,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({
                       scrollTo('#campuses');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Campuses &amp; Facilities
                 </button>
@@ -159,7 +204,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onNavigateToAdmissions('#documents-required');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Admission Requirements
                 </button>
@@ -174,7 +219,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onNavigateToAdmissions('#fee-payment');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-orange-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Mode of Fee Payment
                 </button>
@@ -189,9 +234,12 @@ export const Footer: React.FC<FooterProps> = ({
                       onNavigateToAdmissions('#online-application');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-rose-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left py-0.5 inline-flex items-center gap-1.5 group"
                 >
-                  Apply Online 2027–28
+                  <span className="group-hover:text-orange-300 transition-colors">Apply Online 2027–28</span>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500/20 to-rose-500/20 text-orange-300 border border-orange-500/30">
+                    Active
+                  </span>
                 </button>
               </li>
               <li>
@@ -204,7 +252,7 @@ export const Footer: React.FC<FooterProps> = ({
                       scrollTo('#examination-cell');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-orange-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Examination Cell
                 </button>
@@ -219,7 +267,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenAdmissions();
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-red-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Admission Guide 2027–28
                 </button>
@@ -234,7 +282,7 @@ export const Footer: React.FC<FooterProps> = ({
                       scrollTo('#life-at-aset');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Student Life
                 </button>
@@ -249,7 +297,7 @@ export const Footer: React.FC<FooterProps> = ({
                       scrollTo('#placements');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Placement
                 </button>
@@ -258,7 +306,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollTo('#blogs')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Blogs
                 </button>
@@ -273,28 +321,19 @@ export const Footer: React.FC<FooterProps> = ({
                       scrollTo('#contact');
                     }
                   }}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left font-semibold text-orange-700"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Contact Us
                 </button>
               </li>
               <li>
-                <button
+                {/* <button
                   type="button"
                   onClick={() => scrollTo('#about')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-400 hover:text-stone-200 hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5 text-xs"
                 >
                   Privacy Policy
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollTo('#about')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
-                >
-                  Journal
-                </button>
+                </button> */}
               </li>
             </ul>
           </div>
@@ -302,16 +341,16 @@ export const Footer: React.FC<FooterProps> = ({
           {/* ----------------------------------------------------- */}
           {/* COLUMN 3: DEPARTMENTS Programs List                   */}
           {/* ----------------------------------------------------- */}
-          <div className="col-span-1 md:col-span-4 lg:col-span-3 space-y-4">
-            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-serif font-semibold uppercase tracking-wider">
-              DEPARTMENTS
+          <div className="col-span-1 md:col-span-4 lg:col-span-2 space-y-4">
+            <h3 className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.18em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-red-400 flex items-center gap-2">
+              <span>DEPARTMENTS</span>
             </h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700 font-sans">
+            <ul className="space-y-2.5 text-xs sm:text-sm font-sans">
               <li>
                 <button
                   type="button"
                   onClick={() => scrollTo('#departments')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Aviation
                 </button>
@@ -320,7 +359,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollTo('#departments')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Logistics &amp; Shipping
                 </button>
@@ -329,7 +368,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollTo('#departments')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Fire &amp; Industrial Safety
                 </button>
@@ -338,7 +377,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollTo('#departments')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Management Studies
                 </button>
@@ -347,7 +386,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollTo('#departments')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   School of Commerce
                 </button>
@@ -356,7 +395,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollTo('#departments')}
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
+                  className="text-stone-300 hover:text-white hover:translate-x-1 transition-all duration-200 cursor-pointer text-left block py-0.5"
                 >
                   Hotel Management
                 </button>
@@ -365,131 +404,138 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           {/* ----------------------------------------------------- */}
-          {/* COLUMN 4: CONNECT Social Links & Email                */}
+          {/* COLUMN 4: CONNECT & Direct Coordinates               */}
           {/* ----------------------------------------------------- */}
           <div className="col-span-1 md:col-span-4 lg:col-span-3 space-y-4">
-            <h3 className="text-xs sm:text-[13px] font-bold text-[#dc2626] font-serif font-semibold uppercase tracking-wider">
-              CONNECT
+            <h3 className="text-xs sm:text-[13px] font-mono font-bold tracking-[0.18em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-red-400 flex items-center gap-2">
+              <span>CONNECT &amp; REACH US</span>
             </h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700 font-sans">
-              <li>
+
+            {/* Direct Contact Cards */}
+            <div className="space-y-3 font-sans">
+              <a
+                href="mailto:contact@asetsafety.ac.in"
+                className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/40 text-stone-200 hover:text-white transition-all duration-200 group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 group-hover:scale-105 transition-transform shrink-0">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-mono uppercase tracking-wider text-stone-400">Email Enquiries</p>
+                  <p className="text-xs font-semibold truncate font-mono text-stone-200 group-hover:text-orange-300 transition-colors">
+                    contact@asetsafety.ac.in
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="tel:+919159499973"
+                className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-rose-500/40 text-stone-200 hover:text-white transition-all duration-200 group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 group-hover:scale-105 transition-transform shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-mono uppercase tracking-wider text-stone-400">Direct Helpline</p>
+                  <p className="text-xs font-semibold truncate font-mono text-stone-200 group-hover:text-rose-300 transition-colors">
+                    +91 91594 99973 / 74
+                  </p>
+                </div>
+              </a>
+
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-stone-300 space-y-1">
+                <div className="flex items-center gap-1.5 text-stone-200 font-semibold">
+                  <MapPin className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+                  <span>Campus Locations</span>
+                </div>
+                <p className="text-[11px] text-stone-400 leading-relaxed font-sans">
+                  Chennai (Bangalore Highway) &amp; Coimbatore (Saravanampatti)
+                </p>
+              </div>
+            </div>
+
+            {/* Social Icons Pills */}
+            <div className="pt-2">
+              <span className="block text-[10px] font-mono uppercase tracking-widest text-stone-400 mb-2.5">
+                Official Channels
+              </span>
+              <div className="flex flex-wrap items-center gap-2.5">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.facebook.com/asetgroups/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all inline-block"
+                  aria-label="Facebook"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 text-stone-300 hover:text-blue-400 transition-all hover:scale-105 active:scale-95 shadow-xs"
                 >
-                  Instagram
+                  <Facebook className="w-4 h-4 fill-current" />
                 </a>
-              </li>
-              <li>
                 <a
-                  href="https://twitter.com"
+                  href="https://www.instagram.com/aset_chennai?utm_source=ig_web_button_share_sheet&hvrq=ZDNlZDc0MzIxNw=="
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all inline-block"
+                  aria-label="Instagram"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 text-stone-300 hover:text-pink-400 transition-all hover:scale-105 active:scale-95 shadow-xs"
                 >
-                  X (Twitter)
+                  <Instagram className="w-4 h-4" />
                 </a>
-              </li>
-              <li>
                 <a
-                  href="https://facebook.com"
+                  href="https://x.com/asetsafety"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all inline-block"
+                  aria-label="X Twitter"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 text-stone-300 hover:text-sky-300 transition-all hover:scale-105 active:scale-95 shadow-xs"
                 >
-                  Facebook
+                  <Twitter className="w-4 h-4 fill-current" />
                 </a>
-              </li>
-              <li>
                 <a
+                  href="https://www.linkedin.com/company/aset-institute-of-technology-aset/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 text-stone-300 hover:text-blue-500 transition-all hover:scale-105 active:scale-95 shadow-xs"
+                >
+                  <Linkedin className="w-4 h-4 fill-current" />
+                </a>
+                {/* <a
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-stone-950 hover:translate-x-0.5 transition-all inline-block"
+                  aria-label="YouTube"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/25 text-stone-300 hover:text-red-500 transition-all hover:scale-105 active:scale-95 shadow-xs"
                 >
-                  YouTube
-                </a>
-              </li>
-              <li className="pt-1.5">
-                <a
-                  href="mailto:contact@asetsafety.ac.in"
-                  className="text-stone-900 font-semibold hover:text-red-600 transition-colors inline-flex items-center gap-1.5 text-xs sm:text-sm whitespace-nowrap"
-                >
-                  <Mail className="w-3.5 h-3.5 text-stone-500 shrink-0" />
-                  <span>contact@asetsafety.ac.in</span>
-                </a>
-              </li>
-            </ul>
+                  <Youtube className="w-4 h-4" />
+                </a> */}
+              </div>
+            </div>
           </div>
 
         </div>
 
-        {/* Thin Divider Line */}
-        <div className="w-full h-px bg-stone-300/80 my-6 sm:my-8" />
+        {/* Hairline Gradient Divider */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent my-6 sm:my-8" />
 
         {/* ======================================================= */}
-        {/* SUB-FOOTER: Copyright, Accreditation & Social Icons    */}
+        {/* SUB-FOOTER: Copyright, Accreditation & Back to Top     */}
         {/* ======================================================= */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-2 text-xs sm:text-[13px] text-stone-700 font-sans">
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 sm:gap-x-6 gap-y-2 text-center md:text-left">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-2 text-xs text-stone-400 font-sans">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 sm:gap-x-6 gap-y-1.5 text-center sm:text-left">
             <span>
               © {new Date().getFullYear()} ASET College of Science &amp; Technology. All rights reserved.
             </span>
-            <span className="text-stone-500 font-semibold">
+            <span className="text-stone-500 font-medium">
               Academically supported by Alagappa University · Chennai &amp; Coimbatore
             </span>
           </div>
 
-          {/* Social Icons Pills */}
-          <div className="flex items-center gap-3.5 text-stone-800">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-stone-200/70 hover:text-blue-600 transition-all hover:scale-110"
-            >
-              <Facebook className="w-4 h-4 fill-current" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-stone-200/70 hover:text-rose-600 transition-all hover:scale-110"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X Twitter"
-              className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-stone-200/70 hover:text-stone-950 transition-all hover:scale-110"
-            >
-              <Twitter className="w-4 h-4 fill-current" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-stone-200/70 hover:text-blue-700 transition-all hover:scale-110"
-            >
-              <Linkedin className="w-4 h-4 fill-current" />
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-              className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-stone-200/70 hover:text-red-600 transition-all hover:scale-110"
-            >
-              <Youtube className="w-4 h-4" />
-            </a>
-          </div>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 min-h-[44px] rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-stone-300 hover:text-white text-xs font-mono transition-colors cursor-pointer shrink-0"
+            aria-label="Back to top"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5 text-orange-400" />
+          </button>
         </div>
 
       </div>

@@ -10,12 +10,11 @@ import {
   MapPin,
 } from 'lucide-react';
 import asetLogo from '../assets/images/aset-logo.png';
-import asetAviationStudents from '../assets/images/aset-aviation-students.png';
-import campusBuildingImg from '../assets/images/campus-building-user.jpg';
-import asetCampusSunset from '../assets/images/aset-college-pathway-sunset.jpg';
+import asetCampusMain from '../assets/images/aset-campus-main-building.webp';
+import asetStudentsOfficial from '../assets/images/aset-students-group-official.jpg';
+import deptAviationImg from '../assets/images/departments/pilot-training-aviaition.webp';
+import studentLifeEventImg from '../assets/images/aset-life/home-adm-freshers-stage.webp';
 import asetGraduates from '../assets/images/aset-graduates-celebration.jpg';
-import asetCampusModernClean from '../assets/images/aset-campus-modern-clean.png';
-import deptBusinessImg from '../assets/images/dept_global_business_1794469703130.jpg';
 import { DEPARTMENTS } from '../data/universityData';
 import { Department } from '../types/university';
 
@@ -557,7 +556,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         ],
       },
       featured: {
-        image: asetCampusModernClean,
+        image: asetCampusMain,
         alt: 'ASET College Campuses & Heritage',
         buttonLabel: 'Discover Our Heritage ↗',
         buttonHref: '#about-overview',
@@ -614,8 +613,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         ],
       },
       featured: {
-        image: asetCampusSunset,
-        alt: 'ASET College Admissions Guide',
+        image: asetStudentsOfficial,
+        alt: 'ASET College Academic Admissions',
         buttonLabel: 'Apply Online 2027–28 ↗',
         buttonHref: '#apply-online',
         onButtonClick: () => {
@@ -669,8 +668,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         ],
       },
       featured: {
-        image: campusBuildingImg,
-        alt: 'ASET College Departments',
+        image: deptAviationImg,
+        alt: 'ASET College Specialized Departments & Flight Labs',
         buttonLabel: 'Explore All Departments ↗',
         buttonHref: '#departments',
         onButtonClick: onExploreDepartments,
@@ -728,8 +727,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         ],
       },
       featured: {
-        image: asetAviationStudents,
-        alt: 'ASET College Student Life',
+        image: studentLifeEventImg,
+        alt: 'ASET College Student Life & Cultural Events',
         buttonLabel: 'Explore Campus Life ↗',
         buttonHref: '#life-overview',
         onButtonClick: () => onNavigateToLife && onNavigateToLife('#life-overview'),
@@ -1143,24 +1142,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </div>
 
                       {/* Right Section: Aspect Image Card with Overlay Button */}
-                      <div className="w-full md:w-[300px] lg:w-[350px] shrink-0">
-                        <div className="relative rounded-2xl overflow-hidden aspect-[4/3] w-full shadow-md group">
+                      <div className="w-full md:w-[280px] lg:w-[340px] xl:w-[370px] shrink-0">
+                        <div className="relative rounded-2xl overflow-hidden aspect-[4/3] w-full shadow-md bg-stone-100 border border-stone-200/80 group">
                           <motion.img
                             key={currentMegaMenu.featured.image}
-                            initial={{ scale: 1.08, opacity: 0.6 }}
+                            initial={{ scale: 1.05, opacity: 0.7 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                             src={currentMegaMenu.featured.image}
                             alt={currentMegaMenu.featured.alt}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                           />
                           {/* Ambient Gradient Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent pointer-events-none" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                           {/* Pill Button Overlay */}
                           <motion.button
-                            whileHover={{ scale: 1.04 }}
-                            whileTap={{ scale: 0.96 }}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
                             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                             onClick={() => {
                               setActiveMenu(null);
@@ -1179,9 +1178,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                                 }
                               }
                             }}
-                            className="absolute bottom-4 left-4 z-10 bg-stone-950/90 hover:bg-black text-white text-xs font-semibold px-4 py-2 rounded-full flex items-center gap-1.5 backdrop-blur-md transition-all shadow-md cursor-pointer border border-white/20"
+                            className="absolute bottom-3.5 left-3.5 right-3.5 sm:right-auto z-10 bg-stone-950/90 hover:bg-black text-white text-xs font-semibold px-4 py-2 rounded-full flex items-center justify-between sm:justify-start gap-1.5 backdrop-blur-md transition-all shadow-md cursor-pointer border border-white/20"
                           >
-                            <span>{currentMegaMenu.featured.buttonLabel}</span>
+                            <span className="truncate">{currentMegaMenu.featured.buttonLabel}</span>
                           </motion.button>
                         </div>
                       </div>
@@ -1338,6 +1337,35 @@ export const Navbar: React.FC<NavbarProps> = ({
                               </motion.a>
                             ))}
                           </div>
+
+                          {/* Mobile Featured Image Card */}
+                          {item.featured && (
+                            <div className="pt-3 px-1">
+                              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] w-full shadow-md border border-stone-800/80 bg-stone-900 group">
+                                <img
+                                  src={item.featured.image}
+                                  alt={item.featured.alt}
+                                  className="w-full h-full object-cover object-center"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setMobileMenuOpen(false);
+                                    if (item.featured?.onButtonClick) {
+                                      item.featured.onButtonClick();
+                                    } else if (item.featured?.buttonHref) {
+                                      handleNavClick(undefined, item.featured.buttonHref);
+                                    }
+                                  }}
+                                  className="absolute bottom-2.5 left-2.5 right-2.5 z-10 bg-stone-900/95 hover:bg-black text-white text-xs font-semibold px-3.5 py-2 rounded-xl flex items-center justify-between gap-1.5 backdrop-blur-md border border-white/20 transition-all cursor-pointer"
+                                >
+                                  <span className="truncate">{item.featured.buttonLabel}</span>
+                                  <ArrowUpRight className="w-3.5 h-3.5 text-stone-300 shrink-0" />
+                                </button>
+                              </div>
+                            </div>
+                          )}
                         </motion.div>
                       )}
                     </AnimatePresence>
