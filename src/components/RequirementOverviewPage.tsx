@@ -249,32 +249,32 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
 
   const faqs = [
     {
-      question: '1. Who can apply to ASET?',
+      question: 'Who can apply to ASET?',
       answer:
         'Qualified students are welcome to apply for programmes ranging from Undergraduate (UG) to Postgraduate (PG) levels. The college also accepts students for boarding and on-campus residential accommodation at both Chennai and Coimbatore campuses.',
     },
     {
-      question: '2. Where can I collect the prospectus and application?',
+      question: 'Where can I collect the prospectus and application?',
       answer:
         'The prospectus and application for various programmes can be collected in person from the ASET College Chennai or Coimbatore campus admissions office. Online application is also available directly through the college portal.',
     },
     {
-      question: '3. Which documents should I submit with the application?',
+      question: 'Which documents should I submit with the application?',
       answer:
         'Submit clear photocopies of the documents listed for your relevant UG or PG programme (qualifying mark sheets, TC, conduct, Aadhaar, photographs, etc.). All original certificates must be presented in person at the time of official admission confirmation.',
     },
     {
-      question: '4. How does the admission booking fee work?',
+      question: 'How does the admission booking fee work?',
       answer:
         'A booking fee is submitted along with your filled application form. Certain courses have a designated minimum advance reservation amount to guarantee your seat before class capacity is reached. Contact the admissions office to confirm the exact fee for your specific stream.',
     },
     {
-      question: '5. Are candidates from other states or NIOS boards eligible?',
+      question: 'Are candidates from other states or NIOS boards eligible?',
       answer:
         'Yes. Students from other states and recognized boards such as NIOS, CBSE, or ICSE are welcome. Candidates from boards or universities outside Tamil Nadu must enclose an official Migration Certificate alongside their mark statements.',
     },
     {
-      question: '6. What rules govern final admission confirmation?',
+      question: 'What rules govern final admission confirmation?',
       answer:
         'Admission confirmation is carried out strictly in accordance with the regulatory criteria established by the Tamil Nadu Government and affiliated state university frameworks. Admitted students must adhere to the institution’s current management rules and regulations.',
     },
@@ -307,7 +307,6 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>ASET COLLEGE · ADMISSION REQUIREMENTS · 2027–28</span>
           </motion.div>
 
@@ -477,7 +476,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
           <div className="max-w-3xl mb-14">
             <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#dc2626]" />
-              <span>OFFICIAL APPLICATION PROCESS</span>
+              <span>APPLICATION PROCESS &amp; SUBMISSION GUIDELINES</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -551,7 +550,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
             <div className="max-w-2xl">
               <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-[#dc2626]" />
-                <span>DOCUMENTS TO ENCLOSE WITH APPLICATION</span>
+                <span>REQUIRED ENCLOSURES &amp; CERTIFICATE CHECKLIST</span>
               </ScrollEyebrow>
 
               <ScrollHeading
@@ -728,7 +727,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
           <div className="max-w-3xl mb-14">
             <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
               <Building2 className="w-4 h-4 text-[#dc2626]" />
-              <span>REGULATORY &amp; INSTITUTIONAL FRAMEWORK</span>
+              <span>INSTITUTIONAL CODE OF CONDUCT &amp; REGULATIONS</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -837,7 +836,7 @@ export const RequirementOverviewPage: React.FC<RequirementOverviewPageProps> = (
           <div className="max-w-3xl mb-14 text-center mx-auto">
             <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center justify-center gap-2">
               <HelpCircle className="w-4 h-4 text-[#dc2626]" />
-              <span>COMMON INQUIRIES</span>
+              <span>FREQUENTLY ASKED ADMISSION QUESTIONS</span>
             </ScrollEyebrow>
 
             <ScrollHeading

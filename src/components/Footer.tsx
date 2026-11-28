@@ -22,6 +22,7 @@ interface FooterProps {
   onNavigateToFeePayment?: (targetHash?: string) => void;
   onNavigateToApplyOnline?: (targetHash?: string) => void;
   onNavigateToExamCell?: (targetHash?: string) => void;
+  onNavigateToPlacements?: (targetHash?: string) => void;
   onNavigateToContact?: (targetHash?: string) => void;
 }
 
@@ -36,6 +37,7 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateToFeePayment,
   onNavigateToApplyOnline,
   onNavigateToExamCell,
+  onNavigateToPlacements,
   onNavigateToContact,
 }) => {
   const scrollTo = (href: string) => {
@@ -240,7 +242,13 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={() => scrollTo('#placements')}
+                  onClick={() => {
+                    if (onNavigateToPlacements) {
+                      onNavigateToPlacements('#placement-overview');
+                    } else {
+                      scrollTo('#placements');
+                    }
+                  }}
                   className="hover:text-stone-950 hover:translate-x-0.5 transition-all cursor-pointer text-left"
                 >
                   Placement

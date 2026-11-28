@@ -392,7 +392,6 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
             transition={{ duration: 0.6, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs font-mono font-semibold tracking-wide mb-6 shadow-md"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>ASET COLLEGE · CAMPUS LIFE · STUDENT EXPERIENCES &amp; ACTIVITIES</span>
           </motion.div>
 
@@ -580,10 +579,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="day-one" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700 animate-pulse" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                FIRST STEPS ON CAMPUS
+                STUDENT INDUCTION &amp; ORIENTATION
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -675,10 +673,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="gallery" className="py-16 sm:py-24 bg-white border-y border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-10">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                PHOTOS, VIDEOS &amp; STUDENT MEMORIES
+                CAMPUS LIFE GALLERY &amp; STUDENT MEMORIES
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -768,10 +765,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="videos" className="py-16 sm:py-24 bg-stone-950 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-400">
-                CAMPUS LIFE ON VIDEO
+                VIDEO TOURS &amp; CAMPUS EXPERIENCE
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white tracking-tight mt-3">
@@ -872,10 +868,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="campus-routine" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-600" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-amber-700">
-                DYNAMIC LEARNING CALENDAR
+                ACADEMIC &amp; CO-CURRICULAR SCHEDULE
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -979,10 +974,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
 
             {/* Content Details Right */}
             <div className="lg:col-span-6 space-y-6">
-              <ScrollEyebrow className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-red-700" />
+              <ScrollEyebrow>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                  CREATIVITY &amp; EXPRESSION
+                  CULTURAL CLUBS &amp; CREATIVE ARTS
                 </span>
               </ScrollEyebrow>
 
@@ -1043,10 +1037,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="real-growth" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                HOLISTIC DEVELOPMENT
+                SPORTS, LEADERSHIP &amp; RECREATION
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1128,10 +1121,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="memorable-experiences" className="py-16 sm:py-24 bg-white border-y border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                SIGNATURE EXPERIENCES
+                STUDENT EXPERIENCES &amp; INDUSTRIAL EXPOSURE
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1145,52 +1137,106 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             
             {/* 1. Cricket Tournaments */}
-            <div className="bg-[#faf8f5] p-7 sm:p-8 rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div className="bg-[#faf8f5] rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-white border border-stone-200 text-red-700 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform shadow-2xs">
-                  <Trophy className="w-6 h-6" />
+                {/* Responsive Photo Header */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admFreshersQuest}
+                    alt="ASET Annual Sports Meet and Inter-Campus Athletic Championships"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Inter-Campus Sports
+                    </span>
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold text-stone-900 font-serif font-semibold">Cricket Tournaments</h4>
-                <p className="text-sm text-stone-600 mt-3 leading-relaxed font-sans">
-                  High-energy annual inter-department and inter-campus cricket championships that build team camaraderie, sportsmanship, and tactical focus.
-                </p>
+
+                <div className="p-6 sm:p-7 space-y-3">
+                  <div className="flex items-center gap-2.5 text-red-700">
+                    <Trophy className="w-5 h-5 shrink-0" />
+                    <h4 className="text-xl font-bold text-stone-900 font-serif font-semibold">Cricket Tournaments</h4>
+                  </div>
+                  <p className="text-sm text-stone-600 leading-relaxed font-sans">
+                    High-energy annual inter-department and inter-campus cricket championships that build team camaraderie, sportsmanship, and tactical focus.
+                  </p>
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/70 text-xs font-semibold text-red-700 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4" />
+              <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-stone-200/70 text-xs font-semibold text-red-700 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>Inter-Campus Premier League</span>
               </div>
             </div>
 
             {/* 2. Student Trips */}
-            <div className="bg-[#faf8f5] p-7 sm:p-8 rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div className="bg-[#faf8f5] rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-white border border-stone-200 text-amber-700 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform shadow-2xs">
-                  <MapPin className="w-6 h-6" />
+                {/* Responsive Photo Header */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admLotusTemple}
+                    alt="ASET Student Educational Expeditions"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      National Tours
+                    </span>
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold text-stone-900 font-serif font-semibold">Student Trips</h4>
-                <p className="text-sm text-stone-600 mt-3 leading-relaxed font-sans">
-                  Shared outbound training and educational expeditions to heritage sites, national industrial hubs, and aerospace technology clusters.
-                </p>
+
+                <div className="p-6 sm:p-7 space-y-3">
+                  <div className="flex items-center gap-2.5 text-amber-700">
+                    <MapPin className="w-5 h-5 shrink-0" />
+                    <h4 className="text-xl font-bold text-stone-900 font-serif font-semibold">Student Trips</h4>
+                  </div>
+                  <p className="text-sm text-stone-600 leading-relaxed font-sans">
+                    Shared outbound training and educational expeditions to heritage sites, national industrial hubs, and aerospace technology clusters.
+                  </p>
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/70 text-xs font-semibold text-amber-700 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4" />
+              <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-stone-200/70 text-xs font-semibold text-amber-700 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>Outbound Learning Expeditions</span>
               </div>
             </div>
 
             {/* 3. In-flight Training */}
-            <div className="bg-[#faf8f5] p-7 sm:p-8 rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div className="bg-[#faf8f5] rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-white border border-stone-200 text-sky-700 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform shadow-2xs">
-                  <Plane className="w-6 h-6" />
+                {/* Responsive Photo Header */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admCabinCrew}
+                    alt="ASET In-Flight Passenger Service Training"
+                    className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Airline Sector
+                    </span>
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold text-stone-900 font-serif font-semibold">In-Flight Training</h4>
-                <p className="text-sm text-stone-600 mt-3 leading-relaxed font-sans">
-                  The curriculum highlights live in-flight passenger handling and flight dispatch training from Chennai airport to top destinations including Goa and Bengaluru.
-                </p>
+
+                <div className="p-6 sm:p-7 space-y-3">
+                  <div className="flex items-center gap-2.5 text-sky-700">
+                    <Plane className="w-5 h-5 shrink-0" />
+                    <h4 className="text-xl font-bold text-stone-900 font-serif font-semibold">In-Flight Training</h4>
+                  </div>
+                  <p className="text-sm text-stone-600 leading-relaxed font-sans">
+                    The curriculum highlights live in-flight passenger handling and flight dispatch training from Chennai airport to top destinations including Goa and Bengaluru.
+                  </p>
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/70 text-xs font-semibold text-sky-700 flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4" />
+              <div className="px-6 sm:px-7 pb-6 pt-3 border-t border-stone-200/70 text-xs font-semibold text-sky-700 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>Chennai to Goa &amp; Bengaluru Flights</span>
               </div>
             </div>
@@ -1205,10 +1251,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="learning-spaces" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                LEARNING ENVIRONMENTS
+                ACADEMIC &amp; RESEARCH INFRASTRUCTURE
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1344,10 +1389,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="hostel-facilities" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                RESIDENTIAL LIVING
+                STUDENT RESIDENCES &amp; HOSTEL AMENITIES
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1356,6 +1400,38 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
             <ScrollParagraph className="text-base sm:text-lg text-stone-600 mt-4 leading-relaxed font-sans">
               ASET provides separate hostels for male and female students. Many residents share rooms with peers, encouraging community living, lifelong friendship, and social skills in a structured, peaceful environment.
             </ScrollParagraph>
+          </div>
+
+          {/* Featured Modern Architectural Residence Showcase */}
+          <div className="relative rounded-3xl overflow-hidden shadow-xl border border-stone-200 mb-10 group aspect-[16/9] sm:aspect-[21/9] max-h-[380px] bg-stone-900">
+            <img
+              src={asetCampusModern}
+              alt="ASET Student Residential Hostels and Living Environment"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent pointer-events-none" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
+              <div className="space-y-1.5 max-w-xl">
+                <span className="px-3 py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-300/30 text-amber-200 text-xs font-mono font-semibold uppercase tracking-wider inline-block">
+                  Modern Residential Living · Chennai &amp; Coimbatore
+                </span>
+                <h4 className="text-xl sm:text-2xl font-serif font-semibold text-white">
+                  Safe, Peaceful &amp; Well-Supervised Hostels
+                </h4>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  24/7 Security
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  Separate Men &amp; Women Blocks
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  Hygienic Mess Hall
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1436,10 +1512,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section className="py-16 sm:py-24 bg-white border-t border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                PRACTICAL FACILITIES
+                PRACTICAL SIMULATION LABS &amp; WORKSHOPS
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1453,69 +1528,159 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* 1. Aviation & Engineering Lab */}
-            <div className="p-7 rounded-3xl bg-[#faf8f5] border border-stone-200/90 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-red-100 text-red-800 flex items-center justify-center font-bold text-xs">
-                01
+            <div className="rounded-3xl bg-[#faf8f5] border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admHangar}
+                    alt="Aviation Aircraft Hangar Lab at ASET"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Lab 01
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Aviation &amp; Engineering Lab</h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Equipped with aircraft engines, aero-engineering cutaways, turbine components, and detailed airport model layouts.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Aviation &amp; Engineering Lab</h4>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Equipped with aircraft engines, aero-engineering cutaways, turbine components, and detailed airport model layouts.
-              </p>
             </div>
 
             {/* 2. Drone & RC Aircraft Zone */}
-            <div className="p-7 rounded-3xl bg-[#faf8f5] border border-stone-200/90 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs">
-                02
+            <div className="rounded-3xl bg-[#faf8f5] border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admDroneLab}
+                    alt="Drone Tech and Remote-Controlled Aircraft Zone"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Lab 02
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Drone &amp; RC Aircraft Zone</h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Training multi-rotor drones, telemetry systems, flight controllers, and remote-controlled fixed-wing aircraft models.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Drone &amp; RC Aircraft Zone</h4>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Training multi-rotor drones, telemetry systems, flight controllers, and remote-controlled fixed-wing aircraft models.
-              </p>
             </div>
 
             {/* 3. 3D Printing & Prototyping */}
-            <div className="p-7 rounded-3xl bg-[#faf8f5] border border-stone-200/90 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center font-bold text-xs">
-                03
+            <div className="rounded-3xl bg-[#faf8f5] border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admLaptopGroup}
+                    alt="3D Prototyping and CAD Modelling Facility"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Lab 03
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">3D Printing &amp; Prototyping</h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Engineering prototypes, rapid design modeling, CAD slicing, and scale aerodynamic fabrication using precision 3D printing.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">3D Printing &amp; Prototyping</h4>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Engineering prototypes, rapid design modeling, CAD slicing, and scale aerodynamic fabrication using precision 3D printing.
-              </p>
             </div>
 
             {/* 4. Measurement & Electrical Instruments */}
-            <div className="p-7 rounded-3xl bg-[#faf8f5] border border-stone-200/90 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
-                04
+            <div className="rounded-3xl bg-[#faf8f5] border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admAirportModel}
+                    alt="Measurement and Electrical Instrumentation Testing Facility"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Lab 04
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Measurement &amp; Electrical Instruments</h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Calibration benches, precision measurement tools, electrical circuit testers, multimeters, and avionics sensor testing boards.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Measurement &amp; Electrical Instruments</h4>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Calibration benches, precision measurement tools, electrical circuit testers, multimeters, and avionics sensor testing boards.
-              </p>
             </div>
 
             {/* 5. Logistics Miniatures */}
-            <div className="p-7 rounded-3xl bg-[#faf8f5] border border-stone-200/90 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">
-                05
+            <div className="rounded-3xl bg-[#faf8f5] border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={portVisitImg}
+                    alt="Logistics Scaled Simulation Models and Port Operations"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Lab 05
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Logistics Miniatures</h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Scale working models of automated warehouses, cross-docking facilities, ocean container tankers, and supply chain hubs.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Logistics Miniatures</h4>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Scale working models of automated warehouses, cross-docking facilities, ocean container tankers, and supply chain hubs.
-              </p>
             </div>
 
             {/* 6. Fire & Safety Equipment */}
-            <div className="p-7 rounded-3xl bg-[#faf8f5] border border-stone-200/90 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center font-bold text-xs">
-                06
+            <div className="rounded-3xl bg-[#faf8f5] border border-stone-200/90 shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group overflow-hidden">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admFireDrill}
+                    alt="Fire Extinguisher Demonstration and Safety Practical Drills"
+                    className="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Lab 06
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Fire &amp; Safety Equipment</h4>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Practical exposure to Class A-F fire extinguishers, hydrant lines, sprinkler risers, breathing gear, and protective emergency shields.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-stone-900 font-serif font-semibold">Fire &amp; Safety Equipment</h4>
-              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Practical exposure to Class A-F fire extinguishers, hydrant lines, sprinkler risers, breathing gear, and protective emergency shields.
-              </p>
             </div>
 
           </div>
@@ -1528,10 +1693,9 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
       <section id="ppe-laboratory" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                SAFETY SPECIALIZATION
+                OCCUPATIONAL HEALTH &amp; SAFETY LABORATORY
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1746,7 +1910,6 @@ export const CampusLifeOverviewPage: React.FC<CampusLifeOverviewPageProps> = ({
               {/* Modal Top Bar */}
               <div className="flex items-center justify-between p-4 sm:p-5 border-b border-white/10 bg-black/40">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
                   <span className="font-serif font-semibold text-white text-sm sm:text-base">
                     {videoModalTitle}
                   </span>

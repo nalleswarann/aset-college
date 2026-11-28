@@ -230,10 +230,9 @@ export const LifeAtAsetSection: React.FC = () => {
           {/* ======================================================= */}
           <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-center space-y-5 lg:space-y-6 z-10">
             {/* Eyebrow Label */}
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+            <ScrollEyebrow delay={0.04} className="flex items-center">
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-400">
-                CAMPUS EXPERIENCE &amp; ACTIVITIES
+                STUDENT LIFE, ACTIVITIES &amp; CAMPUS EXPERIENCE
               </span>
             </ScrollEyebrow>
 

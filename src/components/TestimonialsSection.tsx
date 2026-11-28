@@ -322,10 +322,9 @@ export const TestimonialsSection: React.FC = () => {
         {/* ========================================================= */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10 pb-8 sm:pb-10 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+            <ScrollEyebrow delay={0.04} className="flex items-center">
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
-                VERIFIED PLACEMENTS &amp; CAREER JOURNEYS
+                ALUMNI TESTIMONIALS &amp; CAREER PLACEMENTS
               </span>
             </ScrollEyebrow>
             <ScrollHeading delay={0.12} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold tracking-tight text-stone-900 leading-tight">
@@ -384,7 +383,6 @@ export const TestimonialsSection: React.FC = () => {
                 aria-label={`Watch testimonial video of ${current.authorName}`}
               >
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                   <span className="text-xs sm:text-sm font-semibold tracking-wide text-white/95">
                     Watch Testimonial
                   </span>
@@ -531,7 +529,6 @@ export const TestimonialsSection: React.FC = () => {
               {/* Modal Top Bar */}
               <div className="flex items-center justify-between p-4 sm:p-5 border-b border-white/10 bg-black/40">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
                   <span className="font-serif font-semibold text-white text-sm sm:text-base">
                     {current.authorName} · Verified Alumni Spotlight
                   </span>

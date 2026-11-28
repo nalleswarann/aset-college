@@ -280,23 +280,23 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
 
   const faqs = [
     {
-      q: '1. What documents should I keep ready before filling out this online form?',
+      q: 'What documents should I keep ready before filling out this online form?',
       a: 'Keep your 10th standard (SSLC), 12th standard (HSC), and if applying for PG, your UG mark statements ready. Also have your 12-digit Aadhaar number and a clean passport-size photograph in JPG, PNG, or WebP format (up to 2 MB) ready for upload.',
     },
     {
-      q: '2. What happens immediately after I submit the online form?',
+      q: 'What happens immediately after I submit the online form?',
       a: 'Upon submission, your application details are recorded in the central admissions portal. You will receive an official Application Reference Number. The admissions desk will contact you via phone or WhatsApp regarding seat reservation, the admission booking fee, and certificate verification.',
     },
     {
-      q: '3. Do I need to submit hard copies at the campus?',
+      q: 'Do I need to submit hard copies at the campus?',
       a: 'Yes. As per the official instructions, submit the filled application summary along with the admission booking fee and photocopies of the required qualifying testimonials at the admissions office (either Chennai or Coimbatore campus).',
     },
     {
-      q: '4. Can I modify my course or campus selection after submitting?',
+      q: 'Can I modify my course or campus selection after submitting?',
       a: 'Yes. If you wish to change your course stream or campus preference, contact the admissions helpline (+91 91594 99973) with your Application Reference Number prior to seat allocation.',
     },
     {
-      q: '5. Who can I contact if I encounter any technical error during submission?',
+      q: 'Who can I contact if I encounter any technical error during submission?',
       a: 'If you face any issue saving or sending the form, call the admissions support desk at +91 91594 99973 / 74 or email contact@asetsafety.ac.in for immediate assistance.',
     },
   ];
@@ -327,7 +327,6 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>ASET COLLEGE · ONLINE APPLICATION FORM · ACADEMIC YEAR 2027–28</span>
           </motion.div>
 
@@ -576,9 +575,8 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
       <section id="application-wizard" className="py-16 sm:py-24 bg-[#faf8f5] border-b border-stone-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>FOUR-STEP ONLINE ADMISSION WIZARD</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>ONLINE ADMISSION APPLICATION WIZARD</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-3">
               Apply in <span className="text-gradient-title font-extrabold">Four Simple Steps</span>
@@ -1512,9 +1510,8 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
       <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>EXPLORE COMPLETE ADMISSIONS SUITE</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>COMPREHENSIVE ADMISSION RESOURCES</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 mb-2">
               Related <span className="text-gradient-title font-extrabold">Admission Pages</span>
@@ -1594,9 +1591,8 @@ export const ApplyOnlineOverviewPage: React.FC<ApplyOnlineOverviewPageProps> = (
       <section className="py-16 sm:py-24 bg-[#faf8f5] border-b border-stone-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>FREQUENTLY ASKED QUESTIONS</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>ONLINE APPLICATION FAQS</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-3">
               Application &amp; Admission <span className="text-gradient-title font-extrabold">Queries</span>

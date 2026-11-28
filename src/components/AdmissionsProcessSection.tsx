@@ -122,10 +122,9 @@ export const AdmissionsProcessSection: React.FC<AdmissionsProcessSectionProps> =
         {/* SECTION HEADER: Title & Curatorial Guidance               */}
         {/* ========================================================= */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-16 space-y-3">
-          <ScrollEyebrow delay={0.04} className="flex items-center justify-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+          <ScrollEyebrow delay={0.04} className="flex items-center justify-center">
             <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
-              STEP-BY-STEP ADMISSIONS PATHWAY
+              ADMISSION WORKFLOW &amp; ENROLMENT STAGES
             </span>
           </ScrollEyebrow>
 

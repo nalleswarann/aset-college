@@ -53,6 +53,7 @@ import campusworldLogo from '../assets/images/partners/campusworld.png';
 
 interface CampusLifeSectionProps {
   onOpenVirtualTour: () => void;
+  onNavigateToPlacements?: () => void;
 }
 
 // -----------------------------------------------------------------
@@ -107,6 +108,7 @@ const PLACEMENT_METRICS = [
 
 export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
   onOpenVirtualTour,
+  onNavigateToPlacements,
 }) => {
   return (
     <section
@@ -132,9 +134,8 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
         {/* ========================================================= */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            {/* Standard Eyebrow with Pulsing Accent Dot */}
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+            {/* Standard Eyebrow */}
+            <ScrollEyebrow delay={0.04} className="flex items-center">
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
                 CAREER MOBILITY &amp; CAMPUS RECRUITMENT
               </span>
@@ -158,11 +159,22 @@ export const CampusLifeSection: React.FC<CampusLifeSectionProps> = ({
               ASET College graduates are recruited across Fortune 500 airlines, multimodal logistics lines, industrial safety directorates, and global corporate enterprises.
             </ScrollParagraph>
 
-            {/* Action CTA Button */}
-            <ScrollAction delay={0.24}>
+            {/* Action CTA Buttons */}
+            <ScrollAction delay={0.24} className="flex flex-wrap items-center gap-2.5 shrink-0">
+              {onNavigateToPlacements && (
+                <button
+                  type="button"
+                  onClick={onNavigateToPlacements}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 bg-red-700 hover:bg-red-800 text-white text-xs uppercase tracking-wider font-semibold rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer"
+                >
+                  <span>Our Placement Cell Overview</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
               <button
+                type="button"
                 onClick={onOpenVirtualTour}
-                className="inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 bg-stone-900 hover:bg-stone-800 text-stone-50 text-xs uppercase tracking-wider font-semibold rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer shrink-0"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 bg-stone-900 hover:bg-stone-800 text-stone-50 text-xs uppercase tracking-wider font-semibold rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 <span>Explore Campuses 360</span>
                 <ArrowRight className="w-3.5 h-3.5" />

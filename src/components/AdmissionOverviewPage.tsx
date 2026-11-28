@@ -245,31 +245,31 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
   // Official Admission FAQs
   const admissionFaqs = [
     {
-      q: '1. What are the key eligibility requirements for Undergraduate (UG) programmes?',
+      q: 'What are the key eligibility requirements for Undergraduate (UG) programmes?',
       a: 'Candidates must have successfully passed their Higher Secondary Examination (Class 12 / +2) conducted by the Government of Tamil Nadu, CBSE, ICSE, or an equivalent recognized board. NIOS certificate holders are also eligible upon verification of equivalency.',
     },
     {
-      q: '2. What are the payment methods accepted for fee submission?',
+      q: 'What are the payment methods accepted for fee submission?',
       a: 'ASET College accepts Cash, NEFT, RTGS, IMPS, and UPI at both Chennai and Coimbatore admissions finance desks. Official receipts are issued immediately upon transaction confirmation.',
     },
     {
-      q: '3. What are the semester fee payment deadlines?',
+      q: 'What are the semester fee payment deadlines?',
       a: 'First semester fees are payable as specified in your official provisional admission letter. For continuing semesters, Odd Semester fees are due on July 15, and Even Semester fees are due on December 1.',
     },
     {
-      q: '4. When must original certificates be submitted?',
+      q: 'When must original certificates be submitted?',
       a: 'Original certificates (Class 10, Class 12, TC, Conduct, Community, and UG degree certificates for PG) must be presented in person at the admissions office during the final admission confirmation and enrollment verification process.',
     },
     {
-      q: '5. Are hostel and boarding facilities available for outstation students?',
+      q: 'Are hostel and boarding facilities available for outstation students?',
       a: 'Yes. ASET College provides secure, hygienic, and well-furnished separate hostels for male and female students with 24/7 security, Wi-Fi, and a wholesome South Indian buffet mess at both Chennai and Coimbatore campuses.',
     },
     {
-      q: '6. How does the 4-stage online application process work?',
+      q: 'How does the 4-stage online application process work?',
       a: 'The application is divided into: 1) Applicant personal details, 2) Contact and ID details, 3) Education and course details, and 4) Document upload and review. Once submitted, our academic counsellors will contact you within 24 hours to guide you through seat allotment.',
     },
     {
-      q: '7. Can students outside Tamil Nadu apply?',
+      q: 'Can students outside Tamil Nadu apply?',
       a: 'Yes! ASET College welcomes students from all states across India. Outstation applicants must submit a Migration Certificate issued by their respective state educational board or university.',
     },
   ];
@@ -309,7 +309,6 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
             transition={{ duration: 0.8, ease: LUXURY_EASE }}
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/95 text-xs font-mono uppercase tracking-widest mb-6 shadow-sm"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
             <span>ASET COLLEGE · ADMISSIONS &amp; APPLICATION GUIDE · ACADEMIC YEAR 2027–28</span>
           </motion.div>
 
@@ -454,8 +453,7 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
             <div className="lg:col-span-8">
-              <ScrollEyebrow className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-red-700 animate-pulse" />
+              <ScrollEyebrow>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
                   OFFICIAL ADMISSIONS PORTAL · ACADEMIC YEAR 2027–28
                 </span>
@@ -531,10 +529,9 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow className="flex items-center justify-center">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                CLEAR &amp; TRANSPARENT ADMISSION FLOW
+                ADMISSION PROCESS &amp; APPLICATION FLOW
               </span>
             </ScrollEyebrow>
 
@@ -548,6 +545,35 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
             <ScrollParagraph className="text-stone-600 text-sm sm:text-base mt-4 font-sans">
               Joining ASET College is organized into three straightforward, transparent steps ensuring you have complete guidance from eligibility check to course enrollment.
             </ScrollParagraph>
+          </div>
+
+          {/* Featured Admissions Pathway Banner */}
+          <div className="relative rounded-3xl overflow-hidden shadow-xl border border-stone-200 mb-12 group aspect-[16/9] sm:aspect-[21/9] max-h-[360px]">
+            <img
+              src={asetCollegePathway}
+              alt="ASET College Campus Pathway & Admission Walkthrough"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent pointer-events-none" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
+              <div className="space-y-1.5 max-w-xl">
+                <span className="px-3 py-1 rounded-full bg-red-600/30 backdrop-blur-md border border-red-400/40 text-red-200 text-xs font-mono font-semibold uppercase tracking-wider inline-block">
+                  Academic Year 2027–28 Admissions
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white">
+                  Begin Your Journey to Industry Leadership
+                </h3>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  Direct Counselling
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  Merit Scholarships Available
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -688,10 +714,9 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <ScrollEyebrow className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-red-700" />
+              <ScrollEyebrow>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                  ELIGIBILITY &amp; VERIFICATION CHECKLIST
+                  ELIGIBILITY &amp; DOCUMENT CHECKLIST
                 </span>
               </ScrollEyebrow>
 
@@ -853,10 +878,9 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow className="flex items-center justify-center">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                FINANCIAL INFORMATION &amp; SCHEDULES
+                FEE STRUCTURE &amp; PAYMENT SCHEDULES
               </span>
             </ScrollEyebrow>
 
@@ -1010,10 +1034,9 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow className="flex items-center justify-center">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                STREAMLINED DIGITAL PORTAL
+                ONLINE APPLICATION &amp; ADMISSION PORTAL
               </span>
             </ScrollEyebrow>
 
@@ -1190,10 +1213,9 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <ScrollEyebrow className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-red-700" />
+              <ScrollEyebrow>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                  CAREER-ORIENTED DEGREE &amp; DIPLOMA DISCIPLINES
+                  PROGRAMS &amp; ACADEMIC DISCIPLINES
                 </span>
               </ScrollEyebrow>
 
@@ -1228,11 +1250,12 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
                   className="bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-xs hover:shadow-lg transition-all group flex flex-col justify-between"
                 >
                   <div>
-                    <div className="relative h-44 w-full overflow-hidden">
+                    <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-stone-900">
                       <img
                         src={course.image}
                         alt={course.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
                       <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono font-bold text-stone-800 uppercase tracking-wider">
@@ -1428,10 +1451,9 @@ export const AdmissionOverviewPage: React.FC<AdmissionOverviewPageProps> = ({
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center mb-12">
-            <ScrollEyebrow className="flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow className="flex items-center justify-center">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                GOT QUESTIONS? WE ARE HERE TO HELP
+                ADMISSIONS FAQS &amp; SUPPORT DESK
               </span>
             </ScrollEyebrow>
 

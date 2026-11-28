@@ -242,11 +242,10 @@ export const InstitutionalGradeSection: React.FC<InstitutionalGradeSectionProps>
       {/* ========================================================= */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 sm:pt-6">
         <div className="max-w-2xl space-y-2 sm:space-y-3">
-          {/* Eyebrow Label with Animated Pulse Dot */}
-          <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+          {/* Eyebrow Label */}
+          <ScrollEyebrow delay={0.04} className="flex items-center">
             <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-400">
-              TRUST &amp; TRANSPARENCY
+              INSTITUTIONAL GRADE STANDARDS &amp; GOVERNANCE
             </span>
           </ScrollEyebrow>
 

@@ -30,12 +30,13 @@ interface NavbarProps {
   onNavigateToFeePayment?: (targetHash?: string) => void;
   onNavigateToApplyOnline?: (targetHash?: string) => void;
   onNavigateToExamCell?: (targetHash?: string) => void;
+  onNavigateToPlacements?: (targetHash?: string) => void;
   onNavigateToContact?: (targetHash?: string) => void;
   onNavigateToHome?: () => void;
   onSelectDepartment?: (dept: Department) => void;
   onOpenExamCell?: () => void;
   activeSection?: string;
-  currentPage?: 'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell' | 'contact';
+  currentPage?: 'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell' | 'contact' | 'placements';
 }
 
 interface MegaMenuLink {
@@ -77,6 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateToFeePayment,
   onNavigateToApplyOnline,
   onNavigateToExamCell,
+  onNavigateToPlacements,
   onNavigateToContact,
   onNavigateToHome,
   onSelectDepartment,
@@ -330,7 +332,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       currentPage === 'fee-payment' ||
       currentPage === 'apply-online' ||
       currentPage === 'examination-cell' ||
-      currentPage === 'contact'
+      currentPage === 'contact' ||
+      currentPage === 'placements'
     ) {
       const targetInPage = document.querySelector(href);
       if (targetInPage) {
@@ -426,7 +429,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       currentPage === 'fee-payment' ||
       currentPage === 'apply-online' ||
       currentPage === 'examination-cell' ||
-      currentPage === 'contact'
+      currentPage === 'contact' ||
+      currentPage === 'placements'
     ) {
       if (onNavigateToHome) {
         onNavigateToHome();
@@ -740,31 +744,57 @@ export const Navbar: React.FC<NavbarProps> = ({
         col1: [
           {
             label: 'Our Placement Cell',
-            href: '#placements',
-            onClick: () => handleNavClick(undefined, '#placements'),
+            href: '#placement-overview',
+            onClick: () => {
+              if (onNavigateToPlacements) {
+                onNavigateToPlacements('#placement-overview');
+              } else {
+                handleNavClick(undefined, '#placements');
+              }
+            },
           },
           {
             label: 'Placement Training',
-            href: '#placements',
-            onClick: () => handleNavClick(undefined, '#placements'),
+            href: '#about-department',
+            onClick: () => {
+              if (onNavigateToPlacements) {
+                onNavigateToPlacements('#about-department');
+              } else {
+                handleNavClick(undefined, '#placements');
+              }
+            },
           },
           {
             label: 'Internship Program',
-            href: '#placements',
-            onClick: () => handleNavClick(undefined, '#placements'),
+            href: '#activities',
+            onClick: () => {
+              if (onNavigateToPlacements) {
+                onNavigateToPlacements('#activities');
+              } else {
+                handleNavClick(undefined, '#placements');
+              }
+            },
           },
         ],
         col2: [
           {
             label: 'Industrial Visits',
-            href: '#placements',
-            onClick: () => handleNavClick(undefined, '#placements'),
+            href: '#activities',
+            onClick: () => {
+              if (onNavigateToPlacements) {
+                onNavigateToPlacements('#activities');
+              } else {
+                handleNavClick(undefined, '#placements');
+              }
+            },
           },
           {
             label: 'Student Registration',
-            href: '#contact',
+            href: '#placement-process',
             onClick: () => {
-              if (onOpenAdmissions) {
+              if (onNavigateToPlacements) {
+                onNavigateToPlacements('#placement-process');
+              } else if (onOpenAdmissions) {
                 onOpenAdmissions();
               } else {
                 handleNavClick(undefined, '#contact');
@@ -773,8 +803,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           },
           {
             label: 'Testimonials',
-            href: '#testimonials',
-            onClick: () => handleNavClick(undefined, '#testimonials'),
+            href: '#alumni-stories',
+            onClick: () => {
+              if (onNavigateToPlacements) {
+                onNavigateToPlacements('#alumni-stories');
+              } else {
+                handleNavClick(undefined, '#testimonials');
+              }
+            },
           },
         ],
       },
@@ -782,8 +818,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         image: asetGraduates,
         alt: 'ASET College Placements & Alumni',
         buttonLabel: 'View Placement Records ↗',
-        buttonHref: '#placements',
-        onButtonClick: () => handleNavClick(undefined, '#placements'),
+        buttonHref: '#placement-overview',
+        onButtonClick: () => {
+          if (onNavigateToPlacements) {
+            onNavigateToPlacements('#placement-overview');
+          } else {
+            handleNavClick(undefined, '#placements');
+          }
+        },
       },
     },
     {
@@ -795,6 +837,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   const currentMegaMenu = menuItems.find((item) => item.id === activeMenu && item.hasDropdown);
+  const isDarkHeader = isScrolled || currentPage === 'contact';
 
   return (
     <>
@@ -835,14 +878,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           y: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
           opacity: { duration: 0.22, ease: 'easeInOut' },
         }}
-        className={`fixed top-0 left-0 right-0 z-50 font-sans pointer-events-none transition-[padding] duration-300 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 font-sans pointer-events-none transition-[padding] duration-300 ${isDarkHeader
           ? 'pt-2.5 sm:pt-4 px-3 sm:px-6 lg:px-8'
           : 'pt-3.5 sm:pt-5 px-4 sm:px-6 lg:px-8'
           }`}
       >
         <div
           className={`relative max-w-7xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'pointer-events-auto' : 'pointer-events-none'
-            } ${isScrolled
+            } ${isDarkHeader
               ? 'bg-stone-950/85 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl sm:rounded-full shadow-2xl py-2 sm:py-2.5 px-3.5 sm:px-6'
               : 'bg-transparent py-1 sm:py-2 px-0 border-0 shadow-none'
             }`}
@@ -862,7 +905,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 className={`px-3.5 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full backdrop-blur-xl flex items-center justify-center transition-all ${
-                  isScrolled
+                  isDarkHeader
                     ? 'bg-white/10 hover:bg-white/20'
                     : 'bg-white/15 hover:bg-white/25 shadow-md'
                 }`}
@@ -934,8 +977,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {/* Pill Text Content */}
                       <span
                         className={`relative z-10 transition-colors duration-200 ${isHovered
-                          ? 'text-stone-950 font-semibold'
-                          : 'text-white/90 hover:text-white'
+                          ? '!text-stone-950 font-semibold'
+                          : '!text-white/90 hover:!text-white'
                           }`}
                       >
                         {item.label}
@@ -946,7 +989,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <motion.span
                           animate={{ rotate: isHovered ? 45 : 0 }}
                           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                          className={`relative z-10 text-xs font-bold leading-none inline-block origin-center ${isHovered ? 'text-stone-950' : 'text-white/80'
+                          className={`relative z-10 text-xs font-bold leading-none inline-block origin-center ${isHovered ? '!text-stone-950' : '!text-white/80'
                             }`}
                         >
                           +

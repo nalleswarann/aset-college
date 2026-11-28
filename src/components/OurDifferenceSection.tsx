@@ -351,7 +351,6 @@ export const OurDifferenceSection: React.FC = () => {
         {/* ======================================================= */}
         <div className="w-full shrink-0 border-t border-stone-200/80 bg-white/75 backdrop-blur-xs py-1.5 sm:py-2 px-4 sm:px-8 flex items-center justify-between text-[11px] font-mono text-stone-500 z-20">
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
             <span className="hidden sm:inline">Scroll to explore dimensions</span>
             <span className="sm:hidden">Swipe to explore</span>
           </span>

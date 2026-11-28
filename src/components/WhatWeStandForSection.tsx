@@ -3,32 +3,27 @@ import { motion } from 'motion/react';
 import { ScrollHeading, ScrollParagraph, ScrollEyebrow, LUXURY_EASE } from './ScrollTypography';
 
 interface ValueItem {
-  number: string;
   title: string;
   description: string;
 }
 
 const VALUES_DATA: ValueItem[] = [
   {
-    number: '01',
     title: 'EXPERTISE',
     description:
       'We provide specialized higher education rooted in proven industry experience. We pride ourselves on having the master faculty, flight instructors, and safety directors to help every student succeed.',
   },
   {
-    number: '02',
     title: 'CONFIDENCE',
     description:
       'Our students’ confidence is backed by Alagappa University academic support and state-of-the-art simulator labs, ensuring graduates step directly into global careers with complete operational readiness.',
   },
   {
-    number: '03',
     title: 'ATTITUDE',
     description:
       'We instill a proactive, resilient attitude that drives collaborative leadership, critical problem-solving, and professional excellence across our corporate partners and student cohorts.',
   },
   {
-    number: '04',
     title: 'INTEGRITY',
     description:
       'Integrity is at the heart of our institution, embracing academic honesty, corporate responsibility, ethical governance, and transparent career advancement for every learner.',
@@ -129,14 +124,10 @@ export const WhatWeStandForSection: React.FC = () => {
         {/* ========================================================= */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            {/* Standard Eyebrow with Animated Concentric Target Radar */}
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2.5">
-              <div className="relative w-4 h-4 flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
-                <span className="absolute inset-0 rounded-full border border-orange-500/40 animate-ping [animation-duration:2.5s]" />
-              </div>
+            {/* Standard Eyebrow */}
+            <ScrollEyebrow delay={0.04} className="flex items-center">
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
-                CORE VALUES &amp; PRINCIPLES
+                CORE VALUES &amp; GUIDING PRINCIPLES
               </span>
             </ScrollEyebrow>
 
@@ -169,7 +160,7 @@ export const WhatWeStandForSection: React.FC = () => {
 
             return (
               <motion.div
-                key={val.number}
+                key={val.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
@@ -210,15 +201,8 @@ export const WhatWeStandForSection: React.FC = () => {
                 {/* DESKTOP & TABLET LAYOUT: Strict 12-Column Symmetrical */}
                 {/* ----------------------------------------------------- */}
                 <div className="hidden md:grid md:grid-cols-12 items-center gap-6 lg:gap-8 py-8 lg:py-10 relative z-10">
-                  {/* Column 1: Index Number + Value Title (5 cols) */}
-                  <div className="col-span-5 flex items-baseline gap-4 lg:gap-6">
-                    <span
-                      className={`w-8 shrink-0 font-mono text-xs sm:text-sm font-medium tracking-widest transition-colors duration-300 ${
-                        isHovered ? 'text-orange-600' : 'text-stone-400'
-                      }`}
-                    >
-                      {val.number}
-                    </span>
+                  {/* Column 1: Value Title (5 cols) */}
+                  <div className="col-span-5 flex items-center">
                     <h3
                       className={`text-2xl lg:text-[32px] xl:text-[36px] font-medium tracking-tight uppercase leading-none transition-all duration-300 ${
                         isHovered
@@ -249,35 +233,26 @@ export const WhatWeStandForSection: React.FC = () => {
                 {/* MOBILE LAYOUT: Clean stacked card with indented text  */}
                 {/* ----------------------------------------------------- */}
                 <div className="block md:hidden py-6 relative z-10">
-                  {/* Top Line: Number + Title (left) & DotMatrix (right) */}
+                  {/* Top Line: Title (left) & DotMatrix (right) */}
                   <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-baseline gap-3">
-                      <span
-                        className={`font-mono text-xs font-medium tracking-widest transition-colors duration-300 ${
-                          isHovered ? 'text-orange-600' : 'text-stone-400'
-                        }`}
-                      >
-                        {val.number}
-                      </span>
-                      <h3
-                        className={`text-xl sm:text-2xl font-medium tracking-tight uppercase transition-all duration-300 ${
-                          isHovered
-                            ? 'text-gradient-accent translate-x-1'
-                            : 'text-stone-900'
-                        }`}
-                      >
-                        {val.title}
-                      </h3>
-                    </div>
+                    <h3
+                      className={`text-xl sm:text-2xl font-medium tracking-tight uppercase transition-all duration-300 ${
+                        isHovered
+                          ? 'text-gradient-accent translate-x-1'
+                          : 'text-stone-900'
+                      }`}
+                    >
+                      {val.title}
+                    </h3>
 
                     <div className="shrink-0">
                       <DotMatrix isHovered={isHovered} />
                     </div>
                   </div>
 
-                  {/* Description: Indented to align precisely under the Title */}
+                  {/* Description: Clean left-aligned narrative */}
                   <p
-                    className={`mt-2.5 pl-7 text-xs sm:text-sm leading-relaxed font-sans transition-colors duration-300 ${
+                    className={`mt-2.5 text-xs sm:text-sm leading-relaxed font-sans transition-colors duration-300 ${
                       isHovered ? 'text-stone-900' : 'text-stone-600'
                     }`}
                   >

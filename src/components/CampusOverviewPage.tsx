@@ -99,31 +99,31 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
   // 7 Document FAQs from official PDF
   const campusFaqs = [
     {
-      q: '1. Where are the ASET College campuses located?',
+      q: 'Where are the ASET College campuses located?',
       a: 'ASET College has two career-focused campuses: Chennai at No. 28, Irulapalayam, Bangalore Highway, Kuthambakkam, Chennai – 600124, and Coimbatore at Varathaiyangar Palayam, Saravanampatti, Coimbatore – 641110. ASET Flying School is located at Thoothukudi, Tamil Nadu.',
     },
     {
-      q: '2. What are the contact numbers for admissions?',
+      q: 'What are the contact numbers for admissions?',
       a: 'For Chennai, call +91 91594 99973 or +91 91594 99974 (landline 044 26810078). For Coimbatore, call +91 91594 99975 or +91 91594 99977 (landline 0422 714 0772). WhatsApp is available on all mobile contact numbers.',
     },
     {
-      q: '3. Are hostel and transport facilities available?',
+      q: 'Are hostel and transport facilities available?',
       a: 'Yes. Safe and well-maintained hostel accommodation is provided for outstation students, and an extensive college bus transport fleet operates for day scholars across major city routes. Contact our admissions team for specific route details for your campus.',
     },
     {
-      q: '4. Where do pilot trainees study and train?',
+      q: 'Where do pilot trainees study and train?',
       a: 'Pilot trainees study theory papers, including DGCA ground classes, RTR exam preparation, and DGCA exam preparation, at the Chennai campus for 6 months, and then take hands-on flight training for their Commercial Pilot License (CPL) at ASET Flying School in Thoothukudi for 18 months.',
     },
     {
-      q: '5. Do B.Sc Aviation students visit the flying school?',
+      q: 'Do B.Sc Aviation students visit the flying school?',
       a: 'Yes. B.Sc Aviation students are taken to our Thoothukudi Flying School for industrial visits, apron inspections, and hands-on aircraft maintenance experience alongside certified flight instructors and engineers.',
     },
     {
-      q: '6. Which campus should I choose?',
+      q: 'Which campus should I choose?',
       a: 'Programme availability can vary by campus. For example, DGCA Ground Classes and Aviation theory are based in Chennai, while specialized Hospitality practical labs (training kitchen, bar, front office) are hosted in Coimbatore. Call the admissions team of the campus nearest to you; an academic counsellor will help you choose the best programme and campus.',
     },
     {
-      q: '7. Can I visit the campus before applying?',
+      q: 'Can I visit the campus before applying?',
       a: 'Yes! Prospective students and parents are strongly encouraged to book a campus visit by calling or messaging on WhatsApp. Our admissions counsellors will arrange a guided tour to show you the modern classrooms, labs, hostels, and answer all your questions.',
     },
   ];
@@ -178,7 +178,6 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
             transition={{ duration: 0.6, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs font-mono font-semibold tracking-wide mb-6 shadow-md"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>ASET COLLEGE · CAMPUSES &amp; FACILITIES · CHENNAI • COIMBATORE • THOOTHUKUDI</span>
           </motion.div>
 
@@ -373,10 +372,9 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
       <section id="find-campus" className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700 animate-pulse" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                FIND YOUR CAMPUS
+                CAMPUS LOCATIONS &amp; INFRASTRUCTURE
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -397,7 +395,7 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
                   <Building className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-bold text-red-700 uppercase tracking-wider">
-                  Campus 01
+                  Chennai Flagship Campus
                 </span>
                 <h3 className="text-xl font-bold text-stone-900 mt-1 font-serif font-semibold">
                   Chennai Campus
@@ -430,7 +428,7 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
                   <UtensilsCrossed className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-bold text-amber-700 uppercase tracking-wider">
-                  Campus 02
+                  Coimbatore Main Campus
                 </span>
                 <h3 className="text-xl font-bold text-stone-900 mt-1 font-serif font-semibold">
                   Coimbatore Campus
@@ -463,7 +461,7 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
                   <Plane className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono font-bold text-sky-700 uppercase tracking-wider">
-                  Flight Base 03
+                  Thoothukudi Flight Training Base
                 </span>
                 <h3 className="text-xl font-bold text-stone-900 mt-1 font-serif font-semibold">
                   ASET Flying School
@@ -520,18 +518,20 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
 
               {/* Secondary Campus Life Collage */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm">
+                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm group">
                   <img
                     src={classImg}
                     alt="Chennai Campus Modern Classrooms"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
                   />
                 </div>
-                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm">
+                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm group">
                   <img
                     src={asetCollegePathway}
                     alt="Chennai Campus Green Walkway"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -539,10 +539,9 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
 
             {/* Content Details Right */}
             <div className="lg:col-span-6 space-y-6">
-              <ScrollEyebrow className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-red-700" />
+              <ScrollEyebrow>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                  CAMPUS PROFILE 01
+                  CHENNAI FLAGSHIP CAMPUS
                 </span>
               </ScrollEyebrow>
 
@@ -648,10 +647,9 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
             
             {/* Content Details Left */}
             <div className="lg:col-span-6 space-y-6 order-2 lg:order-1">
-              <ScrollEyebrow className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-600" />
+              <ScrollEyebrow>
                 <span className="text-xs font-mono font-bold tracking-widest uppercase text-amber-700">
-                  CAMPUS PROFILE 02
+                  COIMBATORE MAIN CAMPUS
                 </span>
               </ScrollEyebrow>
 
@@ -766,7 +764,7 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
             <div className="lg:col-span-6 space-y-4 order-1 lg:order-2">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-stone-200 aspect-[4/3] group">
                 <img
-                  src={campusBuildingUserImg}
+                  src={asetCampusModern}
                   alt="ASET College Coimbatore Campus"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -781,18 +779,20 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
 
               {/* Hospitality Practice Collage */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm">
+                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm group">
                   <img
                     src={deptHospitalityImg}
                     alt="Hospitality Practical Training Kitchen"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
                   />
                 </div>
-                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm">
+                <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-stone-200 shadow-sm group">
                   <img
                     src={laptopGroupImg}
                     alt="Student Collaboration & Seminars"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -814,10 +814,9 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-sky-400">
-                OWN PILOT FLIGHT TRAINING BASE
+                THOOTHUKUDI FLIGHT TRAINING BASE
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white tracking-tight mt-3">
@@ -826,6 +825,35 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
             <ScrollParagraph className="text-base sm:text-lg text-stone-300 mt-4 leading-relaxed font-sans">
               ASET Flying School is the institution&apos;s own flying school at Thoothukudi, built around three foundational values: <strong>discipline, knowledge, and skills</strong>. Aspiring pilots complete their theory papers at the Chennai campus and then undertake hands-on flight training at Thoothukudi, all within the same institution.
             </ScrollParagraph>
+          </div>
+
+          {/* Featured Flight Training Aircraft Visual */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 mb-12 group aspect-[16/9] sm:aspect-[21/9] max-h-[420px]">
+            <img
+              src={deptAviationImg}
+              alt="ASET Flying School Aircraft and Flight Line Training"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/35 to-transparent pointer-events-none" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
+              <div className="space-y-1.5 max-w-xl">
+                <span className="px-3 py-1 rounded-full bg-sky-500/20 backdrop-blur-md border border-sky-400/30 text-sky-300 text-xs font-mono font-semibold uppercase tracking-wider inline-block">
+                  Thoothukudi Flight Operations · Own Aerodrome Base
+                </span>
+                <h4 className="text-xl sm:text-2xl font-serif font-semibold text-white">
+                  Commercial Pilot License (CPL) Flight Training
+                </h4>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-sky-200 font-sans">
+                  Dual &amp; Solo Flight Hours
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-sky-200 font-sans">
+                  DGCA Ground Preparation
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* 3-Step Pilot Training Pathway */}
@@ -921,10 +949,9 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
       <section id="facilities" className="py-16 sm:py-24 bg-white border-b border-stone-200/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow>
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                LIFE AND LEARNING AT ASET
+                CAMPUS LIFE &amp; RESIDENTIAL AMENITIES
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight mt-3">
@@ -1171,10 +1198,9 @@ export const CampusOverviewPage: React.FC<CampusOverviewPageProps> = ({
       <section id="campus-faqs" className="py-16 sm:py-24 bg-white border-t border-stone-200/90">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <ScrollEyebrow className="flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-700" />
+            <ScrollEyebrow className="flex items-center justify-center">
               <span className="text-xs font-mono font-bold tracking-widest uppercase text-red-700">
-                FREQUENTLY ASKED QUESTIONS
+                CAMPUSES &amp; FACILITIES FAQS
               </span>
             </ScrollEyebrow>
             <ScrollHeading className="text-3xl sm:text-4xl font-serif font-semibold text-stone-900 tracking-tight mt-2">

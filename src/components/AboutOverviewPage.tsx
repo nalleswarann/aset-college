@@ -162,67 +162,67 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
   // 16 FAQs extracted from the official document
   const faqs = [
     {
-      q: '01. What courses does ASET College offer?',
+      q: 'What courses does ASET College offer?',
       a: 'ASET offers programmes in Aviation and Pilot Training, Industrial Safety, Shipping & Logistics, Management Studies, ASET School of Commerce (CA / CMA / CS / ACCA + B.Com), Hotel Management and Information Technology, from certificate and diploma to undergraduate and postgraduate levels, at the Chennai and Coimbatore campuses.',
     },
     {
-      q: '02. Why choose ASET as a fire and safety institute in Chennai and Coimbatore?',
+      q: 'Why choose ASET as a fire and safety institute in Chennai and Coimbatore?',
       a: 'ASET offers fire and safety education with practical training, industrial visits, workshops, experienced mentors and placement support.',
     },
     {
-      q: '03. What fire and safety courses does ASET offer in Chennai and Coimbatore?',
+      q: 'What fire and safety courses does ASET offer in Chennai and Coimbatore?',
       a: 'Courses include Certificate, Diploma in Fire & Industrial Safety, B.Sc Fire & Industrial Safety Management (including lateral entry), PG Diploma, M.Sc Industrial Safety & Hygiene and MBA in Environment & Industrial Safety. Short courses such as NEBOSH, IOSH and Lead Auditor are also offered.',
     },
     {
-      q: '04. What is the fire and safety course fee in Chennai and Coimbatore?',
+      q: 'What is the fire and safety course fee in Chennai and Coimbatore?',
       a: 'The fee depends on the programme and its duration. Contact the admissions team for the current fee structure. Education loans and hostel facilities are available.',
     },
     {
-      q: '05. How do I apply for fire and safety admission in Chennai and Coimbatore?',
+      q: 'How do I apply for fire and safety admission in Chennai and Coimbatore?',
       a: "Eligibility depends on the programme, from SSLC for some diplomas to HSC or a degree for others. Contact the admissions team or scan the 'To Apply' QR code on the brochure.",
     },
     {
-      q: '06. Does ASET offer fire and safety courses in Chennai and Coimbatore with placement?',
+      q: 'Does ASET offer fire and safety courses in Chennai and Coimbatore with placement?',
       a: 'Yes. ASET provides continuous career guidance, industry interaction and recruitment opportunities. The website states 99% placement records across its programmes.',
     },
     {
-      q: '07. What jobs and salary can fire and safety graduates expect?',
+      q: 'What jobs and salary can fire and safety graduates expect?',
       a: 'Graduates find roles in construction, oil & gas, manufacturing, shipping, aviation and power plants, in India and Gulf countries. Salaries vary with role, industry, certifications and location.',
     },
     {
-      q: '08. Can I study an MBA in industrial safety management at ASET?',
+      q: 'Can I study an MBA in industrial safety management at ASET?',
       a: 'Yes. ASET offers an MBA in Environment & Industrial Safety, blending management skills with workplace safety.',
     },
     {
-      q: '09. Can students from Pondicherry or other parts of Tamil Nadu join?',
+      q: 'Can students from Pondicherry or other parts of Tamil Nadu join?',
       a: 'Yes. ASET welcomes students from Pondicherry and across Tamil Nadu. Hostel and transport facilities are available.',
     },
     {
-      q: '10. Which aviation courses are available at ASET?',
+      q: 'Which aviation courses are available at ASET?',
       a: 'ASET offers B.Sc Aviation, BBA in Airline & Airport Management, MBA in Airline & Airport Management and Pilot Training.',
     },
     {
-      q: '11. What can I do with an MBA in airline and airport management?',
+      q: 'What can I do with an MBA in airline and airport management?',
       a: 'It prepares students for leadership roles in airline operations, airport management, cargo and ground services, and customer experience.',
     },
     {
-      q: '12. Does ASET have its own flying school for pilot training?',
+      q: 'Does ASET have its own flying school for pilot training?',
       a: 'Yes. ASET has its own flying school at Thoothukudi. Pilot training students study theory papers at the Chennai campus and take flight training at Thoothukudi. B.Sc Aviation students also visit Thoothukudi for industrial visits and hands-on maintenance training.',
     },
     {
-      q: '13. Which are the best colleges for BBA or MBA in logistics in Chennai and Coimbatore?',
+      q: 'Which are the best colleges for BBA or MBA in logistics in Chennai and Coimbatore?',
       a: 'ASET offers BBA Shipping & Logistics and MBA Shipping & Logistics programmes with tie-ups with the Logistics Sector Skill Council and recruiters such as DHL, Flipkart and Maersk.',
     },
     {
-      q: '14. What does the MBA in Business Analytics cover?',
+      q: 'What does the MBA in Business Analytics cover?',
       a: 'The programme covers data science, business intelligence and predictive analytics, with collaborations with SAS and KPMG.',
     },
     {
-      q: '15. Does ASET offer Hotel Management and CA, CMA, CS or ACCA with B.Com?',
+      q: 'Does ASET offer Hotel Management and CA, CMA, CS or ACCA with B.Com?',
       a: 'Yes. ASET School of Commerce offers CA / CMA / CS / ACCA + B.Com. ASET also offers a Hotel Management programme for careers in hospitality.',
     },
     {
-      q: '16. Is ASET College recognised?',
+      q: 'Is ASET College recognised?',
       a: 'ASET College of Science & Technology is approved by Alagappa University (AU/DCP/799/897), which holds a NAAC A++ grade, and has 13 years of experience in professional education.',
     },
   ];
@@ -447,7 +447,6 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             transition={{ duration: 0.6, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs font-mono font-semibold tracking-wide mb-6 shadow-md"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>Alagappa University AU/DCP/799/897 · NAAC A++ Accredited</span>
           </motion.div>
 
@@ -675,9 +674,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div className="max-w-3xl">
-              <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-                <span>SECTION 02 · CAMPUS IMMERSION &amp; CULTURE</span>
+              <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+                <span>CAMPUS IMMERSION &amp; CULTURE</span>
               </ScrollEyebrow>
 
               <ScrollHeading
@@ -813,7 +811,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
               <img
                 src={admCabinCrew}
                 alt="Cabin Crew Mockup Training"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -893,9 +891,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-14 sm:mb-16">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-              <span>SECTION 03 · INSTITUTIONAL EXCELLENCE</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+              <span>INSTITUTIONAL EXCELLENCE</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1047,9 +1044,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-              <span>SECTION 04 · LEADERSHIP &amp; VISION</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+              <span>LEADERSHIP &amp; EXECUTIVE VISION</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1195,9 +1191,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 sm:mb-14">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-              <span>SECTION 05 · ACADEMIC DISCIPLINES</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+              <span>ACADEMIC DISCIPLINES &amp; PROGRAMS</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1321,7 +1316,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
           <div className="max-w-3xl mb-12 sm:mb-16">
             <ScrollEyebrow delay={0.05} className="text-orange-400 font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
               <Plane className="w-4 h-4 text-orange-400" />
-              <span>SECTION 06 · AVIATION FLIGHT TRAINING BASE</span>
+              <span>AVIATION FLIGHT TRAINING BASE</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1407,9 +1402,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-14 sm:mb-16">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-              <span>SECTION 07 · INSTITUTIONAL PILLARS</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+              <span>CORE INSTITUTIONAL PILLARS</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1478,9 +1472,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 sm:mb-14">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-              <span>SECTION 08 · GLOBAL &amp; INDUSTRIAL ALLIANCES</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+              <span>GLOBAL &amp; INDUSTRIAL ALLIANCES</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1610,9 +1603,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 sm:mb-14">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
-              <span>SECTION 09 · PLACEMENT DESTINATIONS</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2">
+              <span>CAREER &amp; PLACEMENT DESTINATIONS</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1695,7 +1687,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
           <div className="max-w-3xl mb-12 sm:mb-14">
             <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-[#dc2626]" />
-              <span>SECTION 10 · QUALITY, AUDIT &amp; RESEARCH JOURNAL</span>
+              <span>QUALITY ASSURANCE &amp; RESEARCH JOURNAL</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1743,7 +1735,7 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
           <div className="max-w-3xl mb-12 sm:mb-14">
             <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#dc2626]" />
-              <span>SECTION 11 · LOCATIONS &amp; INFRASTRUCTURE</span>
+              <span>CAMPUS LOCATIONS &amp; INFRASTRUCTURE</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -1771,23 +1763,36 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             
             {/* Chennai Campus */}
-            <div className="rounded-[2rem] bg-[#faf8f5] border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between">
-              <div className="p-6 sm:p-8 space-y-4">
-                <div className="w-10 h-10 rounded-2xl bg-stone-950 text-white flex items-center justify-center font-bold">
-                  01
+            <div className="rounded-[2rem] bg-[#faf8f5] border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={asetCampusMain}
+                    alt="ASET College Chennai Campus Building"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Campus 01 · Flagship
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
-                  Chennai Campus
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                  Irulapalayam, Kuthambakkam, Poonamallee, Chennai – 600124, Tamil Nadu.
-                </p>
-                <div className="space-y-1.5 pt-2 text-xs font-mono">
-                  <div className="text-stone-700">Phone: <a href="tel:+919159499973" className="font-bold text-orange-600 hover:underline">+91 91594 99973</a></div>
-                  <div className="text-stone-700">Email: <a href="mailto:contact@asetsafety.ac.in" className="font-bold text-stone-900 hover:underline">contact@asetsafety.ac.in</a></div>
+                <div className="p-6 sm:p-7 space-y-4">
+                  <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
+                    Chennai Campus
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Irulapalayam, Kuthambakkam, Poonamallee, Chennai – 600124, Tamil Nadu.
+                  </p>
+                  <div className="space-y-1.5 pt-2 text-xs font-mono">
+                    <div className="text-stone-700">Phone: <a href="tel:+919159499973" className="font-bold text-orange-600 hover:underline">+91 91594 99973</a></div>
+                    <div className="text-stone-700">Email: <a href="mailto:contact@asetsafety.ac.in" className="font-bold text-stone-900 hover:underline">contact@asetsafety.ac.in</a></div>
+                  </div>
                 </div>
               </div>
-              <div className="p-6 pt-0">
+              <div className="p-6 sm:p-7 pt-0">
                 <a
                   href="https://maps.google.com/?q=ASET+College+Chennai"
                   target="_blank"
@@ -1801,23 +1806,36 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             </div>
 
             {/* Coimbatore Campus */}
-            <div className="rounded-[2rem] bg-[#faf8f5] border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between">
-              <div className="p-6 sm:p-8 space-y-4">
-                <div className="w-10 h-10 rounded-2xl bg-stone-950 text-white flex items-center justify-center font-bold">
-                  02
+            <div className="rounded-[2rem] bg-[#faf8f5] border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={asetCampusModern}
+                    alt="ASET College Coimbatore Campus Infrastructure"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Campus 02 · Main
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
-                  Coimbatore Campus
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                  Sathy Main Road, Saravanampatti, Coimbatore – 641035, Tamil Nadu.
-                </p>
-                <div className="space-y-1.5 pt-2 text-xs font-mono">
-                  <div className="text-stone-700">Phone: <a href="tel:+919159499973" className="font-bold text-orange-600 hover:underline">+91 91594 99973</a></div>
-                  <div className="text-stone-700">Email: <a href="mailto:contact@asetsafety.ac.in" className="font-bold text-stone-900 hover:underline">contact@asetsafety.ac.in</a></div>
+                <div className="p-6 sm:p-7 space-y-4">
+                  <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
+                    Coimbatore Campus
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    Sathy Main Road, Saravanampatti, Coimbatore – 641035, Tamil Nadu.
+                  </p>
+                  <div className="space-y-1.5 pt-2 text-xs font-mono">
+                    <div className="text-stone-700">Phone: <a href="tel:+919159499973" className="font-bold text-orange-600 hover:underline">+91 91594 99973</a></div>
+                    <div className="text-stone-700">Email: <a href="mailto:contact@asetsafety.ac.in" className="font-bold text-stone-900 hover:underline">contact@asetsafety.ac.in</a></div>
+                  </div>
                 </div>
               </div>
-              <div className="p-6 pt-0">
+              <div className="p-6 sm:p-7 pt-0">
                 <a
                   href="https://maps.google.com/?q=ASET+College+Coimbatore"
                   target="_blank"
@@ -1831,20 +1849,33 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             </div>
 
             {/* Thoothukudi Flying School */}
-            <div className="rounded-[2rem] bg-[#faf8f5] border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between">
-              <div className="p-6 sm:p-8 space-y-4">
-                <div className="w-10 h-10 rounded-2xl bg-orange-600 text-white flex items-center justify-center font-bold">
-                  03
+            <div className="rounded-[2rem] bg-[#faf8f5] border border-stone-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group">
+              <div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={admPilots}
+                    alt="ASET Flying School Thoothukudi Flight Base"
+                    className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[11px] font-mono font-semibold">
+                      Flight Base 03 · CPL
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
-                  Thoothukudi Flight Base
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                  ASET Flying School Airport Facility, Thoothukudi Airport Operational Zone, Tamil Nadu.
-                </p>
-                <div className="space-y-1.5 pt-2 text-xs font-mono">
-                  <div className="text-stone-700">Training: <span className="font-bold text-stone-900">Commercial Pilot Flight Base</span></div>
-                  <div className="text-stone-700">Admissions: <a href="tel:+919159499973" className="font-bold text-orange-600 hover:underline">+91 91594 99973</a></div>
+                <div className="p-6 sm:p-7 space-y-4">
+                  <h3 className="text-xl font-extrabold text-stone-950 font-serif font-semibold">
+                    Thoothukudi Flight Base
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                    ASET Flying School Airport Facility, Thoothukudi Airport Operational Zone, Tamil Nadu.
+                  </p>
+                  <div className="space-y-1.5 pt-2 text-xs font-mono">
+                    <div className="text-stone-700">Training: <span className="font-bold text-stone-900">Commercial Pilot Flight Base</span></div>
+                    <div className="text-stone-700">Admissions: <a href="tel:+919159499973" className="font-bold text-orange-600 hover:underline">+91 91594 99973</a></div>
+                  </div>
                 </div>
               </div>
               <div className="p-6 pt-0">
@@ -1871,8 +1902,8 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center justify-center gap-2">
-              <span>SECTION 12 · ADMISSIONS GUIDANCE</span>
+            <ScrollEyebrow delay={0.05} className="text-[#dc2626] font-bold font-mono tracking-widest uppercase mb-2 flex items-center justify-center">
+              <span>ADMISSIONS &amp; ENROLMENT GUIDANCE</span>
             </ScrollEyebrow>
 
             <ScrollHeading
@@ -2010,7 +2041,6 @@ export const AboutOverviewPage: React.FC<AboutOverviewPageProps> = ({
             >
               <div className="flex items-center justify-between p-4 sm:p-5 border-b border-white/10 bg-black/40">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
                   <span className="font-bold text-white text-sm sm:text-base">
                     ASET College Campus Life &amp; Facilities
                   </span>

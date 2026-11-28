@@ -291,8 +291,7 @@ export const DepartmentSection: React.FC<DepartmentSectionProps> = ({
 
                     {/* Department Tag Pill in Top-Left */}
                     <div className="absolute top-8 left-8 z-30 pointer-events-none">
-                      <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/65 backdrop-blur-xl border border-white/20 text-white shadow-2xl">
-                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                      <div className="inline-flex items-center px-4 py-2 rounded-full bg-black/65 backdrop-blur-xl border border-white/20 text-white shadow-2xl">
                         <span className="text-xs font-mono font-bold tracking-widest uppercase">
                           0{fIdx + 1} / 0{REFINED_DEPARTMENTS.length} · {dept.tag}
                         </span>

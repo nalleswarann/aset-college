@@ -100,7 +100,6 @@ export const AsetHeroBanner: React.FC<AsetHeroBannerProps> = () => {
             className="w-full h-full object-cover object-center pointer-events-none select-none"
           >
             <source src={skyVideo} type="video/mp4" />
-            <source src="/videos/sky-video-banner.mp4" type="video/mp4" />
           </video>
         </div>
 

@@ -161,32 +161,32 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
 
   const faqs = [
     {
-      question: '1. What are the accepted modes of fee payment at ASET College?',
+      question: 'What are the accepted modes of fee payment at ASET College?',
       answer:
         'ASET College accepts fees through: (1) Cash deposit at the campus accounts section; (2) Electronic bank transfer via NEFT, RTGS, or IMPS into the designated college account; and (3) UPI payment using verified virtual payment addresses (AIOSAT@icici for Chennai and ASETINSTITUTECOIMBATORE@rbl for Coimbatore).',
     },
     {
-      question: '2. Are the bank account details different for Chennai and Coimbatore campuses?',
+      question: 'Are the bank account details different for Chennai and Coimbatore campuses?',
       answer:
         'Yes. Chennai campus fees are routed through ICICI Bank (Account Number: 154601003739, IFSC: ICIC0001546), whereas Coimbatore campus fees are routed through RBL Bank (Account Number: 300120011001, IFSC: RATN0000387). Always ensure you transfer to the correct campus account.',
     },
     {
-      question: '3. What happens if a semester fee deadline falls on a Sunday or holiday?',
+      question: 'What happens if a semester fee deadline falls on a Sunday or holiday?',
       answer:
         'If an official due date (e.g., July 15 or December 1) coincides with a weekend, second Saturday, or gazetted public holiday, the immediate next official working day is recognized as the valid deadline without penalty.',
     },
     {
-      question: '4. Can I pay my semester fees in installments?',
+      question: 'Can I pay my semester fees in installments?',
       answer:
         'The per-semester fee is payable at the commencement of each semester as per the institution payment schedule. Under genuine academic or financial circumstances, installment requests may be submitted in writing to the Accounts and Management Committee for special review.',
     },
     {
-      question: '5. Does ASET College offer educational loan assistance?',
+      question: 'Does ASET College offer educational loan assistance?',
       answer:
         'Yes. Upon provisional admission, ASET College issues an official Bonafide Certificate and Fee Structure Estimate letter to assist candidates in securing educational loans from nationalised and private banks.',
     },
     {
-      question: '6. How do I verify my payment and receive an official receipt?',
+      question: 'How do I verify my payment and receive an official receipt?',
       answer:
         'After completing an electronic transfer or UPI payment, email or present your transaction receipt (showing the 12-digit UTR number, student name, and course) to the campus Accounts Section. An official stamped college receipt will be generated and handed over or dispatched to you.',
     },
@@ -235,7 +235,6 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>ASET COLLEGE · MODE OF FEE PAYMENT · ACADEMIC SESSION 2027–28</span>
           </motion.div>
 
@@ -381,8 +380,7 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
       <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
               <span>APPROVED PAYMENT METHODS &amp; CHANNELS</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
@@ -910,9 +908,8 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
       <section id="deadlines" className="py-16 sm:py-24 bg-[#faf8f5] border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>ACADEMIC SEMESTER TIMELINES</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>SEMESTER-WISE PAYMENT SCHEDULE &amp; TIMELINES</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               3. Last Dates for <span className="text-gradient-title font-extrabold">Fee Payment</span>
@@ -1008,9 +1005,8 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
       <section className="py-16 sm:py-24 bg-white border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>SEAMLESS TRANSFER PROCESS</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>FEE REMITTANCE WORKFLOW &amp; VERIFICATION</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               How to Remit Fees &amp; <span className="text-gradient-title font-extrabold">Verify Your Receipt</span>
@@ -1138,9 +1134,8 @@ export const FeePaymentOverviewPage: React.FC<FeePaymentOverviewPageProps> = ({
       <section className="py-16 sm:py-24 bg-white border-b border-stone-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>ANSWERS FOR STUDENTS &amp; PARENTS</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>FEE PAYMENT FAQS &amp; DESK ASSISTANCE</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               Frequently Asked <span className="text-gradient-title font-extrabold">Fee Payment Queries</span>

@@ -181,23 +181,23 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
 
   const faqs = [
     {
-      q: '1. How many internal assessments are conducted each semester?',
+      q: 'How many internal assessments are conducted each semester?',
       a: 'ASET College conducts three internal assessments each semester. These assessments help students monitor their academic grasp continuously, identify focus areas, and accumulate the required internal assessment score for Alagappa University.',
     },
     {
-      q: '2. Are internal marks and attendance shared with parents?',
+      q: 'Are internal marks and attendance shared with parents?',
       a: 'Yes. Following each assessment cycle, detailed academic and attendance progress reports are compiled and communicated to parents so families stay updated regarding student performance.',
     },
     {
-      q: '3. What university is ASET College affiliated with for examinations?',
+      q: 'What university is ASET College affiliated with for examinations?',
       a: 'ASET College operates under academic collaboration and curriculum affiliation with Alagappa University (a reputed State University). All end-semester examinations, syllabi, mark statements, and degree certificates are issued by Alagappa University.',
     },
     {
-      q: '4. How can a student apply for mark verification or revaluation?',
+      q: 'How can a student apply for mark verification or revaluation?',
       a: 'Students having queries regarding their declared results can submit a formal application at the Examination Cell within the university-stipulated window (typically 10 to 15 days following result declaration). The cell forwards the revaluation / retotaling request to Alagappa University.',
     },
     {
-      q: '5. Does the Examination Cell verify academic records for campus placement recruiters?',
+      q: 'Does the Examination Cell verify academic records for campus placement recruiters?',
       a: 'Yes. The Examination Cell officially verifies candidate marks, semester percentages, and non-arrear statuses whenever requested by airlines, logistics conglomerates, industrial safety employers, and campus recruitment panels.',
     },
   ];
@@ -234,7 +234,6 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             <span>ASET COLLEGE · EXAMINATION CELL &amp; ACADEMIC SUPPORT SYSTEM</span>
           </motion.div>
 
@@ -351,9 +350,8 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7">
-              <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-                <span>ABOUT THE DIVISION &amp; PURPOSE</span>
+              <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3">
+                <span>EXAMINATION CELL OVERVIEW &amp; MANDATE</span>
               </ScrollEyebrow>
 
               <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-6 leading-tight">
@@ -398,9 +396,14 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
 
             {/* Visual Card */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl overflow-hidden border-2 border-stone-200 shadow-2xl bg-stone-950 text-white p-6 sm:p-8">
-                <div className="absolute inset-0 z-0 opacity-20">
-                  <img src={campusModernImg} alt="Modern Campus" className="w-full h-full object-cover" />
+              <div className="relative rounded-3xl overflow-hidden border-2 border-stone-200 shadow-2xl bg-stone-950 text-white p-6 sm:p-8 group">
+                <div className="absolute inset-0 z-0 opacity-25 overflow-hidden">
+                  <img
+                    src={campusModernImg}
+                    alt="Modern Campus Architecture"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="relative z-10 space-y-5">
                   <span className="px-3 py-1 rounded-full bg-white/20 text-orange-300 text-xs font-bold uppercase tracking-wider inline-block">
@@ -437,9 +440,8 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
       <section id="semester-cycle" className="py-16 sm:py-24 bg-[#faf8f5] border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>CHRONOLOGICAL SEMESTER TIMELINE</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>ACADEMIC &amp; EXAMINATION SCHEDULE</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               A Semester with the <span className="text-gradient-title font-extrabold">Examination Cell</span>
@@ -507,9 +509,8 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
       <section id="core-functions" className="py-16 sm:py-24 bg-white border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>DIVISION RESPONSIBILITIES</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>CORE STATUTORY FUNCTIONS &amp; RESPONSIBILITIES</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               Core Functions of the <span className="text-gradient-title font-extrabold">Examination Division</span>
@@ -560,9 +561,8 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
       <section id="staff-directory" className="py-16 sm:py-24 bg-[#faf8f5] border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>LEADERSHIP &amp; ADMINISTRATION</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>CONTROLLER OF EXAMINATIONS &amp; ADMINISTRATION</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               Examination Cell <span className="text-gradient-title font-extrabold">Staff Directory</span>
@@ -571,6 +571,35 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
               Connect directly with designated examination officers for queries regarding hall tickets,
               internal marks, and university certificates.
             </ScrollParagraph>
+          </div>
+
+          {/* Featured Convocation & Degree Certification Visual Banner */}
+          <div className="relative rounded-3xl overflow-hidden shadow-xl border border-stone-200 mb-12 group aspect-[16/9] sm:aspect-[21/9] max-h-[360px]">
+            <img
+              src={graduatesImg}
+              alt="ASET College Convocation and Academic Degree Certification"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/35 to-transparent pointer-events-none" />
+            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
+              <div className="space-y-1.5 max-w-xl">
+                <span className="px-3 py-1 rounded-full bg-orange-500/25 backdrop-blur-md border border-orange-400/40 text-orange-200 text-xs font-mono font-semibold uppercase tracking-wider inline-block">
+                  Alagappa University Collaboration · AU/DCP/799/897
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif font-semibold text-white">
+                  Transparent Evaluations &amp; University Degree Awards
+                </h3>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  NAAC A++ University Syllabi
+                </span>
+                <span className="px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 text-xs text-stone-200 font-sans">
+                  Timely Marksheets
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
@@ -769,9 +798,8 @@ export const ExaminationCellOverviewPage: React.FC<ExaminationCellOverviewPagePr
       <section className="py-16 sm:py-24 bg-white border-b border-stone-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>FREQUENTLY ASKED QUESTIONS</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>EXAMINATION FAQS &amp; STUDENT DESK</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-3">
               Examination &amp; Evaluation <span className="text-gradient-title font-extrabold">FAQs</span>

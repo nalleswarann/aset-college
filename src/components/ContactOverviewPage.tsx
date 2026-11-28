@@ -34,7 +34,6 @@ import { ScrollHeading, ScrollParagraph, ScrollEyebrow } from './ScrollTypograph
 
 // Campus & Facility Imagery
 import roboticsTechImg from '../assets/images/contact.webp';
-import campusBuildingImg from '../assets/images/campus-building-user.jpg';
 
 interface ContactOverviewPageProps {
   onBackToHome?: () => void;
@@ -278,410 +277,43 @@ export const ContactOverviewPage: React.FC<ContactOverviewPageProps> = ({
 
   return (
     <div className="relative w-full overflow-hidden bg-[#faf8f5] text-stone-900 font-sans selection:bg-amber-800 selection:text-white">
-      {/* ========================================================= */}
-      {/* 1. HERO BANNER WITH COLLEGE ARCHITECTURAL BACKDROP        */}
-      {/* ========================================================= */}
-      <section className="relative min-h-[82vh] lg:min-h-[88vh] flex flex-col justify-between pt-28 sm:pt-36 lg:pt-40 pb-0 overflow-hidden bg-stone-950 text-white">
-        {/* College Building Image Backdrop */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={campusBuildingImg}
-            alt="ASET College Architecture"
-            className="w-full h-full object-cover object-center filter brightness-[0.38] contrast-[1.12] scale-105 animate-fade-in"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/65 to-black/75" />
-          <div className="absolute inset-0 bg-radial-[circle_at_center,_var(--tw-gradient-stops)] from-transparent via-stone-950/40 to-stone-950" />
-        </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 sm:pt-10 pb-12 sm:pb-16 my-auto">
-          {/* Eyebrow Pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wider text-orange-300 uppercase mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span>ASET COLLEGE · OFFICIAL CONTACT INFORMATION</span>
-          </motion.div>
-
-          {/* Luxury Display Headline with Two-Tone Gradient */}
-          <motion.h1
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight text-white mb-6 leading-[1.08] sm:leading-[1.05]"
-          >
-            Contact Information &amp; <span className="text-gradient-title font-extrabold">Official Directory</span>
-          </motion.h1>
-
-          {/* Subtitle / Overview Paragraph */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-3xl mx-auto text-stone-200 text-sm sm:text-base md:text-lg leading-relaxed font-sans mb-8"
-          >
-            Direct contact information for admission enquiries, administrative offices, Chennai city office,
-            Tamil Nadu campuses, and international liaison offices in Singapore, Saudi Arabia, and Malaysia.
-          </motion.p>
-
-          {/* Action Trigger Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
-          >
-            <button
-              type="button"
-              onClick={() => scrollToSection('contact-form-section')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-orange-600 to-rose-600 hover:from-orange-500 hover:to-rose-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-orange-600/30 transition-all hover:scale-102 active:scale-98 cursor-pointer"
-            >
-              <Send className="w-4 h-4" />
-              <span>Contact Page Form</span>
-            </button>
-
-            <a
-              href="https://wa.me/919159499973"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-emerald-600/25 transition-all hover:scale-102 active:scale-98"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>WhatsApp: +91 91594 99973</span>
-            </a>
-
-            <button
-              type="button"
-              onClick={() => scrollToSection('campus-addresses')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-semibold text-xs sm:text-sm transition-all hover:scale-102 active:scale-98 cursor-pointer"
-            >
-              <Building2 className="w-4 h-4 text-amber-400" />
-              <span>Campus Addresses</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => scrollToSection('offices-abroad')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-stone-900/80 hover:bg-stone-800 border border-stone-700 text-stone-200 font-semibold text-xs sm:text-sm transition-all cursor-pointer"
-            >
-              <Globe className="w-4 h-4 text-orange-400" />
-              <span>Offices Abroad</span>
-            </button>
-          </motion.div>
-        </div>
-
-        {/* Anchored Metric Strip */}
-        <div className="relative z-10 w-full border-t border-white/10 bg-stone-950/80 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center md:text-left">
-              <div className="flex items-center gap-3 justify-center md:justify-start">
-                <div className="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-stone-400 font-medium">Admission Enquiry</p>
-                  <p className="text-xs sm:text-sm font-bold text-white">+91 91594 99973 / 74</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 justify-center md:justify-start">
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-stone-400 font-medium">Response Time</p>
-                  <p className="text-xs sm:text-sm font-bold text-white">Within 1 Working Day</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 justify-center md:justify-start">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                  <Building2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-stone-400 font-medium">Tamil Nadu Campuses</p>
-                  <p className="text-xs sm:text-sm font-bold text-white">Chennai &amp; Coimbatore</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 justify-center md:justify-start">
-                <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
-                  <Globe className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-stone-400 font-medium">Offices Abroad</p>
-                  <p className="text-xs sm:text-sm font-bold text-white">Singapore · Saudi · Malaysia</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ========================================================= */}
-      {/* 2. ADMISSION ENQUIRY, ADMINISTRATIVE & CITY OFFICE       */}
-      {/* ========================================================= */}
-      <section id="admission-enquiry" className="py-16 sm:py-24 bg-white border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>CENTRAL CONTACT DESKS</span>
-            </ScrollEyebrow>
-            <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
-              Admission Enquiry &amp; <span className="text-gradient-title font-extrabold">Office Directory</span>
-            </ScrollHeading>
-            <ScrollParagraph className="text-stone-600 text-xs sm:text-sm max-w-2xl mx-auto">
-              Direct access to admissions, administrative headquarters, and the Chennai city coordination office.
-            </ScrollParagraph>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {/* Card 1: Admission Enquiry */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="p-6 sm:p-8 rounded-3xl bg-[#faf8f5] border-2 border-orange-200/80 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-600/30">
-                    <GraduationCap className="w-6 h-6" />
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-900 text-xs font-bold uppercase tracking-wider">
-                    Primary Desk
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-serif font-bold text-stone-900 mb-3">
-                  Admission Enquiry
-                </h3>
-
-                <div className="space-y-3.5 text-xs sm:text-sm text-stone-700 font-sans mb-6">
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Phone Numbers:
-                    </span>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <a href="tel:+919159499973" className="font-mono font-bold text-orange-600 hover:underline">
-                        +91 91594 99973
-                      </a>
-                      <span className="text-stone-400">/</span>
-                      <a href="tel:+919159499974" className="font-mono font-bold text-orange-600 hover:underline">
-                        74
-                      </a>
-                    </div>
-                  </div>
-
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      WhatsApp:
-                    </span>
-                    <a
-                      href="https://wa.me/919159499973"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono font-bold text-emerald-700 hover:underline flex items-center gap-1.5"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>+91 91594 99973</span>
-                    </a>
-                  </div>
-
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Email Address:
-                    </span>
-                    <a href="mailto:contact@asetsafety.ac.in" className="font-mono text-stone-800 hover:text-orange-600 font-medium break-all">
-                      contact@asetsafety.ac.in
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Response Time Guarantee Notice from PDF */}
-              <div className="pt-4 border-t border-stone-200/80">
-                <div className="p-3 rounded-2xl bg-orange-50 border border-orange-200/70 text-xs text-orange-950 flex items-start gap-2.5">
-                  <Clock className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
-                  <p className="leading-relaxed">
-                    <strong>Response time:</strong> The admissions team aims to reply within one working day.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 2: Administrative Office */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="p-6 sm:p-8 rounded-3xl bg-[#faf8f5] border border-stone-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-stone-900 text-white flex items-center justify-center shadow-md">
-                    <Building2 className="w-6 h-6 text-amber-400" />
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-stone-200 text-stone-800 text-xs font-bold uppercase tracking-wider">
-                    HQ Admin
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-serif font-bold text-stone-900 mb-3">
-                  Administrative Office
-                </h3>
-
-                <div className="space-y-3.5 text-xs sm:text-sm text-stone-700 font-sans mb-6">
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Mobile Numbers:
-                    </span>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <a href="tel:+919159499973" className="font-mono font-bold text-stone-900 hover:text-orange-600 hover:underline">
-                        +91 91594 99973
-                      </a>
-                      <span className="text-stone-400">/</span>
-                      <a href="tel:+919159499974" className="font-mono font-bold text-stone-900 hover:text-orange-600 hover:underline">
-                        74
-                      </a>
-                    </div>
-                  </div>
-
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Email Address:
-                    </span>
-                    <a href="mailto:contact@asetsafety.ac.in" className="font-mono text-stone-800 hover:text-orange-600 font-medium break-all">
-                      contact@asetsafety.ac.in
-                    </a>
-                  </div>
-
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Office Schedule:
-                    </span>
-                    <p className="text-stone-600">
-                      Monday to Saturday: 9:00 AM – 5:30 PM IST
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-stone-200">
-                <a
-                  href="tel:+919159499973"
-                  className="w-full py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  <Phone className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Call Administrative Office</span>
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Card 3: City Office – Chennai */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="p-6 sm:p-8 rounded-3xl bg-[#faf8f5] border border-stone-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 to-orange-600 text-white flex items-center justify-center shadow-md shadow-rose-600/25">
-                    <User className="w-6 h-6" />
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-rose-100 text-rose-900 text-xs font-bold uppercase tracking-wider">
-                    City Office
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-serif font-bold text-stone-900 mb-3">
-                  City Office – Chennai
-                </h3>
-
-                <div className="space-y-3.5 text-xs sm:text-sm text-stone-700 font-sans mb-6">
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Contact Person:
-                    </span>
-                    <p className="font-bold text-stone-900 text-sm sm:text-base">
-                      Mr. Santhosh Kumar
-                    </p>
-                  </div>
-
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Mobile Number:
-                    </span>
-                    <a
-                      href="tel:+918686251568"
-                      className="font-mono font-bold text-orange-600 hover:underline text-sm sm:text-base flex items-center gap-1.5"
-                    >
-                      <Phone className="w-4 h-4 text-orange-600" />
-                      <span>+91 86862 51568</span>
-                    </a>
-                  </div>
-
-                  <div>
-                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
-                      Direct WhatsApp:
-                    </span>
-                    <a
-                      href="https://wa.me/918686251568"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-mono font-bold text-emerald-700 hover:underline flex items-center gap-1.5"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Message on WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-stone-200">
-                <a
-                  href="tel:+918686251568"
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-rose-600 hover:from-orange-500 hover:to-rose-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-orange-600/20"
-                >
-                  <PhoneCall className="w-3.5 h-3.5" />
-                  <span>Call Mr. Santhosh Kumar</span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 3. CORE CONTACT PAGE FORM (Kept Exactly as Requested)     */}
+      {/* 1. ONLINE ENQUIRY & CONTACT FORM (AT TOP)                 */}
       {/* ========================================================= */}
       <section
         id="contact-form-section"
-        className="relative py-16 sm:py-24 lg:py-28 bg-[#faf8f5] text-stone-900 border-b border-stone-200"
+        className="relative pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 bg-[#faf8f5] text-stone-900 border-b border-stone-200"
       >
         <div className="max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-1 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>OFFICIAL ENQUIRY SUBMISSION</span>
-            </ScrollEyebrow>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45 }}
+              className="inline-flex items-center px-4 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-1 justify-center shadow-xs"
+            >
+              <span>ONLINE ENQUIRY &amp; ADMISSION FORM</span>
+            </motion.div>
 
-            <ScrollHeading className="text-2xl sm:text-4xl lg:text-5xl font-serif font-semibold text-stone-900 tracking-tight">
-              Contact Page <span className="text-gradient-title font-extrabold">Enquiry Form</span>
-            </ScrollHeading>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.08 }}
+              className="text-3xl sm:text-5xl lg:text-6xl font-serif font-semibold text-stone-900 tracking-tight"
+            >
+              Get in Touch &amp; <span className="text-gradient-title font-extrabold">Enquiry Form</span>
+            </motion.h1>
 
-            <ScrollParagraph className="text-xs sm:text-sm md:text-base text-stone-600 font-sans max-w-2xl mx-auto">
-              Please enter your name, email address, phone number, department/course, preferred campus, and message.
-              Our team aims to reply within one working day.
-            </ScrollParagraph>
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.16 }}
+              className="text-sm sm:text-base md:text-lg text-stone-600 font-sans max-w-2xl mx-auto leading-relaxed"
+            >
+              Official enquiry and admissions desk for ASET College. Submit your details below and our counseling team will connect with you within one working day.
+            </motion.p>
           </div>
 
           {/* CONTACT SECTION CARD (From Home Page) */}
@@ -809,8 +441,7 @@ export const ContactOverviewPage: React.FC<ContactOverviewPageProps> = ({
               {/* Top Header: Eyebrow + General & Admissions Helpline */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-stone-200/90">
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+                  <div className="flex items-center">
                     <span className="text-xs font-mono font-bold tracking-[0.2em] text-orange-600 uppercase">
                       ADMISSIONS &amp; COUNSELING 2027–2028
                     </span>
@@ -1165,14 +796,250 @@ export const ContactOverviewPage: React.FC<ContactOverviewPageProps> = ({
       </section>
 
       {/* ========================================================= */}
-      {/* 4. CAMPUS ADDRESSES (From Document)                       */}
+      {/* 2. ADMISSION ENQUIRY, ADMINISTRATIVE & CITY OFFICE       */}
+      {/* ========================================================= */}
+      <section id="admission-enquiry" className="py-16 sm:py-24 bg-white border-b border-stone-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>CENTRAL ADMISSION &amp; ADMINISTRATIVE DESKS</span>
+            </ScrollEyebrow>
+            <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
+              Admission Enquiry &amp; <span className="text-gradient-title font-extrabold">Office Directory</span>
+            </ScrollHeading>
+            <ScrollParagraph className="text-stone-600 text-xs sm:text-sm max-w-2xl mx-auto">
+              Direct access to admissions, administrative headquarters, and the Chennai city coordination office.
+            </ScrollParagraph>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {/* Card 1: Admission Enquiry */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="p-6 sm:p-8 rounded-3xl bg-[#faf8f5] border-2 border-orange-200/80 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-orange-600 text-white flex items-center justify-center shadow-md shadow-orange-600/30">
+                    <GraduationCap className="w-6 h-6" />
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-900 text-xs font-bold uppercase tracking-wider">
+                    Primary Desk
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-serif font-bold text-stone-900 mb-3">
+                  Admission Enquiry
+                </h3>
+
+                <div className="space-y-3.5 text-xs sm:text-sm text-stone-700 font-sans mb-6">
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Phone Numbers:
+                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a href="tel:+919159499973" className="font-mono font-bold text-orange-600 hover:underline">
+                        +91 91594 99973
+                      </a>
+                      <span className="text-stone-400">/</span>
+                      <a href="tel:+919159499974" className="font-mono font-bold text-orange-600 hover:underline">
+                        74
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      WhatsApp:
+                    </span>
+                    <a
+                      href="https://wa.me/919159499973"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono font-bold text-emerald-700 hover:underline flex items-center gap-1.5"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>+91 91594 99973</span>
+                    </a>
+                  </div>
+
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Email Address:
+                    </span>
+                    <a href="mailto:contact@asetsafety.ac.in" className="font-mono text-stone-800 hover:text-orange-600 font-medium break-all">
+                      contact@asetsafety.ac.in
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Response Time Guarantee Notice from PDF */}
+              <div className="pt-4 border-t border-stone-200/80">
+                <div className="p-3 rounded-2xl bg-orange-50 border border-orange-200/70 text-xs text-orange-950 flex items-start gap-2.5">
+                  <Clock className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                  <p className="leading-relaxed">
+                    <strong>Response time:</strong> The admissions team aims to reply within one working day.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Administrative Office */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="p-6 sm:p-8 rounded-3xl bg-[#faf8f5] border border-stone-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-stone-900 text-white flex items-center justify-center shadow-md">
+                    <Building2 className="w-6 h-6 text-amber-400" />
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-stone-200 text-stone-800 text-xs font-bold uppercase tracking-wider">
+                    HQ Admin
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-serif font-bold text-stone-900 mb-3">
+                  Administrative Office
+                </h3>
+
+                <div className="space-y-3.5 text-xs sm:text-sm text-stone-700 font-sans mb-6">
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Mobile Numbers:
+                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a href="tel:+919159499973" className="font-mono font-bold text-stone-900 hover:text-orange-600 hover:underline">
+                        +91 91594 99973
+                      </a>
+                      <span className="text-stone-400">/</span>
+                      <a href="tel:+919159499974" className="font-mono font-bold text-stone-900 hover:text-orange-600 hover:underline">
+                        74
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Email Address:
+                    </span>
+                    <a href="mailto:contact@asetsafety.ac.in" className="font-mono text-stone-800 hover:text-orange-600 font-medium break-all">
+                      contact@asetsafety.ac.in
+                    </a>
+                  </div>
+
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Office Schedule:
+                    </span>
+                    <p className="text-stone-600">
+                      Monday to Saturday: 9:00 AM – 5:30 PM IST
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-stone-200">
+                <a
+                  href="tel:+919159499973"
+                  className="w-full py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                >
+                  <Phone className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Call Administrative Office</span>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Card 3: City Office – Chennai */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="p-6 sm:p-8 rounded-3xl bg-[#faf8f5] border border-stone-200 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 to-orange-600 text-white flex items-center justify-center shadow-md shadow-rose-600/25">
+                    <User className="w-6 h-6" />
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-rose-100 text-rose-900 text-xs font-bold uppercase tracking-wider">
+                    City Office
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-serif font-bold text-stone-900 mb-3">
+                  City Office – Chennai
+                </h3>
+
+                <div className="space-y-3.5 text-xs sm:text-sm text-stone-700 font-sans mb-6">
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Contact Person:
+                    </span>
+                    <p className="font-bold text-stone-900 text-sm sm:text-base">
+                      Mr. Santhosh Kumar
+                    </p>
+                  </div>
+
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Mobile Number:
+                    </span>
+                    <a
+                      href="tel:+918686251568"
+                      className="font-mono font-bold text-orange-600 hover:underline text-sm sm:text-base flex items-center gap-1.5"
+                    >
+                      <Phone className="w-4 h-4 text-orange-600" />
+                      <span>+91 86862 51568</span>
+                    </a>
+                  </div>
+
+                  <div>
+                    <span className="block text-[11px] font-mono uppercase text-stone-400 font-bold mb-0.5">
+                      Direct WhatsApp:
+                    </span>
+                    <a
+                      href="https://wa.me/918686251568"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono font-bold text-emerald-700 hover:underline flex items-center gap-1.5"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Message on WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-stone-200">
+                <a
+                  href="tel:+918686251568"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-rose-600 hover:from-orange-500 hover:to-rose-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-orange-600/20"
+                >
+                  <PhoneCall className="w-3.5 h-3.5" />
+                  <span>Call Mr. Santhosh Kumar</span>
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      {/* ========================================================= */}
+      {/* 3. CAMPUS ADDRESSES (From Document)                       */}
       {/* ========================================================= */}
       <section id="campus-addresses" className="py-16 sm:py-24 bg-white border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>OFFICIAL INSTITUTIONAL ADDRESSES</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>CAMPUS LOCATIONS &amp; POSTAL ADDRESSES</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               Campus <span className="text-gradient-title font-extrabold">Addresses</span>
@@ -1281,14 +1148,13 @@ export const ContactOverviewPage: React.FC<ContactOverviewPageProps> = ({
       </section>
 
       {/* ========================================================= */}
-      {/* 5. OFFICES ABROAD (From Document: Singapore, Saudi, Malay)*/}
+      {/* 4. OFFICES ABROAD (From Document: Singapore, Saudi, Malay)*/}
       {/* ========================================================= */}
       <section id="offices-abroad" className="py-16 sm:py-24 bg-[#faf8f5] border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>INTERNATIONAL LIAISON DESKS</span>
+            <ScrollEyebrow className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
+              <span>GLOBAL LIAISON &amp; OVERSEAS OFFICES</span>
             </ScrollEyebrow>
             <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
               Offices <span className="text-gradient-title font-extrabold">Abroad</span>
@@ -1392,85 +1258,7 @@ export const ContactOverviewPage: React.FC<ContactOverviewPageProps> = ({
       </section>
 
       {/* ========================================================= */}
-      {/* 6. DEPARTMENTS LISTED (From Document)                     */}
-      {/* ========================================================= */}
-      <section id="departments-listed" className="py-16 sm:py-24 bg-white border-b border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <ScrollEyebrow className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-3 justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse" />
-              <span>ACADEMIC DISCIPLINES</span>
-            </ScrollEyebrow>
-            <ScrollHeading className="text-2xl sm:text-4xl font-serif font-semibold text-stone-900 mb-4">
-              Departments <span className="text-gradient-title font-extrabold">Listed</span>
-            </ScrollHeading>
-            <ScrollParagraph className="text-stone-600 text-xs sm:text-sm max-w-2xl mx-auto">
-              Prospective students can submit course-specific enquiries across the six academic departments offered at ASET College.
-            </ScrollParagraph>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {DEPARTMENTS_LIST.map((dept, idx) => {
-              const IconComp = dept.icon;
-              return (
-                <motion.div
-                  key={dept.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="p-6 rounded-3xl bg-[#faf8f5] border border-stone-200 hover:border-orange-300 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-11 h-11 rounded-2xl bg-white border border-stone-200 text-stone-800 flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white group-hover:border-orange-600 transition-colors shadow-xs">
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-stone-200/80 text-stone-700">
-                        Department 0{idx + 1}
-                      </span>
-                    </div>
-
-                    <h4 className="text-lg font-serif font-bold text-stone-900 mb-1.5">
-                      {dept.name}
-                    </h4>
-                    <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
-                      {dept.tagline}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-stone-200/80 flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setFormData((prev) => ({ ...prev, department: dept.name }));
-                        scrollToSection('contact-form-section');
-                      }}
-                      className="text-xs font-bold text-orange-600 hover:text-orange-700 hover:underline flex items-center gap-1 cursor-pointer"
-                    >
-                      <span>Select in Form</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    {onNavigateToApplyOnline && (
-                      <button
-                        type="button"
-                        onClick={() => onNavigateToApplyOnline('#apply-online')}
-                        className="text-xs font-semibold text-stone-500 hover:text-stone-900 flex items-center gap-1 cursor-pointer"
-                      >
-                        <span>Apply ↗</span>
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================= */}
-      {/* 7. BOTTOM ACTION STRIP                                     */}
+      {/* 5. BOTTOM ACTION STRIP                                     */}
       {/* ========================================================= */}
       <section className="py-12 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

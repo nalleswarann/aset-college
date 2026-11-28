@@ -28,14 +28,64 @@ import { FeePaymentOverviewPage } from './components/FeePaymentOverviewPage';
 import { ApplyOnlineOverviewPage } from './components/ApplyOnlineOverviewPage';
 import { ExaminationCellOverviewPage } from './components/ExaminationCellOverviewPage';
 import { ContactOverviewPage } from './components/ContactOverviewPage';
+import { PlacementOverviewPage } from './components/PlacementOverviewPage';
 import { Department } from './types/university';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell' | 'contact'>(() => {
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'campuses' | 'life' | 'admissions' | 'requirements' | 'fee-payment' | 'apply-online' | 'examination-cell' | 'contact' | 'placements'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       const path = window.location.pathname.toLowerCase();
       if (
+        hash.startsWith('#placement') ||
+        hash.startsWith('#/placement') ||
+        hash.startsWith('#placements') ||
+        hash.startsWith('#/placements') ||
+        hash.startsWith('#placement-cell') ||
+        hash.startsWith('#our-placement-cell') ||
+        hash.startsWith('#placement-overview') ||
+        path === '/placement' ||
+        path.startsWith('/placement') ||
+        path === '/placements' ||
+        path.startsWith('/placements') ||
+        path === '/about/placement' ||
+        path.startsWith('/about/placement')
+      ) {
+        return 'placements';
+      }
+      if (
+        hash.startsWith('#placement') ||
+        hash.startsWith('#/placement') ||
+        hash.startsWith('#placements') ||
+        hash.startsWith('#/placements') ||
+        hash.startsWith('#placement-cell') ||
+        hash.startsWith('#our-placement-cell') ||
+        hash.startsWith('#placement-overview') ||
+        path === '/placement' ||
+        path.startsWith('/placement') ||
+        path === '/placements' ||
+        path.startsWith('/placements') ||
+        path === '/about/placement' ||
+        path.startsWith('/about/placement')
+      ) {
+        setCurrentPage('placements');
+        if (
+          hash &&
+          hash !== '#placement' &&
+          hash !== '#placements' &&
+          hash !== '#placement-overview' &&
+          hash !== '#placement-cell'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
         hash.startsWith('#contact') ||
         hash.startsWith('#/contact') ||
         path === '/contact' ||
@@ -158,6 +208,38 @@ export default function App() {
       const path = window.location.pathname.toLowerCase();
 
       if (
+        hash.startsWith('#placement') ||
+        hash.startsWith('#/placement') ||
+        hash.startsWith('#placements') ||
+        hash.startsWith('#/placements') ||
+        hash.startsWith('#placement-cell') ||
+        hash.startsWith('#our-placement-cell') ||
+        hash.startsWith('#placement-overview') ||
+        path === '/placement' ||
+        path.startsWith('/placement') ||
+        path === '/placements' ||
+        path.startsWith('/placements') ||
+        path === '/about/placement' ||
+        path.startsWith('/about/placement')
+      ) {
+        setCurrentPage('placements');
+        if (
+          hash &&
+          hash !== '#placement' &&
+          hash !== '#placements' &&
+          hash !== '#placement-overview' &&
+          hash !== '#placement-cell'
+        ) {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 200);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else if (
         hash.startsWith('#contact') ||
         hash.startsWith('#/contact') ||
         path === '/contact' ||
@@ -483,6 +565,27 @@ export default function App() {
     }
   };
 
+  const handleNavigateToPlacements = (targetHash: string = '#placement-overview') => {
+    window.history.pushState(null, '', targetHash);
+    setCurrentPage('placements');
+    if (
+      targetHash &&
+      targetHash !== '#placement' &&
+      targetHash !== '#placements' &&
+      targetHash !== '#placement-overview' &&
+      targetHash !== '#placement-cell'
+    ) {
+      setTimeout(() => {
+        const targetEl = document.querySelector(targetHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleNavigateToFeePayment = (targetHash: string = '#fee-payment') => {
     window.history.pushState(null, '', targetHash);
     setCurrentPage('fee-payment');
@@ -687,6 +790,7 @@ export default function App() {
           onNavigateToFeePayment={handleNavigateToFeePayment}
           onNavigateToApplyOnline={handleNavigateToApplyOnline}
           onNavigateToExamCell={handleNavigateToExamCell}
+          onNavigateToPlacements={handleNavigateToPlacements}
           onNavigateToContact={handleNavigateToContact}
           onNavigateToHome={() => handleNavigateToHome('#home')}
           onSelectDepartment={(dept) => {
@@ -792,6 +896,20 @@ export default function App() {
             onNavigateToApplyOnline={handleNavigateToApplyOnline}
             initialDepartment={inquiryDepartment}
           />
+        ) : currentPage === 'placements' ? (
+          <PlacementOverviewPage
+            onBackToHome={() => handleNavigateToHome('#home')}
+            onOpenAdmissions={handleOpenAdmissions}
+            onNavigateToAbout={handleNavigateToAbout}
+            onNavigateToCampuses={handleNavigateToCampuses}
+            onNavigateToLife={handleNavigateToLife}
+            onNavigateToAdmissions={handleNavigateToAdmissions}
+            onNavigateToRequirements={handleNavigateToRequirements}
+            onNavigateToFeePayment={handleNavigateToFeePayment}
+            onNavigateToApplyOnline={handleNavigateToApplyOnline}
+            onNavigateToExamCell={handleNavigateToExamCell}
+            onNavigateToContact={handleNavigateToContact}
+          />
         ) : (
           <main className="flex-1">
             {/* Full-Screen 100vh ASET Hero Banner with Scroll-Triggered Parallax */}
@@ -825,6 +943,7 @@ export default function App() {
             <SmoothSection>
               <CampusLifeSection
                 onOpenVirtualTour={() => setIsVirtualTourOpen(true)}
+                onNavigateToPlacements={() => handleNavigateToPlacements('#placement-overview')}
               />
             </SmoothSection>
 
@@ -873,6 +992,7 @@ export default function App() {
           onNavigateToFeePayment={handleNavigateToFeePayment}
           onNavigateToApplyOnline={handleNavigateToApplyOnline}
           onNavigateToExamCell={handleNavigateToExamCell}
+          onNavigateToPlacements={handleNavigateToPlacements}
           onNavigateToContact={handleNavigateToContact}
         />
 

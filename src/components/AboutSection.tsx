@@ -7,6 +7,7 @@ import {
   ScrollEyebrow,
   ScrollAction,
 } from './ScrollTypography';
+import asetCampusMain from '../assets/images/aset-campus-main-building.webp';
 
 export const AboutSection: React.FC = () => {
 
@@ -45,8 +46,7 @@ export const AboutSection: React.FC = () => {
         {/* Curatorial Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-stone-200">
           <div className="space-y-3 max-w-2xl">
-            <ScrollEyebrow delay={0.04} className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+            <ScrollEyebrow delay={0.04}>
               <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
                 INSTITUTIONAL OVERVIEW &amp; RECOGNITION
               </span>
@@ -90,6 +90,30 @@ export const AboutSection: React.FC = () => {
 
           {/* Right Column: 4 Pillars of Practical Learning & Exposure */}
           <div className="lg:col-span-6 space-y-6">
+            {/* Architectural Campus Photo Showcase */}
+            <div className="relative rounded-3xl overflow-hidden aspect-[16/9] shadow-lg border border-stone-200 group bg-stone-900">
+              <img
+                src={asetCampusMain}
+                alt="ASET College Chennai Flagship Campus"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <div>
+                  <span className="text-[11px] font-mono text-amber-300 font-bold uppercase tracking-wider block">
+                    Campus Infrastructure
+                  </span>
+                  <span className="font-serif font-semibold text-sm sm:text-base">
+                    Chennai &amp; Coimbatore Campuses
+                  </span>
+                </div>
+                <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-mono font-bold uppercase tracking-widest">
+                  Est. 2013
+                </span>
+              </div>
+            </div>
+
             <div className="flex items-center justify-between pb-2 border-b border-stone-200">
               <h4 className="text-xs font-sans uppercase tracking-widest text-stone-500 font-semibold">
                 Core Pillars · Practical Learning &amp; Exposure

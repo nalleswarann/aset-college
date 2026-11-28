@@ -245,10 +245,9 @@ export const SponsorsSection: React.FC = () => {
       {/* ========================================================= */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8 sm:mb-12 lg:mb-16 space-y-3">
         {/* Eyebrow */}
-        <ScrollEyebrow delay={0.04} className="flex items-center justify-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
+        <ScrollEyebrow delay={0.04} className="flex items-center justify-center">
           <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-orange-600">
-            GLOBAL TIE-UPS &amp; ACCREDITATIONS
+            GLOBAL ACCREDITATIONS &amp; INDUSTRY ALLIANCES
           </span>
         </ScrollEyebrow>
 
